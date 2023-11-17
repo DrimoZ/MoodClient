@@ -8,6 +8,10 @@ import { RegisterPageComponent } from './mood-container/register-page/register-p
 import {AppRoutingModule} from "./app-routing.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainPageComponent } from './mood-container/main-page/main-page.component';
+import { NavbarComponent } from './mood-container/main-page/navbar/navbar.component';
+import { FooterComponent } from './mood-container/main-page/footer/footer.component';
+import { HeaderComponent } from './mood-container/main-page/header/header.component';
+import { ContentComponent } from './mood-container/main-page/content/content.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { MainPageComponent } from './mood-container/main-page/main-page.componen
     MoodContainerComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    MainPageComponent
+    MainPageComponent,
+    NavbarComponent,
+    FooterComponent,
+    HeaderComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
