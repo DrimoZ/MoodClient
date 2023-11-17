@@ -12,6 +12,7 @@ import { NavbarComponent } from './mood-container/main-page/navbar/navbar.compon
 import { FooterComponent } from './mood-container/main-page/footer/footer.component';
 import { HeaderComponent } from './mood-container/main-page/header/header.component';
 import { ContentComponent } from './mood-container/main-page/content/content.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,15 +21,16 @@ import { ContentComponent } from './mood-container/main-page/content/content.com
     LoginPageComponent,
     RegisterPageComponent,
     MainPageComponent,
-    NavbarComponent,
+    ContentComponent,
     FooterComponent,
     HeaderComponent,
-    ContentComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

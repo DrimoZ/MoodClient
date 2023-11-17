@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginPageComponent} from "./mood-container/login-page/login-page.component";
 import {RegisterPageComponent} from "./mood-container/register-page/register-page.component";
+import {MainPageComponent} from "./mood-container/main-page/main-page.component";
 
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "/login"},
   {path: "login", component: LoginPageComponent},
   {path: "register", component: RegisterPageComponent},
+  {path: "main", component: MainPageComponent,
+    loadChildren: () => import('./mood-container/main-page/content/content.module').then(module => module.ContentModule)
+  },
   {path: "**", redirectTo: "/login"}
 ];
 
