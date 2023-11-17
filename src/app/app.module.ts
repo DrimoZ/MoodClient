@@ -7,13 +7,15 @@ import { LoginPageComponent } from './mood-container/login-page/login-page.compo
 import { RegisterPageComponent } from './mood-container/register-page/register-page.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MainPageComponent } from './mood-container/main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoodContainerComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
