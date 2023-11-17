@@ -19,7 +19,8 @@ export class LoginPageComponent {
   constructor(private _router: Router, private _fb: FormBuilder) {
   }
 
-  submitForm() {
+  submitForm(event: Event) {
+    event.preventDefault();
     this._router.navigate(['../main']);
   }
 }

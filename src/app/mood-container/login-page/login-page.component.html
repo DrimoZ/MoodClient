@@ -24,7 +24,7 @@
             ">
           <div class="card-body p-5 shadow-5 text-center custom-text">
             <h2 class="fw-bold mb-5">Sign in</h2>
-            <form [formGroup]="form"  (submit)="submitForm()">
+            <form [formGroup]="form"  (submit)="submitForm($event)">
 
 <!--               Email input-->
               <div class="form-outline mb-4">

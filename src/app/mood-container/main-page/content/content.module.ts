@@ -12,7 +12,6 @@ import { NewsFeedComponent } from './news-feed/news-feed.component';
     NewsFeedComponent
   ],
   imports: [
-    BrowserModule,
     NgbModule
   ],
   providers: [],
