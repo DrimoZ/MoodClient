@@ -12,6 +12,8 @@ import { NavbarComponent } from './mood-container/main-page/navbar/navbar.compon
 import { ContentComponent } from './mood-container/main-page/content/content.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterAuthGuard} from "./Services/routerAuthGuard";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {CredentialsInterceptor} from "./Services/credentialsInterceptor";
 
 @NgModule({
   declarations: [
@@ -27,10 +29,16 @@ import {RouterAuthGuard} from "./Services/routerAuthGuard";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-      RouterAuthGuard
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CredentialsInterceptor,
+      multi: true
+    },
+    RouterAuthGuard
   ],
   bootstrap: [AppComponent]
 })
