@@ -1,9 +1,8 @@
-
-.custom-text {
-  color: #deb992;
-}
-.custom-btn{
-  background-color: #deb992;
-  color : white;
-  box-shadow: none;
+.input-error {
+    border-color: red;
+    color: red;
+    ::placeholder {
+        color: red;
+        opacity: 1;
+    } opacity: 1;
 }

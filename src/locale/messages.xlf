@@ -243,6 +243,55 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="5207635742003539443" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3980517593820207265" datatype="html">
+        <source>Email or Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1431416938026210429" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7425863483295202714" datatype="html">
+        <source>Stay connected</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4476224839121490369" datatype="html">
+        <source> Sign In </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1535840268279775667" datatype="html">
+        <source>or sign in with:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7320566799521728089" datatype="html">
+        <source>New to Mood? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;../register&quot; routerLinkActive=&quot;active&quot;&gt;"/>Sign up now<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

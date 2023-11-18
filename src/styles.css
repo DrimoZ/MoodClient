@@ -3,3 +3,22 @@ body {
   background-image: url('./assets/back.jpg');
   height: 100vh;
 }
+
+.txt-gold {
+  color: #deb992;
+}
+
+.btn-gold{
+  background-color: #deb992;
+  color : white;
+  box-shadow: none;
+}
+
+.window-height {
+  height: 100vh;
+}
+
+.blurred-back {
+  background: hsla(0, 0%, 100%, 0.15);
+  backdrop-filter: blur(30px);
+}

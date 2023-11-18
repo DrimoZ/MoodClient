@@ -1,88 +1,69 @@
 <!-- Section: Design Block-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<section class="text-center text-lg-start" style="height: inherit">
-  <style>
-    .cascading-right {
-      margin-right: -50px;
-    }
-
-    @media (max-width: 991.98px) {
-      .cascading-right {
-        margin-right: 0;
-      }
-    }
-  </style>
-
+<section class="text-center text-lg-start">
 <!--   Jumbotron-->
-  <div class="container py-5" >
-    <div class="row g-0 align-items-center">
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <div class="card cascading-right" style="
-            background: hsla(0, 0%, 100%, 0.15);
-            backdrop-filter: blur(30px);
-            ">
-          <div class="card-body p-5 shadow-5 text-center custom-text">
-            <h2 class="fw-bold mb-5">Sign in</h2>
-            <form [formGroup]="form"  (submit)="submitForm($event)">
+  <div class="container">
+    <div class="p-4 row g-2 align-items-center window-height position-relative">
+<!--  FORM -->
+      <div class="col-lg-6 mb-lg-0">
+        <div class="card blurred-back">
+          <div class="card-body p-5 shadow-5 text-center txt-gold">
+            <h2 class="fw-bold mb-5" i18n>Sign in</h2>
+            <form [formGroup]="loginForm"  (submit)="submitForm($event)">
 
-<!--               Email input-->
               <div class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3">Email address</label>
+                <input type="text" class="form-control" formControlName="Login" id="Login"
+                       [ngClass]="{'input-error': controlLogin.invalid && controlLogin.dirty && controlLogin.touched}"/>
+                <label class="form-label" for="Login" i18n>Email or Login</label>
               </div>
 
-<!--               Password input-->
               <div class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" />
-                <label class="form-label" for="form3Example4">Password</label>
+                <input type="password" class="form-control" formControlName="Password" id="Password"
+                       [ngClass]="{'input-error': controlPassword.invalid && controlPassword.dirty && controlPassword.touched}"/>
+                <label class="form-label" for="Password" i18n>Password</label>
               </div>
 
-<!--               Checkbox-->
               <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2 custom-btn" type="checkbox" value="" id="form2Example33" checked />
-                <label class="form-check-label" for="form2Example33">
-                  Stay connected
-                </label>
+                <input class="form-check-input me-2 btn-gold shadow-none" type="checkbox" value="" id="StayLoggedIn" formControlName="StayLoggedIn"/>
+                <label class="form-check-label" for="StayLoggedIn" i18n>Stay connected</label>
               </div>
 
-<!--               Submit button-->
-              <button type="submit" class="btn btn-block mb-4 custom-btn">
-                Sign In
-              </button>
+              <button type="submit" class="btn btn-block mb-4 btn-gold" [disabled]="loginForm.invalid" i18n> Sign In </button>
 
-<!--               Register buttons-->
               <div class="text-center">
-                <p>or sign up with:</p>
-                <button type="button" class="btn btn-floating mx-1 custom-btn">
+                <p i18n>or sign in with:</p>
+                <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-facebook-f"></i>
                 </button>
 
-                <button type="button" class="btn btn-floating mx-1 custom-btn">
+                <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-google"></i>
                 </button>
 
-                <button type="button" class="btn btn-floating mx-1 custom-btn">
+                <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-twitter"></i>
                 </button>
 
-                <button type="button" class="btn btn-floating mx-1 custom-btn">
+                <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-github"></i>
                 </button>
               </div>
               <br>
               <div>
-                <p>New to Mood? <a routerLink="../register" routerLinkActive="active">Sign up now</a>.</p>
+                <p i18n>New to Mood? <a routerLink="../register" routerLinkActive="active">Sign up now</a>.</p>
               </div>
             </form>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6 mb-5 mb-lg-0">
+<!--  LOGO -->
+      <div class="col-lg-6 mb-lg-0">
         <img src="./assets/mood.png" class="w-100 rounded-5 shadow-5 ml-auto"
              alt="" />
       </div>
+
     </div>
   </div>
 <!--   Jumbotron-->

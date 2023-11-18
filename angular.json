@@ -44,6 +44,9 @@
             "scripts": []
           },
           "configurations": {
+            "fr": {
+              "localize": ["fr"]
+            },
             "production": {
               "budgets": [
                 {
@@ -73,6 +76,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "fr": {
+              "browserTarget": "MoodClient:build:development,fr"
+            },
             "production": {
               "browserTarget": "MoodClient:build:production"
             },

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputSignIn} from "../../Dtos/dto-output-signin";
 
 @Component({
@@ -9,17 +9,31 @@ import {DtoOutputSignIn} from "../../Dtos/dto-output-signin";
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  form: FormGroup = this._fb.group({
-    Login: ['', [Validators.required]],
-    Password: ['', [Validators.required]],
+  loginForm: FormGroup = this._fb.group({
+    Login: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48)]],
+    Password: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(48)]],
     StayLoggedIn: [false]
   })
 
   constructor(private _router: Router, private _fb: FormBuilder) {
   }
 
+  get controlLogin(): AbstractControl {
+    return this.loginForm.controls['Login'];
+  }
+  get controlPassword(): AbstractControl {
+    return this.loginForm.controls['Password'];
+  }
+  get controlStayLoggedIn(): AbstractControl {
+    return this.loginForm.controls['StayLoggedIn'];
+  }
+
+
+
   submitForm(event: Event) {
-    event.preventDefault();
-    this._router.navigate(['../main']);
+
+
+
+    // this._router.navigate(['../main']);
   }
 }
