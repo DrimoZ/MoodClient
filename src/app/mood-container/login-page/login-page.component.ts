@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputSignIn} from "../../Dtos/dto-output-signin";
-import {ToFormControl} from "../../Utils/toformcontrol";
 
 @Component({
   selector: 'app-login-page',

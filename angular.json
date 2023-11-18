@@ -5,6 +5,15 @@
   "projects": {
     "MoodClient": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": {
+            "translation": "src/locale/messages.fr.xlf"
+          }
+        }
+      },
+
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
@@ -13,6 +22,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+
+            "localize": true,
+            "i18nMissingTranslation": "error",
+
             "outputPath": "dist/mood-client",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -72,7 +85,9 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MoodClient:build"
+            "browserTarget": "MoodClient:build",
+            "format": "xlf",
+            "outputPath": "src/locale"
           }
         },
         "test": {
