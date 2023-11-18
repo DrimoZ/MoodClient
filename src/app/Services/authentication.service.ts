@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {DtoOutputSignIn} from "../Dtos/dto-output-signin";
+import {DtoOutputSignUp} from "../Dtos/dto-output-signup";
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class AuthenticationService {
 
   signInUser(dto: DtoOutputSignIn): Observable<any> {
     return this._httpClient.post<DtoOutputSignIn>(AuthenticationService._URL_API + "/SignIn", dto);
+  }
+
+  signUpUser(dto: DtoOutputSignUp): Observable<any> {
+    return this._httpClient.post<DtoOutputSignUp>(AuthenticationService._URL_API + "/SignUp", dto);
   }
 }
