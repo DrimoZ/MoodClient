@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputSignIn} from "../../Dtos/dto-output-signin";
+import {EventBusService} from "../../Services/event-bus.service";
 
 @Component({
   selector: 'app-login-page',
@@ -15,7 +16,7 @@ export class LoginPageComponent {
     StayLoggedIn: [false]
   })
 
-  constructor(private _router: Router, private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _eventBus: EventBusService) {
   }
 
   get controlLogin(): AbstractControl {
@@ -28,12 +29,14 @@ export class LoginPageComponent {
     return this.loginForm.controls['StayLoggedIn'];
   }
 
-
-
-  submitForm(event: Event) {
-
-
-
-    // this._router.navigate(['../main']);
+  submitForm() {
+    this._eventBus.emitEvent({
+      type: 'userSignIn',
+      payload: {
+        Login: this.controlLogin.value,
+        Password: this.controlPassword.value,
+        StayLoggedIn: this.controlStayLoggedIn.value
+      }
+    })
   }
 }

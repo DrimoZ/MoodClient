@@ -11,6 +11,7 @@ import { MainPageComponent } from './mood-container/main-page/main-page.componen
 import { NavbarComponent } from './mood-container/main-page/navbar/navbar.component';
 import { ContentComponent } from './mood-container/main-page/content/content.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {RouterAuthGuard} from "./Services/routerAuthGuard";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+      RouterAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
