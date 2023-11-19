@@ -1,63 +1,80 @@
-<!-- Section: Design Block -->
+<!-- Section: Design Block-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<section class="text-center text-lg-start window-height">
-  <style>
-    .cascading-right {
-      margin-right: -50px;
-    }
-
-    @media (max-width: 991.98px) {
-      .cascading-right {
-        margin-right: 0;
-      }
-    }
-  </style>
-
-  <!-- Jumbotron -->
-  <div class="container py-5">
-    <div class="row g-0 align-items-center">
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <div class="card cascading-right blurred-back">
+<section class="text-center text-lg-start">
+  <!--   Jumbotron-->
+  <div class="container">
+    <div class="p-4 row g-4 align-items-center window-height position-relative">
+      <!--  FORM -->
+      <div class="col-lg-6 mb-lg-0">
+        <div class="card blurred-back">
           <div class="card-body p-5 shadow-5 text-center txt-gold">
-            <h2 class="fw-bold mb-5">Sign up now</h2>
-            <form>
-              <!-- 2 column grid layout with text inputs for the first and last names -->
+            <h2 class="fw-bold mb-5 user-select-none" i18n>Sign up</h2>
+            <form [formGroup]="registerForm"  (submit)="submitForm()">
+
               <div class="row">
+                <!--NAME-->
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" />
-                    <label class="form-label" for="form3Example1">First name</label>
+                    <input type="text" formControlName="Name" id="Name" class="form-control" placeholder="*Required"
+                           [ngClass]="{'input-error': controlName.invalid && controlName.dirty && controlName.touched}" i18n/>
+                    <label class="form-label user-select-none" for="Name" i18n>Full Name</label>
                   </div>
                 </div>
+                <!--MAIL-->
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" />
-                    <label class="form-label" for="form3Example2">Last name</label>
+                    <input type="text" formControlName="Mail" id="Mail" class="form-control" placeholder="*Required"
+                           [ngClass]="{'input-error': controlMail.invalid && controlMail.dirty && controlMail.touched}" i18n/>
+                    <label class="form-label user-select-none" for="Mail" i18n>Email Address</label>
                   </div>
                 </div>
               </div>
 
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3">Email address</label>
+              <div class="row">
+                <!--Username-->
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" formControlName="Login" id="Login" class="form-control" placeholder="*Required"
+                           [ngClass]="{'input-error': controlLogin.invalid && controlLogin.dirty && controlLogin.touched}" i18n/>
+                    <label class="form-label user-select-none" for="Login" i18n>Username</label>
+                  </div>
+                </div>
+                <!--Birthdate-->
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="date" formControlName="Birthdate" id="Birthdate" class="form-control" placeholder="*Required"
+                           [ngClass]="{'input-error': controlBirthdate.invalid && controlBirthdate.dirty && controlBirthdate.touched}" i18n/>
+                    <label class="form-label user-select-none" for="Birthdate" i18n>Birthdate</label>
+                  </div>
+                </div>
               </div>
 
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" />
-                <label class="form-label" for="form3Example4">Password</label>
+              <div class="row">
+                <!--Password-->
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="password" formControlName="Password" id="Password" class="form-control" placeholder="*Required"
+                           [ngClass]="{'input-error': controlPassword.invalid && controlPassword.dirty && controlPassword.touched}" i18n/>
+                    <label class="form-label user-select-none" for="Password" i18n>Password</label>
+                  </div>
+                </div>
+                <!--Password Confirmation-->
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="password" formControlName="PasswordConfirmation" id="PasswordConfirmation" class="form-control" placeholder="*Required"
+                           [ngClass]="{'input-error': controlPasswordConfirmation.dirty
+                           && controlPasswordConfirmation.touched && (controlPasswordConfirmation.invalid || controlPassword.value != controlPasswordConfirmation.value)}" i18n/>
+                    <label class="form-label user-select-none" for="PasswordConfirmation" i18n>Password Confirmation</label>
+                  </div>
+                </div>
               </div>
 
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-block mb-4 btn-gold">
-                Sign up
-              </button>
 
-              <!-- Register buttons -->
-              <div class="text-center">
-                <p>or sign up with:</p>
+              <button type="submit" class="btn btn-block mb-4 btn-gold user-select-none" [disabled]="registerForm.invalid" i18n> Sign Up </button>
+
+              <div class="text-center user-select-none">
+                <p i18n>or sign up with:</p>
                 <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-facebook-f"></i>
                 </button>
@@ -74,21 +91,23 @@
                   <i class="fab fa-github"></i>
                 </button>
               </div>
-              <br>
+              <br class="user-select-none">
               <div>
-                <p>Already have an account? <a routerLink="../login" routerLinkActive="active">Sign in</a>.</p>
+                <p class="user-select-none" i18n>Already have an account? <a routerLink="../login" routerLinkActive="active">Sign in here</a>.</p>
               </div>
             </form>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <img src="./assets/mood.png" class="w-100 rounded-4 shadow-4"
+      <!--  LOGO -->
+      <div class="col-lg-6 mb-lg-0 user-select-none">
+        <img src="./assets/mood.png" class="w-100 rounded-5 shadow-5 ml-auto"
              alt="" />
       </div>
+
     </div>
   </div>
-  <!-- Jumbotron -->
+  <!--   Jumbotron-->
 </section>
-<!-- Section: Design Block -->
+<!-- Section: Design Block-->

@@ -4,34 +4,34 @@
 <section class="text-center text-lg-start">
 <!--   Jumbotron-->
   <div class="container">
-    <div class="p-4 row g-2 align-items-center window-height position-relative">
+    <div class="p-4 row g-4 align-items-center window-height position-relative">
 <!--  FORM -->
       <div class="col-lg-6 mb-lg-0">
         <div class="card blurred-back">
           <div class="card-body p-5 shadow-5 text-center txt-gold">
-            <h2 class="fw-bold mb-5" i18n>Sign in</h2>
+            <h2 class="fw-bold mb-5 user-select-none" i18n>Sign in</h2>
             <form [formGroup]="loginForm"  (submit)="submitForm()">
 
               <div class="form-outline mb-4">
-                <input type="text" class="form-control" formControlName="Login" id="Login"
-                       [ngClass]="{'input-error': controlLogin.invalid && controlLogin.dirty && controlLogin.touched}"/>
-                <label class="form-label" for="Login" i18n>Email or Login</label>
+                <input type="text" class="form-control" formControlName="Login" id="Login" placeholder="*Required"
+                       [ngClass]="{'input-error': controlLogin.invalid && controlLogin.dirty && controlLogin.touched}" i18n/>
+                <label class="form-label user-select-none" for="Login" i18n>Email or Login</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="password" class="form-control" formControlName="Password" id="Password"
-                       [ngClass]="{'input-error': controlPassword.invalid && controlPassword.dirty && controlPassword.touched}"/>
-                <label class="form-label" for="Password" i18n>Password</label>
+                <input type="password" class="form-control" formControlName="Password" id="Password" placeholder="*Required"
+                       [ngClass]="{'input-error': controlPassword.invalid && controlPassword.dirty && controlPassword.touched}" i18n/>
+                <label class="form-label user-select-none" for="Password" i18n>Password</label>
               </div>
 
               <div class="form-check d-flex justify-content-center mb-4">
                 <input class="form-check-input me-2 btn-gold shadow-none" type="checkbox" value="" id="StayLoggedIn" formControlName="StayLoggedIn"/>
-                <label class="form-check-label" for="StayLoggedIn" i18n>Stay connected</label>
+                <label class="form-check-label user-select-none" for="StayLoggedIn" i18n>Stay connected</label>
               </div>
 
-              <button type="submit" class="btn btn-block mb-4 btn-gold" [disabled]="loginForm.invalid" i18n> Sign In </button>
+              <button type="submit" class="btn btn-block mb-4 btn-gold user-select-none" [disabled]="loginForm.invalid" i18n> Sign In </button>
 
-              <div class="text-center">
+              <div class="text-center user-select-none">
                 <p i18n>or sign in with:</p>
                 <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-facebook-f"></i>
@@ -49,9 +49,9 @@
                   <i class="fab fa-github"></i>
                 </button>
               </div>
-              <br>
+              <br class="user-select-none">
               <div>
-                <p i18n>New to Mood? <a routerLink="../register" routerLinkActive="active">Sign up now</a>.</p>
+                <p class="user-select-none" i18n>New to Mood? <a routerLink="../register" routerLinkActive="active">Sign up now</a>.</p>
               </div>
             </form>
           </div>
@@ -59,7 +59,7 @@
       </div>
 
 <!--  LOGO -->
-      <div class="col-lg-6 mb-lg-0">
+      <div class="col-lg-6 mb-lg-0 user-select-none">
         <img src="./assets/mood.png" class="w-100 rounded-5 shadow-5 ml-auto"
              alt="" />
       </div>

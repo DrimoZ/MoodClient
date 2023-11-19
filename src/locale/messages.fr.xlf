@@ -255,7 +255,7 @@
         <target>Se connecter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3980517593820207265" datatype="html">
@@ -263,7 +263,7 @@
         <target>Email ou Identifiant</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1431416938026210429" datatype="html">
@@ -271,7 +271,7 @@
         <target>Mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7425863483295202714" datatype="html">
@@ -279,7 +279,7 @@
         <target> Rester Connecté</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4476224839121490369" datatype="html">
@@ -287,7 +287,7 @@
         <target> Se connecter </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1535840268279775667" datatype="html">
@@ -295,7 +295,7 @@
         <target>ou se connecter avec</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7320566799521728089" datatype="html">
@@ -303,7 +303,83 @@
         <target>Nouveau sur Mood? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;../register&quot; routerLinkActive=&quot;active&quot;&gt;"/>Crée un compte maintenant<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+
+
+
+      <!-- REGISTER -->
+      <trans-unit id="7028204981963450021" datatype="html">
+        <source>Sign up</source>
+        <target>Créer un compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6959497441009812685" datatype="html">
+        <source>Full name</source>
+        <target>Nom complet</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4879517228803151475" datatype="html">
+        <source>Email address</source>
+        <target>Adresse mail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5248717555542428023" datatype="html">
+        <source>Username</source>
+        <target>Nom d'utilisateur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4868165456937548663" datatype="html">
+        <source>Birthdate</source>
+        <target>Date de naissance</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8547747030242972664" datatype="html">
+        <source>Password Confirmation</source>
+        <target>Confirmation du mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="744750008248382275" datatype="html">
+        <source> Sign Up </source>
+        <target> Créer son compte </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6643881541074390839" datatype="html">
+        <source>or sign up with:</source>
+        <target>ou s'enregistrer via:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3688088529470288613" datatype="html">
+        <source>Already have an account? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;../login&quot; routerLinkActive=&quot;active&quot;&gt;"/>Sign in here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <target>Déjà un compte? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;../login&quot; routerLinkActive=&quot;active&quot;&gt;"/>Se connecter ici<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
     </body>

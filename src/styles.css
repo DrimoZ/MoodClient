@@ -22,3 +22,12 @@ body {
   background: hsla(0, 0%, 100%, 0.15);
   backdrop-filter: blur(30px);
 }
+
+.input-error {
+  border-color: red;
+  color: red;
+  ::placeholder {
+    color: red;
+    opacity: 1;
+  } opacity: 1;
+}

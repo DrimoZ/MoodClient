@@ -28,11 +28,11 @@ export class MoodContainerComponent implements OnInit {
 
   signInUser(dto: DtoOutputSignIn) {
     //this._authService.signInUser(dto).subscribe(t => this._router.navigate(['/main']));
-    this._router.navigate(['/main']);
+    this._router.navigate(['/home']);
   }
 
   signUpUser(dto: DtoOutputSignUp) {
     //this._authService.signUnUser(dto).subscribe(t => this._router.navigate(['/main']));
-    this._router.navigate(['/main']);
+    this._router.navigate(['/home']);
   }
 }

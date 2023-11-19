@@ -14,6 +14,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {RouterAuthGuard} from "./Services/routerAuthGuard";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CredentialsInterceptor} from "./Services/credentialsInterceptor";
+import { ConnectionRefusedComponent } from './mood-container/errors/connection-refused/connection-refused.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {CredentialsInterceptor} from "./Services/credentialsInterceptor";
     MainPageComponent,
     ContentComponent,
     NavbarComponent,
+    ConnectionRefusedComponent,
   ],
   imports: [
     BrowserModule,

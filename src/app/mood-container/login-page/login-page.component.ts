@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {DtoOutputSignIn} from "../../Dtos/dto-output-signin";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EventBusService} from "../../Services/event-bus.service";
 
 @Component({
