@@ -15,7 +15,7 @@ export class RouterAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this._authService.isUserConnected().pipe(
       map(res => {
-        if (res.status === 200) {
+        if (res === 200) {
           // If the user is connected, navigate to the home page
           this._router.navigate(['/home']);
           return false;

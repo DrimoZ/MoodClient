@@ -10,18 +10,18 @@ import {DtoOutputSignUp} from "../Dtos/dto-output-signup";
 })
 export class AuthenticationService {
 
-  private static _URL_API: string = environment.BASE_URL_API
+  private static _URL_API: string = environment.BASE_URL_API + "/api/v1/user"
   constructor(private _httpClient: HttpClient) { }
 
   isUserConnected(): Observable<any> {
-    return this._httpClient.get(AuthenticationService._URL_API + "/IsConnected");
+    return this._httpClient.get(AuthenticationService._URL_API + "/isConnected");
   }
 
   signInUser(dto: DtoOutputSignIn): Observable<any> {
-    return this._httpClient.post<DtoOutputSignIn>(AuthenticationService._URL_API + "/SignIn", dto);
+    return this._httpClient.post<DtoOutputSignIn>(AuthenticationService._URL_API + "/signIn", dto);
   }
 
   signUpUser(dto: DtoOutputSignUp): Observable<any> {
-    return this._httpClient.post<DtoOutputSignUp>(AuthenticationService._URL_API + "/SignUp", dto);
+    return this._httpClient.post<DtoOutputSignUp>(AuthenticationService._URL_API + "/signUp", dto);
   }
 }
