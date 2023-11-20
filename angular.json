@@ -71,6 +71,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "localize": [
+                "en-US"
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
