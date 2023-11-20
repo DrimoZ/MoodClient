@@ -1,8 +1,35 @@
-<nav>
-  <a class="fs-1 fw-bold custom-text" routerLink="./" routerLinkActive="active">MOOD</a>
-  <ul>
-    <li><a href="#">London</a></li>
-    <li><a href="#">Paris</a></li>
-    <li><a href="#">Tokyo</a></li>
-  </ul>
-</nav>
+<header class="py-2">
+  <div class="d-flex flex-row justify-content-between">
+<!--Main button + logo-->
+    <div class="ps-5 d-flex align-items-center w-10">
+<!--  <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon"/>-->
+      <span class="fs-2 fw-bold txt-turquoise">Mood</span>
+    </div>
+<!--Navigation buttons-->
+    <div class="d-flex flex-row justify-content-center gap-5 align-items-center align-middle w-80">
+      <div class="btn btn-floating mx-1 txt-turquoise">
+        <i class="fa-solid fa-house fa-lg"></i>
+      </div>
+      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
+        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+      </button>
+      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
+        <i class="fa-solid fa-message fa-lg"></i>
+      </button>
+      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
+        <i class="fa-solid fa-bell fa-lg"></i>
+      </button>
+
+    </div>
+<!--Connexion + parameters buttons-->
+    <div class="pe-5 d-flex align-items-center w-10">
+      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
+        <i class="fa-solid fa-bars fa-lg"></i>
+      </button>
+      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
+        <i class="fa-solid fa-user fa-lg"></i>
+        <!--  <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon"/>-->
+      </button>
+    </div>
+  </div>
+</header>

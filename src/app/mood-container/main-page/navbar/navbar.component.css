@@ -1,1 +1,7 @@
+/* Create two columns/boxes that floats next to each other */
+header {
+  float: left;
+  width: 100%;
 
+  border-bottom: 2px solid #deb992;
+}

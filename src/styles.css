@@ -1,11 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   background-image: url('./assets/back.jpg');
+
   height: 100vh;
 }
 
 .txt-gold {
   color: #deb992;
+}
+
+.txt-turquoise {
+  color: #1BA098;
 }
 
 .btn-gold{
@@ -30,4 +35,12 @@ body {
     color: red;
     opacity: 1;
   } opacity: 1;
+}
+
+.w-10 {
+  width: 10% !important;
+}
+
+.w-80 {
+  width: 80% !important;
 }
