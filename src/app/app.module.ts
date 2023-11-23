@@ -11,10 +11,11 @@ import { MainPageComponent } from './mood-container/main-page/main-page.componen
 import { NavbarComponent } from './mood-container/main-page/navbar/navbar.component';
 import { ContentComponent } from './mood-container/main-page/content/content.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {RouterAuthGuard} from "./Services/routerAuthGuard";
+import {RouterAuthGuard} from "./Guards/routerAuthGuard";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {CredentialsInterceptor} from "./Services/credentialsInterceptor";
+import {CredentialsInterceptor} from "./Guards/credentialsInterceptor";
 import { ConnectionRefusedComponent } from './mood-container/errors/connection-refused/connection-refused.component';
+import {MainAuthGuard} from "./Guards/mainAuthGuard";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ConnectionRefusedComponent } from './mood-container/errors/connection-r
       useClass: CredentialsInterceptor,
       multi: true
     },
-    RouterAuthGuard
+    RouterAuthGuard,
+    MainAuthGuard
   ],
   bootstrap: [AppComponent]
 })
