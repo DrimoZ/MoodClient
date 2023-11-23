@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {LoginPageComponent} from "../../login-page/login-page.component";
-import {RegisterPageComponent} from "../../register-page/register-page.component";
-import {MainPageComponent} from "../main-page.component";
 import {NewsFeedComponent} from "./news-feed/news-feed.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {MessageComponent} from "./message/message.component";
 
 const routes: Routes = [
-  {path: "", pathMatch: "full", redirectTo: "/newsfeed"},
+  {path: "", pathMatch: "full", redirectTo: "./newsfeed"},
   {path: "newsfeed", component: NewsFeedComponent},
+  {path: "discover", component: NewsFeedComponent},
+  {path: "messages", component: MessageComponent},
+  {path: "notifications", component: NewsFeedComponent},
   {path: "profile", component: ProfileComponent},
-  {path: "message", component: MessageComponent},
-  {path: "**", redirectTo: "/newsfeed"},
+  {path: "**", redirectTo: "./newsfeed"},
 ];
 
 @NgModule({

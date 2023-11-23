@@ -1,28 +1,32 @@
-<header class="py-2">
-  <div class="d-flex flex-row justify-content-between">
+<header class="hvh-7 py-1">
+  <div class="d-flex flex-row justify-content-between h-100">
 <!--Main button + logo-->
-    <div class="ps-5 d-flex align-items-center w-10">
-<!--  <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon"/>-->
+    <div class="ps-3 justify-content-start align-items-center d-flex w-10 hover-pointer">
+      <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon" width="35" height="35"/>
       <span class="fs-2 fw-bold txt-turquoise">Mood</span>
     </div>
 <!--Navigation buttons-->
-    <div class="d-flex flex-row justify-content-center gap-5 align-items-center align-middle w-80">
-      <div class="btn btn-floating mx-1 txt-turquoise">
-        <i class="fa-solid fa-house fa-lg"></i>
+    <div class="d-flex flex-row justify-content-center align-items-center align-middle w-80 g-0">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker" routerLink="./newsfeed" routerLinkActive="active">
+        <i class="fa-solid fa-house fa-lg position-absolute top-50 start-50 translate-middle"></i>
+        <div class="tooltip">Home</div>
       </div>
-      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
-        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-      </button>
-      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
-        <i class="fa-solid fa-message fa-lg"></i>
-      </button>
-      <button type="button" class="btn btn-floating mx-1 txt-turquoise">
-        <i class="fa-solid fa-bell fa-lg"></i>
-      </button>
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"  routerLink="./discover" routerLinkActive="active">
+        <i class="fa-solid fa-magnifying-glass fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
+      </div>
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker" routerLink="./messages" routerLinkActive="active">
+        <i class="fa-solid fa-message fa-lg position-absolute top-50 start-50 translate-middle"></i>
+
+      </div>
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"  routerLink="./notifications" routerLinkActive="active">
+        <i class="fa-solid fa-bell fa-lg position-absolute top-50 start-50 translate-middle"></i>
+
+      </div>
     </div>
+
 <!--Connexion + parameters buttons-->
-    <div class="pe-5 d-flex align-items-center w-10">
+    <div class="justify-content-end align-items-center pe-3 d-flex w-10">
       <button type="button" class="btn btn-floating mx-1 txt-turquoise">
         <i class="fa-solid fa-bars fa-lg"></i>
       </button>
@@ -32,4 +36,5 @@
       </button>
     </div>
   </div>
+
 </header>

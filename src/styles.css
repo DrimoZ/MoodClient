@@ -37,6 +37,18 @@ body {
   } opacity: 1;
 }
 
+.hvh-10 {
+  height: 10vh !important;
+}
+
+.hvh-7 {
+  height: 7vh !important;
+}
+
+.w-5 {
+  width: 5% !important;
+}
+
 .w-10 {
   width: 10% !important;
 }
@@ -44,3 +56,40 @@ body {
 .w-80 {
   width: 80% !important;
 }
+
+.hover-pointer {
+  cursor: pointer;
+}
+
+.hover-darker {
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+}
+
+.hover-darker:hover {
+  background-color: hsla(0, 0%, 100%, 0.15);
+  border-bottom: #1BA098 solid;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.nav-button:hover .tooltip {
+  display: block;
+}
+
+.tooltip {
+  position: absolute;
+  top: -5px;
+  left: 105%;
+  display: none;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  /* Other styles */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

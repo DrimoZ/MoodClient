@@ -32,8 +32,7 @@ import { ConnectionRefusedComponent } from './mood-container/errors/connection-r
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
   ],
   providers: [
     {

@@ -29,7 +29,7 @@ export class MoodContainerComponent implements OnInit {
   signInUser(dto: DtoOutputSignIn) {
     this._authService.signInUser(dto).subscribe({
       next: () => {
-        this._router.navigate(['/home'])
+        this._router.navigate(['home'])
       },
       error: (err) => {
         console.log(err)
@@ -40,7 +40,7 @@ export class MoodContainerComponent implements OnInit {
   signUpUser(dto: DtoOutputSignUp) {
     this._authService.signUpUser(dto).subscribe({
       next: () => {
-        this._router.navigate(['/home'])
+        this._router.navigate(['home'])
       },
       error: (err) => {
         console.log(err)
