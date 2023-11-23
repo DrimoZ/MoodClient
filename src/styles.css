@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   background-image: url('./assets/back.jpg');
-
   height: 100vh;
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .txt-gold {
@@ -71,25 +71,12 @@ body {
   border-bottom: #1BA098 solid;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.nav-button:hover .tooltip {
-  display: block;
+.hover-darker-2 {
+  transition: background-color 0.1s ease;
+  cursor: pointer;
 }
 
-.tooltip {
-  position: absolute;
-  top: -5px;
-  left: 105%;
-  display: none;
-  border-radius: 5px;
-  background-color: #000;
-  color: #fff;
-  padding: 5px;
-  /* Other styles */
+.hover-darker-2:hover {
+  background-color: hsla(0, 0%, 100%, 0.15);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
