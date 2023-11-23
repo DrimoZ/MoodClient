@@ -17,7 +17,7 @@ export class RouterAuthGuard implements CanActivate {
       map(res => {
         if (res === 200) {
           // If the user is connected, navigate to the home page
-          this._router.navigate(['home']);
+          this._router.navigate(['home/newsfeed']);
           return false;
         } else {
           return true;

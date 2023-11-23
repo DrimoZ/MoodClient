@@ -1,26 +1,31 @@
-<header class="hvh-7 py-1">
+<header class="hvh-7 py-1 user-select-none">
   <div class="d-flex flex-row justify-content-between h-100">
 <!--Main button + logo-->
-    <div class="ps-3 justify-content-start align-items-center d-flex w-10 hover-pointer" routerLink="./newsfeed" style="min-width: 150px;">
+    <div class="ps-3 justify-content-start align-items-center d-flex w-10 hover-pointer"
+         routerLink="./newsfeed" style="min-width: 150px;">
       <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon" width="35" height="35"/>
       <span class="fs-2 fw-bold txt-turquoise">Mood</span>
     </div>
 <!--Navigation buttons-->
     <div class="d-flex flex-row justify-content-center align-items-center align-middle w-80 g-0">
 
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker" routerLink="./newsfeed" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"
+           routerLink="./newsfeed" routerLinkActive="active">
         <i class="fa-solid fa-house fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"  routerLink="./discover" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"
+           routerLink="./discover" routerLinkActive="active">
         <i class="fa-solid fa-magnifying-glass fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker" routerLink="./messages" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"
+           routerLink="./messages" routerLinkActive="active">
         <i class="fa-solid fa-message fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"  routerLink="./notifications" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"
+           routerLink="./notifications" routerLinkActive="active">
         <i class="fa-solid fa-bell fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
@@ -39,21 +44,23 @@
   </div>
 </header>
 
-<div #divRef class="rounded-1 position-absolute p-2 blurred-back d-flex flex-column"
+<div #divRef class="rounded-1 position-absolute p-2 blurred-back d-flex flex-column user-select-none"
      [ngClass]="{'d-none': !isOptionsVisible}" style="width: 240px; height: 203px" >
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between">
     <i class="fa-solid fa-moon fa-lg "></i>
     <!--<i class="fa-solid fa-sun fa-lg"></i> SWAP WHEN THEME CHANGED-->
     <span class="" i18n>Change Appearance</span>
   </div>
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between">
+  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between"
+       routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false">
     <i class="fa-solid fa-gear fa-lg"></i>
     <span class="" i18n>Parameters</span>
   </div>
 
   <div class="mx-1 my-2" style="border: hsla(0, 0%, 100%, 0.15) solid 1px; "></div>
 
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between">
+  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between"
+       (click)="disconnectUser()">
     <i class="fa-solid fa-right-to-bracket fa-lg"></i>
     <span class="" i18n>Disconnect</span>
   </div>

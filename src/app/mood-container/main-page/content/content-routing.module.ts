@@ -5,6 +5,7 @@ import {ProfileComponent} from "./profile/profile.component";
 import {MessageComponent} from "./message/message.component";
 import {DiscoverComponent} from "./discover/discover.component";
 import {NotificationComponent} from "./notification/notification.component";
+import {ParametersComponent} from "./parameters/parameters.component";
 
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "./newsfeed"},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: "messages", component: MessageComponent},
   {path: "notifications", component: NotificationComponent},
   {path: "profile", component: ProfileComponent},
+  {path: "parameters", component: ParametersComponent},
   {path: "**", redirectTo: "./newsfeed"},
 ];
 

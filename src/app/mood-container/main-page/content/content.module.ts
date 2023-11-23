@@ -7,13 +7,15 @@ import { NewsFeedComponent } from './news-feed/news-feed.component';
 import {ContentRoutingModule} from "./content-routing.module";
 import { NotificationComponent } from './notification/notification.component';
 import { DiscoverComponent } from './discover/discover.component';
+import { ParametersComponent } from './parameters/parameters.component';
 @NgModule({
   declarations: [
     ProfileComponent,
     MessageComponent,
     NewsFeedComponent,
     NotificationComponent,
-    DiscoverComponent
+    DiscoverComponent,
+    ParametersComponent
   ],
   imports: [
     NgbModule,

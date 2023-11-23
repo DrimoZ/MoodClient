@@ -29,4 +29,10 @@ export class NavbarComponent {
       this.isOptionsVisible = false;
     }
   }
+
+  disconnectUser() {
+    this.isOptionsVisible = false;
+
+
+  }
 }
