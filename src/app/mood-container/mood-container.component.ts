@@ -35,6 +35,12 @@ export class MoodContainerComponent implements OnInit {
         this._router.navigate(['home/newsfeed'])
       },
       error: (err) => {
+        this._eventBus.emitEvent({
+          type: 'userFailedSignIn',
+          payload: {
+            err
+          }
+        })
         console.log(err)
       }
     });

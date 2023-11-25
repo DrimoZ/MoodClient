@@ -10,15 +10,19 @@
           <div class="card-body p-5 shadow-5 text-center txt-gold">
             <h2 class="fw-bold mb-5 user-select-none" i18n>Sign in</h2>
             <form [formGroup]="loginForm"  (submit)="submitForm()">
+              <div class="form-outline mb-4 border border-danger rounded-2 p-1" *ngIf="showSecondError || showFirstError">
+                <span class="text-danger" i18n *ngIf="showFirstError">We cannot find an account with that login</span>
+                <span class="text-danger" i18n *ngIf="showSecondError">Your password is incorrect</span>
+              </div>
 
               <div class="form-outline mb-4">
-                <input type="text" class="form-control" formControlName="Login" id="Login" placeholder="*Required"
+                <input type="text" class="form-control" formControlName="Login" id="Login" placeholder="*Required" i18n-placeholder
                        [ngClass]="{'input-error': controlLogin.invalid && controlLogin.dirty && controlLogin.touched}" i18n/>
                 <label class="form-label user-select-none" for="Login" i18n>Email or Login</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input type="password" class="form-control" formControlName="Password" id="Password" placeholder="*Required"
+                <input type="password" class="form-control" formControlName="Password" id="Password" placeholder="*Required" i18n-placeholder
                        [ngClass]="{'input-error': controlPassword.invalid && controlPassword.dirty && controlPassword.touched}" i18n/>
                 <label class="form-label user-select-none" for="Password" i18n>Password</label>
               </div>
