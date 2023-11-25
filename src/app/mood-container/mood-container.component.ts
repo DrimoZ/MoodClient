@@ -22,6 +22,9 @@ export class MoodContainerComponent implements OnInit {
         case 'userSignUp':
           this.signUpUser(event.payload);
           break;
+        case 'userLogOut':
+          this.logOutUser();
+          break;
       }
     });
   }
@@ -46,5 +49,16 @@ export class MoodContainerComponent implements OnInit {
         console.log(err)
       }
     });
+  }
+
+  logOutUser() {
+    this._authService.logOutUser().subscribe({
+      next: () => {
+        this._router.navigate([''])
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
   }
 }

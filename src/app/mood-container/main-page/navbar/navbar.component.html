@@ -8,7 +8,6 @@
     </div>
 <!--Navigation buttons-->
     <div class="d-flex flex-row justify-content-center align-items-center align-middle w-80 g-0">
-
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker"
            routerLink="./newsfeed" routerLinkActive="active">
         <i class="fa-solid fa-house fa-lg position-absolute top-50 start-50 translate-middle"></i>
@@ -45,7 +44,7 @@
 </header>
 
 <div #divRef class="rounded-1 position-absolute p-2 blurred-back d-flex flex-column user-select-none"
-     [ngClass]="{'d-none': !isOptionsVisible}" style="width: 240px; height: 203px" >
+     [ngClass]="{'d-none': !isOptionsVisible}" style="width: 240px; height: fit-content" >
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between">
     <i class="fa-solid fa-moon fa-lg "></i>
     <!--<i class="fa-solid fa-sun fa-lg"></i> SWAP WHEN THEME CHANGED-->

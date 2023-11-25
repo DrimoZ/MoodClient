@@ -1,5 +1,6 @@
 import {Component, ElementRef, HostListener, Renderer2, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
+import {EventBusService} from "../../../Services/event-bus.service";
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ export class NavbarComponent {
   @ViewChild('buttonRef') buttonRef!: ElementRef;
   @ViewChild('divRef') divRef!: ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private _eventBus: EventBusService) { }
 
 
   ngAfterViewInit() {
@@ -33,6 +34,6 @@ export class NavbarComponent {
   disconnectUser() {
     this.isOptionsVisible = false;
 
-
+    this._eventBus.emitEvent({type: 'userLogOut', payload: {}})
   }
 }

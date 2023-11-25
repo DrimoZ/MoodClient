@@ -24,4 +24,9 @@ export class AuthenticationService {
   signUpUser(dto: DtoOutputSignUp): Observable<any> {
     return this._httpClient.post<DtoOutputSignUp>(AuthenticationService._URL_API + "/signUp", dto);
   }
+
+  logOutUser(): Observable<any> {
+    console.log("test")
+    return this._httpClient.post(AuthenticationService._URL_API + "/logOut", {});
+  }
 }
