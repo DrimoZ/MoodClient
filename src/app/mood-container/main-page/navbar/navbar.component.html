@@ -2,7 +2,7 @@
   <div class="d-flex flex-row justify-content-between h-100">
 <!--Main button + logo-->
     <div class="ps-3 justify-content-start align-items-center d-flex w-10 hover-pointer"
-         routerLink="./newsfeed" style="min-width: 150px;">
+         routerLink="./newsfeed" style="min-width: 150px;" (click)="onDivClick('newsfeed')">
       <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon" width="35" height="35"/>
       <span class="fs-2 fw-bold txt-turquoise">Mood</span>
     </div>
@@ -55,7 +55,7 @@
     <span class="" i18n>Change Appearance</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between"
-       routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false">
+       routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('parameters')">
     <i class="fa-solid fa-gear fa-lg"></i>
     <span class="" i18n>Parameters</span>
   </div>
@@ -63,7 +63,7 @@
   <div class="mx-1 my-2" style="border: hsla(0, 0%, 100%, 0.15) solid 1px; "></div>
 
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between"
-       (click)="disconnectUser()">
+       (click)="disconnectUser(); onDivClick('newsfeed')">
     <i class="fa-solid fa-right-to-bracket fa-lg"></i>
     <span class="" i18n>Disconnect</span>
   </div>

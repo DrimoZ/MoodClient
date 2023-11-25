@@ -8,7 +8,7 @@ import {EventBusService} from "../../../Services/event-bus.service";
   styleUrls: ['./navbar.component.css', '../main-page.component.css']
 })
 export class NavbarComponent {
-  clickedDiv: string = '';
+  clickedDiv: string = 'newsfeed';
   public isOptionsVisible: boolean = false
 
   @ViewChild('buttonRef') buttonRef!: ElementRef;
