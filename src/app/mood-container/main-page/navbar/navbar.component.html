@@ -8,24 +8,27 @@
     </div>
 <!--Navigation buttons-->
     <div class="d-flex flex-row justify-content-center align-items-center align-middle w-80 g-0">
-
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none"
-           routerLink="./newsfeed" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none d-xl-block"
+           routerLink="./newsfeed" routerLinkActive="active"
+           [class.hhover-darker]="clickedDiv !== 'newsfeed'" [class.selected-darker]="clickedDiv == 'newsfeed'" (click)="onDivClick('newsfeed')">
         <i class="fa-solid fa-house fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none"
-           routerLink="./discover" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none d-xl-block"
+           routerLink="./discover" routerLinkActive="active"
+           [class.hhover-darker]="clickedDiv !== 'discover'" [class.selected-darker]="clickedDiv == 'discover'" (click)="onDivClick('discover')">
         <i class="fa-solid fa-magnifying-glass fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none"
-           routerLink="./messages" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none d-xl-block"
+           routerLink="./messages" routerLinkActive="active"
+           [class.hhover-darker]="clickedDiv !== 'messages'" [class.selected-darker]="clickedDiv == 'messages'" (click)="onDivClick('messages')">
         <i class="fa-solid fa-message fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none"
-           routerLink="./notifications" routerLinkActive="active">
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-lg-none d-xl-block"
+           routerLink="./notifications" routerLinkActive="active"
+           [class.hhover-darker]="clickedDiv !== 'notifications'" [class.selected-darker]="clickedDiv == 'notifications'" (click)="onDivClick('notifications')">
         <i class="fa-solid fa-bell fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>

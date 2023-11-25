@@ -8,12 +8,13 @@ import {EventBusService} from "../../../Services/event-bus.service";
   styleUrls: ['./navbar.component.css', '../main-page.component.css']
 })
 export class NavbarComponent {
+  clickedDiv: string = '';
   public isOptionsVisible: boolean = false
+
   @ViewChild('buttonRef') buttonRef!: ElementRef;
   @ViewChild('divRef') divRef!: ElementRef;
 
   constructor(private renderer: Renderer2, private _eventBus: EventBusService) { }
-
 
   ngAfterViewInit() {
     const buttonPosition = this.buttonRef.nativeElement.getBoundingClientRect();
@@ -29,6 +30,10 @@ export class NavbarComponent {
     } else if (!this.divRef.nativeElement.contains(event.target)) {
       this.isOptionsVisible = false;
     }
+  }
+
+  onDivClick(div: string) {
+    this.clickedDiv = div;
   }
 
   disconnectUser() {

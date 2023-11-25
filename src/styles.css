@@ -68,7 +68,13 @@ body {
 
 .hover-darker:hover {
   background-color: hsla(0, 0%, 100%, 0.15);
+
+}
+
+.selected-darker {
+  background-color: hsla(0, 0%, 100%, 0.15);
   border-bottom: #1BA098 solid;
+  cursor: default;
 }
 
 .hover-darker-2 {
