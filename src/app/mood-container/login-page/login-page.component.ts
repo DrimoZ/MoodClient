@@ -12,8 +12,8 @@ export class LoginPageComponent implements OnInit{
   showSecondError: boolean = false;
 
   loginForm: FormGroup = this._fb.group({
-    Login: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48)]],
-    Password: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(48)]],
+    Login: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(48)]],
+    Password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48)]],
     StayLoggedIn: [false]
   })
 
@@ -25,7 +25,7 @@ export class LoginPageComponent implements OnInit{
       if (event.type === "userFailedSignIn") {
         this.controlPassword.setValue("");
 
-        if (event.payload.err.error.message === "404NotFound") {
+        if (event.payload.err.error.message === "userLoginNotFound") {
           this.controlLogin.setValue("");
           this.showFirstError = true;
           this.showSecondError = false;
