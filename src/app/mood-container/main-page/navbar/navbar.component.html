@@ -50,22 +50,22 @@
 <div #divRef class="rounded-1 position-absolute p-2 blurred-back d-flex flex-column user-select-none w-240 h-203 h-sm-430"
      [ngClass]="{'d-none': !isOptionsVisible}" >
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
-       routerLink="./newsfeed" routerLinkActive="active">
+       routerLink="./newsfeed" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-house fa-lg "></i>
     <span class="" i18n>News Feed</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
-       routerLink="./discover" routerLinkActive="active">
+       routerLink="./discover" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-magnifying-glass fa-lg "></i>
     <span class="" i18n>Discover</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
-       routerLink="./messages" routerLinkActive="active">
+       routerLink="./messages" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-message fa-lg "></i>
     <span class="" i18n>Messages</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
-       routerLink="./notifications" routerLinkActive="active">
+       routerLink="./notifications" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-bell fa-lg "></i>
     <span class="" i18n>Notifications</span>
 
