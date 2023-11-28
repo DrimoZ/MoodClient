@@ -8,8 +8,7 @@ import {EventBusService} from "../../Services/event-bus.service";
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit{
-  showFirstError: boolean = false;
-  showSecondError: boolean = false;
+  showError: boolean = false;
 
   loginForm: FormGroup = this._fb.group({
     Login: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(48)]],
@@ -24,16 +23,7 @@ export class LoginPageComponent implements OnInit{
     this._eventBus.onEvent().subscribe(event => {
       if (event.type === "userFailedSignIn") {
         this.controlPassword.setValue("");
-
-        if (event.payload.err.error.message === "userLoginNotFound") {
-          this.controlLogin.setValue("");
-          this.showFirstError = true;
-          this.showSecondError = false;
-        }
-        else {
-          this.showFirstError = false;
-          this.showSecondError = true;
-        }
+        this.showError = true;
       }
     });
   }
@@ -49,8 +39,7 @@ export class LoginPageComponent implements OnInit{
   }
 
   submitForm() {
-    this.showFirstError = false;
-    this.showSecondError = false;
+    this.showError = false;
 
     this._eventBus.emitEvent({
       type: 'userSignIn',

@@ -10,9 +10,8 @@
           <div class="card-body p-5 shadow-5 text-center txt-gold">
             <h2 class="fw-bold mb-5 user-select-none" i18n>Sign in</h2>
             <form [formGroup]="loginForm"  (submit)="submitForm()">
-              <div class="form-outline mb-4 border border-danger rounded-2 p-1" *ngIf="showSecondError || showFirstError">
-                <span class="text-danger" i18n *ngIf="showFirstError">We cannot find an account with that login</span>
-                <span class="text-danger" i18n *ngIf="showSecondError">Your password is incorrect</span>
+              <div class="form-outline mb-4 border border-danger rounded-2 p-1" *ngIf="showError">
+                <span class="text-danger" i18n >Incorrect Login or Password</span>
               </div>
 
               <div class="form-outline mb-4">
