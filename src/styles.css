@@ -23,6 +23,10 @@ body {
   height: 100vh;
 }
 
+.blur-effect {
+  backdrop-filter: blur(30px); /* Ajustez la valeur selon votre préférence */
+}
+
 .blurred-back {
   background: hsla(0, 0%, 100%, 0.15);
   backdrop-filter: blur(30px);
@@ -64,7 +68,9 @@ body {
 .w-20 {
   width: 20% !important;
 }
-
+.w-40 {
+  width: 40% !important;
+}
 .w-60 {
   width: 60% !important;
 }
@@ -72,7 +78,6 @@ body {
 .w-80 {
   width: 80% !important;
 }
-
 .hover-pointer {
   cursor: pointer;
 }

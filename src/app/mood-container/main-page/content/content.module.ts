@@ -8,7 +8,7 @@ import {ContentRoutingModule} from "./content-routing.module";
 import { NotificationComponent } from './notification/notification.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
-import {NgForOf} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -18,11 +18,12 @@ import {NgForOf} from "@angular/common";
     DiscoverComponent,
     ParametersComponent
   ],
-  imports: [
-    NgbModule,
-    ContentRoutingModule,
-    NgForOf
-  ],
+    imports: [
+        NgbModule,
+        ContentRoutingModule,
+        NgForOf,
+        NgClass
+    ],
   providers: [],
 })
 export class ContentModule { }

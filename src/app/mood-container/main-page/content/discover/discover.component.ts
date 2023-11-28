@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./discover.component.css']
 })
 export class DiscoverComponent {
+  isInputFocused: boolean = false;
 
+  onInputFocus() {
+    this.isInputFocused = true;
+  }
+
+  onInputBlur() {
+    this.isInputFocused = false;
+  }
 }
