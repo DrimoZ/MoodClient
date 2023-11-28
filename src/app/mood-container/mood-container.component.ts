@@ -38,7 +38,6 @@ export class MoodContainerComponent implements OnInit {
         this._eventBus.emitEvent({
           type: 'userFailedSignIn'
         })
-        console.log(err)
       }
     });
   }

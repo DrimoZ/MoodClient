@@ -74,9 +74,14 @@ body {
 .w-60 {
   width: 60% !important;
 }
-
+.w-65 {
+  width: 65% !important;
+}
 .w-80 {
   width: 80% !important;
+}
+.top-7 {
+  top:7% !important;
 }
 .hover-pointer {
   cursor: pointer;
