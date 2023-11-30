@@ -17,9 +17,9 @@ export class RegisterPageComponent implements OnInit {
     Mail: ['', [Validators.required, Validators.email]],
     Birthdate: ['', [Validators.required]],
     Password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48),
-      Validators.pattern("[0-9]+|[A-Z]+|[a-z]+|.{8,}|[!@#$%^&*()_+=\[{\]};:<>|./?,-]")]],
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
     PasswordConfirmation: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48),
-      Validators.pattern("[0-9]+|[A-Z]+|[a-z]+|.{8,}|[!@#$%^&*()_+=\[{\]};:<>|./?,-]")]],
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
   })
 
 
@@ -68,5 +68,18 @@ export class RegisterPageComponent implements OnInit {
         Password: this.controlPassword.value
       }
     })
+  }
+
+  checkPassword(password: string, type: number): boolean
+  {
+    switch (type)
+    {
+      case 0: return RegExp('.{8,}').test(password);
+      case 1: return RegExp('(?=.*[0-9])').test(password);
+      case 2: return RegExp('(?=.*[A-Z])').test(password);
+      case 3: return RegExp('(?=.*[a-z])').test(password);
+      case 4: return RegExp(/^(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\\\/?,-]).+$/).test(password);
+      default: return false;
+    }
   }
 }

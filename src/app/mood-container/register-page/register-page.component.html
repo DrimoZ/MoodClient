@@ -10,7 +10,7 @@
           <div class="card-body p-5 shadow-5 text-center txt-gold">
             <h2 class="fw-bold mb-5 user-select-none" i18n>Sign up</h2>
             <form [formGroup]="registerForm"  (submit)="submitForm()">
-              <div class="form-outline mb-4 border border-danger rounded-2 p-1" *ngIf="showError">
+              <div class="form-outline mb-4 border border-danger rounded-2 p-1 user-select-none" *ngIf="showError">
                 <span class="text-danger" i18n >Email or Username already used</span>
               </div>
 
@@ -72,6 +72,30 @@
                 </div>
               </div>
 
+              <div *ngIf="controlPassword.dirty || controlPassword.touched"
+                   [ngClass]="{'border-success': controlPassword.valid, 'border-danger': !controlPassword.valid, 'd-none': controlPassword.valid}"
+                   class="form-outline mb-4 border  rounded-2 p-1 user-select-none text-start ps-2">
+                <span [ngClass]="{'text-success': checkPassword(controlPassword.value, 0), 'text-danger': !checkPassword(controlPassword.value, 0)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkPassword(controlPassword.value, 0), 'fa-xmark': !checkPassword(controlPassword.value, 0)}"></i>
+                  Password must contain at least 8 characters
+                </span><br>
+                <span [ngClass]="{'text-success': checkPassword(controlPassword.value, 1), 'text-danger': !checkPassword(controlPassword.value, 1)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkPassword(controlPassword.value, 1), 'fa-xmark': !checkPassword(controlPassword.value, 1)}"></i>
+                  Password must contain at least one number
+                </span><br>
+                <span [ngClass]="{'text-success': checkPassword(controlPassword.value, 2), 'text-danger': !checkPassword(controlPassword.value, 2)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkPassword(controlPassword.value, 2), 'fa-xmark': !checkPassword(controlPassword.value, 2)}"></i>
+                  Password must contain at least one capital letter
+                </span><br>
+                <span [ngClass]="{'text-success': checkPassword(controlPassword.value, 3), 'text-danger': !checkPassword(controlPassword.value, 3)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkPassword(controlPassword.value, 3), 'fa-xmark': !checkPassword(controlPassword.value, 3)}"></i>
+                  Password must contain at least one lowercase letter
+                </span><br>
+                <span [ngClass]="{'text-success': checkPassword(controlPassword.value, 4), 'text-danger': !checkPassword(controlPassword.value, 4)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkPassword(controlPassword.value, 4), 'fa-xmark': !checkPassword(controlPassword.value, 4)}"></i>
+                  Password must contain at least one special character
+                </span><br>
+              </div>
 
               <button type="submit" class="btn btn-block mb-4 btn-gold user-select-none" [disabled]="registerForm.invalid" i18n>Sign Up</button>
 
