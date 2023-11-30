@@ -10,6 +10,9 @@
           <div class="card-body p-5 shadow-5 text-center txt-gold">
             <h2 class="fw-bold mb-5 user-select-none" i18n>Sign up</h2>
             <form [formGroup]="registerForm"  (submit)="submitForm()">
+              <div class="form-outline mb-4 border border-danger rounded-2 p-1" *ngIf="showError">
+                <span class="text-danger" i18n >Email or Username already used</span>
+              </div>
 
               <div class="row">
                 <!--NAME-->
@@ -62,17 +65,17 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="password" formControlName="PasswordConfirmation" id="PasswordConfirmation" class="form-control" placeholder="*Required"
-                           [ngClass]="{'input-error': controlPasswordConfirmation.dirty
-                           && controlPasswordConfirmation.touched && (controlPasswordConfirmation.invalid || controlPassword.value != controlPasswordConfirmation.value)}" i18n/>
+                           [ngClass]="{'input-error': controlPasswordConfirmation.dirty && controlPasswordConfirmation.touched
+                           && (controlPasswordConfirmation.invalid || controlPassword.value != controlPasswordConfirmation.value)}" i18n/>
                     <label class="form-label user-select-none" for="PasswordConfirmation" i18n>Password Confirmation</label>
                   </div>
                 </div>
               </div>
 
 
-              <button type="submit" class="btn btn-block mb-4 btn-gold user-select-none" [disabled]="registerForm.invalid" i18n> Sign Up </button>
+              <button type="submit" class="btn btn-block mb-4 btn-gold user-select-none" [disabled]="registerForm.invalid" i18n>Sign Up</button>
 
-              <div class="text-center user-select-none">
+              <!--<div class="text-center user-select-none">
                 <p i18n>or sign up with:</p>
                 <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-facebook-f"></i>
@@ -89,7 +92,7 @@
                 <button type="button" class="btn btn-floating mx-1 btn-gold">
                   <i class="fab fa-github"></i>
                 </button>
-              </div>
+              </div>-->
               <br class="user-select-none">
               <div>
                 <p class="user-select-none" i18n>Already have an account? <a routerLink="../login" routerLinkActive="active">Sign in here</a>.</p>

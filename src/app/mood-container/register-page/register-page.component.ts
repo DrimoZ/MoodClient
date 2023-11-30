@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EventBusService} from "../../Services/event-bus.service";
 
@@ -8,17 +8,32 @@ import {EventBusService} from "../../Services/event-bus.service";
   styleUrls: ['./register-page.component.css']
 })
 
-export class RegisterPageComponent {
+export class RegisterPageComponent implements OnInit {
+  showError: boolean = false;
+
   registerForm: FormGroup = this._fb.group({
     Name: ['', [Validators.required]],
     Login: ['', [Validators.required]],
     Mail: ['', [Validators.required, Validators.email]],
     Birthdate: ['', [Validators.required]],
-    Password: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(48)]],
-    PasswordConfirmation: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(48)]],
+    Password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48),
+      Validators.pattern("[0-9]+|[A-Z]+|[a-z]+|.{8,}|[!@#$%^&*()_+=\[{\]};:<>|./?,-]")]],
+    PasswordConfirmation: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48),
+      Validators.pattern("[0-9]+|[A-Z]+|[a-z]+|.{8,}|[!@#$%^&*()_+=\[{\]};:<>|./?,-]")]],
   })
 
+
   constructor(private _fb: FormBuilder, private _eventBus: EventBusService) {
+  }
+
+  ngOnInit(): void {
+    this._eventBus.onEvent().subscribe(event => {
+      if (event.type === "userFailedSignUp") {
+        this.controlPassword.setValue("");
+        this.controlPasswordConfirmation.setValue("");
+        this.showError = true;
+      }
+    });
   }
 
   get controlName(): AbstractControl {
@@ -41,9 +56,16 @@ export class RegisterPageComponent {
   }
 
   submitForm() {
+    this.showError = false;
+
     this._eventBus.emitEvent({
       type: 'userSignUp',
       payload: {
+        Name: this.controlName.value,
+        Login: this.controlLogin.value,
+        Mail: this.controlMail.value,
+        Birthdate: this.controlBirthdate.value,
+        Password: this.controlPassword.value
       }
     })
   }

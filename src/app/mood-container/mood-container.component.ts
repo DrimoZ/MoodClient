@@ -20,6 +20,7 @@ export class MoodContainerComponent implements OnInit {
           this.signInUser(event.payload);
           break;
         case 'userSignUp':
+          console.log(event.payload);
           this.signUpUser(event.payload);
           break;
         case 'userLogOut':
@@ -48,7 +49,9 @@ export class MoodContainerComponent implements OnInit {
         this._router.navigate(['home/newsfeed'])
       },
       error: (err) => {
-        console.log(err)
+        this._eventBus.emitEvent({
+          type: 'userFailedSignUp'
+        })
       }
     });
   }
