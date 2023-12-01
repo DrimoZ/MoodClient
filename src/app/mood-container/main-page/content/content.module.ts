@@ -9,7 +9,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
 import {NgClass, NgForOf} from "@angular/common";
-import { PublicationsComponent } from './profile/publications/publications.component';
+import {RouterOutlet} from "@angular/router";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -19,12 +19,13 @@ import { PublicationsComponent } from './profile/publications/publications.compo
     DiscoverComponent,
     ParametersComponent
   ],
-    imports: [
-        NgbModule,
-        ContentRoutingModule,
-        NgForOf,
-        NgClass
-    ],
+  imports: [
+    NgbModule,
+    ContentRoutingModule,
+    NgForOf,
+    NgClass,
+    RouterOutlet
+  ],
   providers: [],
 })
 export class ContentModule { }

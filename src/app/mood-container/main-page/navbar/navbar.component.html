@@ -34,13 +34,13 @@
       </div>
     </div>
 
-<!--Connexion + parameters buttons-->
+  <!--Connexion + parameters buttons-->
     <div class="justify-content-end align-items-center pe-3 d-flex w-10" style="min-width: 150px;">
       <button #buttonRef type="button" class="btn btn-floating mx-1 txt-turquoise">
         <i  class="fa-solid fa-bars fa-lg"></i>
       </button>
       <button type="button" class="btn btn-floating mx-1 txt-turquoise"
-              routerLink="./profile" routerLinkActive="active">
+              routerLink="./profile" routerLinkActive="active"  (click)="onDivClick('profile')">
         <i class="fa-solid fa-user fa-lg"></i>
         <!--  <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon"/>-->
       </button>
