@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class DiscoverComponent {
   isInputFocused: boolean = false;
+  selectedFilter: string = 'all';
+
+  selectFilter(filter: string): void {
+    this.selectedFilter = filter;
+  }
 
   onInputFocus() {
     this.isInputFocused = true;

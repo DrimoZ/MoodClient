@@ -10,11 +10,14 @@
                (focus)="onInputFocus()" (blur)="onInputBlur()">
       </div>
     </div>
-    <div class="">
-      <p class="txt-gold">Filtres</p>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'all'}" (click)="selectFilter('all')" routerLink="./all" routerLinkActive="active" i18n>All</button>
+      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'publications'}" (click)="selectFilter('publications')" routerLink="./publications" routerLinkActive="active" i18n>Publications</button>
+      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'profil'}" (click)="selectFilter('profil')" routerLink="./profiles" routerLinkActive="active" i18n>Profiles</button>
+      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'tags'}" (click)="selectFilter('tags')" routerLink="./tags" routerLinkActive="active" i18n>Tags</button>
     </div>
     <div>
-      <p class="txt-gold">Liste des recherches</p>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </section>
