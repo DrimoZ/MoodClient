@@ -26,7 +26,7 @@ import {MainAuthGuard} from "./Guards/mainAuthGuard";
     MainPageComponent,
     ContentComponent,
     NavbarComponent,
-    ConnectionRefusedComponent,
+    ConnectionRefusedComponent
   ],
   imports: [
     BrowserModule,

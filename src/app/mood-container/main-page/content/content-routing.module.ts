@@ -13,13 +13,12 @@ const routes: Routes = [
   {path: "discover", component: DiscoverComponent},
   {path: "messages", component: MessageComponent},
   {path: "notifications", component: NotificationComponent},
-  {path: "profile", component: ProfileComponent},
+  {path: "profile", component: ProfileComponent, loadChildren: () => import('./profile/profile.module').then(module => module.ProfileModule)},
   {path: "parameters", component: ParametersComponent},
   {path: "**", redirectTo: "./newsfeed"},
 ];
 
 @NgModule({
-
   imports: [RouterModule.forChild(routes)]
 })
 export class ContentRoutingModule { }

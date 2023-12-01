@@ -9,6 +9,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
 import {NgClass, NgForOf} from "@angular/common";
+import { PublicationsComponent } from './profile/publications/publications.component';
 @NgModule({
   declarations: [
     ProfileComponent,
