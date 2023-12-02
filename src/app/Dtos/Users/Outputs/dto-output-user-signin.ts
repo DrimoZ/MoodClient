@@ -1,4 +1,4 @@
-export interface DtoOutputSignIn {
+export interface DtoOutputUserSignin {
   Login: string;
   Password: string;
   StayLoggedIn: boolean;
