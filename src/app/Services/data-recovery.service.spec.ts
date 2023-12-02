@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DataRecoveryService } from './data-recovery.service';
+import { DataAccessorService } from './data-accessor.service';
 
 describe('DataRecoveryService', () => {
-  let service: DataRecoveryService;
+  let service: DataAccessorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DataRecoveryService);
+    service = TestBed.inject(DataAccessorService);
   });
 
   it('should be created', () => {
