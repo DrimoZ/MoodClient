@@ -13,6 +13,13 @@ body {
   color: #1BA098;
 }
 
+.border-gold {
+  border: #deb992 solid 1px;
+}
+.border-top-gold {
+  border-top: #deb992 solid 1px;
+}
+
 .btn-gold{
   background-color: #deb992;
   color : white;

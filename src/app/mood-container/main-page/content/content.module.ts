@@ -9,7 +9,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
 import {NgClass, NgForOf} from "@angular/common";
-import {RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -24,7 +24,9 @@ import {RouterOutlet} from "@angular/router";
     ContentRoutingModule,
     NgForOf,
     NgClass,
-    RouterOutlet
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive
   ],
   providers: [],
 })

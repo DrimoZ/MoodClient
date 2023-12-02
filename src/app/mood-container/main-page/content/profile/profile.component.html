@@ -1,38 +1,38 @@
-<section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect">
+<section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect user-select-none">
   <div class="p-4 w-100 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
-    <div class="d-flex flex-row">
-      <div class="d-flex justify-content-center p-2 pe-4 pb-4">
-        <img src="assets/mood.png" class="rounded-circle img-cover border border-dark" style="width: 250px; height: 250px; background-color: #1BA098">
+    <div class="d-flex flex-row pb-2 h-34 ">
+      <div class="d-flex justify-content-center p-2 pe-4 pb-4 h-100">
+        <img src="assets/mood.png" class="rounded-circle img-cover border border-dark" style="width: 200px; height: 200px; background-color: #1BA098">
       </div>
       <div class="w-100  d-flex flex-column p-2 gap-2">
         <div class="d-flex flex-row justify-content-between p-3 ">
           <div class="justify-content-start d-flex w-100">
-            <span class="fs-3">theom_01</span>
+            <span class="fs-3">{{dataModel.Login}}</span>
           </div>
           <div class="justify-content-start d-flex w-100">
-            <button class="btn btn-gold btn-sm">Modifier le profile</button>
+<!--            <button class="btn btn-gold btn-sm" i18n>Edit Profile</button>-->
           </div>
         </div>
 
-        <div class="d-flex flex-row justify-content-between p-2 ">
+        <div class="d-flex flex-row justify-content-between p-2">
           <div class="justify-content-start d-flex w-100 gap-2">
-            <span class="">Publications : </span>
-            <span class="">23</span>
+            <span class="" i18n>Publications : </span>
+            <span class="">{{dataModel.PublicationCount}}</span>
           </div>
           <div class="justify-content-start d-flex w-100 gap-2">
-            <span class="">Friends : </span>
-            <span class="">1</span>
+            <span class="" i18n>Friends : </span>
+            <span class="">{{dataModel.FriendCount}}</span>
           </div>
           <div class="justify-content-start d-flex w-100">
           </div>
         </div>
 
-        <div class="d-flex flex-column justify-content-between p-2 h-100">
+        <div class="d-flex flex-column justify-content-between p-2 h-100 gap-1">
           <div class="d-flex w-100 gap-2 h-34 p-1 justify-content-start">
-            <span class="fs-5 fw-bold">Theo Mille</span>
+            <span class="fs-5 fw-bold">{{dataModel.Name}}</span>
           </div>
           <div class="d-flex w-100 gap-2 h-66 p-1 justify-content-start">
-            <span class="fst-italic">Texte tres looong pour une description jamais lue lol</span>
+            <span class="fst-italic">{{dataModel.Account.Description}}</span>
           </div>
         </div>
 
@@ -40,9 +40,23 @@
     </div>
 
 
-    <div class="border-warning border">
-
-      <router-outlet></router-outlet>
+    <div class="border-top-gold d-flex flex-column h-66">
+      <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center w-80 flex-row">
+          <div class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker-2" routerLink="./me" routerLinkActive="active">
+            <span i18n>Account</span>
+          </div>
+          <div class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker-2" routerLink="./shared" routerLinkActive="active">
+            <span i18n>Publications</span>
+          </div>
+          <div class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker-2" routerLink="./friends" routerLinkActive="active">
+            <span i18n>Friends</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </section>
