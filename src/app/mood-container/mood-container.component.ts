@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {EventBusService} from "../Services/event-bus.service";
-import {DtoOutputSignIn} from "../Dtos/Users/Outputs/dto-output-signin";
+import {DtoOutputUserSignin} from "../Dtos/Users/Outputs/dto-output-user-signin";
 import {AuthenticationService} from "../Services/authentication.service";
-import {DtoOutputSignUp} from "../Dtos/Users/Outputs/dto-output-signup";
+import {DtoOutputUserSignup} from "../Dtos/Users/Outputs/dto-output-user-signup";
 
 @Component({
   selector: 'app-mood-container',
@@ -30,7 +30,7 @@ export class MoodContainerComponent implements OnInit {
     });
   }
 
-  signInUser(dto: DtoOutputSignIn) {
+  signInUser(dto: DtoOutputUserSignin) {
     this._authService.signInUser(dto).subscribe({
       next: () => {
         this._router.navigate(['home/newsfeed'])
@@ -43,7 +43,7 @@ export class MoodContainerComponent implements OnInit {
     });
   }
 
-  signUpUser(dto: DtoOutputSignUp) {
+  signUpUser(dto: DtoOutputUserSignup) {
     this._authService.signUpUser(dto).subscribe({
       next: () => {
         this._router.navigate(['home/newsfeed'])

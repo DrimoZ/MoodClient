@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DataRecoveryService} from "../../../../Services/data-recovery.service";
-import {DtoInputProfile} from "../../../../Dtos/Users/Inputs/dto-input-profile";
+import {DataAccessorService} from "../../../../Services/data-accessor.service";
+import {DtoInputUserProfile} from "../../../../Dtos/Users/Inputs/dto-input-user-profile";
+import {EventBusService} from "../../../../Services/event-bus.service";
 
 @Component({
   selector: 'app-profile',
@@ -8,8 +9,8 @@ import {DtoInputProfile} from "../../../../Dtos/Users/Inputs/dto-input-profile";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  dataModel: DtoInputProfile = {
-    Account: {BirthDate: "", Description: "", PhoneNumber: ""},
+  profileData: DtoInputUserProfile = {
+    Description: "",
     FriendCount: 0,
     Login: "",
     Name: "",
@@ -17,22 +18,21 @@ export class ProfileComponent implements OnInit {
     Title: ""
   };
 
-  constructor(private _dataService: DataRecoveryService) {
+  constructor(private _eventBus: EventBusService) {
   }
 
   ngOnInit(): void {
-    this._dataService.getUserProfileBase().subscribe(
-      data => {
-        this.dataModel.Login = data.user.login
-        this.dataModel.Name = data.user.name
-        this.dataModel.Title = data.user.title
-        this.dataModel.FriendCount = data.user.friendCount
-        this.dataModel.PublicationCount = data.user.publicationCount
-        this.dataModel.Account.Description = data.user.account.description
-        this.dataModel.Account.PhoneNumber = data.user.account.phoneNumber
-        this.dataModel.Account.BirthDate = data.user.account.birthDate
-      }
-    )
-  }
+    this._eventBus.onEvent().subscribe(event => {
+      if (event.type === "userProfileData") {
+        console.log(event.payload)
 
+        this.profileData.Login = event.payload.Login
+        this.profileData.Name = event.payload.Name
+        this.profileData.Title = event.payload.Title
+        this.profileData.FriendCount = event.payload.FriendCount
+        this.profileData.PublicationCount = event.payload.PublicationCount
+        this.profileData.Description = event.payload.Description
+      }
+    })
+  }
 }
