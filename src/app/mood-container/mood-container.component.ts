@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {EventBusService} from "../Services/event-bus.service";
-import {DtoOutputSignIn} from "../Dtos/dto-output-signin";
+import {DtoOutputSignIn} from "../Dtos/Users/Outputs/dto-output-signin";
 import {AuthenticationService} from "../Services/authentication.service";
-import {DtoOutputSignUp} from "../Dtos/dto-output-signup";
+import {DtoOutputSignUp} from "../Dtos/Users/Outputs/dto-output-signup";
 
 @Component({
   selector: 'app-mood-container',
