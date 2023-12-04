@@ -19,7 +19,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="text" formControlName="Name" id="Name" class="form-control" placeholder="*Required"
-                           [ngClass]="{'input-error': controlName.invalid && controlName.dirty && controlName.touched}" i18n/>
+                           [ngClass]="{'input-error': controlName.invalid && controlName.dirty && controlName.touched}" i18n i18n-placeholder/>
                     <label class="form-label user-select-none" for="Name" i18n>Full Name</label>
                   </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="text" formControlName="Mail" id="Mail" class="form-control" placeholder="*Required"
-                           [ngClass]="{'input-error': controlMail.invalid && controlMail.dirty && controlMail.touched}" i18n/>
+                           [ngClass]="{'input-error': controlMail.invalid && controlMail.dirty && controlMail.touched}" i18n i18n-placeholder/>
                     <label class="form-label user-select-none" for="Mail" i18n>Email Address</label>
                   </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="text" formControlName="Login" id="Login" class="form-control" placeholder="*Required"
-                           [ngClass]="{'input-error': controlLogin.invalid && controlLogin.dirty && controlLogin.touched}" i18n/>
+                           [ngClass]="{'input-error': controlLogin.invalid && controlLogin.dirty && controlLogin.touched}" i18n i18n-placeholder/>
                     <label class="form-label user-select-none" for="Login" i18n>Username</label>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="date" formControlName="Birthdate" id="Birthdate" class="form-control" placeholder="*Required"
-                           [ngClass]="{'input-error': controlBirthdate.invalid && controlBirthdate.dirty && controlBirthdate.touched}" i18n/>
+                           [ngClass]="{'input-error': controlBirthdate.invalid && controlBirthdate.dirty && controlBirthdate.touched}" i18n i18n-placeholder/>
                     <label class="form-label user-select-none" for="Birthdate" i18n>Birthdate</label>
                   </div>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="password" formControlName="Password" id="Password" class="form-control" placeholder="*Required"
-                           [ngClass]="{'input-error': controlPassword.invalid && controlPassword.dirty && controlPassword.touched}" i18n/>
+                           [ngClass]="{'input-error': controlPassword.invalid && controlPassword.dirty && controlPassword.touched}" i18n i18n-placeholder/>
                     <label class="form-label user-select-none" for="Password" i18n>Password</label>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
                   <div class="form-outline">
                     <input type="password" formControlName="PasswordConfirmation" id="PasswordConfirmation" class="form-control" placeholder="*Required"
                            [ngClass]="{'input-error': controlPasswordConfirmation.dirty && controlPasswordConfirmation.touched
-                           && (controlPasswordConfirmation.invalid || controlPassword.value != controlPasswordConfirmation.value)}" i18n/>
+                           && (controlPasswordConfirmation.invalid || controlPassword.value != controlPasswordConfirmation.value)}" i18n i18n-placeholder/>
                     <label class="form-label user-select-none" for="PasswordConfirmation" i18n>Password Confirmation</label>
                   </div>
                 </div>

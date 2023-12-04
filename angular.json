@@ -9,7 +9,12 @@
         "sourceLocale": "en-US",
         "locales": {
           "fr": {
-            "translation": "src/locale/messages.fr.xlf"
+            "translation": "src/locale/messages.fr.xlf",
+            "baseHref": "/fr/"
+          },
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "/en/"
           }
         }
       },
@@ -45,21 +50,20 @@
           },
           "configurations": {
             "fr": {
-              "localize": [
-                "fr"
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.fr.ts"
-                }
-              ]
+              "localize": ["fr"],
+              "outputPath": "dist/fr/",
+              "i18nMissingTranslation": "error"
+            },
+            "en": {
+              "localize": ["en"],
+              "outputPath": "dist/en/",
+              "i18nMissingTranslation": "error"
             },
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "1000kb",
                   "maximumError": "1mb"
                 },
                 {
@@ -74,6 +78,7 @@
               "localize": [
                 "en-US"
               ],
+              "outputHashing": "all",
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -94,7 +99,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "fr": {
-              "browserTarget": "MoodClient:build:development,fr"
+              "browserTarget": "MoodClient:build:development:fr"
+            },
+            "en": {
+              "browserTarget": "MoodClient:build:development:en"
             },
             "production": {
               "browserTarget": "MoodClient:build:production"
