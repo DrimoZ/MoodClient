@@ -6,20 +6,21 @@ import {ProfileRoutingModule} from "./profile-routing.module";
 import { FriendsComponent } from './friends/friends.component';
 import { AccountComponent } from './account/account.component';
 import {NgClass, NgForOf} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     PublicationsComponent,
     FriendsComponent,
     AccountComponent
   ],
-  imports: [
-    ProfileRoutingModule,
-    NgbModule,
-    NgForOf,
-    NgClass,
-    FormsModule,
-  ],
+    imports: [
+        ProfileRoutingModule,
+        NgbModule,
+        NgForOf,
+        NgClass,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
   providers: [],
 })
 export class ProfileModule { }

@@ -1,1 +1,46 @@
-<p>account works!</p>
+<section class="p-3 pt-5 user-select-none d-flex flex-column gap-4">
+  <div class="ms-2 d-flex flex-column gap-2" [formGroup]="commonInfoForm">
+    <span class="w-100 fs-5 fw-bold text-center" i18n>Common Information</span>
+    <div class="p-1 d-flex justify-content-between">
+      <span class="form-label" i18n>Login</span>
+      <input class="form-control w-50" type="text" formControlName="Login" [value]="data.Login">
+    </div>
+    <div class="p-1 d-flex justify-content-between">
+      <span class="form-label" i18n>Full Name</span>
+      <input class="form-control w-50" type="text" formControlName="Name" [value]="data.Name">
+    </div>
+    <div class="p-1 d-flex justify-content-between">
+      <span class="form-label" i18n>Title</span>
+      <input class="form-control w-50" type="text" formControlName="Title" [value]="data.Title">
+    </div>
+    <div class="p-1 d-flex justify-content-between">
+      <span class="form-label" i18n>Birthdate</span>
+      <input class="form-control w-50" type="date" formControlName="BirthDate" [value]="data.BirthDate">
+    </div>
+    <div class="p-1 d-flex justify-content-between">
+      <span class="form-label" i18n>Description</span>
+      <input class="form-control w-50" type="text" formControlName="Description" [value]="data.Description">
+    </div>
+
+    <div class="p-1 d-flex justify-content-end gap-2">
+      <button type="submit" class="btn btn-outline-danger user-select-none"
+              [ngClass]="{'d-none': !isPublicDataEditing}" (click)="cancelCommonEdit()" i18n>Cancel</button>
+      <button type="submit" class="btn btn-outline-success user-select-none"
+              [ngClass]="{'d-none': !isPublicDataEditing}" (click)="commitCommonEdit()" i18n>Validate Changes</button>
+      <button type="submit" class="btn btn-gold user-select-none"
+              [ngClass]="{'d-none': isPublicDataEditing}" (click)="editCommonEdit()" i18n>Edit Account</button>
+    </div>
+  </div>
+
+  <div class="ms-2 d-flex flex-column gap-2">
+    <span class="w-100 fs-5 fw-bold text-center" i18n>Private Information</span>
+    <div class="p-1 d-flex justify-content-between">
+      <span class="form-label" i18n>Email Address</span>
+      <input class="form-control w-50" type="email" [value]="data.Mail" disabled>
+    </div>
+    <div class="p-1 d-flex justify-content-between">
+      <span class="form-label" i18n>Phone Number</span>
+      <input class="form-control w-50" type="tel" [value]="data.PhoneNumber" disabled>
+    </div>
+  </div>
+</section>
