@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DataAccessorService} from "../../../../../Services/data-accessor.service";
 import {EventBusService} from "../../../../../Services/event-bus.service";
+import {DataAccessorService} from "../../../../../Services/data-accessor.service";
 
 @Component({
   selector: 'app-publications',

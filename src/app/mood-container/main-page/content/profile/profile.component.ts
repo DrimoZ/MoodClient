@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {DataAccessorService} from "../../../../Services/data-accessor.service";
 import {DtoInputUserProfile} from "../../../../Dtos/Users/Inputs/dto-input-user-profile";
 import {EventBusService} from "../../../../Services/event-bus.service";
 
@@ -24,7 +23,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this._eventBus.onEvent().subscribe(event => {
       if (event.type === "userProfileData") {
-        console.log(event.payload)
 
         this.profileData.Login = event.payload.Login
         this.profileData.Name = event.payload.Name
