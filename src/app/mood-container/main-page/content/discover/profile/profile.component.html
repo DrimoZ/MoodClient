@@ -1,1 +1,17 @@
-<p>profile works!</p>
+<section>
+  <div class="d-flex flex-row w-100 justify-content-between" *ngFor="let user of filterUsers(data, searchBarValue)">
+    <div class="p-1">
+      <img src="assets/mood.png" class="rounded-circle img-cover border border-dark hover-pointer" style="width: 50px; height: 50px; background-color: #1BA098">
+    </div>
+    <div class="p-2 d-flex flex-row w-65 justify-content-between">
+      <div class="d-flex p-1 justify-content-start hover-pointer">
+        <span class="fs-5 fw-bold">{{user.login}}</span>
+      </div>
+      <div class="d-flex p-1 justify-content-start hover-pointer">
+        <span class="fst-italic">{{user.name}}</span>
+      </div>
+      <button class="btn btn-gold" *ngIf="!isFriend(user)" (click)="emitAddFriend(user)" i18n>Add Friend</button>
+      <button class="btn btn-outline-danger" *ngIf="isFriend(user)" (click)="emitRemoveFriend(user)" i18n>Remove Friend</button>
+    </div>
+  </div>
+</section>

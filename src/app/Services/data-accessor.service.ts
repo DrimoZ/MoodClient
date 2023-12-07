@@ -15,6 +15,10 @@ export class DataAccessorService {
     return this._httpClient.get(DataAccessorService._URL_API + "/userAccount");
   }
 
+  getUsers(): Observable<any> {
+    return this._httpClient.get(DataAccessorService._URL_API + "/getUsers");
+  }
+
   getUserFriends(): Observable<any> {
     return this._httpClient.get(DataAccessorService._URL_API + "/userFriends");
   }
