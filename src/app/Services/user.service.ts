@@ -7,24 +7,24 @@ import {DtoOutputUserUpdateAccount} from "../Dtos/Users/Outputs/dto-output-user-
 @Injectable({
   providedIn: 'root'
 })
-export class DataAccessorService {
+export class UserService {
 
   private static _URL_API: string = environment.BASE_URL_API + "/api/v1/user"
   constructor(private _httpClient: HttpClient) { }
 
   getUserAccount(): Observable<any> {
-    return this._httpClient.get(DataAccessorService._URL_API + "/userAccount");
+    return this._httpClient.get(UserService._URL_API + "/userAccount");
   }
 
   getUserFriends(): Observable<any> {
-    return this._httpClient.get(DataAccessorService._URL_API + "/userFriends");
+    return this._httpClient.get(UserService._URL_API + "/userFriends");
   }
 
   getUserPublications(): Observable<any> {
-    return this._httpClient.get(DataAccessorService._URL_API + "/userPublications");
+    return this._httpClient.get(UserService._URL_API + "/userPublications");
   }
 
   updateUserAccount(dto: DtoOutputUserUpdateAccount): Observable<any> {
-    return this._httpClient.put(DataAccessorService._URL_API + "/userUpdateAccount", dto);
+    return this._httpClient.put(UserService._URL_API + "/userUpdateAccount", dto);
   }
 }

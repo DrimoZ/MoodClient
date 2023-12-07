@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EventBusService} from "../../../../../Services/event-bus.service";
-import {DataAccessorService} from "../../../../../Services/data-accessor.service";
+import {UserService} from "../../../../../Services/user.service";
 
 @Component({
   selector: 'app-friends',
@@ -13,7 +13,7 @@ export class FriendsComponent implements OnInit {
   searchBarValue: any = "";
   data: any;
 
-  constructor(private _dataService: DataAccessorService, private _eventBus: EventBusService) {
+  constructor(private _dataService: UserService, private _eventBus: EventBusService) {
   }
 
   ngOnInit(): void {

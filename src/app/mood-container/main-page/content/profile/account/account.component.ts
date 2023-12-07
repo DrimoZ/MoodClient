@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {EventBusService} from "../../../../../Services/event-bus.service";
 import {DtoInputUserAccount} from "../../../../../Dtos/Users/Inputs/dto-input-user-account";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DataAccessorService} from "../../../../../Services/data-accessor.service";
+import {UserService} from "../../../../../Services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -37,16 +37,17 @@ export class AccountComponent implements OnInit {
 
 
 
-  constructor(private _dataService: DataAccessorService, private _eventBus: EventBusService, private _fb: FormBuilder, private _router: Router) {
+  constructor(private _dataService: UserService, private _eventBus: EventBusService, private _fb: FormBuilder) {
+
   }
 
   ngOnInit(): void {
+
     this.isWaitingForApi = false;
     this.isPublicDataEditing = false;
 
     this._dataService.getUserAccount().subscribe(
       data => {
-        console.log(data);
 
         this._eventBus.emitEvent({
           type: "userProfileData",

@@ -1,4 +1,4 @@
-<section class="p-3 pt-5 user-select-none d-flex flex-column gap-4 overflow-y-scroll">
+<section class="p-3 pt-5 user-select-none d-flex flex-column gap-4">
   <div class="ms-2 d-flex flex-column gap-2" [formGroup]="commonInfoForm">
     <span class="w-100 fs-5 fw-bold text-center" i18n>Common Information</span>
     <div class="p-1 d-flex justify-content-between">
@@ -43,6 +43,11 @@
     <div class="p-1 d-flex justify-content-between">
       <span class="form-label" i18n>Phone Number</span>
       <input class="form-control w-50" type="tel" [value]="data.PhoneNumber" disabled>
+    </div>
+
+    <div class="p-1 d-flex justify-content-end gap-2">
+      <button type="submit" class="btn btn-gold user-select-none"
+              routerLink="/home/parameters" i18n>Visit Parameters to change this information</button>
     </div>
   </div>
 </section>
