@@ -26,9 +26,9 @@ export class AccountComponent implements OnInit {
   };
 
   commonInfoForm: FormGroup = this._fb.group({
-    Login: [{value: "", disabled: true}, [Validators.required, Validators.minLength(6), Validators.maxLength(48)]],
+    Mail: [{value: "", disabled: true}, [Validators.required, Validators.email]],
     Name: [{value: "", disabled: true}, [Validators.required, Validators.minLength(6), Validators.maxLength(128)]],
-    Title: [{value: "", disabled: true}, [Validators.required]],
+    Title: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(32)]],
     Description: [{value: "", disabled: true}, [Validators.required]],
     BirthDate: [{value: "", disabled: true}, [Validators.required]],
   })
@@ -74,8 +74,8 @@ export class AccountComponent implements OnInit {
   cancelCommonEdit() {
     this.isPublicDataEditing = false;
 
-    this.controlLogin.disable();
-    this.controlLogin.setValue(this.data.Login);
+    this.controlMail.disable();
+    this.controlMail.setValue(this.data.Mail);
 
     this.controlName.disable();
     this.controlName.setValue(this.data.Name);
@@ -93,8 +93,8 @@ export class AccountComponent implements OnInit {
   editCommonEdit() {
     this.isPublicDataEditing = true;
 
-    this.controlLogin.setValue(this.data.Login);
-    this.controlLogin.enable();
+    this.controlMail.setValue(this.data.Mail);
+    this.controlMail.enable();
     this.controlName.setValue(this.data.Name);
     this.controlName.enable();
     this.controlDescription.setValue(this.data.Description);
@@ -108,15 +108,15 @@ export class AccountComponent implements OnInit {
   commitCommonEdit() {
     this.isPublicDataEditing = false;
 
-    this.controlLogin.disable();
+    this.controlMail.disable();
     this.controlName.disable();
     this.controlDescription.disable();
     this.controlBirthDate.disable();
     this.controlTitle.disable();
   }
 
-  get controlLogin(): AbstractControl {
-    return this.commonInfoForm.controls['Login'];
+  get controlMail(): AbstractControl {
+    return this.commonInfoForm.controls['Mail'];
   }
   get controlName(): AbstractControl {
     return this.commonInfoForm.controls['Name'];
