@@ -39,6 +39,8 @@ export class FriendsComponent implements OnInit {
   }
 
   filterFriends(friends: any[], searchTerm: string): any[] {
+    if (friends == undefined) return [];
+
     return friends.filter(friend =>
       friend.name.toLowerCase().includes(searchTerm.toLowerCase()) || friend.login.toLowerCase().includes(searchTerm.toLowerCase())
     );
