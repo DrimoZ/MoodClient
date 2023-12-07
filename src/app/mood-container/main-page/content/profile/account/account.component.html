@@ -1,4 +1,4 @@
-<section class="p-3 pt-5 user-select-none d-flex flex-column gap-4">
+<section class="p-3 pt-5 user-select-none d-flex flex-column gap-4 overflow-y-scroll">
   <div class="ms-2 d-flex flex-column gap-2" [formGroup]="commonInfoForm">
     <span class="w-100 fs-5 fw-bold text-center" i18n>Common Information</span>
     <div class="p-1 d-flex justify-content-between">
@@ -20,7 +20,7 @@
     </div>
     <div class="p-1 d-flex justify-content-between">
       <span class="form-label" i18n>Description</span>
-      <input class="form-control w-50" type="text" formControlName="Description" [value]="data.Description">
+      <textarea class="form-control w-50" formControlName="Description" [value]="data.Description"></textarea>
     </div>
 
     <div class="p-1 d-flex justify-content-end gap-2">
