@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {EventBusService} from "../../../../../Services/event-bus.service";
 import {DtoInputUserAccount} from "../../../../../Dtos/Users/Inputs/dto-input-user-account";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DataAccessorService} from "../../../../../Services/data-accessor.service";
+import {UserService} from "../../../../../Services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account',
@@ -11,6 +12,7 @@ import {DataAccessorService} from "../../../../../Services/data-accessor.service
 })
 export class AccountComponent implements OnInit {
   isPublicDataEditing: boolean = false;
+  isWaitingForApi: boolean = false;
 
   data: DtoInputUserAccount = {
     Id: "",
@@ -26,22 +28,26 @@ export class AccountComponent implements OnInit {
   };
 
   commonInfoForm: FormGroup = this._fb.group({
-    Login: [{value: "", disabled: true}, [Validators.required, Validators.minLength(6), Validators.maxLength(48)]],
+    Mail: [{value: "", disabled: true}, [Validators.required, Validators.email]],
     Name: [{value: "", disabled: true}, [Validators.required, Validators.minLength(6), Validators.maxLength(128)]],
-    Title: [{value: "", disabled: true}, [Validators.required]],
-    Description: [{value: "", disabled: true}, [Validators.required]],
+    Title: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(32)]],
+    Description: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(255)]],
     BirthDate: [{value: "", disabled: true}, [Validators.required]],
   })
 
 
 
-  constructor(private _dataService: DataAccessorService, private _eventBus: EventBusService, private _fb: FormBuilder) {
+  constructor(private _dataService: UserService, private _eventBus: EventBusService, private _fb: FormBuilder) {
+
   }
 
   ngOnInit(): void {
+
+    this.isWaitingForApi = false;
+    this.isPublicDataEditing = false;
+
     this._dataService.getUserAccount().subscribe(
       data => {
-        console.log(data);
 
         this._eventBus.emitEvent({
           type: "userProfileData",
@@ -65,8 +71,6 @@ export class AccountComponent implements OnInit {
 
         this.data.Mail = data.mail;
         this.data.PhoneNumber = data.account.phoneNumber;
-
-        console.log(this.data);
       }
     )
   }
@@ -74,8 +78,8 @@ export class AccountComponent implements OnInit {
   cancelCommonEdit() {
     this.isPublicDataEditing = false;
 
-    this.controlLogin.disable();
-    this.controlLogin.setValue(this.data.Login);
+    this.controlMail.disable();
+    this.controlMail.setValue(this.data.Mail);
 
     this.controlName.disable();
     this.controlName.setValue(this.data.Name);
@@ -93,8 +97,8 @@ export class AccountComponent implements OnInit {
   editCommonEdit() {
     this.isPublicDataEditing = true;
 
-    this.controlLogin.setValue(this.data.Login);
-    this.controlLogin.enable();
+    this.controlMail.setValue(this.data.Mail);
+    this.controlMail.enable();
     this.controlName.setValue(this.data.Name);
     this.controlName.enable();
     this.controlDescription.setValue(this.data.Description);
@@ -107,16 +111,35 @@ export class AccountComponent implements OnInit {
 
   commitCommonEdit() {
     this.isPublicDataEditing = false;
+    this.isWaitingForApi = true;
 
-    this.controlLogin.disable();
+    this.controlMail.disable();
     this.controlName.disable();
     this.controlDescription.disable();
     this.controlBirthDate.disable();
     this.controlTitle.disable();
+
+    this._dataService.updateUserAccount(
+      {
+        Birthdate: this.controlBirthDate.value, Description: this.controlDescription.value, Id: this.data.Id, Mail: this.controlMail.value, Name: this.controlName.value, Title: this.controlTitle.value
+      }
+    ).subscribe({
+      next: (res) => {
+        location.reload()
+      },
+      error: (err) => {
+        console.log(err)
+        this.controlMail.setValue(this.data.Mail);
+        this.controlName.setValue(this.data.Name);
+        this.controlDescription.setValue(this.data.Description);
+        this.controlBirthDate.setValue(this.data.BirthDate);
+        this.controlTitle.setValue(this.data.Title);
+      }
+    })
   }
 
-  get controlLogin(): AbstractControl {
-    return this.commonInfoForm.controls['Login'];
+  get controlMail(): AbstractControl {
+    return this.commonInfoForm.controls['Mail'];
   }
   get controlName(): AbstractControl {
     return this.commonInfoForm.controls['Name'];
