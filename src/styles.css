@@ -3,6 +3,7 @@ body {
   background-image: url('./assets/back.jpg');
   height: 100vh;
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: hidden;
 }
 
 .txt-gold {
