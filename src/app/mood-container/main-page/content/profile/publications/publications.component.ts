@@ -10,11 +10,11 @@ import {UserService} from "../../../../../Services/user.service";
 export class PublicationsComponent implements OnInit{
   data: any;
 
-  constructor(private _dataService: UserService, private _eventBus: EventBusService) {
+  constructor(private _userService: UserService, private _eventBus: EventBusService) {
   }
 
   ngOnInit(): void {
-    this._dataService.getUserPublications().subscribe(
+    this._userService.getUserPublications().subscribe(
       data => {
         this._eventBus.emitEvent({
           type: "userProfileData",

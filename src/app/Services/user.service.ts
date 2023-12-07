@@ -27,4 +27,8 @@ export class UserService {
   updateUserAccount(dto: DtoOutputUserUpdateAccount): Observable<any> {
     return this._httpClient.put(UserService._URL_API + "/userUpdateAccount", dto);
   }
+
+  getUsers(): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/getUsers");
+  }
 }

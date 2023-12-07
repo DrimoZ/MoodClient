@@ -13,11 +13,11 @@ export class FriendsComponent implements OnInit {
   searchBarValue: any = "";
   data: any;
 
-  constructor(private _dataService: UserService, private _eventBus: EventBusService) {
+  constructor(private _userService: UserService, private _eventBus: EventBusService) {
   }
 
   ngOnInit(): void {
-    this._dataService.getUserFriends().subscribe(
+    this._userService.getUserFriends().subscribe(
       data => {
         this._userLogin = data.login;
 
