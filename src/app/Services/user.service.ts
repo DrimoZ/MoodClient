@@ -13,21 +13,22 @@ export class UserService {
   constructor(private _httpClient: HttpClient) { }
 
   getUserAccount(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/userAccount");
+    return this._httpClient.get(UserService._URL_API + "/profile/account");
   }
 
   getUserFriends(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/userFriends");
+    return this._httpClient.get(UserService._URL_API + "/profile/friends");
   }
 
   getUserPublications(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/userPublications");
+    return this._httpClient.get(UserService._URL_API + "/profile/publications");
   }
 
   updateUserAccount(dto: DtoOutputUserUpdateAccount): Observable<any> {
-    return this._httpClient.put(UserService._URL_API + "/userUpdateAccount", dto);
+    return this._httpClient.put(UserService._URL_API + "/profile/account", dto);
   }
 
+  
   getUsers(): Observable<any> {
     return this._httpClient.get(UserService._URL_API + "/getUsers");
   }

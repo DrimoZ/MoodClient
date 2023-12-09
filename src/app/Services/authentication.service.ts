@@ -10,7 +10,7 @@ import {DtoOutputUserSignup} from "../Dtos/Users/Outputs/dto-output-user-signup"
 })
 export class AuthenticationService {
 
-  private static _URL_API: string = environment.BASE_URL_API + "/api/v1/user"
+  private static _URL_API: string = environment.BASE_URL_API + "/api/v1/auth"
   constructor(private _httpClient: HttpClient) { }
 
   isUserConnected(): Observable<any> {
@@ -27,6 +27,6 @@ export class AuthenticationService {
 
   logOutUser(): Observable<any> {
     console.log("test")
-    return this._httpClient.post(AuthenticationService._URL_API + "/logOut", {});
+    return this._httpClient.post(AuthenticationService._URL_API + "/signOut", {});
   }
 }
