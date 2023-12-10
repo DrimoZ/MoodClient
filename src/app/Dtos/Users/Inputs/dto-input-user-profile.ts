@@ -1,10 +1,10 @@
 export interface DtoInputUserProfile {
-  Login: string;
+  login: string;
 
-  Name: string;
-  Title: string;
-  Description: string;
+  name: string;
+  title: string;
+  description: string;
 
-  FriendCount: number;
-  PublicationCount: number;
+  friendCount: number;
+  publicationCount: number;
 }
