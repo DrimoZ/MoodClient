@@ -8,7 +8,7 @@ import {ContentRoutingModule} from "./content-routing.module";
 import { NotificationComponent } from './notification/notification.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
-import {NgClass, NgForOf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
     NgClass,
     RouterOutlet,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    NgIf
   ],
   providers: [],
 })
