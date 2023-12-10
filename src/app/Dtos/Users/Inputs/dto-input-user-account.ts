@@ -1,13 +1,11 @@
 export interface DtoInputUserAccount {
-  Id: string;
+  login: string;
+  name: string;
 
-  Login: string;
-  Name: string;
+  title: string;
+  description: string;
+  birthDate: string;
 
-  Title: string;
-  Description: string;
-  BirthDate: string;
-
-  Mail: string;
-  PhoneNumber: string;
+  mail: string;
+  phoneNumber: string;
 }

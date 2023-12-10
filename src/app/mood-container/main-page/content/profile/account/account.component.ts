@@ -3,6 +3,7 @@ import {EventBusService} from "../../../../../Services/event-bus.service";
 import {DtoInputUserAccount} from "../../../../../Dtos/Users/Inputs/dto-input-user-account";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../../Services/user.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-account',
@@ -10,20 +11,12 @@ import {UserService} from "../../../../../Services/user.service";
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+  userId: string = "-1";
+  isWaitingForApi: boolean = true;
   isPublicDataEditing: boolean = false;
-  isWaitingForApi: boolean = false;
 
-  data: DtoInputUserAccount = {
-    Id: "",
-    Login: "",
-    Name: "",
-
-    Title: "",
-    Description: "",
-    BirthDate: "",
-
-    Mail: "",
-    PhoneNumber: ""
+  accountData: DtoInputUserAccount = {
+    birthDate: "", description: "", login: "", mail: "", name: "", phoneNumber: "", title: ""
   };
 
   commonInfoForm: FormGroup = this._fb.group({
@@ -36,75 +29,76 @@ export class AccountComponent implements OnInit {
 
 
 
-  constructor(private _dataService: UserService, private _eventBus: EventBusService, private _fb: FormBuilder) {
+  constructor(private _dataService: UserService, private _fb: FormBuilder) {
 
   }
 
   ngOnInit(): void {
+    this._dataService.getUserIdAndRole().subscribe({
+      next: (usr) => {
+        this.userId = usr.userId;
 
-    this.isWaitingForApi = false;
-    this.isPublicDataEditing = false;
+        this._dataService.getUserAccount(this.userId).subscribe({
+          next: (user) => {
+            this.accountData = user;
+            this.accountData.birthDate = this.accountData.birthDate.split("T")[0]
+            this.isWaitingForApi = false;
 
-    this._dataService.getUserAccount().subscribe(
-      data => {
-
-        this._eventBus.emitEvent({
-          type: "userProfileData",
-          payload: {
-            Login: data.login,
-            Name: data.name,
-            Title: data.title,
-            Description: data.account.description,
-            FriendCount: data.friendCount,
-            PublicationCount: data.publicationCount,
+            this.controlDescription.setValue(this.accountData.description)
+            this.controlMail.setValue(this.accountData.mail)
+            this.controlTitle.setValue(this.accountData.title)
+            this.controlName.setValue(this.accountData.name)
+            this.controlBirthDate.setValue(this.accountData.birthDate)
+          },
+          error: (err) => {
+            console.log(err);
+            if (err.status === 404) {
+              this.userId = "-1"
+            }
           }
         })
-
-        this.data.Id = data.id;
-
-        this.data.Login = data.login;
-        this.data.Name = data.name;
-        this.data.Title = data.title;
-        this.data.Description = data.account.description;
-        this.data.BirthDate = data.account.birthDate.split("T")[0];
-
-        this.data.Mail = data.mail;
-        this.data.PhoneNumber = data.account.phoneNumber;
+      },
+      error: (err) => {
+        console.log(err)
+        this.userId = "-1"
       }
-    )
+    })
+
+
+
   }
 
   cancelCommonEdit() {
     this.isPublicDataEditing = false;
 
     this.controlMail.disable();
-    this.controlMail.setValue(this.data.Mail);
+    this.controlMail.setValue(this.accountData.mail);
 
     this.controlName.disable();
-    this.controlName.setValue(this.data.Name);
+    this.controlName.setValue(this.accountData.name);
 
     this.controlDescription.disable();
-    this.controlDescription.setValue(this.data.Description);
+    this.controlDescription.setValue(this.accountData.description);
 
     this.controlBirthDate.disable();
-    this.controlBirthDate.setValue(this.data.BirthDate);
+    this.controlBirthDate.setValue(this.accountData.birthDate);
 
     this.controlTitle.disable();
-    this.controlTitle.setValue(this.data.Title);
+    this.controlTitle.setValue(this.accountData.title);
   }
 
   editCommonEdit() {
     this.isPublicDataEditing = true;
 
-    this.controlMail.setValue(this.data.Mail);
+    this.controlMail.setValue(this.accountData.mail);
     this.controlMail.enable();
-    this.controlName.setValue(this.data.Name);
+    this.controlName.setValue(this.accountData.name);
     this.controlName.enable();
-    this.controlDescription.setValue(this.data.Description);
+    this.controlDescription.setValue(this.accountData.description);
     this.controlDescription.enable();
-    this.controlBirthDate.setValue(this.data.BirthDate);
+    this.controlBirthDate.setValue(this.accountData.birthDate);
     this.controlBirthDate.enable();
-    this.controlTitle.setValue(this.data.Title);
+    this.controlTitle.setValue(this.accountData.title);
     this.controlTitle.enable();
   }
 
@@ -120,7 +114,12 @@ export class AccountComponent implements OnInit {
 
     this._dataService.updateUserAccount(
       {
-        Birthdate: this.controlBirthDate.value, Description: this.controlDescription.value, Id: this.data.Id, Mail: this.controlMail.value, Name: this.controlName.value, Title: this.controlTitle.value
+        Birthdate: this.controlBirthDate.value,
+        Description: this.controlDescription.value,
+        Id: this.userId,
+        Mail: this.controlMail.value,
+        Name: this.controlName.value,
+        Title: this.controlTitle.value
       }
     ).subscribe({
       next: (res) => {
@@ -128,11 +127,11 @@ export class AccountComponent implements OnInit {
       },
       error: (err) => {
         console.log(err)
-        this.controlMail.setValue(this.data.Mail);
-        this.controlName.setValue(this.data.Name);
-        this.controlDescription.setValue(this.data.Description);
-        this.controlBirthDate.setValue(this.data.BirthDate);
-        this.controlTitle.setValue(this.data.Title);
+        this.controlMail.setValue(this.accountData.mail);
+        this.controlName.setValue(this.accountData.name);
+        this.controlDescription.setValue(this.accountData.description);
+        this.controlBirthDate.setValue(this.accountData.birthDate);
+        this.controlTitle.setValue(this.accountData.title);
       }
     })
   }
