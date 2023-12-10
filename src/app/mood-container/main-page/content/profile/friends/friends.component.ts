@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {EventBusService} from "../../../../../Services/event-bus.service";
 import {UserService} from "../../../../../Services/user.service";
+import {DtoInputUserFriend} from "../../../../../Dtos/Users/Inputs/dto-input-user-friend";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-friends',
@@ -8,37 +10,43 @@ import {UserService} from "../../../../../Services/user.service";
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit {
-  private _userLogin: string = "";
+  userId: string = "";
+  isWaitingForApi: boolean = true;
+
   isInputFocused: boolean = false;
   searchBarValue: any = "";
-  data: any;
 
-  constructor(private _userService: UserService, private _eventBus: EventBusService) {
+  userFriends: DtoInputUserFriend[] = [];
+  isConnectedUser: boolean = false;
+  isFriendPublic: boolean = false;
+
+  constructor(private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit(): void {
-    this._userService.getUserFriends().subscribe(
-      data => {
-        this._userLogin = data.login;
+    this.userId = this._router.url.split("home")[1].split("/")[1];
 
-        this._eventBus.emitEvent({
-          type: "userProfileData",
-          payload: {
-            Login: data.login,
-            Name: data.name,
-            Title: data.title,
-            Description: data.account.description,
-            FriendCount: data.friendCount,
-            PublicationCount: data.publicationCount,
-          }
-        })
+    this._userService.getUserFriends(this.userId).subscribe({
+      next: (user) => {
+        console.log(user);
 
-        this.data = data.friends;
+        this.userFriends = user.friends;
+        this.isConnectedUser = user.isConnectedUser;
+        this.isFriendPublic = user.isFriendPublic;
+
+        this.isWaitingForApi = false;
+      },
+      error: (err) => {
+        console.log(err);
+        if (err.status === 404) {
+          this.userId = "-1"
+          this.isWaitingForApi = false;
+        }
       }
-    )
+    })
   }
 
-  filterFriends(friends: any[], searchTerm: string): any[] {
+  filterFriends(friends: DtoInputUserFriend[], searchTerm: string): any[] {
     if (friends == undefined) return [];
 
     return friends.filter(friend =>
@@ -46,13 +54,17 @@ export class FriendsComponent implements OnInit {
     );
   }
 
-  emitRemoveFriend(friend: any) {
-    this._eventBus.emitEvent({
-      type: "userProfileRemoveFriend",
-      payload: {
-        userLogin: this._userLogin,
-        friendToDelete: friend
-      }
-    })
+  emitRemoveFriend(friend: DtoInputUserFriend) {
+
   }
+
+  emitAddFriend(friend: DtoInputUserFriend) {
+
+  }
+
+  viewFriendProfile(userId: string) {
+    this._router.navigate(['home/' + userId])
+  }
+
+
 }

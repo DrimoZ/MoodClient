@@ -54,6 +54,7 @@ export class AccountComponent implements OnInit {
             console.log(err);
             if (err.status === 404) {
               this.userId = "-1"
+              this.isWaitingForApi = false;
             }
           }
         })
@@ -61,6 +62,7 @@ export class AccountComponent implements OnInit {
       error: (err) => {
         console.log(err)
         this.userId = "-1"
+        this.isWaitingForApi = false;
       }
     })
 

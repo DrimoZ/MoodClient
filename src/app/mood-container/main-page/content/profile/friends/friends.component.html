@@ -1,29 +1,55 @@
 <section class="p-3 pt-4 user-select-none d-flex flex-column">
-  <div class="mb-2">
-    <div class="input-group searchBarBorder">
+  <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
+
+  <div *ngIf="!isWaitingForApi && userId != '-1' else errorPage">
+    <div *ngIf="isFriendPublic || isConnectedUser else privatePage">
+      <div class="mb-2">
+        <div class="input-group searchBarBorder">
       <span class="input-group-text searchBar" [ngClass]="{'d-none': isInputFocused}">
         <i class="fa-solid fa-magnifying-glass"></i>
       </span>
-      <input type="text" class="form-control searchBar" id="searchInput" placeholder="Search" i18n-placeholder
-           (focusin)="isInputFocused = true" (focusout)="isInputFocused = false"  [(ngModel)]="searchBarValue">
-      <span class="input-group-text searchBar" [ngClass]="{'d-none': !isInputFocused}" (mousedown)="searchBarValue = '';">
+          <input type="text" class="form-control searchBar" id="searchInput" placeholder="Search" i18n-placeholder
+                 (focusin)="isInputFocused = true" (focusout)="isInputFocused = false"  [(ngModel)]="searchBarValue">
+          <span class="input-group-text searchBar" [ngClass]="{'d-none': !isInputFocused}" (mousedown)="searchBarValue = '';">
         <i class="fa-solid fa-xmark"></i>
       </span>
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <div class="d-flex flex-row w-100 justify-content-between" *ngFor="let friend of filterFriends(data, searchBarValue)">
-    <div class="p-1">
-      <img src="assets/mood.png" class="rounded-circle img-cover border border-dark hover-pointer" style="width: 50px; height: 50px; background-color: #1BA098">
-    </div>
-    <div class="p-2 d-flex flex-row w-65 justify-content-between">
-      <div class="d-flex p-1 justify-content-start hover-pointer">
-        <span class="fs-5 fw-bold">{{friend.login}}</span>
+      <div class="d-flex flex-row w-100 justify-content-between" *ngFor="let friend of filterFriends(userFriends, searchBarValue)">
+        <div class="p-1"  (click)="viewFriendProfile(friend.id)">
+          <img src="assets/mood.png" class="rounded-circle img-cover border border-dark hover-pointer" style="width: 50px; height: 50px; background-color: #1BA098">
+        </div>
+        <div class="p-2 d-flex flex-row w-65 justify-content-between">
+          <div class="d-flex p-1 justify-content-start hover-pointer" (click)="viewFriendProfile(friend.id)">
+            <span class="fs-5 fw-bold">{{friend.login}}</span>
+          </div>
+          <div class="d-flex p-1 justify-content-start hover-pointer"  (click)="viewFriendProfile(friend.id)">
+            <span class="fst-italic">{{friend.name}}</span>
+          </div>
+          <div class="w-10">
+            <button *ngIf="friend.isFriendWithConnected" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(friend)" i18n>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <button *ngIf="!friend.isFriendWithConnected && friend.commonFriendCount != -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(friend)" i18n>
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="d-flex p-1 justify-content-start hover-pointer">
-        <span class="fst-italic">{{friend.name}}</span>
-      </div>
-      <button class="btn btn-outline-danger" (click)="emitRemoveFriend(friend)" i18n>Remove Friend</button>
     </div>
+    <ng-template #privatePage>
+      <div class="w-100 h-100 justify-content-center d-flex flex-column" *ngIf="!isWaitingForApi">
+        <span class="fs-2 txt-gold text-center" i18n>This account is private</span>
+        <span class="fs-4 txt-gold text-center" i18n>Become friends to see this account's friends</span>
+      </div>
+    </ng-template>
   </div>
+  <ng-template #errorPage>
+    <div class="w-100 h-100 justify-content-center d-flex flex-column" *ngIf="!isWaitingForApi">
+      <span class="fs-2 txt-gold text-center" i18n>This page is unfortunately not available.</span>
+      <span class="fs-4 txt-gold text-center" i18n>The link you followed may be broken, or the page has been deleted.</span>
+      <a class="fs-4 txt-turquoise text-center" routerLink="../newsfeed" i18n>Return to mood</a>
+    </div>
+  </ng-template>
 </section>

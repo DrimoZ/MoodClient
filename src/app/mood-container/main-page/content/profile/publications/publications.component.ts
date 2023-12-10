@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {EventBusService} from "../../../../../Services/event-bus.service";
 import {UserService} from "../../../../../Services/user.service";
+import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-publications',
@@ -8,29 +9,49 @@ import {UserService} from "../../../../../Services/user.service";
   styleUrls: ['./publications.component.css']
 })
 export class PublicationsComponent implements OnInit{
-  data: any;
+  publications: DtoInputPublication[] = [];
+  userId: string = "-1"
+  isWaitingForApi: boolean = true;
 
-  constructor(private _userService: UserService, private _eventBus: EventBusService) {
+  constructor(private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit(): void {
-    this._userService.getUserPublications().subscribe(
-      data => {
-        this._eventBus.emitEvent({
-          type: "userProfileData",
-          payload: {
-            Login: data.login,
-            Name: data.name,
-            Title: data.title,
-            Description: data.account.description,
-            FriendCount: data.friendCount,
-            PublicationCount: data.publicationCount,
-          }
-        })
+    this.userId = this._router.url.split("home")[1].split("/")[1];
 
-        this.data = data.publications;
+    this._userService.getUserPublications(this.userId).subscribe({
+      next: user => {
+        this.publications = user.publications;
+
+        this.isWaitingForApi = false;
+      },
+      error: (err) => {
+        console.log(err);
+        if (err.status === 404) {
+          this.userId = "-1"
+          this.isWaitingForApi = false;
+        }
       }
-    )
+    })
   }
 
+  prev(id: number): void {
+    const carousel = document.querySelector(`#pub_${id}`)!;
+    const activeItem = carousel.querySelector('.carousel-item.active')!;
+    const prevItem = activeItem.previousElementSibling || carousel.querySelector('.carousel-item:last-child')!;
+    activeItem.classList.remove('active');
+    prevItem.classList.add('active');
+  }
+
+  next(id: number): void {
+    const carousel = document.querySelector(`#pub_${id}`)!;
+    const activeItem = carousel.querySelector('.carousel-item.active')!;
+    const nextItem = activeItem.nextElementSibling || carousel.querySelector('.carousel-item:first-child')!;
+    activeItem.classList.remove('active');
+    nextItem.classList.add('active');
+  }
+
+  getDetailedPublication(id: number) {
+
+  }
 }
