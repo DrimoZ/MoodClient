@@ -2,7 +2,7 @@
   <div class="d-flex flex-row justify-content-between h-100">
 <!--Main button + logo-->
     <div class="ps-3 justify-content-start align-items-center d-flex w-10 hover-pointer"
-         routerLink="./newsfeed" style="min-width: 150px;" (click)="onDivClick('newsfeed')">
+         routerLink="./newsfeed" style="min-width: 150px;" (click)="onDivClick()">
       <img src="./assets/Logo.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon" width="35" height="35"/>
       <span class="fs-2 fw-bold txt-turquoise">Mood</span>
     </div>
@@ -10,19 +10,19 @@
     <div class="d-flex flex-row justify-content-center align-items-center align-middle d-none d-sm-flex w-80 g-0">
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
            routerLink="./newsfeed" routerLinkActive="active"
-           [class.hhover-darker]="clickedDiv !== 'newsfeed'" [class.selected-darker]="clickedDiv == 'newsfeed'" (click)="onDivClick('newsfeed')">
+           [class.hhover-darker]="clickedDiv !== 'newsfeed'" [class.selected-darker]="clickedDiv == 'newsfeed'" (click)="onDivClick()">
         <i class="fa-solid fa-house fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
            routerLink="./discover/all" routerLinkActive="active"
-           [class.hhover-darker]="clickedDiv !== 'discover'" [class.selected-darker]="clickedDiv == 'discover'" (click)="onDivClick('discover')">
+           [class.hhover-darker]="clickedDiv !== 'discover'" [class.selected-darker]="clickedDiv == 'discover'" (click)="onDivClick()">
         <i class="fa-solid fa-magnifying-glass fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
            routerLink="./messages" routerLinkActive="active"
-           [class.hhover-darker]="clickedDiv !== 'messages'" [class.selected-darker]="clickedDiv == 'messages'" (click)="onDivClick('messages')">
+           [class.hhover-darker]="clickedDiv !== 'messages'" [class.selected-darker]="clickedDiv == 'messages'" (click)="onDivClick()">
         <i class="fa-solid fa-message fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
@@ -39,7 +39,7 @@
         <i  class="fa-solid fa-bars fa-lg"></i>
       </button>
       <button type="button" class="btn btn-floating mx-1 txt-turquoise"
-              routerLink="./me" routerLinkActive="active"  (click)="onDivClick('profile')">
+              routerLink="./me" routerLinkActive="active"  (click)="onDivClick()">
         <i class="fa-solid fa-user fa-lg"></i>
         <!--  <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon"/>-->
       </button>
@@ -49,22 +49,22 @@
 
 <div #divRef class="rounded-1 position-absolute p-2 blurred-back d-flex flex-column user-select-none w-240 h-203 h-sm-430"
      [ngClass]="{'d-none': !isOptionsVisible}" >
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
        routerLink="./newsfeed" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-house fa-lg "></i>
     <span class="" i18n>News Feed</span>
   </div>
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
        routerLink="./discover" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-magnifying-glass fa-lg "></i>
     <span class="" i18n>Discover</span>
   </div>
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
        routerLink="./messages" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-message fa-lg "></i>
     <span class="" i18n>Messages</span>
   </div>
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center d-sm-none justify-content-between"
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
        routerLink="./notifications" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-bell fa-lg "></i>
     <span class="" i18n>Notifications</span>
@@ -73,21 +73,21 @@
 
   <div class="mx-1 my-2 d-sm-none" style="border: hsla(0, 0%, 100%, 0.15) solid 1px; "></div>
 
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between">
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between">
     <i class="fa-solid fa-moon fa-lg "></i>
     <!--<i class="fa-solid fa-sun fa-lg"></i> SWAP WHEN THEME CHANGED-->
     <span class="" i18n>Change Appearance</span>
   </div>
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between"
-       routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('parameters')">
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between"
+       routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick()">
     <i class="fa-solid fa-gear fa-lg"></i>
     <span class="" i18n>Parameters</span>
   </div>
 
   <div class="mx-1 my-2" style="border: hsla(0, 0%, 100%, 0.15) solid 1px; "></div>
 
-  <div class="p-3 txt-turquoise rounded hover-darker-2 position-relative d-flex align-items-center justify-content-between"
-       (click)="disconnectUser(); onDivClick('newsfeed')">
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between"
+       (click)="disconnectUser(); onDivClick()">
     <i class="fa-solid fa-right-to-bracket fa-lg"></i>
     <span class="" i18n>Disconnect</span>
   </div>

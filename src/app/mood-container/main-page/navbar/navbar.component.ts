@@ -8,13 +8,14 @@ import {EventBusService} from "../../../Services/event-bus.service";
   styleUrls: ['./navbar.component.css', '../main-page.component.css']
 })
 export class NavbarComponent {
-  clickedDiv: string = 'newsfeed';
+  clickedDiv: string = this._router.url.split("home")[1].split("/")[1];
   public isOptionsVisible: boolean = false
 
   @ViewChild('buttonRef') buttonRef!: ElementRef;
   @ViewChild('divRef') divRef!: ElementRef;
 
-  constructor(private renderer: Renderer2, private _eventBus: EventBusService) { }
+  constructor(private renderer: Renderer2, private _eventBus: EventBusService, private _router: Router) {
+  }
 
   ngAfterViewInit() {
     const buttonPosition = this.buttonRef.nativeElement.getBoundingClientRect();
@@ -32,8 +33,8 @@ export class NavbarComponent {
     }
   }
 
-  onDivClick(div: string) {
-    this.clickedDiv = div;
+  onDivClick() {
+    this.clickedDiv = this._router.url.split("home")[1].split("/")[1];
   }
 
   disconnectUser() {
