@@ -5,7 +5,7 @@ import {PublicationsComponent} from "./publications/publications.component";
 import {ProfileRoutingModule} from "./profile-routing.module";
 import { FriendsComponent } from './friends/friends.component';
 import { AccountComponent } from './account/account.component';
-import {NgClass, NgForOf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 @NgModule({
@@ -23,6 +23,7 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     ReactiveFormsModule,
     RouterLink,
     RouterLinkActive,
+    NgIf,
   ],
   providers: [],
 })
