@@ -1,20 +1,22 @@
-import {Component, ElementRef, HostListener, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {EventBusService} from "../../../Services/event-bus.service";
+import {UserService} from "../../../Services/user.service";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css', '../main-page.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   clickedDiv: string = this._router.url.split("home")[1].split("/")[1];
-  public isOptionsVisible: boolean = false
+  isOptionsVisible: boolean = false
+  connectedId: string = ""
 
   @ViewChild('buttonRef') buttonRef!: ElementRef;
   @ViewChild('divRef') divRef!: ElementRef;
 
-  constructor(private renderer: Renderer2, private _eventBus: EventBusService, private _router: Router) {
+  constructor(private renderer: Renderer2, private _eventBus: EventBusService, private _router: Router, private _userService: UserService) {
   }
 
   ngAfterViewInit() {
@@ -33,13 +35,24 @@ export class NavbarComponent {
     }
   }
 
-  onDivClick() {
-    this.clickedDiv = this._router.url.split("home")[1].split("/")[1];
+  onDivClick(divName: string) {
+    this.clickedDiv = divName
   }
 
   disconnectUser() {
     this.isOptionsVisible = false;
 
     this._eventBus.emitEvent({type: 'userLogOut', payload: {}})
+  }
+
+  ngOnInit(): void {
+    this._userService.getUserIdAndRole().subscribe({
+      next: res => {
+        this.connectedId = res.userId;
+      },
+      error: err => {
+        this._router.navigate(['connectionRefused'])
+      }
+    })
   }
 }
