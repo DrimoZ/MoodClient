@@ -10,8 +10,8 @@ import {UserService} from "../../../../Services/user.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userLogin: string = "";
-  hasLoadedData: boolean = false;
+  userId: string = "-1";
+  isWaitingForApi: boolean = true;
   isConnectedUser: boolean = false;
 
   profileData: DtoInputUserProfile = {
@@ -23,33 +23,24 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this._activatedRoute.params.subscribe(params => {
-      this.userLogin = params['id'];
+      this.userId = params['id'];
 
-      this._userService.getUserProfile(this.userLogin).subscribe({
+      this._userService.getUserProfile(this.userId).subscribe({
         next: (user) => {
           this.profileData = user;
           this.isConnectedUser = user.isConnectedUser;
-          this.hasLoadedData = true;
+          this.isWaitingForApi = false;
         },
         error: (err) => {
-          console.log(err);
-          if (err.status === 404) {
-            this.userLogin = ""
-          }
+          this.isWaitingForApi = false
+          this.userId = "-1"
         }
       });
+
+      this._eventBus.emitEvent({
+        type: "userId",
+        payload: this.userId
+      })
     });
-
-    /*this._eventBus.onEvent().subscribe(event => {
-      if (event.type === "userProfileData") {
-
-        this.profileData.Login = event.payload.Login
-        this.profileData.Name = event.payload.Name
-        this.profileData.Title = event.payload.Title
-        this.profileData.FriendCount = event.payload.FriendCount
-        this.profileData.PublicationCount = event.payload.PublicationCount
-        this.profileData.Description = event.payload.Description
-      }
-    })*/
   }
 }

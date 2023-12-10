@@ -1,5 +1,7 @@
 <section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect user-select-none overflow-y-scroll">
-  <div  *ngIf="hasLoadedData else errorPage"
+  <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
+
+  <div  *ngIf="(!isWaitingForApi && userId != '-1') else errorPage"
         class="p-4 w-100 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
     <div class="d-flex flex-row pb-2 h-34">
       <div class="d-flex justify-content-center p-2 pe-4 pb-4 h-100">
@@ -62,7 +64,7 @@
   </div>
 
   <ng-template #errorPage>
-    <div class="w-100 h-100 justify-content-center d-flex flex-column">
+    <div class="w-100 h-100 justify-content-center d-flex flex-column" *ngIf="!isWaitingForApi">
       <span class="fs-2 txt-gold text-center" i18n>This page is unfortunately not available.</span>
       <span class="fs-4 txt-gold text-center" i18n>The link you followed may be broken, or the page has been deleted.</span>
       <a class="fs-4 txt-turquoise text-center" routerLink="../newsfeed" i18n>Return to mood</a>
