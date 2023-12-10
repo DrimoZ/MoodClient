@@ -12,23 +12,31 @@ export class UserService {
   private static _URL_API: string = environment.BASE_URL_API + "/api/v1/user"
   constructor(private _httpClient: HttpClient) { }
 
-  getUserAccount(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/profile/account");
+  getUserIdAndRole(): Observable<any> {
+    return this._httpClient.get(UserService._URL_API);
   }
 
-  getUserFriends(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/profile/friends");
+  getUserProfile(userLogin: string): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/" + userLogin);
   }
 
-  getUserPublications(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/profile/publications");
+  getUserAccount(userLogin: string): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/" + userLogin + "/account");
+  }
+
+  getUserFriends(userLogin: string): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/" + userLogin + "/friends");
+  }
+
+  getUserPublications(userLogin: string): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/" + userLogin + "/publications");
   }
 
   updateUserAccount(dto: DtoOutputUserUpdateAccount): Observable<any> {
     return this._httpClient.put(UserService._URL_API + "/profile/account", dto);
   }
 
-  
+
   getUsers(): Observable<any> {
     return this._httpClient.get(UserService._URL_API + "/getUsers");
   }

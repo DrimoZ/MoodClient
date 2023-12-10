@@ -1,13 +1,14 @@
 <section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect user-select-none overflow-y-scroll">
-  <div class="p-4 w-100 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
-    <div class="d-flex flex-row pb-2 h-34 ">
+  <div  *ngIf="hasLoadedData else errorPage"
+        class="p-4 w-100 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
+    <div class="d-flex flex-row pb-2 h-34">
       <div class="d-flex justify-content-center p-2 pe-4 pb-4 h-100">
         <img src="assets/mood.png" class="rounded-circle img-cover border border-dark" style="width: 200px; height: 200px; background-color: #1BA098">
       </div>
       <div class="w-100  d-flex flex-column p-2 gap-2">
         <div class="d-flex flex-row justify-content-between p-3 ">
           <div class="justify-content-start d-flex w-100">
-            <span class="fs-3">{{profileData.Login}}</span>
+            <span class="fs-3">{{profileData.login}}</span>
           </div>
           <div class="justify-content-start d-flex w-100">
 <!--            <button class="btn btn-gold btn-sm" i18n>Edit Profile</button>-->
@@ -17,11 +18,11 @@
         <div class="d-flex flex-row justify-content-between p-2">
           <div class="justify-content-start d-flex w-100 gap-2">
             <span class="" i18n>Publications : </span>
-            <span class="">{{profileData.PublicationCount}}</span>
+            <span class="">{{profileData.publicationCount}}</span>
           </div>
           <div class="justify-content-start d-flex w-100 gap-2">
             <span class="" i18n>Friends : </span>
-            <span class="">{{profileData.FriendCount}}</span>
+            <span class="">{{profileData.friendCount}}</span>
           </div>
           <div class="justify-content-start d-flex w-100">
           </div>
@@ -29,10 +30,10 @@
 
         <div class="d-flex flex-column justify-content-between p-2 h-100 gap-1">
           <div class="d-flex w-100 gap-2 h-34 p-1 justify-content-start">
-            <span class="fs-5 fw-bold">{{profileData.Name}}</span>
+            <span class="fs-5 fw-bold">{{profileData.name}}</span>
           </div>
           <div class="d-flex w-100 gap-2 h-66 p-1 justify-content-start">
-            <span class="fst-italic">{{profileData.Description}}</span>
+            <span class="fst-italic">{{profileData.description}}</span>
           </div>
         </div>
 
@@ -43,14 +44,14 @@
     <div class="border-top-gold d-flex flex-column h-66">
       <div class="d-flex justify-content-center">
         <div class="d-flex justify-content-center w-80 flex-row">
-          <div class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker" routerLink="./account" routerLinkActive="active">
-            <span i18n>Account</span>
-          </div>
           <div class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker" routerLink="./shared" routerLinkActive="active">
             <span i18n>Publications</span>
           </div>
           <div class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker" routerLink="./friends" routerLinkActive="active">
             <span i18n>Friends</span>
+          </div>
+          <div *ngIf="isConnectedUser" class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker" routerLink="./account" routerLinkActive="active">
+            <span i18n>Account</span>
           </div>
         </div>
       </div>
@@ -59,5 +60,14 @@
       </div>
     </div>
   </div>
+
+  <ng-template #errorPage>
+    <div class="w-100 h-100 justify-content-center d-flex flex-column">
+      <span class="fs-2 txt-gold text-center" i18n>This page is unfortunately not available.</span>
+      <span class="fs-4 txt-gold text-center" i18n>The link you followed may be broken, or the page has been deleted.</span>
+      <a class="fs-4 txt-turquoise text-center" routerLink="../newsfeed" i18n>Return to mood</a>
+    </div>
+  </ng-template>
+
 </section>
 
