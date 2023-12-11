@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {EventBusService} from "../../Services/event-bus.service";
+import {EventBusService} from "../../Services/EventBus/event-bus.service";
 
 @Component({
   selector: 'app-login-page',
@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit{
 
   ngOnInit(): void {
     this._eventBus.onEvent().subscribe(event => {
-      if (event.type === "userFailedSignIn") {
+      if (event.Type === "UserFailedSignIn") {
         this.controlPassword.setValue("");
         this.showError = true;
       }
@@ -42,8 +42,8 @@ export class LoginPageComponent implements OnInit{
     this.showError = false;
 
     this._eventBus.emitEvent({
-      type: 'userSignIn',
-      payload: {
+      Type: 'UserSignIn',
+      Payload: {
         Login: this.controlLogin.value,
         Password: this.controlPassword.value,
         StayLoggedIn: this.controlStayLoggedIn.value

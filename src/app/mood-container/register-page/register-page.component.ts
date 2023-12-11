@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {EventBusService} from "../../Services/event-bus.service";
+import {EventBusService} from "../../Services/EventBus/event-bus.service";
 
 @Component({
   selector: 'app-register-page',
@@ -28,7 +28,7 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit(): void {
     this._eventBus.onEvent().subscribe(event => {
-      if (event.type === "userFailedSignUp") {
+      if (event.Type === "UserFailedSignUp") {
         this.controlPassword.setValue("");
         this.controlPasswordConfirmation.setValue("");
         this.showError = true;
@@ -59,8 +59,8 @@ export class RegisterPageComponent implements OnInit {
     this.showError = false;
 
     this._eventBus.emitEvent({
-      type: 'userSignUp',
-      payload: {
+      Type: 'UserSignUp',
+      Payload: {
         Name: this.controlName.value,
         Login: this.controlLogin.value,
         Mail: this.controlMail.value,

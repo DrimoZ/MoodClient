@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {EventBusService} from "../../../../../Services/event-bus.service";
+import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 import {DtoInputUserAccount} from "../../../../../Dtos/Users/Inputs/dto-input-user-account";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../../../Services/user.service";
 import {ActivatedRoute} from "@angular/router";
+import {UserService} from "../../../../../Services/ApiRequest/user.service";
 
 @Component({
   selector: 'app-account',

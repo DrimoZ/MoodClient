@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {EventBusService} from "../Services/event-bus.service";
+import {EventBusService} from "../Services/EventBus/event-bus.service";
 import {DtoOutputUserSignin} from "../Dtos/Users/Outputs/dto-output-user-signin";
-import {AuthenticationService} from "../Services/authentication.service";
 import {DtoOutputUserSignup} from "../Dtos/Users/Outputs/dto-output-user-signup";
+import {AuthenticationService} from "../Services/ApiRequest/authentication.service";
 
 @Component({
   selector: 'app-mood-container',
@@ -15,15 +15,15 @@ export class MoodContainerComponent implements OnInit {
 
   ngOnInit() {
     this._eventBus.onEvent().subscribe(event => {
-      switch (event.type) {
-        case 'userSignIn':
-          this.signInUser(event.payload);
+      switch (event.Type) {
+        case 'UserSignIn':
+          this.signInUser(event.Payload);
           break;
-        case 'userSignUp':
-          console.log(event.payload);
-          this.signUpUser(event.payload);
+        case 'UserSignUp':
+          console.log(event.Payload);
+          this.signUpUser(event.Payload);
           break;
-        case 'userLogOut':
+        case 'UserLogOut':
           this.logOutUser();
           break;
       }
@@ -37,7 +37,8 @@ export class MoodContainerComponent implements OnInit {
       },
       error: (err) => {
         this._eventBus.emitEvent({
-          type: 'userFailedSignIn'
+          Type: 'UserFailedSignIn',
+          Payload: ''
         })
       }
     });
@@ -50,7 +51,8 @@ export class MoodContainerComponent implements OnInit {
       },
       error: (err) => {
         this._eventBus.emitEvent({
-          type: 'userFailedSignUp'
+          Type: 'UserFailedSignUp',
+          Payload: ''
         })
       }
     });

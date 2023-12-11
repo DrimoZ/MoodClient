@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {catchError, NEVER, Observable, throwError} from "rxjs";
-import {DtoOutputUserSignin} from "../Dtos/Users/Outputs/dto-output-user-signin";
-import {DtoOutputUserSignup} from "../Dtos/Users/Outputs/dto-output-user-signup";
+import {DtoOutputUserSignin} from "../../Dtos/Users/Outputs/dto-output-user-signin";
+import {DtoOutputUserSignup} from "../../Dtos/Users/Outputs/dto-output-user-signup";
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../../../../Services/user.service";
 import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
 import {Router} from "@angular/router";
+import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
+import {UserService} from "../../../../../Services/ApiRequest/user.service";
 
 @Component({
   selector: 'app-publications',
@@ -15,29 +16,37 @@ export class PublicationsComponent implements OnInit{
   isConnectedUser: boolean = false;
   isPublicationsPublic: boolean = false;
 
-  constructor(private _userService: UserService, private _router: Router) {
+  constructor(private _userService: UserService, private _router: Router, private _behaviorEventBus: BehaviorEventBusService) {
   }
 
   ngOnInit(): void {
-    this.userId = this._router.url.split("home")[1].split("/")[1];
+    this._behaviorEventBus.onEvent().subscribe(event => {
+      if (event.Type === "UserId") {
+        this.userId = event.Payload
 
-    this._userService.getUserPublications(this.userId).subscribe({
-      next: user => {
-        this.publications = user.publications;
+        this._userService.getUserPublications(this.userId).subscribe({
+          next: user => {
+            this.publications = user.publications;
 
-        this.isConnectedUser = user.isConnectedUser;
-        this.isPublicationsPublic = user.isPublicationsPublic;
+            this.isConnectedUser = user.isConnectedUser;
+            this.isPublicationsPublic = user.isPublicationsPublic;
 
-        this.isWaitingForApi = false;
-      },
-      error: (err) => {
-        console.log(err);
-        if (err.status === 404) {
-          this.userId = "-1"
-          this.isWaitingForApi = false;
-        }
+            this.isWaitingForApi = false;
+          },
+          error: (err) => {
+            console.log(err);
+            if (err.status === 404) {
+              this.userId = "-1"
+              this.isWaitingForApi = false;
+            }
+          }
+        })
       }
     })
+
+    this.userId = this._router.url.split("home")[1].split("/")[1];
+
+
   }
 
   prev(id: number): void {

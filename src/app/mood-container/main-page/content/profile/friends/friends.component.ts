@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {EventBusService} from "../../../../../Services/event-bus.service";
-import {UserService} from "../../../../../Services/user.service";
 import {DtoInputUserFriend} from "../../../../../Dtos/Users/Inputs/dto-input-user-friend";
 import {Router} from "@angular/router";
+import {UserService} from "../../../../../Services/ApiRequest/user.service";
 
 @Component({
   selector: 'app-friends',

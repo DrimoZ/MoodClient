@@ -1,7 +1,7 @@
 import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
-import {EventBusService} from "../../../Services/event-bus.service";
-import {UserService} from "../../../Services/user.service";
+import {EventBusService} from "../../../Services/EventBus/event-bus.service";
+import {UserService} from "../../../Services/ApiRequest/user.service";
 
 @Component({
   selector: 'app-navbar',
@@ -42,7 +42,10 @@ export class NavbarComponent implements OnInit{
   disconnectUser() {
     this.isOptionsVisible = false;
 
-    this._eventBus.emitEvent({type: 'userLogOut', payload: {}})
+    this._eventBus.emitEvent({
+      Type: 'UserLogOut',
+      Payload: ''
+    })
   }
 
   ngOnInit(): void {

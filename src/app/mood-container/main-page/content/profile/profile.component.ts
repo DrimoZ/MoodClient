@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DtoInputUserProfile} from "../../../../Dtos/Users/Inputs/dto-input-user-profile";
-import {EventBusService} from "../../../../Services/event-bus.service";
 import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../../../Services/user.service";
+import {BehaviorEventBusService} from "../../../../Services/EventBus/behavior-event-bus.service";
+import {UserService} from "../../../../Services/ApiRequest/user.service";
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
     description: "", friendCount: 0, login: "", name: "", publicationCount: 0, title: ""
   };
 
-  constructor(private _eventBus: EventBusService, private _userService: UserService, private _activatedRoute: ActivatedRoute) {
+  constructor(private _behaviorEventBus: BehaviorEventBusService, private _userService: UserService, private _activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -37,9 +37,9 @@ export class ProfileComponent implements OnInit {
         }
       });
 
-      this._eventBus.emitEvent({
-        type: "userId",
-        payload: this.userId
+      this._behaviorEventBus.emitEvent({
+        Type: "UserId",
+        Payload: this.userId
       })
     });
   }

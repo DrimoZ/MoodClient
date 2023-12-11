@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {EventBusService} from "../../../../../Services/event-bus.service";
-import {UserService} from "../../../../../Services/user.service";
+import {UserService} from "../../../../../Services/ApiRequest/user.service";
 
 @Component({
   selector: 'app-profile-search',
@@ -11,28 +10,18 @@ export class ProfileComponent implements OnInit{
   searchBarValue: any = "";
   data: any;
 
-  constructor(private _dataService: UserService, private _eventBus: EventBusService) {
+  constructor(private _dataService: UserService) {
   }
   filterUsers(users: any[], searchTerm: string): any[] {
     return users;
   }
 
   emitAddFriend(friend: any) {
-    this._eventBus.emitEvent({
-      type: "userProfileAddFriend",
-      payload: {
-        friendToAdd: friend
-      }
-    })
+
   }
 
   emitRemoveFriend(friend: any) {
-    this._eventBus.emitEvent({
-      type: "userProfileRemoveFriend",
-      payload: {
-        friendToDelete: friend
-      }
-    })
+
   }
 
   ngOnInit(): void {
