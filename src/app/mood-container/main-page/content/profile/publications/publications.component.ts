@@ -12,6 +12,8 @@ export class PublicationsComponent implements OnInit{
   publications: DtoInputPublication[] = [];
   userId: string = "-1"
   isWaitingForApi: boolean = true;
+  isConnectedUser: boolean = false;
+  isPublicationsPublic: boolean = false;
 
   constructor(private _userService: UserService, private _router: Router) {
   }
@@ -22,6 +24,9 @@ export class PublicationsComponent implements OnInit{
     this._userService.getUserPublications(this.userId).subscribe({
       next: user => {
         this.publications = user.publications;
+
+        this.isConnectedUser = user.isConnectedUser;
+        this.isPublicationsPublic = user.isPublicationsPublic;
 
         this.isWaitingForApi = false;
       },

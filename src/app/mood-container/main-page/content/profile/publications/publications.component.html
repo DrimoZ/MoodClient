@@ -1,25 +1,41 @@
 <section class="p-5 user-select-none" *ngIf="publications.length > 0">
-  <div class="publication-grid">
-    <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
-      <div class="content-div">
-        <div *ngIf="publication.elements.length == 0; else elseBlock" class="h-100 w-100">
-          <div class="pub_txt">
-            {{publication.content}}
+  <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
+
+  <div *ngIf="!isWaitingForApi && userId != '-1' else errorPage">
+    <div *ngIf="isPublicationsPublic || isConnectedUser else privatePage">
+      <div class="publication-grid">
+        <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
+          <div class="content-div">
+            <div class="h-100 w-100">
+              <img src="assets/Logo.png" alt="img_{{publication.elements[0].id}}" class="pub_img"/>
+            </div>
           </div>
-        </div>
-        <ng-template #elseBlock>
-          <img src="assets/Logo.png" alt="img_{{publication.elements[0].id}}" class="pub_img"/>
-        </ng-template>
-      </div>
-      <div class="stat-div flex-row justify-content-center">
-        <div class="text-center w-30 text-white" style="padding-top: 50%">
-          <i class="fa-solid fa-heart"></i> {{publication.likeCount}}
-        </div>
-        <div class="text-center w-30 text-white" style="padding-top: 50%">
-          <i class="fa-solid fa-comments"></i> {{publication.commentCount}}
+          <div class="stat-div flex-row justify-content-center">
+            <div class="text-center w-30 text-white" style="padding-top: 50%">
+              <i class="fa-solid fa-heart"></i> {{publication.likeCount}}
+            </div>
+            <div class="text-center w-30 text-white" style="padding-top: 50%">
+              <i class="fa-solid fa-comments"></i> {{publication.commentCount}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>
+    <ng-template #privatePage>
+      <div class="w-100 h-100 justify-content-center d-flex flex-column" *ngIf="!isWaitingForApi">
+        <span class="fs-4 txt-gold text-center" i18n>This account is private.</span>
+        <span class="fs-6 txt-gold text-center" i18n>Become friends to see this account's friends.</span>
+      </div>
+    </ng-template>
+
+  <ng-template #errorPage>
+    <div class="w-100 h-100 justify-content-center d-flex flex-column" *ngIf="!isWaitingForApi">
+      <span class="fs-2 txt-gold text-center" i18n>This page is unfortunately not available.</span>
+      <span class="fs-4 txt-gold text-center" i18n>The link you followed may be broken, or the page has been deleted.</span>
+      <a class="fs-4 txt-turquoise text-center" routerLink="../newsfeed" i18n>Return to mood</a>
+    </div>
+  </ng-template>
+
 </section>
 
