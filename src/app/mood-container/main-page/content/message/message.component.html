@@ -1,11 +1,46 @@
 <header></header>
 <section class=" d-flex flex-row hvh-93 justify-content-between blur-effect">
   <div class="w-50 h-100 border txt-gold">
-    <p>Différentes discussions</p>
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi pe-none me-2" width="40" height="32"></svg>
+        <span class="fs-4">Conversations</span>
+      </a>
+      <hr>
+      <ul *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)" class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link active" aria-current="page">
+            <svg class="bi pe-none me-2" width="16" height="16"></svg>
+            Groupe n°1
+          </a>
+        </li>
+      </ul>
+      <hr>
+    </div>
   </div>
   <div class="w-100 h-100 border txt-gold">
     <p>Page de communication</p>
+    <div class="grid-container" style="border: 1px solid black; padding: 1%;">
+      <div id="conversation" class="grid-item scrowl">
+        <input type="text" id="lastId" value="0" style="display: none;">
+        <input type="text"  id="idRecepteur" style="display: none;" value="2">
+        <input type="text"  id="recepteur" style="display: none;" value="Monsieur X">
+        <input type="text"  id="idEmetteur" style="display: none;" value="1">
+        <input type="text"  id="emetteur" style="display: none;" value="Clément">
+        <p class="message right" id="3">Message de test 1</p>
+        <p class="message left" id="3">Message de test 2</p>
+        <p class="message right" id="3">Message de test 3</p>
+        <p class="message left" id="3">Message de test 4</p>
 
+      </div>
+      <div class="grid-item">
+        <div id="sender" style="display: flex; flex-wrap: nowrap;padding-top: 1%;" >
+          <input type="text" id="message" style="width: 100%;" placeholder="Message..." value="">
+          <button class="btn btn-primary btn-messenger" onclick="sendMessage(readData)">Envoyer</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
