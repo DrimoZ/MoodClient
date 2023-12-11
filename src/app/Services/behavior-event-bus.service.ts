@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class EventBusService {
-  private eventBus = new Subject<any>(); //Behavior Subject
+export class BehaviorEventBusService {
+  private eventBus = new BehaviorSubject<any>(undefined);
+
+  constructor() { }
 
   emitEvent(event: any) {
     this.eventBus.next(event);
@@ -14,4 +16,5 @@ export class EventBusService {
   onEvent() {
     return this.eventBus.asObservable();
   }
+
 }
