@@ -27,3 +27,17 @@
   box-shadow: none;
   margin-right: 10px;
 }
+
+.showMoreBtn {
+  color:#deb992;
+  background-color: transparent;
+  border: #deb992 solid 1px;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.showMoreBtn:hover {
+  color: #020A28;
+  background-color: #deb992;
+  border: transparent solid 1px;
+}
