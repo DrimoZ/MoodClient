@@ -1,4 +1,4 @@
-export interface DtoInputUserFriend {
+export interface DtoInputOtherUser {
   commonFriendCount: number;
   id: string
   isFriendWithConnected: boolean;

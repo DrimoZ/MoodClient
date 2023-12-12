@@ -6,7 +6,7 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </span>
         <input type="text" class="form-control searchBar" id="searchInput" placeholder="Search" i18n-placeholder
-               (focusin)="isInputFocused = true" (focusout)="isInputFocused = false"  [(ngModel)]="searchBarValue">
+               (focusin)="isInputFocused = true" (focusout)="isInputFocused = false"  [(ngModel)]="searchBarValue" (input)="emitSearchChange()">
         <span class="input-group-text searchBar" [ngClass]="{'d-none': !isInputFocused}" (mousedown)="searchBarValue = '';">
             <i class="fa-solid fa-xmark"></i>
           </span>

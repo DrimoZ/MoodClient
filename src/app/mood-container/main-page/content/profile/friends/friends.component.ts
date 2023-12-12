@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DtoInputUserFriend} from "../../../../../Dtos/Users/Inputs/dto-input-user-friend";
+import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {Router} from "@angular/router";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 
@@ -15,7 +15,7 @@ export class FriendsComponent implements OnInit {
   isInputFocused: boolean = false;
   searchBarValue: any = "";
 
-  userFriends: DtoInputUserFriend[] = [];
+  userFriends: DtoInputOtherUser[] = [];
   isConnectedUser: boolean = false;
   isFriendPublic: boolean = false;
 
@@ -45,7 +45,7 @@ export class FriendsComponent implements OnInit {
     })
   }
 
-  filterFriends(friends: DtoInputUserFriend[], searchTerm: string): any[] {
+  filterFriends(friends: DtoInputOtherUser[], searchTerm: string): any[] {
     if (friends == undefined) return [];
 
     return friends.filter(friend =>
@@ -53,11 +53,11 @@ export class FriendsComponent implements OnInit {
     );
   }
 
-  emitRemoveFriend(friend: DtoInputUserFriend) {
+  emitRemoveFriend(friend: DtoInputOtherUser) {
 
   }
 
-  emitAddFriend(friend: DtoInputUserFriend) {
+  emitAddFriend(friend: DtoInputOtherUser) {
 
   }
 
