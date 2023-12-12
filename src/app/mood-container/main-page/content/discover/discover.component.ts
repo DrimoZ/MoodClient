@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-discover',
@@ -7,17 +8,18 @@ import { Component } from '@angular/core';
 })
 export class DiscoverComponent {
   isInputFocused: boolean = false;
-  selectedFilter: string = 'all';
+  selectedFilter: string = this._router.url.split("discover/")[1];
+  searchBarValue: string = "";
+
+  constructor(private _router: Router, private _activatedRoute: ActivatedRoute) {
+    _activatedRoute.url.subscribe(p => console.log(p));
+    console.log(_router);
+
+  }
 
   selectFilter(filter: string): void {
     this.selectedFilter = filter;
   }
 
-  onInputFocus() {
-    this.isInputFocused = true;
-  }
 
-  onInputBlur() {
-    this.isInputFocused = false;
-  }
 }

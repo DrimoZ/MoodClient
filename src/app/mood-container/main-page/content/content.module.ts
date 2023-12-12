@@ -10,6 +10,7 @@ import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -27,7 +28,8 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    NgIf
+    NgIf,
+    FormsModule
   ],
   providers: [],
 })

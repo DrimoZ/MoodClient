@@ -5,7 +5,6 @@ import { ProfileComponent } from './profile/profile.component';
 import {AsyncPipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import { AllComponent } from './all/all.component';
 import { PublicationComponent } from './publication/publication.component';
-import { TagComponent } from './tag/tag.component';
 import {DiscoverRoutingModule} from "./discover-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
@@ -15,7 +14,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AllComponent,
     PublicationComponent,
     ProfileComponent,
-    TagComponent
   ],
   imports: [
     NgbModule,
