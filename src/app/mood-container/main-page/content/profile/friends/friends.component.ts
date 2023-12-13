@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {Router} from "@angular/router";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
+import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 
 @Component({
   selector: 'app-friends',
