@@ -1,7 +1,7 @@
 export interface DtoInputOtherUser {
   commonFriendCount: number;
   id: string
-  isFriendWithConnected: boolean;
+  isFriendWithConnected: number;
   login: string;
   name: string;
 }

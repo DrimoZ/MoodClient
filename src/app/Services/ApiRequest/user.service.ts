@@ -3,6 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {DtoOutputUserUpdateAccount} from "../../Dtos/Users/Outputs/dto-output-user-update-account";
+import {DtoInputOtherUser} from "../../Dtos/Users/Inputs/dto-input-other-user";
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class UserService {
   }
 
 
-  getUsers(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/getUsers");
+  getUsers(count: number): Observable<DtoInputOtherUser[]> {
+    return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users/" + count);
   }
 }

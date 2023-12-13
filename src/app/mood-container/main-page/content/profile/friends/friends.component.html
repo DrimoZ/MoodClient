@@ -29,14 +29,20 @@
             </div>
             <div class="profileOtherDiv">
               <div class="profileFriendsDiv">
-                <span class="fst-italic fs-7" *ngIf="user.commonFriendCount !=0" i18n> {{user.commonFriendCount}} friend{{user.commonFriendCount != 1 ? 's': ''}} in common</span>
+                <span class="fst-italic fs-7" *ngIf="user.commonFriendCount > 0" i18n> {{user.commonFriendCount}} friend{{user.commonFriendCount != 1 ? 's': ''}} in common</span>
               </div>
-              <div class="profileAddDiv">
-                <button *ngIf="user.isFriendWithConnected" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(user.id)" i18n>
+              <div class="profileAddDiv" *ngIf="user.commonFriendCount != -1">
+                <button *ngIf="user.isFriendWithConnected == 2" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(user.id)" i18n>
                   <i class="fa-solid fa-xmark"></i>
                 </button>
-                <button *ngIf="!user.isFriendWithConnected" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.id)" i18n>
+                <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.id)" i18n>
                   <i class="fa-solid fa-plus"></i>
+                </button>
+                <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.id)" i18n>
+                  <i class="fa-solid fa-clock"></i>
+                </button>
+                <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.id)" i18n>
+                  <i class="fa-solid fa-slash"></i>
                 </button>
               </div>
             </div>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {Router} from "@angular/router";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
+import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
 
 @Component({
   selector: 'app-friends',
@@ -19,7 +20,7 @@ export class FriendsComponent implements OnInit {
   isConnectedUser: boolean = false;
   isFriendPublic: boolean = false;
 
-  constructor(private _userService: UserService, private _router: Router) {
+  constructor(private _userService: UserService, private _router: Router, private _friendService: FriendService) {
   }
 
   ngOnInit(): void {
@@ -53,17 +54,47 @@ export class FriendsComponent implements OnInit {
     );
   }
 
-  emitRemoveFriend(friend: DtoInputOtherUser) {
-
-  }
-
-  emitAddFriend(friend: DtoInputOtherUser) {
-
-  }
-
   viewFriendProfile(userId: string) {
     this._router.navigate(['home/' + userId])
   }
 
+  emitAddFriend(friendId: string) {
+    this._friendService.createFriendRequest(friendId).subscribe({
+      next: (res) => {
+        let friendIndex = this.userFriends.findIndex(f => f.id == friendId);
+        this.userFriends[friendIndex].isFriendWithConnected = 0;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
 
+  emitRemoveFriend(friendId: string) {
+    this._friendService.deleteFriend(friendId).subscribe({
+      next: (res) => {
+        let friendIndex = this.userFriends.findIndex(f => f.id == friendId);
+        this.userFriends[friendIndex].isFriendWithConnected = -1;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
+
+  emitPendingFriend(friendId: string) {
+    this._router.navigate(['home/notifications'])
+  }
+
+  emitCancelFriend(friendId: string) {
+    this._friendService.rejectFriendRequest(friendId).subscribe({
+      next: (res) => {
+        let friendIndex = this.userFriends.findIndex(f => f.id == friendId);
+        this.userFriends[friendIndex].isFriendWithConnected = -1;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
 }
