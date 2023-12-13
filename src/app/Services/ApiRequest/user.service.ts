@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {DtoOutputUserUpdateAccount} from "../../Dtos/Users/Outputs/dto-output-user-update-account";
 import {DtoInputOtherUser} from "../../Dtos/Users/Inputs/dto-input-other-user";
@@ -38,7 +38,15 @@ export class UserService {
   }
 
 
-  getUsers(count: number): Observable<DtoInputOtherUser[]> {
-    return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users/" + count);
+  getUsers(count: number, search: string): Observable<DtoInputOtherUser[]> {
+    console.log(search != "")
+
+    const params = new HttpParams()
+
+    params.append('userCount', count)
+    if (search != "") params.append('searchString', search);
+
+
+    return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users", {params: {userCount: count, searchValue: search}});
   }
 }

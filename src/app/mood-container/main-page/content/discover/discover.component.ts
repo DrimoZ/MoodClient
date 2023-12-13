@@ -13,21 +13,15 @@ export class DiscoverComponent {
   selectedFilter: string = this._router.url.split("discover/")[1];
   searchBarValue: string = "";
 
-  constructor(private _router: Router, private _behaviorEventBus: BehaviorEventBusService, private _eventBus: EventBusService) {}
+  constructor(private _router: Router, private _behaviorEventBus: BehaviorEventBusService) {}
 
   selectFilter(filter: string): void {
     this.selectedFilter = filter;
   }
 
-
   emitSearchChange() {
     this._behaviorEventBus.emitEvent({
       Type: "DiscoverSearch",
-      Payload: this.searchBarValue
-    })
-
-    this._eventBus.emitEvent({
-      Type: 'DiscoverChange',
       Payload: this.searchBarValue
     })
   }

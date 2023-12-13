@@ -4,6 +4,7 @@ import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior
 import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {Router} from "@angular/router";
 import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
+import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 
 @Component({
   selector: 'app-profile-search',
@@ -14,6 +15,7 @@ export class ProfileComponent implements OnInit{
   searchBarValue: string = "";
   otherUsers: DtoInputOtherUser[] = [];
   showCount: number = 10;
+
 
   constructor(private _dataService: UserService, private _behaviorEventBus: BehaviorEventBusService,
               private _router: Router, private _friendService: FriendService) {
@@ -28,17 +30,23 @@ export class ProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._behaviorEventBus.onEvent().subscribe(event => {
-      if (event.Type === 'DiscoverSearch') {
-        this.searchBarValue = event.Payload;
-      }
-    })
-
-    this._dataService.getUsers(this.showCount).subscribe(
+    this._dataService.getUsers(this.showCount, this.searchBarValue).subscribe(
       data => {
         this.otherUsers = data;
       }
     )
+
+    this._behaviorEventBus.onEvent().subscribe(event => {
+      if (event.Type === 'DiscoverSearch') {
+        this.searchBarValue = event.Payload;
+
+        this._dataService.getUsers(this.showCount, this.searchBarValue).subscribe(
+          data => {
+            this.otherUsers = data;
+          }
+        )
+      }
+    })
   }
 
   viewUserProfile(userId: string) {
