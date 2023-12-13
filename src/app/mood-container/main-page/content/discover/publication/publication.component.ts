@@ -20,16 +20,17 @@ export class PublicationComponent {
   }
 
   ngOnInit(): void {
-    this._dataService.getDiscoverPublications(this.showCount, this.searchBarValue).subscribe(
-      data => {
-        this.publications = data;
-
-        this.isWaitingForApi = false;
-      }
-    )
+    // this._dataService.getDiscoverPublications(this.showCount, this.searchBarValue).subscribe(
+    //   data => {
+    //     this.publications = data;
+    //
+    //     this.isWaitingForApi = false;
+    //   }
+    // )
 
     this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === 'DiscoverSearch') {
+        console.log(event);
         this.searchBarValue = event.Payload;
 
         this.isWaitingForApi = true;

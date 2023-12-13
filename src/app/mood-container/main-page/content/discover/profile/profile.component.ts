@@ -29,14 +29,6 @@ export class ProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._dataService.getDiscoverUsers(this.showCount, this.searchBarValue).subscribe(
-      data => {
-        this.otherUsers = data;
-
-        this.isWaitingForApi = false;
-      }
-    )
-
     this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === 'DiscoverSearch') {
         this.searchBarValue = event.Payload;
