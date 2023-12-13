@@ -36,9 +36,7 @@ export class ProfileComponent implements OnInit{
 
     this._dataService.getUsers(this.showCount).subscribe(
       data => {
-        console.log(data)
         this.otherUsers = data;
-        console.log(this.otherUsers)
       }
     )
   }
