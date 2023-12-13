@@ -1,1 +1,38 @@
-<p>publication works!</p>
+<section class="d-flex flex-column gap-5 p-5 justify-content-between user-select-none h-100">
+  <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
+
+  <div *ngIf="!isWaitingForApi" class="h-100">
+    <div class="h-100 d-flex flex-column gap-5 justify-content-between" *ngIf="publications.length > 0 else errorPage">
+      <div class="publication-grid">
+        <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
+          <div class="content-div">
+            <div class="h-100 w-100">
+              <img src="assets/Logo.png" alt="img_{{publication.elements[0].id}}" class="pub_img"/>
+            </div>
+          </div>
+          <div class="stat-div flex-row justify-content-center">
+            <div class="text-center w-30 text-white" style="padding-top: 50%">
+              <i class="fa-solid fa-heart"></i> {{publication.likeCount}}
+            </div>
+            <div class="text-center w-30 text-white" style="padding-top: 50%">
+              <i class="fa-solid fa-comments"></i> {{publication.commentCount}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="publications.length >= showCount" class="w-100">
+        <button class="btn showMoreBtn w-100" (click)="loadModePublications()" i18n>
+          <span class="">Show More ({{publications.length}}) </span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+
+    <ng-template #errorPage>
+      <div class="w-100 h-100 justify-content-center d-flex flex-column">
+        <span class="fs-6 txt-gold text-center" i18n>There is no user corresponding to your request. Please try something else.</span>
+      </div>
+    </ng-template>
+  </div>
+</section>

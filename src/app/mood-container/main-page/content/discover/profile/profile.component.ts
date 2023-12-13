@@ -4,7 +4,6 @@ import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior
 import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {Router} from "@angular/router";
 import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
-import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 
 @Component({
   selector: 'app-profile-search',
@@ -30,7 +29,7 @@ export class ProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._dataService.getUsers(this.showCount, this.searchBarValue).subscribe(
+    this._dataService.getDiscoverUsers(this.showCount, this.searchBarValue).subscribe(
       data => {
         this.otherUsers = data;
 
@@ -44,7 +43,7 @@ export class ProfileComponent implements OnInit{
 
         this.isWaitingForApi = true;
 
-        this._dataService.getUsers(this.showCount, this.searchBarValue).subscribe(
+        this._dataService.getDiscoverUsers(this.showCount, this.searchBarValue).subscribe(
           data => {
             this.otherUsers = data;
 
@@ -103,7 +102,7 @@ export class ProfileComponent implements OnInit{
     this.showCount += 10;
     this.isWaitingForApi = true;
 
-    this._dataService.getUsers(this.showCount, this.searchBarValue).subscribe(
+    this._dataService.getDiscoverUsers(this.showCount, this.searchBarValue).subscribe(
       data => {
         this.otherUsers = data;
 

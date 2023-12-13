@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {DtoOutputUserUpdateAccount} from "../../Dtos/Users/Outputs/dto-output-user-update-account";
 import {DtoInputOtherUser} from "../../Dtos/Users/Inputs/dto-input-other-user";
+import {DtoInputPublication} from "../../Dtos/Publication/Input/dto-input-publication";
 
 @Injectable({
   providedIn: 'root'
@@ -38,15 +39,15 @@ export class UserService {
   }
 
 
-  getUsers(count: number, search: string): Observable<DtoInputOtherUser[]> {
-    console.log(search != "")
+  getDiscoverUsers(count: number, search: string): Observable<DtoInputOtherUser[]> {
+    return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users",
+      {params: {userCount: count, searchValue: search}
+      });
+  }
 
-    const params = new HttpParams()
-
-    params.append('userCount', count)
-    if (search != "") params.append('searchString', search);
-
-
-    return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users", {params: {userCount: count, searchValue: search}});
+  getDiscoverPublications(count: number, search: string): Observable<DtoInputPublication[]> {
+    return this._httpClient.get<DtoInputPublication[]>(UserService._URL_API + "/discover/publications",
+      {params: {publicationCount: count, searchValue: search}
+      });
   }
 }
