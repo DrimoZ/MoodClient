@@ -1,8 +1,8 @@
-<section class="d-flex flex-column gap-5 p-5 justify-content-between user-select-none">
+<section class="d-flex flex-column gap-5 p-5 justify-content-between user-select-none h-100">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
-  <div *ngIf="!isWaitingForApi">
-    <div *ngIf="otherUsers.length > 0 else errorPage">
+  <div *ngIf="!isWaitingForApi" class="h-100">
+    <div class="h-100 d-flex flex-column gap-5 justify-content-between" *ngIf="otherUsers.length > 0 else errorPage">
       <div class="profilesGrid">
         <div class="profileDiv" *ngFor="let user of filterUsers(otherUsers, searchBarValue)">
           <div class="profileImageDiv">
@@ -37,8 +37,8 @@
         </div>
       </div>
 
-      <div *ngIf="otherUsers.length % 10 == 0" class="w-100">
-        <button class="btn showMoreBtn w-100" i18n>
+      <div *ngIf="otherUsers.length >= showCount" class="w-100">
+        <button class="btn showMoreBtn w-100" (click)="loadModeUsers()" i18n>
           <span class="">Show More ({{otherUsers.length}}) </span>
           <i class="fa-solid fa-chevron-down"></i>
         </button>

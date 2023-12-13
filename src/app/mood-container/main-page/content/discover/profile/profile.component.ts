@@ -98,4 +98,17 @@ export class ProfileComponent implements OnInit{
       }
     });
   }
+
+  loadModeUsers() {
+    this.showCount += 10;
+    this.isWaitingForApi = true;
+
+    this._dataService.getUsers(this.showCount, this.searchBarValue).subscribe(
+      data => {
+        this.otherUsers = data;
+
+        this.isWaitingForApi = false;
+      }
+    )
+  }
 }
