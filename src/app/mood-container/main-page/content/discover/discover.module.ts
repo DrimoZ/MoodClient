@@ -7,6 +7,7 @@ import { AllComponent } from './all/all.component';
 import { PublicationComponent } from './publication/publication.component';
 import {DiscoverRoutingModule} from "./discover-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterLink} from "@angular/router";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule,
     FormsModule,
     NgIf,
-    AsyncPipe
+    AsyncPipe,
+    RouterLink
   ],
   providers: [],
 })
