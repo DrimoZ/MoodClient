@@ -8,13 +8,11 @@ import {SignalRService} from "../../../../Services/signal-r.service";
 })
 export class MessageComponent implements OnInit{
 
-  isConnected: boolean = false;
 
   @ViewChild('userInput') userInput: ElementRef;
   @ViewChild('messageInput') messageInput: ElementRef;
   @ViewChild('sendButton') sendButton: ElementRef;
 
-  SendButton: any;
   constructor(private _signalR: SignalRService) {
   }
 
@@ -27,11 +25,4 @@ export class MessageComponent implements OnInit{
     this.userInput.nativeElement.value = '';
     this.messageInput.nativeElement.value = '';
   }
-
-  
-
-  public receiveMessage = (user: string, message: string) => {
-    console.log(user + ': ' + message);
-  }
-
 }
