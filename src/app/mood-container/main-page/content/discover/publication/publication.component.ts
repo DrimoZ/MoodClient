@@ -3,6 +3,8 @@ import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
 import {Router} from "@angular/router";
 import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
+import {map} from "rxjs";
+import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 
 @Component({
   selector: 'app-publication',
@@ -16,49 +18,47 @@ export class PublicationComponent {
   isWaitingForApi: boolean = true;
 
   constructor(private _dataService: UserService, private _behaviorEventBus: BehaviorEventBusService,
-              private _router: Router) {
+              private _imageService: ImageService) {
   }
 
   ngOnInit(): void {
-    // this._dataService.getDiscoverPublications(this.showCount, this.searchBarValue).subscribe(
-    //   data => {
-    //     this.publications = data;
-    //
-    //     this.isWaitingForApi = false;
-    //   }
-    // )
-
     this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === 'DiscoverSearch') {
         this.searchBarValue = event.Payload;
 
-        this.isWaitingForApi = true;
-
-        this._dataService.getDiscoverPublications(this.showCount, this.searchBarValue).subscribe(
-          data => {
-            this.publications = data;
-
-            this.isWaitingForApi = false;
-          }
-        )
+        this.getPublicationsFromService();
       }
     })
   }
 
-  loadModePublications() {
+  loadMorePublications() {
     this.showCount += 30;
+    this.getPublicationsFromService();
+  }
+
+  getDetailedPublication(id: number) {
+
+  }
+
+
+  private getPublicationsFromService() {
     this.isWaitingForApi = true;
 
     this._dataService.getDiscoverPublications(this.showCount, this.searchBarValue).subscribe(
       data => {
         this.publications = data;
+        console.log(data)
+
+        this.publications.forEach(pub => {
+          pub.elements.forEach(e => {
+            this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).pipe(map(url => {
+              e.imageUrl = url;
+            }));
+          })
+        })
 
         this.isWaitingForApi = false;
       }
     )
-  }
-
-  getDetailedPublication(id: number) {
-
   }
 }

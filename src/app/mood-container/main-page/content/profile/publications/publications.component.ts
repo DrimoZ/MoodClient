@@ -3,6 +3,9 @@ import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-inp
 import {Router} from "@angular/router";
 import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
+import {map} from "rxjs";
+import {ImageService} from "../../../../../Services/ApiRequest/image.service";
+import {DtoInputPubElement} from "../../../../../Dtos/Publication/Input/dto-input-pub-element";
 
 @Component({
   selector: 'app-publications',
@@ -16,7 +19,7 @@ export class PublicationsComponent implements OnInit{
   isConnectedUser: boolean = false;
   isPublicationsPublic: boolean = false;
 
-  constructor(private _userService: UserService, private _router: Router, private _behaviorEventBus: BehaviorEventBusService) {
+  constructor(private _userService: UserService, private _router: Router, private _behaviorEventBus: BehaviorEventBusService, private _imageService: ImageService) {
   }
 
   ngOnInit(): void {
@@ -27,9 +30,18 @@ export class PublicationsComponent implements OnInit{
         this._userService.getUserPublications(this.userId).subscribe({
           next: user => {
             this.publications = user.publications;
+            console.log(this.publications);
 
             this.isConnectedUser = user.isConnectedUser;
             this.isPublicationsPublic = user.isPublicationsPublic;
+
+            this.publications.forEach(pub => {
+              pub.elements.forEach(e => {
+                this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe(url => {
+                  e.imageUrl = url;
+                })
+              })
+            })
 
             this.isWaitingForApi = false;
           },
@@ -44,7 +56,7 @@ export class PublicationsComponent implements OnInit{
       }
     })
 
-    this.userId = this._router.url.split("home")[1].split("/")[1];
+    //this.userId = this._router.url.split("home")[1].split("/")[1];
 
 
   }
@@ -68,4 +80,6 @@ export class PublicationsComponent implements OnInit{
   getDetailedPublication(id: number) {
 
   }
+
+  protected readonly console = console;
 }

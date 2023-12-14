@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
 import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
+import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 
 @Component({
   selector: 'app-friends',
@@ -20,7 +21,7 @@ export class FriendsComponent implements OnInit {
   isConnectedUser: boolean = false;
   isFriendPublic: boolean = false;
 
-  constructor(private _userService: UserService, private _router: Router, private _friendService: FriendService) {
+  constructor(private _userService: UserService, private _router: Router, private _friendService: FriendService, private _imageService: ImageService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +34,12 @@ export class FriendsComponent implements OnInit {
         this.userFriends = user.friends;
         this.isConnectedUser = user.isConnectedUser;
         this.isFriendPublic = user.isFriendPublic;
+
+        this.userFriends.forEach(friend => {
+          this._imageService.getImageData(friend.idImage == null ? -1 : friend.idImage).subscribe(url => {
+            friend.imageUrl = url;
+          })
+        })
 
         this.isWaitingForApi = false;
       },
