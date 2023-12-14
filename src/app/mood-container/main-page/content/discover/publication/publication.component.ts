@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
 import {Router} from "@angular/router";
 import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
-import {map} from "rxjs";
+import {map, Subscription} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 
 @Component({
@@ -11,24 +11,29 @@ import {ImageService} from "../../../../../Services/ApiRequest/image.service";
   templateUrl: './publication.component.html',
   styleUrls: ['./publication.component.css']
 })
-export class PublicationComponent {
+export class PublicationComponent implements OnInit, OnDestroy{
   searchBarValue: string = "";
   publications: DtoInputPublication[] = [];
   showCount: number = 30;
   isWaitingForApi: boolean = true;
+  searchSubscription: Subscription | null = null;
 
   constructor(private _dataService: UserService, private _behaviorEventBus: BehaviorEventBusService,
               private _imageService: ImageService) {
   }
 
   ngOnInit(): void {
-    this._behaviorEventBus.onEvent().subscribe(event => {
+    this.searchSubscription = this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === 'DiscoverSearch') {
         this.searchBarValue = event.Payload;
 
         this.getPublicationsFromService();
       }
     })
+  }
+
+  ngOnDestroy() {
+    this.searchSubscription && this.searchSubscription.unsubscribe()
   }
 
   loadMorePublications() {
