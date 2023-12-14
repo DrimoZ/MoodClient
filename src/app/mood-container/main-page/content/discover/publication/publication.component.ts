@@ -51,9 +51,7 @@ export class PublicationComponent {
 
         this.publications.forEach(pub => {
           pub.elements.forEach(e => {
-            this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).pipe(map(url => {
-              e.imageUrl = url;
-            }));
+            this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe(url => {e.imageUrl = url;})
           })
         })
 
