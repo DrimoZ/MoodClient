@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit{
   searchBarValue: string = "";
   otherUsers: DtoInputOtherUser[] = [];
   showCount: number = 10;
+  isWaitingForApi: boolean = true;
 
   constructor(private _dataService: UserService, private _behaviorEventBus: BehaviorEventBusService,
               private _router: Router, private _friendService: FriendService) {
@@ -31,16 +32,18 @@ export class ProfileComponent implements OnInit{
     this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === 'DiscoverSearch') {
         this.searchBarValue = event.Payload;
+
+        this.isWaitingForApi = true;
+
+        this._dataService.getDiscoverUsers(this.showCount, this.searchBarValue).subscribe(
+          data => {
+            this.otherUsers = data;
+
+            this.isWaitingForApi = false;
+          }
+        )
       }
     })
-
-    this._dataService.getUsers(this.showCount).subscribe(
-      data => {
-        console.log(data)
-        this.otherUsers = data;
-        console.log(this.otherUsers)
-      }
-    )
   }
 
   viewUserProfile(userId: string) {
@@ -85,5 +88,18 @@ export class ProfileComponent implements OnInit{
         console.log(err)
       }
     });
+  }
+
+  loadModeUsers() {
+    this.showCount += 10;
+    this.isWaitingForApi = true;
+
+    this._dataService.getDiscoverUsers(this.showCount, this.searchBarValue).subscribe(
+      data => {
+        this.otherUsers = data;
+
+        this.isWaitingForApi = false;
+      }
+    )
   }
 }

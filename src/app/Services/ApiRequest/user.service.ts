@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {DtoOutputUserUpdateAccount} from "../../Dtos/Users/Outputs/dto-output-user-update-account";
 import {DtoInputOtherUser} from "../../Dtos/Users/Inputs/dto-input-other-user";
+import {DtoInputPublication} from "../../Dtos/Publication/Input/dto-input-publication";
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +39,16 @@ export class UserService {
   }
 
 
-  getUsers(count: number): Observable<DtoInputOtherUser[]> {
-    return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users/" + count);
+  getDiscoverUsers(count: number, search: string): Observable<DtoInputOtherUser[]> {
+    return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users",
+      {params: {userCount: count, searchValue: search}
+      });
+  }
+
+  getDiscoverPublications(count: number, search: string): Observable<DtoInputPublication[]> {
+    return this._httpClient.get<DtoInputPublication[]>(UserService._URL_API + "/discover/publications",
+      {params: {publicationCount: count, searchValue: search}
+      });
   }
   getUsersGroups(): Observable<any>{
     return this._httpClient.get(environment.BASE_URL_API + "/api/v1/group")
