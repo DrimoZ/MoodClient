@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {BehaviorEventBusService} from "../../../../Services/EventBus/behavior-event-bus.service";
+import {EventBusService} from "../../../../Services/EventBus/event-bus.service";
 
 @Component({
   selector: 'app-discover',
@@ -7,17 +10,25 @@ import { Component } from '@angular/core';
 })
 export class DiscoverComponent {
   isInputFocused: boolean = false;
-  selectedFilter: string = 'all';
+  selectedFilter: string = this._router.url.split("discover/")[1];
+  searchBarValue: string = "";
+
+  constructor(private _router: Router, private _behaviorEventBus: BehaviorEventBusService, private _eventBus: EventBusService) {}
 
   selectFilter(filter: string): void {
     this.selectedFilter = filter;
   }
 
-  onInputFocus() {
-    this.isInputFocused = true;
-  }
 
-  onInputBlur() {
-    this.isInputFocused = false;
+  emitSearchChange() {
+    this._behaviorEventBus.emitEvent({
+      Type: "DiscoverSearch",
+      Payload: this.searchBarValue
+    })
+
+    this._eventBus.emitEvent({
+      Type: 'DiscoverChange',
+      Payload: this.searchBarValue
+    })
   }
 }

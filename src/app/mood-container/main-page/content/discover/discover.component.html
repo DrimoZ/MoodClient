@@ -1,28 +1,29 @@
-<section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect">
-  <div class="w-60 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
-    <div class="form-group mb-2">
-      <div class="input-group searchBarBorder">
-        <span class="input-group-text searchBar"
-              [ngClass]="{'d-none': isInputFocused}">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </span>
-        <input type="text" class="form-control searchBar" id="searchInput" placeholder="Search" i18n-placeholder
-               (focus)="onInputFocus()" (blur)="onInputBlur()">
+<section class="pt-3 d-flex flex-column hvh-93 justify-content-start blur-effect txt-gold position-relative gap-5 overflow-y-scroll">
+  <div class="w-100 d-flex justify-content-center">
+    <div class="w-60 d-flex flex-column justify-content-between">
+      <div class="form-group mb-2">
+        <div class="input-group searchBarBorder">
+          <span class="input-group-text searchBar" [ngClass]="{'d-none': isInputFocused}">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input type="text" class="form-control searchBar" id="searchInput" placeholder="Search" i18n-placeholder
+                 (focusin)="isInputFocused = true" (focusout)="isInputFocused = false"  [(ngModel)]="searchBarValue" (input)="emitSearchChange()">
+          <span class="input-group-text searchBar" [ngClass]="{'d-none': !isInputFocused}" (mousedown)="searchBarValue = '';">
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn searchBtn" routerLink="./all" routerLinkActive="active"
+                [ngClass]="{'touchSearchBtn': selectedFilter === 'all'}" (click)="selectFilter('all')" i18n>All</button>
+        <button type="button" class="btn searchBtn" routerLink="./publications" routerLinkActive="active"
+                [ngClass]="{'touchSearchBtn': selectedFilter === 'publications'}" (click)="selectFilter('publications')" i18n>Publications</button>
+        <button type="button" class="btn searchBtn" routerLink="./profiles" routerLinkActive="active"
+                [ngClass]="{'touchSearchBtn': selectedFilter === 'profiles'}" (click)="selectFilter('profiles')" i18n>Profiles</button>
       </div>
     </div>
-    <div class="d-flex justify-content-center">
-      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'all'}" (click)="selectFilter('all')" routerLink="./all" routerLinkActive="active" i18n>All</button>
-      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'publications'}" (click)="selectFilter('publications')" routerLink="./publications" routerLinkActive="active" i18n>Publications</button>
-      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'profile'}" (click)="selectFilter('profile')" routerLink="./profiles" routerLinkActive="active" i18n>Profiles</button>
-      <button type="button" class="btn searchBtn" [ngClass]="{'touchSearchBtn': selectedFilter === 'tags'}" (click)="selectFilter('tags')" routerLink="./tags" routerLinkActive="active" i18n>Tags</button>
-    </div>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
+  </div>
+  <div class="w-100">
+    <router-outlet></router-outlet>
   </div>
 </section>
-
-
-<footer>
-
-</footer>

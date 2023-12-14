@@ -2,38 +2,50 @@
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div *ngIf="!isWaitingForApi && userId != '-1' else errorPage">
-    <div *ngIf="isFriendPublic || isConnectedUser else privatePage">
+    <div *ngIf="isFriendPublic || isConnectedUser else privatePage" class="gap-5 d-flex flex-column">
       <div class="mb-2">
         <div class="input-group searchBarBorder">
-      <span class="input-group-text searchBar" [ngClass]="{'d-none': isInputFocused}">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </span>
+          <span class="input-group-text searchBar" [ngClass]="{'d-none': isInputFocused}">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
           <input type="text" class="form-control searchBar" id="searchInput" placeholder="Search" i18n-placeholder
                  (focusin)="isInputFocused = true" (focusout)="isInputFocused = false"  [(ngModel)]="searchBarValue">
           <span class="input-group-text searchBar" [ngClass]="{'d-none': !isInputFocused}" (mousedown)="searchBarValue = '';">
-        <i class="fa-solid fa-xmark"></i>
-      </span>
+            <i class="fa-solid fa-xmark"></i>
+          </span>
         </div>
       </div>
 
-      <div class="d-flex flex-row w-100 justify-content-between" *ngFor="let friend of filterFriends(userFriends, searchBarValue)">
-        <div class="p-1"  (click)="viewFriendProfile(friend.id)">
-          <img src="assets/mood.png" class="rounded-circle img-cover border border-dark hover-pointer" style="width: 50px; height: 50px; background-color: #1BA098">
-        </div>
-        <div class="p-2 d-flex flex-row w-65 justify-content-between">
-          <div class="d-flex p-1 justify-content-start hover-pointer" (click)="viewFriendProfile(friend.id)">
-            <span class="fs-5 fw-bold">{{friend.login}}</span>
+      <div class="profilesGrid">
+        <div class="profileDiv" *ngFor="let user of filterFriends(userFriends, searchBarValue)">
+          <div class="profileImageDiv">
+            <div class="profilePictureDiv" (click)="viewFriendProfile(user.id)">
+              <img src="assets/Logo.png" class="rounded-circle img-cover hover-pointer">
+            </div>
           </div>
-          <div class="d-flex p-1 justify-content-start hover-pointer"  (click)="viewFriendProfile(friend.id)">
-            <span class="fst-italic">{{friend.name}}</span>
-          </div>
-          <div class="w-10">
-            <button *ngIf="friend.isFriendWithConnected" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(friend)" i18n>
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-            <button *ngIf="!friend.isFriendWithConnected && friend.commonFriendCount != -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(friend)" i18n>
-              <i class="fa-solid fa-plus"></i>
-            </button>
+          <div class="profileDataDiv">
+            <div class="profileNameDiv hover-pointer"  (click)="viewFriendProfile(user.id)">
+              <span class="fs-5">{{user.name}}</span>
+            </div>
+            <div class="profileOtherDiv">
+              <div class="profileFriendsDiv">
+                <span class="fst-italic fs-7" *ngIf="user.commonFriendCount > 0" i18n> {{user.commonFriendCount}} friend{{user.commonFriendCount != 1 ? 's': ''}} in common</span>
+              </div>
+              <div class="profileAddDiv" *ngIf="user.commonFriendCount != -1">
+                <button *ngIf="user.isFriendWithConnected == 2" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(user.id)" i18n>
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+                <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.id)" i18n>
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.id)" i18n>
+                  <i class="fa-solid fa-clock"></i>
+                </button>
+                <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.id)" i18n>
+                  <i class="fa-solid fa-slash"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
