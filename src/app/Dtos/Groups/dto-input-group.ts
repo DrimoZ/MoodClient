@@ -1,4 +1,4 @@
-import {DtoInputPubElement} from "../Publication/Input/dto-input-pub-element";
+import {DtoInputMessage} from "./dto-input-message";
 
 export interface DtoInputGroup {
   name: string;

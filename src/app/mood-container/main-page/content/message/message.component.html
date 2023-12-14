@@ -1,18 +1,22 @@
 <header></header>
+<!--Toute la page-->
 <section class=" d-flex flex-row hvh-93 justify-content-between blur-effect">
-  <div class="w-50 h-100 border txt-gold">
-
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+<!--Les groupes-->
+  <div class="w-50 h-100 border-black" >
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 100% ;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <svg class="bi pe-none me-2" width="40" height="32"></svg>
         <span class="fs-4">Conversations</span>
       </a>
       <hr>
-      <ul *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)" class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">
-            <svg class="bi pe-none me-2" width="16" height="16"></svg>
-            Groupe n°1
+      <div>
+        <button class="btn position-relative bottom-0 end-0 ">Create a Group</button>
+      </div>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li *ngFor="let grp of groupes;" (click)="getMessageFromGroup(grp.id); " class="nav-item hover-pointer">
+          <a class="raised-button" aria-current="page">
+            {{grp.name}}
           </a>
         </li>
       </ul>
@@ -20,31 +24,29 @@
     </div>
   </div>
   <div class="w-100 h-100 border txt-gold">
-    <p>Page de communication</p>
-    <div class="grid-container" style="border: 1px solid black; padding: 1%;">
-      <div id="conversation" class="grid-item scrowl">
-        <input type="text" id="lastId" value="0" style="display: none;">
-        <input type="text"  id="idRecepteur" style="display: none;" value="2">
-        <input type="text"  id="recepteur" style="display: none;" value="Monsieur X">
-        <input type="text"  id="idEmetteur" style="display: none;" value="1">
-        <input type="text"  id="emetteur" style="display: none;" value="Clément">
-        <p class="message right" id="3">Message de test 1</p>
-        <p class="message left" id="3">Message de test 2</p>
-        <p class="message right" id="3">Message de test 3</p>
-        <p class="message left" id="3">Message de test 4</p>
-
-      </div>
-      <div class="grid-item">
-        <div id="sender" style="display: flex; flex-wrap: nowrap;padding-top: 1%;" >
-          <input type="text" id="message" style="width: 100%;" placeholder="Message..." value="">
-          <button class="btn btn-primary btn-messenger" onclick="sendMessage(readData)">Envoyer</button>
+    <div class="" style=" padding: 1%;height: 100%">
+      <div id="conversation" class="scrowl">
+        <div  class="chat-container ">
+          <div  *ngFor="let msg of messages" class="d-flex flex-column" >
+            <div class="d-flex" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">{{msg.userName}}</div>
+            <div class="d-flex align-items-center" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">
+              <img class="d-flex" class="profile-picture" alt="" src="{{msg.url}}" width="50" height="50" >
+              <div class="message-bubble" [ngClass]="msg.userId == userId? 'right':'left'">
+                <p>{{msg.content}}</p>
+              </div>
+            </div>
+            <div class="d-flex" style="justify-content: center">
+              <p class="date">{{formatDate(msg.date)}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="border-gold bottom-0 end-0" style="width: 100%">
+          <div id="sender" style="display: flex; flex-wrap: nowrap;padding-top: 1%;" >
+            <input #inputmessage class="position-relative container-fluid" type="text"  style="width: 100%;" placeholder="Message" value="">
+            <button class="btn position-relative bottom-0 end-0 " (click)="sendMessage(inputmessage.value)">Envoyer</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
-<footer>
-
-</footer>
