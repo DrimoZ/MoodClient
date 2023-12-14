@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CredentialsInterceptor} from "./Guards/credentialsInterceptor";
 import { ConnectionRefusedComponent } from './mood-container/errors/connection-refused/connection-refused.component';
 import {MainAuthGuard} from "./Guards/mainAuthGuard";
+import {CommonModule, DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MainAuthGuard} from "./Guards/mainAuthGuard";
     ConnectionRefusedComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -41,6 +43,7 @@ import {MainAuthGuard} from "./Guards/mainAuthGuard";
       useClass: CredentialsInterceptor,
       multi: true
     },
+    DatePipe,
     RouterAuthGuard,
     MainAuthGuard
   ],
