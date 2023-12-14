@@ -12,7 +12,6 @@ export class SignalRService {
     this.buildConnection();
     this.registerOnServerEvents();
   }
-
   private buildConnection(): void {
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl(environment.BASE_URL_API + "/api/v1/message",{
@@ -41,4 +40,5 @@ export class SignalRService {
     this.hubConnection.invoke('SendMessage', user, message)
       .catch(err => console.error(err));
   }
+
 }
