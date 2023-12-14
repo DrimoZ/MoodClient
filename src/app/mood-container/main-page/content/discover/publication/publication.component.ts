@@ -30,7 +30,6 @@ export class PublicationComponent {
 
     this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === 'DiscoverSearch') {
-        console.log(event);
         this.searchBarValue = event.Payload;
 
         this.isWaitingForApi = true;
