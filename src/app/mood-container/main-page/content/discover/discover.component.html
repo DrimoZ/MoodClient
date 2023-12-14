@@ -14,8 +14,6 @@
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        <button type="button" class="btn searchBtn" routerLink="./all" routerLinkActive="active"
-                [ngClass]="{'touchSearchBtn': selectedFilter === 'all'}" (click)="selectFilter('all')" i18n>All</button>
         <button type="button" class="btn searchBtn" routerLink="./publications" routerLinkActive="active"
                 [ngClass]="{'touchSearchBtn': selectedFilter === 'publications'}" (click)="selectFilter('publications')" i18n>Publications</button>
         <button type="button" class="btn searchBtn" routerLink="./profiles" routerLinkActive="active"
