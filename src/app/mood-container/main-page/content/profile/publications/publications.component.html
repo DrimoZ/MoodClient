@@ -5,7 +5,7 @@
     <div *ngIf="isPublicationsPublic || isConnectedUser else privatePage">
       <div class="publication-grid">
         <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
-          <div *ngIf="publication.elements.length > 0 && publication.elements[0].imageUrl != ''" (click)="console.log(publication.elements[0].imageUrl)">
+          <div *ngIf="publication.elements.length > 0 && publication.elements[0].imageUrl != ''">
             <div class="content-div">
               <div class="h-100 w-100">
                 <img src="{{publication.elements[0].imageUrl}}" alt="img_{{publication.elements[0].id}}" class="pub_img"/>

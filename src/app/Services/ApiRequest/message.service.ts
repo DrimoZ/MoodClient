@@ -17,7 +17,6 @@ export class MessageService {
   }
 
   sendOutputMessage(msg: DtoOutputMessage) {
-    console.log(MessageService._URL_API, msg)
     return this._httpClient.post<DtoOutputMessage>(MessageService._URL_API, msg)
   }
 }

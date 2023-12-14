@@ -30,7 +30,6 @@ export class PublicationsComponent implements OnInit{
         this._userService.getUserPublications(this.userId).subscribe({
           next: user => {
             this.publications = user.publications;
-            console.log(this.publications);
 
             this.isConnectedUser = user.isConnectedUser;
             this.isPublicationsPublic = user.isPublicationsPublic;

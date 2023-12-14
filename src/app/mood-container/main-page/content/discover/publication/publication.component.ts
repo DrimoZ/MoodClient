@@ -47,7 +47,6 @@ export class PublicationComponent {
     this._dataService.getDiscoverPublications(this.showCount, this.searchBarValue).subscribe(
       data => {
         this.publications = data;
-        console.log(data)
 
         this.publications.forEach(pub => {
           pub.elements.forEach(e => {

@@ -1,23 +1,27 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
 import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {Router} from "@angular/router";
 import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
+import {ImageService} from "../../../../../Services/ApiRequest/image.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-profile-search',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css', '../discover.component.css']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit, OnDestroy{
   searchBarValue: string = "";
   otherUsers: DtoInputOtherUser[] = [];
   showCount: number = 10;
   isWaitingForApi: boolean = true;
 
+  searchSubscription: Subscription | null = null;
+
   constructor(private _dataService: UserService, private _behaviorEventBus: BehaviorEventBusService,
-              private _router: Router, private _friendService: FriendService) {
+              private _router: Router, private _friendService: FriendService, private _imageService: ImageService) {
   }
 
   filterUsers(discoverUsers: DtoInputOtherUser[], searchTerm: string): any[] {
@@ -29,7 +33,7 @@ export class ProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._behaviorEventBus.onEvent().subscribe(event => {
+    this.searchSubscription = this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === 'DiscoverSearch') {
         this.searchBarValue = event.Payload;
 
@@ -39,11 +43,19 @@ export class ProfileComponent implements OnInit{
           data => {
             this.otherUsers = data;
 
+            this.otherUsers.forEach(user => {
+              this._imageService.getImageData(user.idImage == null ? 0 : user.idImage).subscribe(url => {user.imageUrl = url;})
+            })
+
             this.isWaitingForApi = false;
           }
         )
       }
     })
+  }
+
+  ngOnDestroy() {
+    this.searchSubscription && this.searchSubscription.unsubscribe()
   }
 
   viewUserProfile(userId: string) {

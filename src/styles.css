@@ -167,10 +167,13 @@ body {
 }
 
 .profilePictureDiv img {
+  object-fit:scale-down;
+
   width: 95%;
   height: 95%;
   background-color: transparent;
   border: black 1px solid;
+
 }
 
 .profileDataDiv {

@@ -29,7 +29,6 @@ export class FriendsComponent implements OnInit {
 
     this._userService.getUserFriends(this.userId).subscribe({
       next: (user) => {
-        console.log(user);
 
         this.userFriends = user.friends;
         this.isConnectedUser = user.isConnectedUser;

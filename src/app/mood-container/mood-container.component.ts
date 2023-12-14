@@ -20,7 +20,6 @@ export class MoodContainerComponent implements OnInit {
           this.signInUser(event.Payload);
           break;
         case 'UserSignUp':
-          console.log(event.Payload);
           this.signUpUser(event.Payload);
           break;
         case 'UserLogOut':
