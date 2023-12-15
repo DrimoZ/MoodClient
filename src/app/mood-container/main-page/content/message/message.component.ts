@@ -13,6 +13,7 @@ import {style} from "@angular/animations";
 import {DtoInputOtherUser} from "../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {DtoOutputGroup} from "../../../../Dtos/Groups/dto-output-group";
 import {DtoInputUserFromGroup} from "../../../../Dtos/Groups/dto-input-userfromGroup";
+import {SignalRService} from "../../../../Services/signal-r.service";
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -64,13 +65,6 @@ export class MessageComponent {
     this._signalR.startConnection();
   }
 
-  public sendMessage = (user: string, message: string) => {
-    this._signalR.sendMessage(user, message);
-    this.userInput.nativeElement.value = '';
-    this.messageInput.nativeElement.value = '';
-  }
-  }
-
   getMessageFromGroup(groupId: number, index: number)
   {
     this._messageService.getUserFromGroup(groupId).subscribe({
@@ -112,6 +106,8 @@ export class MessageComponent {
       userGroupId: number = usergroup;
     }
     this._messageService.sendOutputMessage(msg).subscribe();
+    // this._signalR.sendMessage(user, message);
+    //TODO implements signalR
   }
   formatDate(dateString: string): string
   {
