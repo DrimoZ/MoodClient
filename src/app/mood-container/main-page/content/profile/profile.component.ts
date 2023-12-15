@@ -77,10 +77,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  emitPendingFriend(friendId: string) {
-    this._router.navigate(['home/notifications'])
-  }
-
   emitCancelFriend(friendId: string) {
     this._friendService.rejectFriendRequest(friendId).subscribe({
       next: (res) => {
@@ -94,5 +90,27 @@ export class ProfileComponent implements OnInit {
 
   updateProfilePicture(userId: string) {
 
+  }
+
+  emitIgnoreFriend(userId: string) {
+    this._friendService.rejectFriendRequest(userId).subscribe({
+      next: (res) => {
+        this.profileData.isFriendWithConnected = -1;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
+
+  emitAcceptFriend(userId: string) {
+    this._friendService.acceptFriendRequest(userId).subscribe({
+      next: (res) => {
+        this.profileData.isFriendWithConnected = 2;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
   }
 }

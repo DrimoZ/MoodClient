@@ -51,10 +51,10 @@
           <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(userId)" i18n>
             <i class="fa-solid fa-plus"></i> Add Friend
           </button>
-          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitPendingFriend(userId)" i18n>
+          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(userId)" i18n>
             <i class="fa-solid fa-clock"></i> Ignore Friend Request
           </button>
-          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitPendingFriend(userId)" i18n>
+          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(userId)" i18n>
             <i class="fa-solid fa-clock"></i> Accept Friend Request
           </button>
           <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(userId)" i18n>
@@ -64,8 +64,11 @@
       </div>
 
       <div class="actionDiv actionDivSmall">
-        <button *ngIf="!isConnectedUser && (profileData.isPublic || profileData.isFriendWithConnected == 2)" class="btn btn-sm btn-outline-info w-50" (click)="sendMessage(userId)" i18n>
-          <i class="fa-solid fa-xmark"></i> Send a message
+        <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-100" (click)="updateProfilePicture(userId)" i18n>
+          <i class="fa-solid fa-gear"></i> Change Profile Picture
+        </button>
+        <button *ngIf="!isConnectedUser && (profileData.isPublic || profileData.isFriendWithConnected == 2)" class="btn btn-sm btn-outline-light w-50" (click)="sendMessage(userId)" i18n>
+          <i class="fa-solid fa-message"></i> Send a message
         </button>
         <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>
           <i class="fa-solid fa-xmark"></i> Delete Friend
@@ -73,11 +76,14 @@
         <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(userId)" i18n>
           <i class="fa-solid fa-plus"></i> Add Friend
         </button>
-        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitPendingFriend(userId)" i18n>
-          <i class="fa-solid fa-clock"></i> Pending Request
+        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(userId)" i18n>
+          <i class="fa-solid fa-clock"></i> Ignore Friend Request
+        </button>
+        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(userId)" i18n>
+          <i class="fa-solid fa-clock"></i> Accept Friend Request
         </button>
         <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(userId)" i18n>
-          <i class="fa-solid fa-slash"></i> Cancel Request
+          <i class="fa-solid fa-slash"></i> Cancel Friend Request
         </button>
       </div>
     </div>
