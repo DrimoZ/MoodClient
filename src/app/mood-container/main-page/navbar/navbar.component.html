@@ -26,11 +26,11 @@
         <i class="fa-solid fa-message fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
-      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
+      <!--<div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
            routerLink="./notifications" routerLinkActive="active"
            [class.hhover-darker]="clickedDiv !== 'notifications'" [class.selected-darker]="clickedDiv == 'notifications'" (click)="onDivClick('notifications')">
         <i class="fa-solid fa-bell fa-lg position-absolute top-50 start-50 translate-middle"></i>
-      </div>
+      </div>-->
     </div>
 
   <!--Connexion + parameters buttons-->
@@ -50,33 +50,38 @@
 <div #divRef class="rounded-1 position-absolute p-2 blurred-back d-flex flex-column user-select-none w-240 h-203 h-sm-430"
      [ngClass]="{'d-none': !isOptionsVisible}" >
   <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
-       routerLink="./newsfeed" routerLinkActive="active" (click)="isOptionsVisible = false;">
+       routerLink="./newsfeed" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('newsfeed')">
     <i class="fa-solid fa-house fa-lg "></i>
     <span class="" i18n>News Feed</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
-       routerLink="./discover/publications" routerLinkActive="active" (click)="isOptionsVisible = false;">
+       routerLink="./discover/publications" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('discover')">
     <i class="fa-solid fa-magnifying-glass fa-lg "></i>
     <span class="" i18n>Discover</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
-       routerLink="./messages" routerLinkActive="active" (click)="isOptionsVisible = false;">
+       routerLink="./messages" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('messages')">
     <i class="fa-solid fa-message fa-lg "></i>
     <span class="" i18n>Messages</span>
   </div>
-  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
+  <!--<div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
        routerLink="./notifications" routerLinkActive="active" (click)="isOptionsVisible = false;">
     <i class="fa-solid fa-bell fa-lg "></i>
     <span class="" i18n>Notifications</span>
 
-  </div>
+  </div>-->
 
   <div class="mx-1 my-2 d-sm-none" style="border: hsla(0, 0%, 100%, 0.15) solid 1px; "></div>
 
-  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between">
+  <!--<div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between">
     <i class="fa-solid fa-moon fa-lg "></i>
-    <!--<i class="fa-solid fa-sun fa-lg"></i> SWAP WHEN THEME CHANGED-->
+    &lt;!&ndash;<i class="fa-solid fa-sun fa-lg"></i> SWAP WHEN THEME CHANGED&ndash;&gt;
     <span class="" i18n>Change Appearance</span>
+  </div>-->
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between"
+       routerLink="./notifications" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('notifications')">
+    <i class="fa-solid fa-bell fa-lg "></i>
+    <span class="" i18n>Notifications</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between"
        routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('parameters')">
