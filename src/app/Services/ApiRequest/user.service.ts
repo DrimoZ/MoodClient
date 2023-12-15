@@ -17,8 +17,8 @@ export class UserService {
     return this._httpClient.get(UserService._URL_API);
   }
 
-  getUserProfile(userLogin: string): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/" + userLogin);
+  getUserProfile(userId: string): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/" + userId);
   }
 
   getUserAccount(userLogin: string): Observable<any> {
@@ -40,8 +40,5 @@ export class UserService {
 
   getUsers(count: number): Observable<DtoInputOtherUser[]> {
     return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users/" + count);
-  }
-  getUsersGroups(): Observable<any>{
-    return this._httpClient.get(environment.BASE_URL_API + "/api/v1/group")
   }
 }
