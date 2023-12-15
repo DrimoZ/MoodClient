@@ -22,31 +22,30 @@
       </ul>
       <hr>
     </div>
+<body>
+<div class="container">
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <div class="col-2">User</div>
+    <div class="col-4"><input type="text" id="userInput" #userInput/></div>
   </div>
-  <div class="w-100 h-100 border txt-gold">
-    <div class="" style=" padding: 1%;height: 100%">
-      <div id="conversation" class="scrowl">
-        <div  class="chat-container ">
-          <div  *ngFor="let msg of messages" class="d-flex flex-column" >
-            <div class="d-flex" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">{{msg.userName}}</div>
-            <div class="d-flex align-items-center" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">
-              <img class="d-flex" class="profile-picture" alt="" src="{{msg.url}}" width="50" height="50" >
-              <div class="message-bubble" [ngClass]="msg.userId == userId? 'right':'left'">
-                <p>{{msg.content}}</p>
-              </div>
-            </div>
-            <div class="d-flex" style="justify-content: center">
-              <p class="date">{{formatDate(msg.date)}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="border-gold bottom-0 end-0" style="width: 100%">
-          <div id="sender" style="display: flex; flex-wrap: nowrap;padding-top: 1%;" >
-            <input #inputmessage class="position-relative container-fluid" type="text"  style="width: 100%;" placeholder="Message" value="">
-            <button class="btn position-relative bottom-0 end-0 " (click)="sendMessage(inputmessage.value)">Envoyer</button>
-          </div>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-2">Message</div>
+    <div class="col-4"><input type="text" id="messageInput" #messageInput /></div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <div class="col-6">
+      <button #sendButton type="button" id="sendButton" name="sendButton" value="Send Message" (click)="sendMessage(userInput.value, messageInput.value)">Send Message</button>
     </div>
   </div>
+  <div class="w-100 h-100 border txt-gold">
+    <p>Page de communication</p>
+
+  </div>
 </section>
+
+
+<footer>
+
+</footer>

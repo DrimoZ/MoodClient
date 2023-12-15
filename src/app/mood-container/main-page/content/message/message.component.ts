@@ -1,4 +1,3 @@
-import {Component} from '@angular/core';
 import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {Router} from "@angular/router";
@@ -8,12 +7,21 @@ import {ImageService} from "../../../../Services/Image/image.service";
 import {map} from "rxjs";
 import {DtoOutputMessage} from "../../../../Dtos/Groups/DtoOutputMessage";
 import {DatePipe} from "@angular/common";
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {SignalRService} from "../../../../Services/signal-r.service";
+
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.css'],
+  styleUrls: ['./message.component.css']
 })
-export class MessageComponent {
+export class MessageComponent implements OnInit{
+
+
+  @ViewChild('userInput') userInput: ElementRef;
+  @ViewChild('messageInput') messageInput: ElementRef;
+  @ViewChild('sendButton') sendButton: ElementRef;
+
 
 
   groupes: DtoInputGroup[] = [];
@@ -22,7 +30,7 @@ export class MessageComponent {
   groupIndex: number = 0;
   isWaitingForApi: boolean = true;
   isConnectedUser: boolean = false;
-    constructor(private _datePipe: DatePipe, private _userService: UserService,private _messageService:MessageService,private _imageService:ImageService, private _router: Router) {
+    constructor(private _signalR: SignalRService, private _datePipe: DatePipe, private _userService: UserService,private _messageService:MessageService,private _imageService:ImageService, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -49,6 +57,14 @@ export class MessageComponent {
         }
       }
     });
+    this._signalR.startConnection();
+  }
+
+  public sendMessage = (user: string, message: string) => {
+    this._signalR.sendMessage(user, message);
+    this.userInput.nativeElement.value = '';
+    this.messageInput.nativeElement.value = '';
+  }
   }
 
   getMessageFromGroup(groupId: number)
