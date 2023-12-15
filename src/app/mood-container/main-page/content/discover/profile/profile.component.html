@@ -7,7 +7,7 @@
         <div class="profileDiv" *ngFor="let user of filterUsers(otherUsers, searchBarValue)">
           <div class="profileImageDiv">
             <div class="profilePictureDiv" (click)="viewUserProfile(user.id)">
-              <img src="assets/Logo.png" class="rounded-circle img-cover hover-pointer">
+              <img src="{{user.imageUrl}}" class="rounded-circle img-cover hover-pointer profile-picture">
             </div>
           </div>
           <div class="profileDataDiv">

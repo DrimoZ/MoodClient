@@ -26,7 +26,6 @@ export class AuthenticationService {
   }
 
   logOutUser(): Observable<any> {
-    console.log("test")
     return this._httpClient.post(AuthenticationService._URL_API + "/signOut", {});
   }
 }

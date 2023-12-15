@@ -1,4 +1,4 @@
-import {SafeResourceUrl, SafeUrl} from "@angular/platform-browser";
+import {SafeUrl} from "@angular/platform-browser";
 
 export interface DtoInputMessage {
   id:number;

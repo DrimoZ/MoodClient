@@ -5,17 +5,19 @@
     <div *ngIf="isPublicationsPublic || isConnectedUser else privatePage">
       <div class="publication-grid">
         <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
-          <div class="content-div">
-            <div class="h-100 w-100">
-              <img src="assets/Logo.png" alt="img_{{publication.elements[0].id}}" class="pub_img"/>
+          <div *ngIf="publication.elements.length > 0 && publication.elements[0].imageUrl != ''">
+            <div class="content-div">
+              <div class="h-100 w-100">
+                <img src="{{publication.elements[0].imageUrl}}" alt="img_{{publication.elements[0].id}}" class="pub_img"/>
+              </div>
             </div>
-          </div>
-          <div class="stat-div flex-row justify-content-center">
-            <div class="text-center w-30 text-white" style="padding-top: 50%">
-              <i class="fa-solid fa-heart"></i> {{publication.likeCount}}
-            </div>
-            <div class="text-center w-30 text-white" style="padding-top: 50%">
-              <i class="fa-solid fa-comments"></i> {{publication.commentCount}}
+            <div class="stat-div flex-row justify-content-center">
+              <div class="text-center w-30 text-white" style="padding-top: 50%">
+                <i class="fa-solid fa-heart"></i> {{publication.likeCount}}
+              </div>
+              <div class="text-center w-30 text-white" style="padding-top: 50%">
+                <i class="fa-solid fa-comments"></i> {{publication.commentCount}}
+              </div>
             </div>
           </div>
         </div>

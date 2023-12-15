@@ -40,6 +40,10 @@ export class UserService {
 
 
   getDiscoverUsers(count: number, search: string): Observable<DtoInputOtherUser[]> {
+    this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users",
+      {params: {userCount: count, searchValue: search}
+      }).subscribe(e => console.log(e))
+
     return this._httpClient.get<DtoInputOtherUser[]>(UserService._URL_API + "/discover/users",
       {params: {userCount: count, searchValue: search}
       });
@@ -50,6 +54,7 @@ export class UserService {
       {params: {publicationCount: count, searchValue: search}
       });
   }
+
   getUsersGroups(): Observable<any>{
     return this._httpClient.get(environment.BASE_URL_API + "/api/v1/group")
   }

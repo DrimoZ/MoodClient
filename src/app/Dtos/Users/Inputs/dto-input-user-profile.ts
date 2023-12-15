@@ -1,3 +1,5 @@
+import {SafeUrl} from "@angular/platform-browser";
+
 export interface DtoInputUserProfile {
   login: string;
 
@@ -7,4 +9,7 @@ export interface DtoInputUserProfile {
 
   friendCount: number;
   publicationCount: number;
+
+  idImage: number;
+  imageUrl: SafeUrl;
 }

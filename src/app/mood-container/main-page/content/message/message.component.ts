@@ -1,9 +1,9 @@
 import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {Router} from "@angular/router";
-import {MessageService} from "../../../../Services/message.service"
+import {MessageService} from "../../../../Services/ApiRequest/message.service"
 import {DtoInputMessage} from "../../../../Dtos/Groups/dto-input-message";
-import {ImageService} from "../../../../Services/Image/image.service";
+import {ImageService} from "../../../../Services/ApiRequest/image.service";
 import {map} from "rxjs";
 import {DtoOutputMessage} from "../../../../Dtos/Groups/DtoOutputMessage";
 import {DatePipe} from "@angular/common";
@@ -70,7 +70,7 @@ export class MessageComponent implements OnInit{
   getMessageFromGroup(groupId: number)
   {
     this.messages = [];
-    this._messageService.getAllMessageForAGroupe(groupId).subscribe({
+    this._messageService.getAllMessageForAGroup(groupId).subscribe({
       next: msg =>{
         msg.forEach(msg => {
           this.getImageUrl( msg.imageId == null ? 0:msg.imageId).subscribe(img => {
