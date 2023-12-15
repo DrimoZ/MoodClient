@@ -7,7 +7,6 @@ export interface DtoInputMessage {
   userName: string;
   userId:string;
   groupId:number;
-  commId:number;
   date : string;
   imageId: number;
   url:SafeUrl;

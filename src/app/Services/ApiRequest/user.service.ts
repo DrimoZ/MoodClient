@@ -18,8 +18,8 @@ export class UserService {
     return this._httpClient.get(UserService._URL_API);
   }
 
-  getUserProfile(userLogin: string): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/" + userLogin);
+  getUserProfile(userId: string): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/" + userId);
   }
 
   getUserAccount(userLogin: string): Observable<any> {

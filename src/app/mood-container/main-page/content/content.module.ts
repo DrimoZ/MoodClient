@@ -10,7 +10,7 @@ import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
 import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -30,7 +30,8 @@ import {FormsModule} from "@angular/forms";
         RouterLinkActive,
         NgIf,
         NgOptimizedImage,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
   providers: [],
 })
