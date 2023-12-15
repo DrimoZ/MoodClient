@@ -8,14 +8,14 @@ import {NotificationComponent} from "./notification/notification.component";
 import {ParametersComponent} from "./parameters/parameters.component";
 
 const routes: Routes = [
-  {path: "", pathMatch: "full", redirectTo: "/newsfeed"},
+  {path: "", pathMatch: "full", redirectTo: "newsfeed"},
   {path: "newsfeed", component: NewsFeedComponent},
   {path: "discover", component: DiscoverComponent, loadChildren: () => import('./discover/discover.module').then(module => module.DiscoverModule) },
   {path: "messages", component: MessageComponent},
   {path: "notifications", component: NotificationComponent},
   {path: "parameters", component: ParametersComponent},
   {path: ":id", component: ProfileComponent, loadChildren: () => import('./profile/profile.module').then(module => module.ProfileModule)},
-  {path: "**", redirectTo: "/newsfeed"},
+  {path: "**", redirectTo: "newsfeed"},
 ];
 
 @NgModule({

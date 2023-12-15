@@ -2,46 +2,91 @@
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div  *ngIf="(!isWaitingForApi && userId != '-1') else errorPage"
-        class="p-4 w-100 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
-    <div class="d-flex flex-row pb-2 h-34">
-      <div class="d-flex justify-content-center p-2 pe-4 pb-4 h-100">
-        <img src="{{profileData.imageUrl}}" class="rounded-circle img-cover border border-dark" style="width: 200px; height: 200px; object-fit:scale-down;">
+        class="mb-3 p-2 w-100 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
+    <div class="main-profile">
+      <div class="p-3 profileLarge">
+        <div class="circle">
+          <img src="{{profileData.imageUrl}}" class="profileImage">
+        </div>
       </div>
-      <div class="w-100  d-flex flex-column p-2 gap-2">
-        <div class="d-flex flex-row justify-content-between p-3 ">
-          <div class="justify-content-start d-flex w-100">
-            <span class="fs-3">{{profileData.login}}</span>
-          </div>
-          <div class="justify-content-start d-flex w-100">
-<!--            <button class="btn btn-gold btn-sm" i18n>Edit Profile</button>-->
+
+      <div class="informationDiv">
+        <div class="p-3 profileSmall">
+          <div class="circle">
+            <img src="{{profileData.imageUrl}}" class="profileImage">
           </div>
         </div>
 
-        <div class="d-flex flex-row justify-content-between p-2">
-          <div class="justify-content-start d-flex w-100 gap-2">
-            <span class="" i18n>Publications : </span>
-            <span class="">{{profileData.publicationCount}}</span>
+        <div class="userDiv">
+          <div class="nameDiv">
+            <span class="fs-3">{{profileData.name}}</span>
+            <span class="fs-7 profileLarge">({{profileData.login}})</span>
           </div>
-          <div class="justify-content-start d-flex w-100 gap-2">
-            <span class="" i18n>Friends : </span>
-            <span class="">{{profileData.friendCount}}</span>
+          <div class="dataDiv">
+            <div class="justify-content-start d-flex w-100 gap-2">
+              <span class="" i18n>Publications : </span>
+              <span class="">{{profileData.publicationCount}}</span>
+            </div>
+            <div class="justify-content-start d-flex w-100 gap-2">
+              <span class="" i18n>Friends : </span>
+              <span class="">{{profileData.friendCount}}</span>
+            </div>
           </div>
-          <div class="justify-content-start d-flex w-100">
-          </div>
-        </div>
-
-        <div class="d-flex flex-column justify-content-between p-2 h-100 gap-1">
-          <div class="d-flex w-100 gap-2 h-34 p-1 justify-content-start">
-            <span class="fs-5 fw-bold">{{profileData.name}}</span>
-          </div>
-          <div class="d-flex w-100 gap-2 h-66 p-1 justify-content-start">
+          <div class="profileLarge" style="height: 25px"></div>
+          <div class="descDiv">
             <span class="fst-italic">{{profileData.description}}</span>
           </div>
         </div>
 
+        <div class="actionDiv actionDivLarge">
+          <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture(userId)" i18n>
+            <i class="fa-solid fa-gear"></i> Change Profile Picture
+          </button>
+          <button *ngIf="!isConnectedUser && (profileData.isPublic || profileData.isFriendWithConnected == 2)" class="btn btn-sm btn-outline-light w-50" (click)="sendMessage(userId)" i18n>
+            <i class="fa-solid fa-message"></i> Send a message
+          </button>
+          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>
+            <i class="fa-solid fa-xmark"></i> Delete Friend
+          </button>
+          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(userId)" i18n>
+            <i class="fa-solid fa-plus"></i> Add Friend
+          </button>
+          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(userId)" i18n>
+            <i class="fa-solid fa-clock"></i> Ignore Friend Request
+          </button>
+          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(userId)" i18n>
+            <i class="fa-solid fa-clock"></i> Accept Friend Request
+          </button>
+          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(userId)" i18n>
+            <i class="fa-solid fa-slash"></i> Cancel Friend Request
+          </button>
+        </div>
+      </div>
+
+      <div class="actionDiv actionDivSmall">
+        <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-100" (click)="updateProfilePicture(userId)" i18n>
+          <i class="fa-solid fa-gear"></i> Change Profile Picture
+        </button>
+        <button *ngIf="!isConnectedUser && (profileData.isPublic || profileData.isFriendWithConnected == 2)" class="btn btn-sm btn-outline-light w-50" (click)="sendMessage(userId)" i18n>
+          <i class="fa-solid fa-message"></i> Send a message
+        </button>
+        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>
+          <i class="fa-solid fa-xmark"></i> Delete Friend
+        </button>
+        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(userId)" i18n>
+          <i class="fa-solid fa-plus"></i> Add Friend
+        </button>
+        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(userId)" i18n>
+          <i class="fa-solid fa-clock"></i> Ignore Friend Request
+        </button>
+        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(userId)" i18n>
+          <i class="fa-solid fa-clock"></i> Accept Friend Request
+        </button>
+        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(userId)" i18n>
+          <i class="fa-solid fa-slash"></i> Cancel Friend Request
+        </button>
       </div>
     </div>
-
 
     <div class="border-top-gold d-flex flex-column h-66">
       <div class="d-flex justify-content-center">
@@ -57,7 +102,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="position-relative">
         <router-outlet></router-outlet>
       </div>
     </div>

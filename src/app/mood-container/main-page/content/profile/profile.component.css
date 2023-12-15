@@ -1,4 +1,145 @@
-.img-cover{
+.circle {
+  border: black 3px solid;
+
+  position: relative;
+  width: 210px;
+  padding-top: 210px;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profileImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 210px;
+  height: 210px;
   object-fit: cover;
-  object-position: center;
+}
+
+.main-profile {
+  display: flex;
+  flex-direction: column;
+  margin-bottom:2rem!important;
+}
+
+.actionDiv {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 5px;
+  padding: 3px;
+}
+
+.actionDivSmall {
+  display: flex;
+}
+.actionDivLarge {
+  display: none;
+}
+
+.informationDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3px;
+}
+
+.userDiv {
+  height: 100%;
+  width: 100%;
+  padding: 5px 5px 5px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nameDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dataDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+@media (min-width:320px) {
+  .profileImage {
+    width: 70px;
+    height: 70px;
+  }
+
+  .circle {
+    width: 70px;
+    padding-top: 70px;
+  }
+
+  .actionDivSmall {
+    display: flex;
+  }
+  .actionDivLarge {
+    display: none;
+  }
+}
+
+
+@media (min-width: 520px) {
+  .profileImage {
+    width: 130px;
+    height: 130px;
+  }
+
+  .circle {
+    width: 130px;
+    padding-top: 130px;
+  }
+
+  .main-profile {
+    flex-direction: row;
+  }
+
+  .actionDivSmall {
+    display: none;
+  }
+  .actionDivLarge {
+    display: flex;
+  }
+
+  .informationDiv {
+    flex-direction: column;
+  }
+
+  .dataDiv {
+    flex-direction: row;
+  }
+}
+
+@media (min-width:801px) {
+  .profileImage {
+    width: 210px;
+    height: 210px;
+  }
+
+  .circle {
+    width: 210px;
+    padding-top: 210px;
+  }
+
+
+}
+
+@media (min-width:1700px) {
+
 }

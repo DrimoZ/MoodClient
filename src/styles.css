@@ -4,6 +4,8 @@ body {
   height: 100vh;
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   overflow-y: hidden;
+
+  min-width: 320px;
 }
 
 .txt-gold {
@@ -17,6 +19,7 @@ body {
 .border-gold {
   border: #deb992 solid 1px;
 }
+
 .border-top-gold {
   border-top: #deb992 solid 1px;
 }
@@ -32,7 +35,7 @@ body {
 }
 
 .blur-effect {
-  backdrop-filter: blur(30px); /* Ajustez la valeur selon votre préférence */
+  backdrop-filter: blur(30px);
 }
 
 .blurred-back {
@@ -49,66 +52,6 @@ body {
   } opacity: 1;
 }
 
-.hvh-10 {
-  height: 10vh !important;
-}
-
-.hvh-7 {
-  height: 7vh !important;
-}
-
-.hvh-90 {
-  height: 90vh !important;
-}
-
-.hvh-93 {
-  height: 93vh !important;
-}
-
-.h-5 {
-  height: 5% !important;
-}
-.h-34 {
-  height: 34% !important;
-}
-.h-66 {
-  height: 66% !important;
-}
-
-.w-5 {
-  width: 5% !important;
-}
-
-.w-10 {
-  width: 10% !important;
-}
-.w-20 {
-  width: 20% !important;
-}
-.w-30 {
-  width: 30% !important;
-}
-.w-40 {
-  width: 40% !important;
-}
-.w-60 {
-  width: 60% !important;
-}
-.w-65 {
-  width: 65% !important;
-}
-.w-80 {
-  width: 80% !important;
-}
-.top-7 {
-  top:7% !important;
-}
-.fs-7 {
-   font-size:0.8rem !important
-}
-.fs-8 {
-  font-size:0.5rem !important
-}
 .hover-pointer {
   cursor: pointer;
 }
@@ -126,98 +69,4 @@ body {
   background-color: hsla(0, 0%, 100%, 0.15);
   border-bottom: #1BA098 solid;
   cursor: default;
-}
-
-.profilesGrid {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -10px;
-}
-
-.profileDiv {
-  width: calc(50% - 10px);
-  padding-top: calc((50% - 10px) / 5);
-  position: relative;
-
-  margin: 5px;
-  object-fit: cover;
-  min-width: 400px;
-  min-height: 80px;
-
-  border: #1BA098 1px solid;
-  border-radius: 5px;
-}
-
-.profilePictureDiv {
-  position: absolute;
-  width: 25%;
-  height: inherit;
-
-  max-width: 25%;
-  max-height: 100%;
-
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-
-  padding: 5px;
-
-  align-content: center;
-}
-
-.profilePictureDiv img {
-  object-fit:scale-down;
-
-  width: 95%;
-  height: 95%;
-  background-color: transparent;
-  border: black 1px solid;
-
-}
-
-.profileDataDiv {
-  position: absolute;
-  width: 75%;
-  height: inherit;
-
-  max-width: 75%;
-  max-height: 100%;
-
-  top: 0;
-  left: 25%;
-  bottom: 0;
-  right: 0;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.profileNameDiv {
-  height: 50%;
-  width: 100%;
-
-  padding: 3% 1% 1% 5%;
-}
-
-.profileOtherDiv {
-  height: 50%;
-  width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  padding-right: 1%;
-}
-
-.profileFriendsDiv {
-  width: 80%;
-  height: 100%;
-  padding-left: 4%;
-}
-
-.profileAddDiv {
-  height: 100%;
-  width: 20%;
 }

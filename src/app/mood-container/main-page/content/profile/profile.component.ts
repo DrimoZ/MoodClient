@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {DtoInputUserProfile} from "../../../../Dtos/Users/Inputs/dto-input-user-profile";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {BehaviorEventBusService} from "../../../../Services/EventBus/behavior-event-bus.service";
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {ImageService} from "../../../../Services/ApiRequest/image.service";
+import {FriendService} from "../../../../Services/ApiRequest/friend.service";
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
   profileData: DtoInputUserProfile = <DtoInputUserProfile>{};
 
   constructor(private _behaviorEventBus: BehaviorEventBusService, private _userService: UserService,
-              private _activatedRoute: ActivatedRoute, private _imageService: ImageService) {
+              private _activatedRoute: ActivatedRoute, private _imageService: ImageService,
+              private _router: Router, private _friendService: FriendService) {
   }
 
   ngOnInit(): void {
@@ -46,6 +48,69 @@ export class ProfileComponent implements OnInit {
         Type: "UserId",
         Payload: this.userId
       })
+    });
+  }
+
+  sendMessage(userId: string) {
+
+  }
+
+  emitAddFriend(friendId: string) {
+    this._friendService.createFriendRequest(friendId).subscribe({
+      next: (res) => {
+        this.profileData.isFriendWithConnected = 0;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
+
+  emitRemoveFriend(friendId: string) {
+    this._friendService.deleteFriend(friendId).subscribe({
+      next: (res) => {
+        this.profileData.isFriendWithConnected = -1;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
+
+  emitCancelFriend(friendId: string) {
+    this._friendService.rejectFriendRequest(friendId).subscribe({
+      next: (res) => {
+        this.profileData.isFriendWithConnected = -1;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
+
+  updateProfilePicture(userId: string) {
+
+  }
+
+  emitIgnoreFriend(userId: string) {
+    this._friendService.rejectFriendRequest(userId).subscribe({
+      next: (res) => {
+        this.profileData.isFriendWithConnected = -1;
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
+
+  emitAcceptFriend(userId: string) {
+    this._friendService.acceptFriendRequest(userId).subscribe({
+      next: (res) => {
+        this.profileData.isFriendWithConnected = 2;
+      },
+      error: (err) => {
+        console.log(err)
+      }
     });
   }
 }

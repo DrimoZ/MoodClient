@@ -1,0 +1,178 @@
+.profilesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.profileDiv {
+  width: calc(50% - 10px);
+  position: relative;
+
+  object-fit: cover;
+  min-width: 300px;
+  min-height: 90px;
+
+  border: #1BA098 1px solid;
+  border-radius: 5px;
+
+  display: flex;
+}
+
+.profilePictureDiv {
+  height: 90px;
+  width: 90px;
+
+  padding: 5px;
+
+  align-content: center;
+}
+
+.profilePictureDiv img {
+  object-fit:scale-down;
+
+  width: 95%;
+  height: 95%;
+  background-color: transparent;
+  border: black 1px solid;
+
+}
+
+.profileDataDiv {
+  height: 90px;
+}
+
+.profileNameDiv {
+  height: 50%;
+  width: 100%;
+
+  padding: 3% 1% 1% 5%;
+}
+
+.profileOtherDiv {
+  height: 50%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding-right: 1%;
+}
+
+.profileFriendsDiv {
+  width: 80%;
+  height: 100%;
+  padding-left: 4%;
+}
+
+.profileAddDiv {
+  height: 40px;
+}
+
+.profileLarge {
+  display: none;
+}
+
+.profileSmall {
+  display: block;
+}
+
+.accountInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media (min-width:320px) {
+  .profileDiv {
+    max-width: 300px;
+    height: 133px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profileDataDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profileDataDiv2 {
+    width: 210px;
+  }
+
+  .profileNameDiv span {
+    font-size:1.0rem!important
+  }
+
+  .profileAddDiv {
+    width: 100%;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  .profileLarge {
+    display: none;
+  }
+  .profileSmall {
+    display: block;
+  }
+}
+
+@media (min-width: 520px) {
+  .accountInfo {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+   .accountInfo .form-control {
+    width: 50%!important;
+  }
+}
+
+@media (min-width:801px) { /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .profileDiv {
+    min-width: 350px;
+    height: 90px;
+
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profileDataDiv {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profileDataDiv2 {
+    width: 100%;
+  }
+
+  .profileNameDiv span {
+    font-size:1.25rem!important
+  }
+
+  .profileAddDiv {
+    width: 20%;
+  }
+
+  .profileLarge {
+    display: block;
+  }
+  .profileSmall {
+    display: none;
+  }
+}
+
+@media (min-width:1700px) { /* hi-res laptops and desktops */
+  .profileDiv {
+    min-width: 400px;
+  }
+  .profileDataDiv {
+    width: 310px;
+  }
+}
