@@ -4,26 +4,26 @@
   <div *ngIf="!isWaitingForApi && userId != '-1' else errorPage">
     <div class="ms-2 d-flex flex-column gap-2" [formGroup]="commonInfoForm">
       <span class="w-100 fs-5 fw-bold text-center" i18n>Common Information</span>
-      <div class="p-1 d-flex justify-content-between">
+      <div class="p-1 accountInfo">
         <span class="form-label" i18n>Full Name</span>
-        <input class="form-control w-50" type="text" formControlName="Name" [value]="accountData.name">
+        <input class="form-control" type="text" formControlName="Name" [value]="accountData.name">
       </div>
-      <div class="p-1 d-flex justify-content-between">
+      <div class="p-1 accountInfo">
         <span class="form-label" i18n>Email Address</span>
-        <input class="form-control w-50" type="email" formControlName="Mail" [value]="accountData.mail">
+        <input class="form-control" type="email" formControlName="Mail" [value]="accountData.mail">
       </div>
 
-      <div class="p-1 d-flex justify-content-between">
+      <div class="p-1 accountInfo">
         <span class="form-label" i18n>Birthdate</span>
-        <input class="form-control w-50" type="date" formControlName="BirthDate" [value]="accountData.birthDate">
+        <input class="form-control" type="date" formControlName="BirthDate" [value]="accountData.birthDate">
       </div>
-      <div class="p-1 d-flex justify-content-between">
+      <div class="p-1 accountInfo">
         <span class="form-label" i18n>Title</span>
-        <input class="form-control w-50" type="text" formControlName="Title" [value]="accountData.title">
+        <input class="form-control" type="text" formControlName="Title" [value]="accountData.title">
       </div>
-      <div class="p-1 d-flex justify-content-between">
+      <div class="p-1 accountInfo">
         <span class="form-label" i18n>Description</span>
-        <textarea class="form-control w-50" formControlName="Description" [value]="accountData.description"></textarea>
+        <textarea class="form-control" formControlName="Description" [value]="accountData.description"></textarea>
       </div>
 
       <div class="p-1 d-flex justify-content-end gap-2">
@@ -39,13 +39,13 @@
 
     <div class="ms-2 d-flex flex-column gap-2">
       <span class="w-100 fs-5 fw-bold text-center" i18n>Private Information</span>
-      <div class="p-1 d-flex justify-content-between">
+      <div class="p-1 accountInfo">
         <span class="form-label" i18n>Login</span>
-        <input class="form-control w-50" type="text" [value]="accountData.login" disabled>
+        <input class="form-control" type="text" [value]="accountData.login" disabled>
       </div>
-      <div class="p-1 d-flex justify-content-between">
+      <div class="p-1 accountInfo">
         <span class="form-label" i18n>Phone Number</span>
-        <input class="form-control w-50" type="tel" [value]="accountData.phoneNumber" disabled>
+        <input class="form-control" type="tel" [value]="accountData.phoneNumber" disabled>
       </div>
 
       <div class="p-1 d-flex justify-content-end gap-2">
