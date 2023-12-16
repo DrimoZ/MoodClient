@@ -6,6 +6,7 @@ import {DtoOutputUserUpdateAccount} from "../../Dtos/Users/Outputs/dto-output-us
 import {DtoInputOtherUser} from "../../Dtos/Users/Inputs/dto-input-other-user";
 import {DtoInputPublication} from "../../Dtos/Publication/Input/dto-input-publication";
 import {DtoInputUserPrivacy} from "../../Dtos/Users/Inputs/dto-input-user-privacy";
+import {DtoOutputUserSignup} from "../../Dtos/Users/Outputs/dto-output-user-update-password";
 
 @Injectable({
   providedIn: 'root'
@@ -62,4 +63,11 @@ export class UserService {
   }
 
 
+  updateUserPassword(dto: DtoOutputUserSignup): Observable<any> {
+    return this._httpClient.post(UserService._URL_API + "/userPassword", dto);
+  }
+
+  deleteAccount(): Observable<any> {
+    return this._httpClient.post(UserService._URL_API + "/delete", {});
+  }
 }

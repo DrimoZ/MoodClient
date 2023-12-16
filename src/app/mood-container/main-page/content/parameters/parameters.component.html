@@ -1,6 +1,6 @@
-<section class="px-3 py-3 flex-row hvh-93 justify-content-start blur-effect txt-gold position-relative gap-1 d-none d-md-flex">
 <!--  Big Screen-->
-  <div class="w-35 pe-2 h-100 border-end gap-2 d-flex flex-column justify-content-between user-select-none">
+<section class="px-3 py-3 flex-row hvh-93 justify-content-start blur-effect txt-gold position-relative gap-1 d-none d-md-flex">
+  <div class="w-35 pe-2 h-100 border-end gap-2 d-flex flex-column justify-content-between user-select-none overflow-y-auto">
     <div class="d-flex flex-column gap-2">
       <div class="p-2 align-items-center">
         <span class="w-100 fs-3" i18n>Parameters</span>
@@ -47,7 +47,7 @@
 
 <!--  Small Screen-->
 <section class="px-3 py-3 d-flex flex-column hvh-93 justify-content-start blur-effect txt-gold position-relative gap-1 d-md-none">
-  <div class="w-100 h-7 border-bottom gap-2 d-flex flex-row justify-content-between user-select-none pb-3">
+  <div class="w-100 h-7 border-bottom gap-2 d-flex flex-row justify-content-between user-select-none pb-3 overflow-y-auto">
     <div class="align-items-center d-none d-sm-block">
       <span class="w-100 fs-3" i18n>Parameters</span>
     </div>
@@ -86,11 +86,76 @@
 
 <ng-template #content>
   <div class="w-100 h-100">
-    <div *ngIf="clickedDiv=='account'" class="h-100 w-100">
+    <div *ngIf="clickedDiv=='account'" class="h-100 w-100 overflow-y-auto">
+      <div class="pt-4 py-3 d-flex flex-column gap-2">
+        <span class="w-100 fs-5 fw-bold text-center pb-5" i18n>Personal Information</span>
 
+        <form [formGroup]="passwordForm" (submit)="commitPasswordReset()" class="p-2 px-3 d-flex flex-column gap-1 border-gold rounded ms-2">
+          <span class="fs-6 fw-bold text-center" i18n>Password Settings</span>
+          <div class="form-outline mb-4 border border-danger rounded-2 p-1 user-select-none" *ngIf="isPasswordEdited == -1">
+            <span class="text-danger" i18n >An error occurred during the update. Please try again.</span>
+          </div>
+          <div class="form-outline mb-4 border border-success rounded-2 p-1 user-select-none" *ngIf="isPasswordEdited == 1">
+            <span class="text-success" i18n >Password successfully updated.</span>
+          </div>
+
+
+
+          <div class="p-1 accountInfo">
+            <span class="form-label user-select-none" i18n>Old Password</span>
+            <input type="password" formControlName="OldPassword" class="form-control" placeholder="*Required"
+                   [ngClass]="{'input-error': controlNewPassword.invalid && controlNewPassword.dirty && controlNewPassword.touched}" i18n i18n-placeholder/>
+          </div>
+
+          <div class="p-1 accountInfo">
+            <span class="form-label user-select-none" i18n>New Password</span>
+            <input type="password" formControlName="NewPassword" class="form-control" placeholder="*Required"
+                   [ngClass]="{'input-error': controlNewPassword.invalid && controlNewPassword.dirty && controlNewPassword.touched}" i18n i18n-placeholder/>
+          </div>
+
+          <div class="p-1 accountInfo">
+            <span class="form-label user-select-none" i18n>Password Confirmation</span>
+            <input type="password" formControlName="PasswordConfirmation" class="form-control" placeholder="*Required"
+                   [ngClass]="{'input-error': controlPasswordConfirmation.dirty && controlPasswordConfirmation.touched
+                           && (controlPasswordConfirmation.invalid || controlNewPassword.value != controlPasswordConfirmation.value)}" i18n i18n-placeholder/>
+          </div>
+
+          <div *ngIf="controlNewPassword.dirty || controlNewPassword.touched"
+               [ngClass]="{'border-success': controlNewPassword.valid, 'border-danger': !controlNewPassword.valid, 'd-none': controlNewPassword.valid}"
+               class="form-outline mb-4 border  rounded-2 p-1 user-select-none text-start ps-2 mt-3">
+            <span [ngClass]="{'text-success': checkNewPassword(controlNewPassword.value, 0), 'text-danger': !checkNewPassword(controlNewPassword.value, 0)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkNewPassword(controlNewPassword.value, 0), 'fa-xmark': !checkNewPassword(controlNewPassword.value, 0)}"></i>
+                  Password must contain at least 8 characters
+                </span><br>
+            <span [ngClass]="{'text-success': checkNewPassword(controlNewPassword.value, 1), 'text-danger': !checkNewPassword(controlNewPassword.value, 1)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkNewPassword(controlNewPassword.value, 1), 'fa-xmark': !checkNewPassword(controlNewPassword.value, 1)}"></i>
+                  Password must contain at least one number
+                </span><br>
+            <span [ngClass]="{'text-success': checkNewPassword(controlNewPassword.value, 2), 'text-danger': !checkNewPassword(controlNewPassword.value, 2)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkNewPassword(controlNewPassword.value, 2), 'fa-xmark': !checkNewPassword(controlNewPassword.value, 2)}"></i>
+                  Password must contain at least one capital letter
+                </span><br>
+            <span [ngClass]="{'text-success': checkNewPassword(controlNewPassword.value, 3), 'text-danger': !checkNewPassword(controlNewPassword.value, 3)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkNewPassword(controlNewPassword.value, 3), 'fa-xmark': !checkNewPassword(controlNewPassword.value, 3)}"></i>
+                  Password must contain at least one lowercase letter
+                </span><br>
+            <span [ngClass]="{'text-success': checkNewPassword(controlNewPassword.value, 4), 'text-danger': !checkNewPassword(controlNewPassword.value, 4)}" i18n>
+                  <i class="fa-solid" [ngClass]="{'fa-check': checkNewPassword(controlNewPassword.value, 4), 'fa-xmark': !checkNewPassword(controlNewPassword.value, 4)}"></i>
+                  Password must contain at least one special character
+                </span><br>
+          </div>
+
+          <div class="mt-2 px-1 pb-2 d-flex flex-row justify-content-end gap-3">
+            <button type="button" class="btn btn-outline-danger user-select-none"
+                    (click)="cancelPasswordReset()" [disabled]="passwordForm.untouched || passwordForm.pristine" i18n>Cancel</button>
+            <button type="submit" class="btn btn-outline-success user-select-none"
+                    [disabled]="passwordForm.invalid" i18n>Validate Changes</button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <div *ngIf="clickedDiv=='privacy'" class="h-100 w-100 user-select-none">
+    <div *ngIf="clickedDiv=='privacy'" class="h-100 w-100 user-select-none overflow-y-auto">
       <div class="pt-4 py-3 d-flex flex-column gap-2">
         <span class="w-100 fs-5 fw-bold text-center pb-5" i18n>Account Privacy</span>
 
@@ -107,31 +172,33 @@
           </div>
         </div>
 
-        <div class="p-2 px-3 d-flex flex-column" [ngClass]="{'disabled': !settings.isPublic}">
-          <div class="d-flex flex-row justify-content-between">
-            <span class="form-label" i18n>Make your friends list public</span>
-            <label class="switch">
-              <input type="checkbox" id="IsFriendPublic" [(ngModel)]="settings.isFriendPublic" (change)="setFriendsPrivacy()"
-                     [disabled]="!settings.isPublic">
-              <span class="slider round"></span>
-            </label>
+        <div class="d-flex flex-column gap-2" [ngClass]="{'disabled': !settings.isPublic}">
+          <div class="p-2 px-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between">
+              <span class="form-label" i18n>Make your friends list public</span>
+              <label class="switch">
+                <input type="checkbox" id="IsFriendPublic" [(ngModel)]="settings.isFriendPublic" (change)="setFriendsPrivacy()"
+                       [disabled]="!settings.isPublic">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div>
+              <span class="fst-italic fs-7 text-secondary" i18n>When your this parameter is set to public, your friend list is visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your friend list.</span>
+            </div>
           </div>
-          <div>
-            <span class="fst-italic fs-7 text-secondary" i18n>When your this parameter is set to public, your friend list is visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your friend list.</span>
-          </div>
-        </div>
 
-        <div class="p-2 px-3 d-flex flex-column" [ngClass]="{'disabled': !settings.isPublic}">
-          <div class="d-flex flex-row justify-content-between">
-            <span class="form-label" i18n>Make your publications public</span>
-            <label class="switch">
-              <input type="checkbox" id="IsPublicationPublic" [(ngModel)]="settings.isPublicationPublic" (change)="setPublicationsPrivacy()"
-                     [disabled]="!settings.isPublic">
-              <span class="slider round"></span>
-            </label>
-          </div>
-          <div>
-            <span class="fst-italic fs-7 text-secondary" i18n>When your this parameter is set to public, your publications are visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your publications.</span>
+          <div class="p-2 px-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between">
+              <span class="form-label" i18n>Make your publications public</span>
+              <label class="switch">
+                <input type="checkbox" id="IsPublicationPublic" [(ngModel)]="settings.isPublicationPublic" (change)="setPublicationsPrivacy()"
+                       [disabled]="!settings.isPublic">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div>
+              <span class="fst-italic fs-7 text-secondary" i18n>When your this parameter is set to public, your publications are visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your publications.</span>
+            </div>
           </div>
         </div>
 

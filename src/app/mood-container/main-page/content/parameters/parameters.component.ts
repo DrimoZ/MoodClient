@@ -1,19 +1,33 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, LOCALE_ID, OnInit} from '@angular/core';
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {DtoInputUserPrivacy} from "../../../../Dtos/Users/Inputs/dto-input-user-privacy";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {DtoOutputUserSignup} from "../../../../Dtos/Users/Outputs/dto-output-user-update-password";
 
 @Component({
   selector: 'app-parameters',
   templateUrl: './parameters.component.html',
-  styleUrls: ['./parameters.component.css', '../../../../../assets/css/custom/userprofile.css']
+  styleUrls: ['./parameters.component.css'],
 })
 export class ParametersComponent implements OnInit {
   clickedDiv: string = "account";
   isWaitingForApi: boolean = true;
 
+  isPasswordEdited = 0;
+
   settings: DtoInputUserPrivacy;
 
-  constructor(private _userService: UserService) {
+
+  passwordForm: FormGroup = this._fb.group({
+    OldPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48),
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
+    NewPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48),
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
+    PasswordConfirmation: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(48),
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
+  })
+
+  constructor(private _userService: UserService, private _fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -29,9 +43,27 @@ export class ParametersComponent implements OnInit {
     })
   }
 
+  get controlOldPassword(): AbstractControl {
+    return this.passwordForm.controls['OldPassword'];
+  }
+  get controlNewPassword(): AbstractControl {
+    return this.passwordForm.controls['NewPassword'];
+  }
+  get controlPasswordConfirmation(): AbstractControl {
+    return this.passwordForm.controls['PasswordConfirmation'];
+  }
 
-  deleteAccount() {
-
+  checkNewPassword(password: string, type: number): boolean
+  {
+    switch (type)
+    {
+      case 0: return RegExp('.{8,}').test(password);
+      case 1: return RegExp('(?=.*[0-9])').test(password);
+      case 2: return RegExp('(?=.*[A-Z])').test(password);
+      case 3: return RegExp('(?=.*[a-z])').test(password);
+      case 4: return RegExp(/^(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\\\/?,-]).+$/).test(password);
+      default: return false;
+    }
   }
 
   setAccountPrivacy() {
@@ -80,5 +112,41 @@ export class ParametersComponent implements OnInit {
 
   onDivClick(divName: string) {
     this.clickedDiv = divName
+  }
+
+  cancelPasswordReset() {
+    this.passwordForm.reset()
+  }
+
+  commitPasswordReset() {
+    if(this.controlNewPassword.value != this.controlPasswordConfirmation.value) return;
+
+    let dto: DtoOutputUserSignup = {
+      newPassword: this.controlNewPassword.value,
+      oldPassword: this.controlOldPassword.value
+    };
+
+    this.passwordForm.reset();
+
+    this._userService.updateUserPassword(dto).subscribe({
+      next: () => {
+        this.isPasswordEdited = 1;
+
+        setTimeout(() => {
+          this.isPasswordEdited = 0;
+        }, 20000)
+      },
+      error: () => {
+        this.isPasswordEdited = -1;
+
+        setTimeout(() => {
+          this.isPasswordEdited = 0;
+        }, 20000)
+      }
+    });
+  }
+
+  deleteAccount() {
+    this._userService.deleteAccount().subscribe();
   }
 }

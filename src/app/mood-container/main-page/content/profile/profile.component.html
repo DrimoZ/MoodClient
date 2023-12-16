@@ -1,4 +1,4 @@
-<section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect user-select-none overflow-y-scroll">
+<section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect user-select-none overflow-y-auto">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div  *ngIf="(!isWaitingForApi && userId != '-1') else errorPage"

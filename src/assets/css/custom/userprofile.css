@@ -29,12 +29,13 @@
 }
 
 .profilePictureDiv img {
-  object-fit:scale-down;
+  border-radius: 50%;
+  overflow: hidden;
+  border: black 3px solid;
+  object-fit:cover;
 
   width: 95%;
   height: 95%;
-  background-color: transparent;
-  border: black 1px solid;
 
 }
 

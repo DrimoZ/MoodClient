@@ -19,12 +19,12 @@
       <div class="profilesGrid">
         <div class="profileDiv" *ngFor="let user of filterFriends(userFriends, searchBarValue)">
           <div class="profilePictureDiv profileLarge" (click)="viewFriendProfile(user.id)">
-            <img src="{{user.imageUrl}}" class="rounded-circle img-cover hover-pointer">
+            <img src="{{user.imageUrl}}" class=" hover-pointer">
           </div>
 
           <div class="profileDataDiv">
             <div class="profilePictureDiv profileSmall" (click)="viewFriendProfile(user.id)">
-              <img src="{{user.imageUrl}}" class="rounded-circle img-cover hover-pointer">
+              <img src="{{user.imageUrl}}" class=" hover-pointer">
             </div>
 
             <div class="profileDataDiv2">

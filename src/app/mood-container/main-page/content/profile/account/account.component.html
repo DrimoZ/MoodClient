@@ -1,4 +1,4 @@
-<section class="p-5 user-select-none d-flex flex-column gap-4">
+<section class="p-5 user-select-none d-flex flex-column gap-4 overflow-y-auto">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div *ngIf="!isWaitingForApi && userId != '-1' else errorPage">
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="ms-2 d-flex flex-column gap-2">
+    <!--<div class="ms-2 d-flex flex-column gap-2">
       <span class="w-100 fs-5 fw-bold text-center" i18n>Private Information</span>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Login</span>
@@ -52,7 +52,7 @@
         <button type="submit" class="btn btn-gold user-select-none"
                 routerLink="/home/parameters" i18n>Visit Parameters to change this information</button>
       </div>
-    </div>
+    </div>-->
   </div>
   <ng-template #errorPage>
     <div class="w-100 h-100 justify-content-center d-flex flex-column" *ngIf="!isWaitingForApi">

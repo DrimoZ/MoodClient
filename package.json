@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:fr": "ng serve --configuration=fr",
+    "start:en": "ng serve --configuration=en",
     "build": "ng build --localize",
+    "build:fr": "ng build --configuration=fr",
+    "build:en": "ng build --configuration=en",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
