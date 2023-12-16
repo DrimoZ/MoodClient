@@ -28,6 +28,9 @@ export class ImageService {
     return URL.createObjectURL(blob);
   }
 
+  updateProfilePicture(image: FormData): Observable<any> {
+    return this._httpClient.post(ImageService._URL_API + "/userProfile", image);
+  }
 
 
 }

@@ -1,0 +1,28 @@
+<div class="shadow-background" [style.display]="isOpen ? 'block' : 'none'">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h5 class="modal-title txt-gold" i18n>Choose a new profile picture</h5>
+      <button class="x-close-btn txt-gold" (click)="close()">X</button>
+    </div>
+    <div class="input-body">
+      <div class="p-3">
+        <div class="circle">
+          <img src="{{previewUrl}}" class="profileImage" *ngIf="previewUrl">
+          <img src="assets/no_profile_picture.png" class="profileImage" *ngIf="!previewUrl">
+        </div>
+      </div>
+
+      <div class="gap-2 d-flex flex-column justify-content-end">
+        <div>
+          <input class="form-control txt-gold " type="file" #fileInput (change)="onFileSelected($event)" accept="image/*">
+        </div>
+        <div class="gap-2 d-flex flex-row justify-content-end">
+          <button type="button" class="btn btn-outline-success" (click)="submit()" *ngIf="previewUrl" i18n>Submit</button>
+          <button type="button" class="btn close-btn" (click)="close()" i18n>Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

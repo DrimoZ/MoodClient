@@ -1,0 +1,87 @@
+.shadow-background {
+  position: fixed;
+  width: 100vw !important;
+  height: 100vh !important;
+
+  background-color: hsla(0, 0%, 0%, 0.35);
+
+  z-index: 1055;
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%)!important;
+
+  border-radius: 20px;
+  border: black 1px solid;
+
+  width: calc(100% - 50px);
+  max-width: 500px;
+  height: fit-content;
+  padding: 1rem;
+
+  background: hsla(231, 84%, 7%, 0.70);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.x-close-btn {
+  background-color: transparent;
+  border-radius: 50px;
+  box-shadow: none;
+  border: none;
+}
+
+.close-btn {
+  color:#deb992;
+  background-color: transparent;
+  border: #deb992 solid 1px;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.close-btn:hover {
+  color: #020A28;
+  background-color: #deb992;
+  border: transparent solid 1px;
+}
+
+.circle {
+  border: black 3px solid;
+
+  position: relative;
+  width: 210px;
+  padding-top: 210px;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profileImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 210px;
+  height: 210px;
+  object-fit: cover;
+}
+
+.input-body {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+@media (min-width: 520px) {
+  .input-body {
+    flex-direction: row;
+  }
+}

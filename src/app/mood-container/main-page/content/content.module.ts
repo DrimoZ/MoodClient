@@ -11,6 +11,7 @@ import { ParametersComponent } from './parameters/parameters.component';
 import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ProfileModule} from "./profile/profile.module";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -31,7 +32,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         NgIf,
         NgOptimizedImage,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ProfileModule
     ],
   providers: [],
 })

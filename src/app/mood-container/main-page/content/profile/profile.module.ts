@@ -8,11 +8,13 @@ import { AccountComponent } from './account/account.component';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import { ModalComponent } from './modal/modal.component';
 @NgModule({
   declarations: [
     PublicationsComponent,
     FriendsComponent,
-    AccountComponent
+    AccountComponent,
+    ModalComponent
   ],
   imports: [
     ProfileRoutingModule,
@@ -23,8 +25,11 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     ReactiveFormsModule,
     RouterLink,
     RouterLinkActive,
-    NgIf,
+    NgIf
   ],
   providers: [],
+  exports: [
+    ModalComponent
+  ]
 })
 export class ProfileModule { }

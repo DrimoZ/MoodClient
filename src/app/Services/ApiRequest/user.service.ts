@@ -50,8 +50,4 @@ export class UserService {
       {params: {publicationCount: count, searchValue: search}
       });
   }
-
-  getUsersGroups(): Observable<any>{
-    return this._httpClient.get(environment.BASE_URL_API + "/api/v1/group")
-  }
 }

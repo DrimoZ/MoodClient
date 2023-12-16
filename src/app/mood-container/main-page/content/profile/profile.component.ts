@@ -5,6 +5,7 @@ import {BehaviorEventBusService} from "../../../../Services/EventBus/behavior-ev
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {ImageService} from "../../../../Services/ApiRequest/image.service";
 import {FriendService} from "../../../../Services/ApiRequest/friend.service";
+import {ModalService} from "../../../../Services/modal.service";
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private _behaviorEventBus: BehaviorEventBusService, private _userService: UserService,
               private _activatedRoute: ActivatedRoute, private _imageService: ImageService,
-              private _router: Router, private _friendService: FriendService) {
+              private _router: Router, private _friendService: FriendService, private modalService: ModalService) {
   }
 
   ngOnInit(): void {
@@ -89,8 +90,9 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfilePicture(userId: string) {
-
+    this.modalService.open('modal-update-pp');
   }
+
 
   emitIgnoreFriend(userId: string) {
     this._friendService.rejectFriendRequest(userId).subscribe({
