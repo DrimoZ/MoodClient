@@ -14,9 +14,14 @@
 .hvh-93 {
   height: 93vh !important;
 }
-
 .h-5 {
   height: 5% !important;
+}
+.h-7 {
+  height: 7% !important;
+}
+.h-10 {
+  height: 10% !important;
 }
 .h-34 {
   height: 34% !important;
@@ -24,7 +29,9 @@
 .h-66 {
   height: 66% !important;
 }
-
+.h-93 {
+  height: 93% !important;
+}
 .w-5 {
   width: 5% !important;
 }
@@ -38,6 +45,9 @@
 .w-30 {
   width: 30% !important;
 }
+.w-35 {
+  width: 35% !important;
+}
 .w-40 {
   width: 40% !important;
 }
@@ -46,6 +56,9 @@
 }
 .w-65 {
   width: 65% !important;
+}
+.w-70 {
+  width: 70% !important;
 }
 .w-80 {
   width: 80% !important;

@@ -70,3 +70,8 @@ body {
   border-bottom: #1BA098 solid;
   cursor: default;
 }
+
+.selected-darker-no-border {
+  background-color: hsla(0, 0%, 100%, 0.15);
+  cursor: default;
+}

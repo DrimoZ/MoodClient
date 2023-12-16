@@ -8,7 +8,7 @@ import {ContentRoutingModule} from "./content-routing.module";
 import { NotificationComponent } from './notification/notification.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ParametersComponent } from './parameters/parameters.component';
-import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgOptimizedImage, NgTemplateOutlet} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "./profile/profile.module";
@@ -21,20 +21,21 @@ import {ProfileModule} from "./profile/profile.module";
     DiscoverComponent,
     ParametersComponent
   ],
-    imports: [
-        NgbModule,
-        ContentRoutingModule,
-        NgForOf,
-        NgClass,
-        RouterOutlet,
-        RouterLink,
-        RouterLinkActive,
-        NgIf,
-        NgOptimizedImage,
-        FormsModule,
-        ReactiveFormsModule,
-        ProfileModule
-    ],
+  imports: [
+    NgbModule,
+    ContentRoutingModule,
+    NgForOf,
+    NgClass,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    NgIf,
+    NgOptimizedImage,
+    FormsModule,
+    ReactiveFormsModule,
+    ProfileModule,
+    NgTemplateOutlet
+  ],
   providers: [],
 })
 export class ContentModule { }
