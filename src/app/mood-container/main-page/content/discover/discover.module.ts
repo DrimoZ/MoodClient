@@ -7,6 +7,7 @@ import { PublicationComponent } from './publication/publication.component';
 import {DiscoverRoutingModule} from "./discover-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
+import {ContentModule} from "../content.module";
 
 
 @NgModule({
@@ -14,17 +15,18 @@ import {RouterLink} from "@angular/router";
     PublicationComponent,
     ProfileComponent,
   ],
-  imports: [
-    NgbModule,
-    DiscoverRoutingModule,
-    NgForOf,
-    NgClass,
-    ReactiveFormsModule,
-    FormsModule,
-    NgIf,
-    AsyncPipe,
-    RouterLink
-  ],
+    imports: [
+        NgbModule,
+        DiscoverRoutingModule,
+        NgForOf,
+        NgClass,
+        ReactiveFormsModule,
+        FormsModule,
+        NgIf,
+        AsyncPipe,
+        RouterLink,
+        ContentModule
+    ],
   providers: [],
 })
 export class DiscoverModule { }

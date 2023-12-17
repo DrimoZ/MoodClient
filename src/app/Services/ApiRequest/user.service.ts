@@ -58,10 +58,8 @@ export class UserService {
   }
 
   patchUserProfile(patch: any): Observable<any> {
-    console.log(patch);
     return this._httpClient.patch(UserService._URL_API, patch);
   }
-
 
   updateUserPassword(dto: DtoOutputUserSignup): Observable<any> {
     return this._httpClient.post(UserService._URL_API + "/userPassword", dto);

@@ -5,6 +5,7 @@
     <div class="h-100 d-flex flex-column gap-5 justify-content-between" *ngIf="publications.length > 0 else errorPage">
       <div class="publication-grid">
         <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
+          <publication-detail-modal id="modal-pub_{{publication.id}}" publicationId="{{publication.id}}"></publication-detail-modal>
           <div class="content-div" *ngIf="publication.elements.length > 0 && publication.elements[0].imageUrl != null">
             <div class="h-100 w-100">
               <img src="{{publication.elements[0].imageUrl}}" alt="img_{{publication.elements[0].id}}" class="pub_img"/>

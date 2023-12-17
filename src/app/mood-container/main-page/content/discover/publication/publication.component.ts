@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
 import {map, Subscription} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
+import {ModalService} from "../../../../../Services/Modals/modal.service";
 
 @Component({
   selector: 'app-publication',
@@ -19,7 +20,7 @@ export class PublicationComponent implements OnInit, OnDestroy{
   searchSubscription: Subscription | null = null;
 
   constructor(private _dataService: UserService, private _behaviorEventBus: BehaviorEventBusService,
-              private _imageService: ImageService) {
+              private _imageService: ImageService, private _modalService: ModalService) {
   }
 
   ngOnInit(): void {
@@ -42,7 +43,7 @@ export class PublicationComponent implements OnInit, OnDestroy{
   }
 
   getDetailedPublication(id: number) {
-
+    this._modalService.open("modal-pub_" + id);
   }
 
 
