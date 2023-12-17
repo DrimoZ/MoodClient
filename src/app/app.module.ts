@@ -18,7 +18,6 @@ import { ConnectionRefusedComponent } from './mood-container/errors/connection-r
 import {MainAuthGuard} from "./Guards/mainAuthGuard";
 import {CommonModule, DatePipe} from "@angular/common";
 import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.component";
-import { DeleteAccountModalComponent } from './Services/Modals/Custom/delete-account-modal/delete-account-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import { DeleteAccountModalComponent } from './Services/Modals/Custom/delete-acc
     ContentComponent,
     NavbarComponent,
     ConnectionRefusedComponent,
-    ModalBaseComponent,
-    DeleteAccountModalComponent
+    ModalBaseComponent
   ],
   imports: [
     CommonModule,

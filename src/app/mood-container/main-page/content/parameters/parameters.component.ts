@@ -4,6 +4,7 @@ import {DtoInputUserPrivacy} from "../../../../Dtos/Users/Inputs/dto-input-user-
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputUserSignup} from "../../../../Dtos/Users/Outputs/dto-output-user-update-password";
 import {Router} from "@angular/router";
+import {ModalService} from "../../../../Services/Modals/modal.service";
 
 @Component({
   selector: 'app-parameters',
@@ -28,7 +29,7 @@ export class ParametersComponent implements OnInit {
       Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
   })
 
-  constructor(private _userService: UserService, private _fb: FormBuilder, private _router: Router) {
+  constructor(private _userService: UserService, private _fb: FormBuilder, private _modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -148,10 +149,6 @@ export class ParametersComponent implements OnInit {
   }
 
   deleteAccount() {
-    this._userService.deleteAccount().subscribe({
-      next: () => {
-        this._router.navigate(["login"]);
-      }
-    });
+    this._modalService.open("modal-delete-account")
   }
 }

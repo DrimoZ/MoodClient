@@ -7,9 +7,7 @@ export class ModalService {
   private modals: ModalBaseComponent[] = [];
 
   add(modal: ModalBaseComponent) {
-    if (!modal.id || this.modals.find(x => x.id === modal.id)) {
-      throw new Error('modal must have a unique id attribute');
-    }
+    if (!modal.id || this.modals.find(x => x.id === modal.id)) return;
     this.modals.push(modal);
   }
 

@@ -4,7 +4,7 @@ import {ModalService} from "../../modal.service";
 import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 
 @Component({
-  selector: 'pp-form',
+  selector: 'modal-pp-picker',
   templateUrl: 'profile-picture-modal.component.html',
   styleUrls: ['profile-picture-modal.component.css'],
   encapsulation: ViewEncapsulation.None

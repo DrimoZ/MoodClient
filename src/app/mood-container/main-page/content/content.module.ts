@@ -12,6 +12,9 @@ import {NgClass, NgForOf, NgIf, NgOptimizedImage, NgTemplateOutlet} from "@angul
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "./profile/profile.module";
+import {
+  DeleteAccountModalComponent
+} from "../../../Services/Modals/Custom/delete-account-modal/delete-account-modal.component";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -19,7 +22,8 @@ import {ProfileModule} from "./profile/profile.module";
     NewsFeedComponent,
     NotificationComponent,
     DiscoverComponent,
-    ParametersComponent
+    ParametersComponent,
+    DeleteAccountModalComponent
   ],
   imports: [
     NgbModule,
@@ -35,6 +39,9 @@ import {ProfileModule} from "./profile/profile.module";
     ReactiveFormsModule,
     ProfileModule,
     NgTemplateOutlet
+  ],
+  exports: [
+    DeleteAccountModalComponent
   ],
   providers: [],
 })
