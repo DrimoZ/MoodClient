@@ -81,6 +81,7 @@ export class FriendsComponent implements OnInit {
       next: (res) => {
         let friendIndex = this.userFriends.findIndex(f => f.id == friendId);
         this.userFriends[friendIndex].isFriendWithConnected = -1;
+        this.userFriends.splice(friendIndex, 1)
       },
       error: (err) => {
         console.log(err)
