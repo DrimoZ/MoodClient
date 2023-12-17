@@ -3,6 +3,7 @@ import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 import {ModalService} from "../../modal.service";
 import {UserService} from "../../../ApiRequest/user.service";
 import {Router} from "@angular/router";
+import {EventBusService} from "../../../EventBus/event-bus.service";
 
 @Component({
   selector: 'modal-del-account',
@@ -11,15 +12,19 @@ import {Router} from "@angular/router";
 })
 export class DeleteAccountModalComponent extends ModalBaseComponent{
 
-  constructor(modalService: ModalService, _el: ElementRef, private _userService: UserService, private _router: Router) {
+  constructor(modalService: ModalService, _el: ElementRef, private _userService: UserService, private _eventBus: EventBusService) {
     super(modalService, _el);
   }
 
 
   deleteAccount() {
+
     this._userService.deleteAccount().subscribe({
       next: () => {
-        this._router.navigate(["login"]);
+        this._eventBus.emitEvent({
+          Type: 'UserLogOut',
+          Payload: ''
+        })
       }
     });
   }
