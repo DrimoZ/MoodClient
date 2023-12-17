@@ -18,6 +18,7 @@ import { ConnectionRefusedComponent } from './mood-container/errors/connection-r
 import {MainAuthGuard} from "./Guards/mainAuthGuard";
 import {CommonModule, DatePipe} from "@angular/common";
 import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.component";
+import {ContentModule} from "./mood-container/main-page/content/content.module";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.compon
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ContentModule,
   ],
   providers: [
     {

@@ -18,6 +18,8 @@ import {
 import {
   PublicationDetailModalComponent
 } from "../../../Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component";
+import { GroupListComponent } from './message/group-list/group-list.component';
+import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.component";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -27,7 +29,9 @@ import {
     DiscoverComponent,
     ParametersComponent,
     DeleteAccountModalComponent,
-    PublicationDetailModalComponent
+    PublicationDetailModalComponent,
+    GroupListComponent,
+    PopupComponent
   ],
   imports: [
     NgbModule,
@@ -46,8 +50,9 @@ import {
   ],
   exports: [
     DeleteAccountModalComponent,
-    PublicationDetailModalComponent
+    PublicationDetailModalComponent,
+    PopupComponent
   ],
-  providers: [],
+  providers: []
 })
 export class ContentModule { }
