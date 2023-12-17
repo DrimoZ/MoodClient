@@ -42,7 +42,7 @@
           <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture(userId)" i18n>
             <i class="fa-solid fa-gear"></i> Change Profile Picture
           </button>
-          <modal id="modal-update-pp"></modal>
+          <pp-form id="modal-update-pp"></pp-form>
           <button *ngIf="!isConnectedUser && (profileData.isPublic || profileData.isFriendWithConnected == 2)" class="btn btn-sm btn-outline-light w-50" (click)="sendMessage(userId)" i18n>
             <i class="fa-solid fa-message"></i> Send a message
           </button>

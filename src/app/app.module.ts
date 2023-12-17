@@ -17,6 +17,8 @@ import {CredentialsInterceptor} from "./Guards/credentialsInterceptor";
 import { ConnectionRefusedComponent } from './mood-container/errors/connection-refused/connection-refused.component';
 import {MainAuthGuard} from "./Guards/mainAuthGuard";
 import {CommonModule, DatePipe} from "@angular/common";
+import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.component";
+import { DeleteAccountModalComponent } from './Services/Modals/Custom/delete-account-modal/delete-account-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {CommonModule, DatePipe} from "@angular/common";
     MainPageComponent,
     ContentComponent,
     NavbarComponent,
-    ConnectionRefusedComponent
+    ConnectionRefusedComponent,
+    ModalBaseComponent,
+    DeleteAccountModalComponent
   ],
   imports: [
     CommonModule,

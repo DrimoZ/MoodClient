@@ -5,7 +5,7 @@ import {BehaviorEventBusService} from "../../../../Services/EventBus/behavior-ev
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {ImageService} from "../../../../Services/ApiRequest/image.service";
 import {FriendService} from "../../../../Services/ApiRequest/friend.service";
-import {ModalService} from "../../../../Services/modal.service";
+import {ModalService} from "../../../../Services/Modals/modal.service";
 
 @Component({
   selector: 'app-profile',
