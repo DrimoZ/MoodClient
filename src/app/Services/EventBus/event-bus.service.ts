@@ -6,7 +6,7 @@ import {ClassicEvent} from "./Events/ClassicEvent";
   providedIn: 'root'
 })
 export class EventBusService {
-  private eventBus = new Subject<ClassicEvent>(); //Behavior Subject
+  private eventBus = new Subject<ClassicEvent>();
 
   emitEvent(event: ClassicEvent) {
     this.eventBus.next(event);

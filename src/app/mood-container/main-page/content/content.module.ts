@@ -15,9 +15,6 @@ import {ProfileModule} from "./profile/profile.module";
 import {
   DeleteAccountModalComponent
 } from "../../../Services/Modals/Custom/delete-account-modal/delete-account-modal.component";
-import {
-  PublicationDetailModalComponent
-} from "../../../Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -26,8 +23,7 @@ import {
     NotificationComponent,
     DiscoverComponent,
     ParametersComponent,
-    DeleteAccountModalComponent,
-    PublicationDetailModalComponent
+    DeleteAccountModalComponent
   ],
   imports: [
     NgbModule,
@@ -41,12 +37,11 @@ import {
     NgOptimizedImage,
     FormsModule,
     ReactiveFormsModule,
-    ProfileModule,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    ProfileModule
   ],
   exports: [
-    DeleteAccountModalComponent,
-    PublicationDetailModalComponent
+    DeleteAccountModalComponent
   ],
   providers: [],
 })

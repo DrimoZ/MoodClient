@@ -6,6 +6,7 @@ import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {map} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {DtoInputPubElement} from "../../../../../Dtos/Publication/Input/dto-input-pub-element";
+import {ModalService} from "../../../../../Services/Modals/modal.service";
 
 @Component({
   selector: 'app-publications',
@@ -19,7 +20,9 @@ export class PublicationsComponent implements OnInit{
   isConnectedUser: boolean = false;
   isPublicationsPublic: boolean = false;
 
-  constructor(private _userService: UserService, private _router: Router, private _behaviorEventBus: BehaviorEventBusService, private _imageService: ImageService) {
+  constructor(private _userService: UserService, private _router: Router,
+              private _behaviorEventBus: BehaviorEventBusService, private _imageService: ImageService,
+              private _modalService: ModalService) {
   }
 
   ngOnInit(): void {
@@ -54,31 +57,9 @@ export class PublicationsComponent implements OnInit{
         })
       }
     })
-
-    //this.userId = this._router.url.split("home")[1].split("/")[1];
-
-
-  }
-
-  prev(id: number): void {
-    const carousel = document.querySelector(`#pub_${id}`)!;
-    const activeItem = carousel.querySelector('.carousel-item.active')!;
-    const prevItem = activeItem.previousElementSibling || carousel.querySelector('.carousel-item:last-child')!;
-    activeItem.classList.remove('active');
-    prevItem.classList.add('active');
-  }
-
-  next(id: number): void {
-    const carousel = document.querySelector(`#pub_${id}`)!;
-    const activeItem = carousel.querySelector('.carousel-item.active')!;
-    const nextItem = activeItem.nextElementSibling || carousel.querySelector('.carousel-item:first-child')!;
-    activeItem.classList.remove('active');
-    nextItem.classList.add('active');
   }
 
   getDetailedPublication(id: number) {
-
+    this._modalService.open("profile-pub_" + id)
   }
-
-  protected readonly console = console;
 }

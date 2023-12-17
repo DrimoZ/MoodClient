@@ -1,3 +1,64 @@
-.modal-container {
+.circle {
+  border: black 3px solid;
 
+  position: relative;
+  width: 60px;
+  padding-top: 60px;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profileImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.pubImage {
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 600px;
+  max-height: 600px;
+}
+
+.modal-container {
+  width: fit-content;
+  max-width: calc(100% - 50px);
+  height: fit-content;
+
+  padding: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.infoDiv {
+  width: 300px!important;
+  min-width: 300px;
+  border-top: #deb992 solid 1px;
+  border-left: none;
+}
+
+
+@media (min-width: 801px) {
+  .infoDiv {
+    width: 400px!important;
+    border-left: #deb992 solid 1px;
+    border-top: none;
+  }
+
+  .modal-container {
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
