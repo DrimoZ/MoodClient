@@ -1,49 +1,7 @@
-<header></header>
 <!--Toute la page-->
 <section class=" d-flex flex-row hvh-93 justify-content-between blur-effect">
-
-  <div #popup class="overlay" id="popup">
-    <div class="popup-content">
-      <div class="friendList" style="">
-        <ul style="list-style: none;">
-          <li #friend class="nav-item button-2 btnColor" style="width: 90%" (click)="addFriend(friend, frd);" *ngFor="let frd of userFriends;">
-            <div class="d-flex flex-row">
-              <img class="profile-picture d-flex" alt="" src="./assets/no_profile_picture.png" width="50" height="50" >
-              <p>{{frd.name}}</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <button (click)="popup.style.display ='none';" [disabled]="(friendToAdd.length==0)">Add</button>
-    </div>
-  </div>
-<!--Les groupes-->
-  <div class="w-50 h-100 border-black" >
-    <div class="d-flex justify-content-center flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 100% ;height: 100%">
-      <div class="d-flex justify-content-center">
-        <h5 style="">Conversation</h5>
-      </div>
-      <hr>
-      <div class="d-flex justify-content-between align-items-center gap-1 flex-column">
-        <button id="groupCreationForm" class=" btn button-2 position-relative center" (click)="groupCreationForm.style.display ='flex'; getUserFriends()">Create a Group</button>
-        <div #groupCreationForm class="formAppear">
-          <form [formGroup]="friendsForm" class="d-flex justify-content-between flex-column gap-1"  >
-            <input #groupName formControlName="name" class="position-relative container-fluid" type="text" style="width: 100%;" placeholder="Group Name" value="">
-            <button class=" btnColor button-2 position-relative center"  (click)="popup.style.display ='flex'">add friend(s)</button>
-            <input type="submit" [disabled]="!friendsForm.valid || (friendToAdd.length==0)" value="Create" class="button-2 btnColor  bottom-0 end-0 " (click)="groupCreationForm.style.display ='none'; addGroup(groupName.value)">
-          </form>
-        </div>
-      </div>
-      <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li *ngFor="let grp of groupes;let index = index;" (click)="getMessageFromGroup(grp.id, index); " class="nav-item hover-pointer">
-          <a class="raised-button" aria-current="page" style="font-size: 13px">
-            {{grp.name}}
-          </a>
-        </li>
-      </ul>
-      <hr>
-    </div>
+  <div>
+    <app-group-list></app-group-list>
   </div>
   <div class="w-100 h-100 border txt-gold">
     <div class="" style=" padding: 1%;height: 100%">
@@ -52,17 +10,23 @@
           <p>{{groupIndex ==-1 ? '': groupes[groupIndex].name}}</p>
           <button  (click)="wtf.style.display == 'flex'?wtf.style.display = 'none': wtf.style.display = 'flex';" class="btn">Member</button>
         </div>
-        <div  class="chat-container ">
+        <div #scroll class="chat-container" [scrollTop]="scroll.scrollHeight">
+          <div *ngIf="messages.length >= showCount" class="w-100">
+            <button class="btn showMoreBtn w-100" (click)="loadMoreMessage()" i18n>
+              <span class="">Show More ({{messages.length}}) </span>
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
+          </div>
           <div  *ngFor="let msg of messages" class="d-flex flex-column" >
-            <div class="d-flex" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">{{msg.userName}}</div>
+            <div class="d-flex" style="justify-content: center">
+              <p class="date">{{formatDate(msg.date)}}</p>
+            </div>
+            <div class="d-flex"  [ngClass]="msg.userId == userId? 'd-none':'flex-row'">{{msg.userName}}</div>
             <div class="d-flex align-items-center" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">
               <img class="profile-picture" alt="" src="{{msg.url}}" width="50" height="50" >
               <div class="message-bubble" [ngClass]="msg.userId == userId? 'right':'left'">
                 <p>{{msg.content}}</p>
               </div>
-            </div>
-            <div class="d-flex" style="justify-content: center">
-              <p class="date">{{formatDate(msg.date)}}</p>
             </div>
           </div>
         </div>
@@ -76,13 +40,17 @@
     </div>
   </div>
   <div #wtf class="overlay">
-    <div class="popup-member">
-      <h5>group's member</h5>
-      <ul>
-        <li *ngFor="let member of userFromGroup">
-          {{ member.name }}
+    <div class="popup-content d-flex gap-2 flex-column">
+      <div class="friendList">
+        <h5>group's member</h5>
+        <li #friend class="nav-item button-2 btnColor" style="width: 90%" *ngFor="let frd of userFromGroup;">
+          <div class="d-flex flex-row">
+            <img class="profile-picture d-flex" alt="" src="{{frd.imageUrl}}" width="50" height="50" >
+            <p>{{frd.name}}</p>
+          </div>
         </li>
-      </ul>
+      </div>
+    <button (click)="wtf.style.display ='none';" class="button-2" >ok</button>
     </div>
   </div>
 </section>
