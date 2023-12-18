@@ -52,10 +52,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  sendMessage(userId: string) {
-
-  }
-
   emitAddFriend(friendId: string) {
     this._friendService.createFriendRequest(friendId).subscribe({
       next: (res) => {

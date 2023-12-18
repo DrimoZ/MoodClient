@@ -28,7 +28,6 @@ import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.compon
     DeleteAccountModalComponent,
     GroupListComponent,
     PopupComponent,
-    DeleteAccountModalComponent
   ],
   imports: [
     NgbModule,
@@ -48,7 +47,6 @@ import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.compon
   exports: [
     DeleteAccountModalComponent,
     PopupComponent,
-    DeleteAccountModalComponent
   ],
   providers: []
 })
