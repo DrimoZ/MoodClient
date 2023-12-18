@@ -1,20 +1,92 @@
-<section class="d-flex flex-row hvh-93 justify-content-between blur-effect">
-    <div class="w-20 h-100 border border-danger txt-gold">
-      <p>Profiles avec nouveau content que l'on suit ?</p>
-    </div>
-    <div class="w-60 h-100 border border-primary txt-gold">
-      <p> Differentes publication ???</p>
+<section class="hvh-93 overflow-y-auto user-select-none" style="border-right: black 1px solid; border-left: black 1px solid;">
+  <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
+  <div class="pt-5 pb-3 w-100 d-flex flex-column align-items-center gap-3" *ngIf="!isWaitingForApi">
+    <div *ngFor="let pub of publications" class="publication-container">
+      <div class="w-100 d-flex flex-row justify-content-start">
+        <div class="position-relative d-flex justify-content-center" style="width: 70px; height: 70px; padding: 5px;">
+          <div class="img-circle hover-pointer" (click)="navigateToUser(pub.idAuthor)">
+            <img src="{{pub.urlImage}}" class="img-profileImage">
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-between gap-2 p-3 flex-shrink-1 flex-grow-1">
+          <span class="txt-gold ps-3 pt-1 fs-5 hover-pointer" (click)="navigateToUser(pub.idAuthor)">{{pub.nameAuthor}}</span>
+          <span class="text-secondary fst-italic ps-3 pt-1 fs-6" i18n>{{calculatedDate(pub.date)}} ago</span>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #deb992;"></div>
+
+      <div id="pub_{{pub.id}}" class="h-100 d-flex flex-column justify-content-between position-relative" data-ride="carousel" style="height: 600px">
+        <div *ngIf="pub.elements.length > 0" class="d-flex " style="height: 600px">
+          <div  *ngFor="let element of pub.elements; let i = index" class="carousel-item {{i == 0 ? 'active' : ''}}">
+            <img src="{{element.imageUrl}}" class="pubImage">
+          </div>
+        </div>
+        <div *ngIf="pub.elements.length > 1">
+          <a class="carousel-control-prev" (click)="prev(pub.id)" role="button">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" (click)="next(pub.id)" role="button">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #deb992;"></div>
+
+      <div class="">
+        <div class="py-2 px-4 d-flex flex-row gap-2">
+          <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="toggleLiked(pub.id)" i18n>
+            <i class="fa-solid fa-heart"
+               [ngClass]="{'text-danger': this.publications[getPubIndex(pub.id)].hasConnectedLiked}"></i> Like{{this.publications[getPubIndex(pub.id)].hasConnectedLiked?"d":""}} ( {{this.publications[getPubIndex(pub.id)].likeCount}} )
+          </div>
+          <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="sep.classList.toggle('d-none'); coms.classList.toggle('d-none')" i18n>
+            <i class="fa-solid fa-comments"></i> Comment ( {{this.publications[getPubIndex(pub.id)].commentCount}} )
+          </div>
+        </div>
+      </div>
+
+      <div class="d-none" #sep style="border-top: 1px solid #deb992;"></div>
+
+      <div #coms class="d-none d-flex flex-column">
+        <div class="py-3 ps-2 pe-5 d-flex flex-column w-100 gap-3 overflow-y-auto" style="max-height: 30vh;">
+          <div *ngFor="let comment of pub.comments" class="w-100 gap-2 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between">
+              <div class="img-circle hover-pointer" (click)="navigateToUser(comment.idAuthor)">
+                <img src="{{comment.imageUrl}}" class="img-profileImage">
+              </div>
+              <div class="w-100 d-flex flex-column gap-3">
+                <div class="ps-3 gap-1 d-flex flex-column justify-content-start w-100">
+                  <div class="d-flex flex-row justify-content-between w-100">
+                    <div class="hover-pointer" (click)="navigateToUser(comment.idAuthor)">
+                      <span class="txt-gold fs-6">{{comment.nameAuthor}}</span>
+                    </div>
+                    <button class="x-close-btn txt-gold fs-6" (click)="deleteComment(pub.id, comment.id)"
+                            *ngIf="comment.idAuthor == connectedUserId">X</button>
+                  </div>
+                  <div>
+                    <span class="text-secondary fs-6">{{comment.content}}</span>
+                  </div>
+                </div>
+                <div style="border-top: 1px solid floralwhite; margin-right: 10px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div  style="border-top: 1px solid #deb992;"></div>
+
+        <form class="py-3 px-4 d-flex flex-row gap-2" (submit)="sendComment(pub.id, input)">
+          <input type="text" #input class="form-control-sm w-100" i18n i18n-placeholder placeholder="Add a comment">
+          <button type="submit" class="btn btn-sm btn-outline-success" i18n>Send</button>
+        </form>
+
+      </div>
     </div>
-    <div class="w-20 h-100 border border-danger txt-gold">
-      <p>Rien ici ?</p>
-    </div>
+  </div>
 </section>
-
-
-<footer>
-
-</footer>
 
 
 

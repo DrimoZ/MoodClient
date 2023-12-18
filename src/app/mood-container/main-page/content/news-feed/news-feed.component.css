@@ -1,0 +1,46 @@
+.img-circle {
+  border: black 3px solid;
+
+  position: relative;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.img-profileImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.publication-container {
+  min-width: 300px;
+  max-width: 800px;
+  width: calc(100% - 30px);
+
+  display: flex;
+  flex-direction: column;
+
+  border: solid black 1px;
+
+  background: hsla(231, 84%, 7%, 0.70);
+  backdrop-filter: blur(10px);
+}
+
+.pubImage {
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 600px;
+  max-height: 600px;
+}
+
