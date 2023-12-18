@@ -17,8 +17,8 @@ export class MessageService {
     private static _URL_API_GROUP: string = environment.BASE_URL_API + "/api/v1/group"
     constructor(private _httpClient: HttpClient) { }
 
-    getAllMessageForAGroupe(grpId:number): Observable<DtoInputMessage[]> {
-        return this._httpClient.get<DtoInputMessage[]>(MessageService._URL_API_MESSAGE + "/" + grpId);
+    getMessageForAGroupe(grpId: number, showCount: number): Observable<DtoInputMessage[]> {
+        return this._httpClient.get<DtoInputMessage[]>(MessageService._URL_API_MESSAGE + "/" + grpId+ "/" + showCount);
     }
 
     sendOutputMessage(msg: DtoOutputMessage) {

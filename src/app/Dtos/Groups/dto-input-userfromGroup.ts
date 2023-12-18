@@ -3,4 +3,5 @@ export interface DtoInputUserFromGroup {
     login: string;
     name: string;
     imageId:number;
+    imageUrl:string;
 }

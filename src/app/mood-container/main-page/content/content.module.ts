@@ -15,6 +15,11 @@ import {ProfileModule} from "./profile/profile.module";
 import {
   DeleteAccountModalComponent
 } from "../../../Services/Modals/Custom/delete-account-modal/delete-account-modal.component";
+import {
+  PublicationDetailModalComponent
+} from "../../../Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component";
+import { GroupListComponent } from './message/group-list/group-list.component';
+import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.component";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -23,6 +28,10 @@ import {
     NotificationComponent,
     DiscoverComponent,
     ParametersComponent,
+    DeleteAccountModalComponent,
+    PublicationDetailModalComponent,
+    GroupListComponent,
+    PopupComponent,
     DeleteAccountModalComponent
   ],
   imports: [
@@ -41,8 +50,11 @@ import {
     ProfileModule
   ],
   exports: [
+    DeleteAccountModalComponent,
+    PublicationDetailModalComponent,
+    PopupComponent,
     DeleteAccountModalComponent
   ],
-  providers: [],
+  providers: []
 })
 export class ContentModule { }

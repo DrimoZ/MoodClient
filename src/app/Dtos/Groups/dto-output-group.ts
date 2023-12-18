@@ -1,4 +1,4 @@
 export interface DtoOutputGroup {
-    name:string;
+    name:string|null;
     userIds: string[];
 }

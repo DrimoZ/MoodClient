@@ -14,6 +14,7 @@ import {DtoInputOtherUser} from "../../../../Dtos/Users/Inputs/dto-input-other-u
 import {DtoOutputGroup} from "../../../../Dtos/Groups/dto-output-group";
 import {DtoInputUserFromGroup} from "../../../../Dtos/Groups/dto-input-userfromGroup";
 import {SignalRService} from "../../../../Services/signal-r.service";
+import {bottom} from "@popperjs/core";
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -25,6 +26,7 @@ export class MessageComponent {
   userFriends: DtoInputOtherUser[] = [];
   friendToAdd: DtoInputOtherUser[] = [];
   userFromGroup: DtoInputUserFromGroup[] = [];
+  showCount: number = 100;
   userId: string = "-1";
   userGroupId:number = 0
   groupIndex: number = -1;
@@ -67,9 +69,15 @@ export class MessageComponent {
 
   getMessageFromGroup(groupId: number, index: number)
   {
+    this.showCount = 10;
     this._messageService.getUserFromGroup(groupId).subscribe({
         next: usr =>{
-            this.userFromGroup = usr;
+          this.userFromGroup = usr;
+          this.userFromGroup.forEach(user => {
+            this.getImageUrl( user.imageId == null ? 0:user.imageId).subscribe(img => {
+              user.imageUrl = img;
+            })
+          })
         }
     })
     this._messageService.getUserGroup(groupId).subscribe({
@@ -80,7 +88,7 @@ export class MessageComponent {
     this.groupIndex = index;
     this.groupId = groupId;
     this.messages = [];
-    this._messageService.getAllMessageForAGroupe(this.groupId).subscribe({
+    this._messageService.getMessageForAGroupe(this.groupId, this.showCount +1).subscribe({
       next: msg =>{
         msg.forEach(msg => {
           this.getImageUrl( msg.imageId == null ? 0:msg.imageId).subscribe(img => {
@@ -88,6 +96,7 @@ export class MessageComponent {
           })
         })
         this.messages = msg;
+        this.messages.reverse();
       }
     });
   }
@@ -108,6 +117,7 @@ export class MessageComponent {
     this._messageService.sendOutputMessage(msg).subscribe();
     // this._signalR.sendMessage(user, message);
     //TODO implements signalR
+
   }
   formatDate(dateString: string): string
   {
@@ -131,31 +141,17 @@ export class MessageComponent {
     this._userService.getUserFriends(this.userId).subscribe({
       next: (user) => {
         this.userFriends = user.friends;
+        this.userFriends.forEach(friend =>{
+          this._imageService.getImageData(friend.idImage == null ? 0:friend.idImage).subscribe(url => friend.imageUrl = url)
+        })
       },
       error: (err) => {
         if (err.status === 404) {
         }
       }
     })
-  }
 
-  addFriend(friend: HTMLLIElement, frd: DtoInputOtherUser) {
-    if(friend.classList.contains('btnColor')) {
-      friend.classList.remove('btnColor')
-      friend.classList.add('btnColorToggled');
-      this.friendToAdd.push(frd);
-    }
-    else{
-      friend.classList.remove('btnColorToggled');
-      friend.classList.add('btnColor');
-      const indexToRemove = this.friendToAdd.findIndex(item => item ==frd);
-      if (indexToRemove !== -1) {
-        this.friendToAdd.splice(indexToRemove, 1);
-      }
-    }
   }
-
-  protected readonly length = length;
 
   addGroup(groupName: string) {
     console.log(this.friendToAdd)
@@ -168,10 +164,64 @@ export class MessageComponent {
       name: string = groupName;
       userIds: string[] = userIds;
     }
-    this._messageService.createGroup(grp).subscribe();
+
+
+    this._messageService.createGroup(grp).subscribe({
+      next: grp =>{
+        this._messageService.getUsersGroups().subscribe({
+          next: grp => {
+            this.groupes = grp;
+          }
+        })
+      }
+    });
     this.friendToAdd = [];
     this.userFriends = [];
   }
 
     protected readonly style = style;
+
+  formReset() {
+    this.friendsForm.reset()
+    this.friendToAdd = [];
+    this.userFriends = [];
+  }
+
+  protected readonly escape = escape;
+  protected readonly onkeypress = onkeypress;
+
+  addFriendToConv(frd: DtoInputOtherUser, popup: HTMLDivElement) {
+    this.friendToAdd.push(frd);
+    popup.style.display = 'none';
+  }
+
+  startConv(groupName: string) {
+    if (groupName == '') {
+      groupName += this.friendToAdd[0].name;
+      this._userService.getUserAccount(this.userId).subscribe(
+        user => {
+          groupName += ', ' + user.name;
+          this.friendToAdd = [];
+          this.userFriends = [];
+        }
+      )
+    }
+  }
+
+  loadMoreMessage() {
+    this.showCount += 20;
+    this._messageService.getMessageForAGroupe(this.groupId, this.showCount +1,).subscribe(
+      data => {
+        data.forEach(msg => {
+          this.getImageUrl( msg.imageId == null ? 0:msg.imageId).subscribe(img => {
+            msg.url = img;
+          })
+        });
+        this.messages = data;
+        this.messages.reverse();
+      }
+    )
+  }
+
+  protected readonly bottom = bottom;
 }
