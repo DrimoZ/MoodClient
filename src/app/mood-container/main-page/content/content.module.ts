@@ -30,9 +30,6 @@ import {MemberPopupComponent} from "../../../Services/Modals/Custom/member-popup
     DeleteAccountModalComponent,
     GroupListComponent,
     PopupComponent,
-    DeleteAccountModalComponent,
-    ChatComponent,
-    MemberPopupComponent
   ],
     imports: [
         NgbModule,

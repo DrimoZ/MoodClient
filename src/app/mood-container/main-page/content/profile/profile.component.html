@@ -43,9 +43,6 @@
             <i class="fa-solid fa-gear"></i> Change Profile Picture
           </button>
           <modal-pp-picker id="modal-update-pp"></modal-pp-picker>
-          <button *ngIf="!isConnectedUser && (profileData.isPublic || profileData.isFriendWithConnected == 2)" class="btn btn-sm btn-outline-light w-50" (click)="sendMessage(userId)" i18n>
-            <i class="fa-solid fa-message"></i> Send a message
-          </button>
           <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>
             <i class="fa-solid fa-xmark"></i> Delete Friend
           </button>

@@ -4,7 +4,9 @@ export interface DtoInputPubComment {
   content: string;
   date: Date;
   id: number;
-  idUserImage: number;
+  idAuthor: string;
+  idAuthorImage: number;
   imageUrl: SafeUrl;
-  nameUser: string;
+  nameAuthor: string;
 }
+
