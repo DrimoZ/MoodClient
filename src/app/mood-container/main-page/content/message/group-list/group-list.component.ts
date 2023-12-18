@@ -50,25 +50,6 @@ export class GroupListComponent {
       }
     })
   }
-  addFriend(friend: HTMLLIElement, frd: DtoInputOtherUser) {
-
-  }
-
-  addFriendToConv(frd: DtoInputOtherUser, popup: HTMLDivElement) {
-
-  }
-
-  getUserFriends() {
-
-  }
-
-  formReset() {
-
-  }
-
-  addGroup(value: string) {
-
-  }
 
   getMessageFromGroup(id: number, index: number) {
 
