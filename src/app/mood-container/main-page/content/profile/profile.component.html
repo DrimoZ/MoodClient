@@ -39,7 +39,7 @@
         </div>
 
         <div class="actionDiv actionDivLarge">
-          <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture(userId)" i18n>
+          <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture(userId)" i18n id="ChangeProfilePicture">
             <i class="fa-solid fa-gear"></i> Change Profile Picture
           </button>
           <modal-pp-picker id="modal-update-pp"></modal-pp-picker>
