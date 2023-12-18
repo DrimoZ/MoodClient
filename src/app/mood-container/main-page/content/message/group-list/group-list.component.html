@@ -9,8 +9,8 @@
       <button class=" btn button-2 position-relative center" (click)="displayPopup();">Create a conversation</button>
     </div>
     <hr>
-    <div class="d-flex flex-column justify-content-center groupList">
-      <div *ngFor="let grp of groupes;let index = index;" (click)="getMessageFromGroup(grp.id, index); " class="nav-item hover-pointer w-100">
+    <div class="d-flex flex-column groupList">
+      <div *ngFor="let grp of groups;let index = index;" (click)="getMessageFromGroup(grp.id, index); " class="hover-pointer w-100">
         <a class="raised-button" aria-current="page" style="font-size: 13px">
           {{grp.name}}
         </a>

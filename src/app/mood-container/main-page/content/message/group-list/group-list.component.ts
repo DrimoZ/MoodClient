@@ -5,6 +5,7 @@ import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {MessageService} from "../../../../../Services/ApiRequest/message.service";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {ModalService} from "../../../../../Services/Modals/modal.service";
+import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 
 @Component({
   selector: 'app-group-list',
@@ -12,10 +13,10 @@ import {ModalService} from "../../../../../Services/Modals/modal.service";
   styleUrls: ['../message.component.css', './group-list.component.css']
 })
 export class GroupListComponent {
-  groupes: DtoInputGroup[] = [];
+  groups: DtoInputGroup[] = [];
   userId: string = "-1";
 
-  constructor(private _userService: UserService,private _messageService:MessageService, private modalService: ModalService) {
+  constructor(private _userService: UserService,private _messageService:MessageService, private modalService: ModalService, private eb:EventBusService) {
   }
   ngOnInit(): void {
     this._userService.getUserIdAndRole().subscribe({
@@ -23,7 +24,7 @@ export class GroupListComponent {
         this.userId = usr.userId;
         this._messageService.getUsersGroups().subscribe({
           next: grp => {
-            this.groupes = grp;
+            this.groups = grp;
           },
           error: (err) => {
             console.log(err);
@@ -38,6 +39,16 @@ export class GroupListComponent {
         }
       }
     });
+    this.eb.onEvent().subscribe(event =>{
+      if(event.Type ==="MessageGroupCreated"){
+        console.log("ICI")
+        this._messageService.getUsersGroups().subscribe({
+          next: grp => {
+            this.groups = grp;
+          }
+        })
+      }
+    })
   }
   addFriend(friend: HTMLLIElement, frd: DtoInputOtherUser) {
 

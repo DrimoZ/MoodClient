@@ -43,16 +43,17 @@ export class PopupComponent extends ModalBaseComponent{
       name: string = groupName;
       userIds: string[] = userIds;
     }
-    if(groupName == '')
+    if(groupName == ''){
       grp.name = null;
+    }
+    super.close();
     this._messageService.createGroup(grp).subscribe();
     this.friendToAdd = [];
     this.userFriends = [];
     this.eb.emitEvent({
-      Type:"MessageGroupeCreated",
+      Type:"MessageGroupCreated",
       Payload:""
     })
-    close();
   }
 
   addFriend(friend: HTMLDivElement, frd: DtoInputOtherUser) {
@@ -79,7 +80,6 @@ export class PopupComponent extends ModalBaseComponent{
         console.log(this.userId)
         this._userService.getUserFriends(this.userId).subscribe({
           next: (user) => {
-            console.log("oui")
             this.userFriends = user.friends;
             this.userFriends.forEach(friend =>{
               this._imageService.getImageData(friend.idImage == null ? 0:friend.idImage).subscribe(url => friend.imageUrl = url)

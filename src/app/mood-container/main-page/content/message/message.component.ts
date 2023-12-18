@@ -150,6 +150,62 @@ export class MessageComponent {
         }
       }
     })
+
+  }
+
+  addGroup(groupName: string) {
+    console.log(this.friendToAdd)
+    let grp:DtoOutputGroup;
+    let userIds: string[] = [];
+    for(let frd of this.friendToAdd){
+      userIds.push(frd.id);
+    }
+    grp = new class implements DtoOutputGroup {
+      name: string = groupName;
+      userIds: string[] = userIds;
+    }
+
+
+    this._messageService.createGroup(grp).subscribe({
+      next: grp =>{
+        this._messageService.getUsersGroups().subscribe({
+          next: grp => {
+            this.groupes = grp;
+          }
+        })
+      }
+    });
+    this.friendToAdd = [];
+    this.userFriends = [];
+  }
+
+    protected readonly style = style;
+
+  formReset() {
+    this.friendsForm.reset()
+    this.friendToAdd = [];
+    this.userFriends = [];
+  }
+
+  protected readonly escape = escape;
+  protected readonly onkeypress = onkeypress;
+
+  addFriendToConv(frd: DtoInputOtherUser, popup: HTMLDivElement) {
+    this.friendToAdd.push(frd);
+    popup.style.display = 'none';
+  }
+
+  startConv(groupName: string) {
+    if (groupName == '') {
+      groupName += this.friendToAdd[0].name;
+      this._userService.getUserAccount(this.userId).subscribe(
+        user => {
+          groupName += ', ' + user.name;
+          this.friendToAdd = [];
+          this.userFriends = [];
+        }
+      )
+    }
   }
 
   loadMoreMessage() {
