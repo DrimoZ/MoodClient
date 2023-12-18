@@ -10,7 +10,7 @@ export interface DtoInputPublicationDetail {
   elements: DtoInputPubElement[];
   hasConnectedLiked: boolean;
   id: number;
-  idAuthor: number;
+  idAuthor: string;
   idAuthorImage: number;
   isFromConnected: boolean;
   likeCount: number;
