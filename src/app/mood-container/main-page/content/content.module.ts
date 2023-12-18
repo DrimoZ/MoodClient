@@ -30,26 +30,26 @@ import {MemberPopupComponent} from "../../../Services/Modals/Custom/member-popup
     DeleteAccountModalComponent,
     GroupListComponent,
     PopupComponent,
+    ChatComponent,
+    MemberPopupComponent
   ],
-    imports: [
-        NgbModule,
-        ContentRoutingModule,
-        NgForOf,
-        NgClass,
-        RouterOutlet,
-        RouterLink,
-        RouterLinkActive,
-        NgIf,
-        NgOptimizedImage,
-        FormsModule,
-        ReactiveFormsModule,
-        NgTemplateOutlet,
-        ProfileModule,
-    ],
+  imports: [
+    NgbModule,
+    ContentRoutingModule,
+    NgForOf,
+    NgClass,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    NgIf,
+    NgOptimizedImage,
+    FormsModule,
+    ReactiveFormsModule,
+    NgTemplateOutlet,
+    ProfileModule
+  ],
   exports: [
-    DeleteAccountModalComponent,
     PopupComponent,
-    DeleteAccountModalComponent,
     MemberPopupComponent
   ],
   providers: []
