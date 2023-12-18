@@ -26,7 +26,6 @@ import {ProfileModule} from "../profile/profile.module";
     NgIf,
     AsyncPipe,
     RouterLink,
-    ContentModule,
     ProfileModule
   ],
   providers: [],

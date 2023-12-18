@@ -15,11 +15,10 @@ import {ProfileModule} from "./profile/profile.module";
 import {
   DeleteAccountModalComponent
 } from "../../../Services/Modals/Custom/delete-account-modal/delete-account-modal.component";
-import {
-  PublicationDetailModalComponent
-} from "../../../Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component";
 import { GroupListComponent } from './message/group-list/group-list.component';
 import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.component";
+import { ChatComponent } from './message/chat/chat.component';
+import {MemberPopupComponent} from "../../../Services/Modals/Custom/member-popup/member-popup.component";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -29,31 +28,32 @@ import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.compon
     DiscoverComponent,
     ParametersComponent,
     DeleteAccountModalComponent,
-    PublicationDetailModalComponent,
     GroupListComponent,
     PopupComponent,
-    DeleteAccountModalComponent
+    DeleteAccountModalComponent,
+    ChatComponent,
+    MemberPopupComponent
   ],
-  imports: [
-    NgbModule,
-    ContentRoutingModule,
-    NgForOf,
-    NgClass,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    NgIf,
-    NgOptimizedImage,
-    FormsModule,
-    ReactiveFormsModule,
-    NgTemplateOutlet,
-    ProfileModule
-  ],
+    imports: [
+        NgbModule,
+        ContentRoutingModule,
+        NgForOf,
+        NgClass,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        NgIf,
+        NgOptimizedImage,
+        FormsModule,
+        ReactiveFormsModule,
+        NgTemplateOutlet,
+        ProfileModule,
+    ],
   exports: [
     DeleteAccountModalComponent,
-    PublicationDetailModalComponent,
     PopupComponent,
-    DeleteAccountModalComponent
+    DeleteAccountModalComponent,
+    MemberPopupComponent
   ],
   providers: []
 })

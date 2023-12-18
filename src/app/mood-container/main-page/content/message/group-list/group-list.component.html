@@ -11,7 +11,7 @@
     <hr>
     <div class="d-flex flex-column groupList">
       <div *ngFor="let grp of groups;let index = index;" (click)="getMessageFromGroup(grp.id, index); " class="hover-pointer w-100">
-        <a class="raised-button" aria-current="page" style="font-size: 13px">
+        <a class="raised-button" (click)="groupClicked(grp)" aria-current="page" style="font-size: 13px">
           {{grp.name}}
         </a>
       </div>

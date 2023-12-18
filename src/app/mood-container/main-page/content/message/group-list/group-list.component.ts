@@ -41,7 +41,6 @@ export class GroupListComponent {
     });
     this.eb.onEvent().subscribe(event =>{
       if(event.Type ==="MessageGroupCreated"){
-        console.log("ICI")
         this._messageService.getUsersGroups().subscribe({
           next: grp => {
             this.groups = grp;
@@ -57,5 +56,12 @@ export class GroupListComponent {
 
   displayPopup() {
     this.modalService.open("popup")
+  }
+
+    groupClicked(grp: DtoInputGroup) {
+    this.eb.emitEvent({
+      Type:'groupClicked',
+        Payload: grp
+    })
   }
 }

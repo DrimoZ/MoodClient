@@ -18,39 +18,39 @@ import { ConnectionRefusedComponent } from './mood-container/errors/connection-r
 import {MainAuthGuard} from "./Guards/mainAuthGuard";
 import {CommonModule, DatePipe} from "@angular/common";
 import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.component";
-import {ContentModule} from "./mood-container/main-page/content/content.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MoodContainerComponent,
-    LoginPageComponent,
-    RegisterPageComponent,
-    MainPageComponent,
-    ContentComponent,
-    NavbarComponent,
-    ConnectionRefusedComponent,
-    ModalBaseComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ContentModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CredentialsInterceptor,
-      multi: true
-    },
-    DatePipe,
-    RouterAuthGuard,
-    MainAuthGuard
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MoodContainerComponent,
+        LoginPageComponent,
+        RegisterPageComponent,
+        MainPageComponent,
+        ContentComponent,
+        NavbarComponent,
+        ConnectionRefusedComponent,
+        ModalBaseComponent,
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        ReactiveFormsModule,
+        HttpClientModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: CredentialsInterceptor,
+            multi: true
+        },
+        DatePipe,
+        RouterAuthGuard,
+        MainAuthGuard
+    ],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
