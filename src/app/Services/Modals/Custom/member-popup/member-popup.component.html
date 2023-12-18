@@ -1,0 +1,17 @@
+<div class="shadow-background user-select-none justify-content-center align-items-center" [style.display]="isOpen ? 'flex' : 'none'">
+    <div class="overlay">
+        <div class="popup-content d-flex gap-2 flex-column">
+            <div class="friendList">
+                <h5>group's member</h5>
+                <li class="nav-item button-2 btnColor" style="width: 90%" *ngFor="let frd of userFromGroup;">
+                    <div class="d-flex flex-row">
+                        <img class="profile-picture d-flex" alt="" src="{{frd.imageUrl}}" width="50" height="50" >
+                        <p>{{frd.name}}</p>
+                    </div>
+                </li>
+            </div>
+            <button (click)="close()" class="button-2" >ok</button>
+        </div>
+    </div>
+</div>
+

@@ -19,7 +19,7 @@ export class PopupComponent extends ModalBaseComponent{
   userFriends: DtoInputOtherUser[] = [];
   friendToAdd: DtoInputOtherUser[] = [];
   friendsForm: FormGroup;
-    private userId: string;
+  userId: string;
 
   constructor( modalService: ModalService, _el: ElementRef,private fb: FormBuilder,
                private _userService:UserService, private _imageService: ImageService, private _messageService: MessageService, private eb:EventBusService) {
@@ -28,11 +28,6 @@ export class PopupComponent extends ModalBaseComponent{
       name: ['',[Validators.required, Validators.minLength(3)]]
     });
   }
-
-  formReset() {
-    this.friendsForm.reset()
-  }
-
   addGroup(groupName: string) {
     let grp:DtoOutputGroup;
     let userIds: string[] = [];
