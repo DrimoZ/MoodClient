@@ -5,18 +5,23 @@ import {PublicationsComponent} from "./publications/publications.component";
 import {ProfileRoutingModule} from "./profile-routing.module";
 import { FriendsComponent } from './friends/friends.component';
 import { AccountComponent } from './account/account.component';
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {
   ProfilePictureModalComponent
 } from "../../../../Services/Modals/Custom/profile-picture-modal/profile-picture-modal.component";
+import {ContentModule} from "../content.module";
+import {
+  PublicationDetailModalComponent
+} from "../../../../Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component";
 @NgModule({
   declarations: [
     PublicationsComponent,
     FriendsComponent,
     AccountComponent,
-    ProfilePictureModalComponent
+    ProfilePictureModalComponent,
+    PublicationDetailModalComponent
   ],
   imports: [
     ProfileRoutingModule,
@@ -27,11 +32,14 @@ import {
     ReactiveFormsModule,
     RouterLink,
     RouterLinkActive,
-    NgIf
+    NgIf,
+    NgStyle,
+
   ],
   providers: [],
   exports: [
-    ProfilePictureModalComponent
+    ProfilePictureModalComponent,
+    PublicationDetailModalComponent
   ]
 })
 export class ProfileModule { }

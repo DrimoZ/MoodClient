@@ -31,7 +31,8 @@ import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.compon
     DeleteAccountModalComponent,
     PublicationDetailModalComponent,
     GroupListComponent,
-    PopupComponent
+    PopupComponent,
+    DeleteAccountModalComponent
   ],
   imports: [
     NgbModule,
@@ -45,13 +46,14 @@ import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.compon
     NgOptimizedImage,
     FormsModule,
     ReactiveFormsModule,
-    ProfileModule,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    ProfileModule
   ],
   exports: [
     DeleteAccountModalComponent,
     PublicationDetailModalComponent,
-    PopupComponent
+    PopupComponent,
+    DeleteAccountModalComponent
   ],
   providers: []
 })

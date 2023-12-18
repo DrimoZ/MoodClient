@@ -1,6 +1,73 @@
-<div class="shadow-background user-select-none" [style.display]="isOpen ? 'block' : 'none'">
-  <div class="modal-container">
+<div class="shadow-background user-select-none overflow-y-auto" [style.display]="isOpen ? 'block' : 'none'">
+  <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
+  <div class="modal-container" *ngIf="!isWaitingForApi">
+    <div id="pub_{{publication.id}}" class="h-100 d-flex flex-column justify-content-between position-relative" data-ride="carousel">
+      <div *ngIf="publication.elements.length > 0" class="flex-grow-1 flex-shrink-1 d-flex">
+        <div  *ngFor="let element of publication.elements; let i = index" class="carousel-item {{i == 0 ? 'active' : ''}}">
+          <img src="{{element.imageUrl}}" class="pubImage">
+        </div>
+      </div>
+      <div *ngIf="publication.elements.length > 1">
+        <a class="carousel-control-prev" (click)="prev(publication.id)" *ngIf="activeImageIndex != 0" role="button">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" (click)="next(publication.id)" *ngIf="activeImageIndex != publication.elements.length - 1" role="button">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-start infoDiv">
+      <div class="w-100 p-2 pe-4 d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row justify-content-between gap-2 hover-pointer" (click)="navigateToUser(this.publication.idAuthor)">
+          <div class="circle">
+            <img src="{{this.publication.urlImage}}}" class="profileImage" *ngIf="!isWaitingForApi">
+          </div>
+          <span class="txt-gold ps-3 pt-1 fs-4">{{this.publication.nameAuthor}}</span>
+        </div>
+
+        <button class="x-close-btn txt-gold fs-4" (click)="close()">X</button>
+      </div>
+
+      <div style="border-top: 1px solid #deb992; margin-left: 15px; margin-right: 15px"></div>
+
+      <div class="w-100 p-4">
+        <div class="txt-turquoise fs-6"> {{this.publication.content}} </div>
+      </div>
+
+      <div style="border-top: 1px solid #deb992; margin-left: 15px; margin-right: 15px"></div>
+
+      <div class="d-flex flex-column justify-content-between flex-grow-1">
+        <div class="py-2 px-4 d-flex flex-column overflow-y-auto" style="min-height: 300px">
+          <div *ngFor="let comment of publication.comments">
+
+          </div>
+        </div>
+
+        <div class="d-flex flex-column">
+          <div style="border-top: 1px solid #deb992; margin-left: 15px; margin-right: 15px"></div>
+
+          <div class="py-2 px-4 d-flex flex-row gap-2">
+            <div class="col text-center txt-gold rounded hover-darker" (click)="toggleLiked()" i18n>
+              <i class="fa-solid fa-heart"
+                 [ngClass]="{'text-danger': this.publication.hasConnectedLiked}"></i> Like{{this.publication.hasConnectedLiked?"d":""}} ( {{this.publication.likeCount}} )
+            </div>
+            <div class="col text-center txt-gold rounded hover-darker"  (click)="focusInput()" i18n>
+              <i class="fa-solid fa-comments"></i> Comment ( {{this.publication.commentCount}} )
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid #deb992; margin-left: 15px; margin-right: 15px"></div>
+
+          <div class="py-2 px-3 d-flex flex-row gap-2" (submit)="sendComment()">
+            <input type="text" #commentInput class="form-control-sm w-100" i18n i18n-placeholder placeholder="Add a comment">
+            <button type="submit" class="btn btn-sm btn-outline-success" i18n>Send</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>
 

@@ -8,6 +8,7 @@ import {DiscoverRoutingModule} from "./discover-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {ContentModule} from "../content.module";
+import {ProfileModule} from "../profile/profile.module";
 
 
 @NgModule({
@@ -15,18 +16,19 @@ import {ContentModule} from "../content.module";
     PublicationComponent,
     ProfileComponent,
   ],
-    imports: [
-        NgbModule,
-        DiscoverRoutingModule,
-        NgForOf,
-        NgClass,
-        ReactiveFormsModule,
-        FormsModule,
-        NgIf,
-        AsyncPipe,
-        RouterLink,
-        ContentModule
-    ],
+  imports: [
+    NgbModule,
+    DiscoverRoutingModule,
+    NgForOf,
+    NgClass,
+    ReactiveFormsModule,
+    FormsModule,
+    NgIf,
+    AsyncPipe,
+    RouterLink,
+    ContentModule,
+    ProfileModule
+  ],
   providers: [],
 })
 export class DiscoverModule { }

@@ -43,7 +43,7 @@ export class PublicationComponent implements OnInit, OnDestroy{
   }
 
   getDetailedPublication(id: number) {
-    this._modalService.open("modal-pub_" + id);
+    this._modalService.open("discover-pub_" + id);
   }
 
 
