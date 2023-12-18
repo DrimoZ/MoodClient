@@ -14,7 +14,7 @@ export class NewsFeedComponent implements OnInit {
   isWaitingForApi: boolean = true;
 
   publications: DtoInputPublicationDetail[];
-  pubCount: number = 30;
+  pubCount: number = 0;
   connectedUserId: string;
 
   constructor(private _publicationService: PublicationService, private _router: Router,
@@ -27,41 +27,7 @@ export class NewsFeedComponent implements OnInit {
       this.connectedUserId = val.userId;
     })
 
-    this._publicationService.getFriendsPublications(this.pubCount).subscribe({
-      next: (val) => {
-        console.log(val);
-        this.publications = val;
-
-        this.publications.forEach(p => {
-          this._imageService.getImageData(p.idAuthorImage == null  ? 0 : p.idAuthorImage).subscribe({
-            next: (val) => {
-              p.urlImage = val;
-            }
-          })
-
-          p.elements.forEach(e => {
-            this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe({
-              next: (val) => {
-                e.imageUrl = val;
-              }
-            })
-          })
-
-          p.comments.forEach(c => {
-            this._imageService.getImageData(c.idAuthorImage == null ? 0 : c.idAuthorImage).subscribe({
-              next: (val) => {
-                c.imageUrl = val;
-              }
-            })
-          })
-        })
-
-        this.isWaitingForApi = false;
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
+    this.loadMorePublications();
   }
 
 
@@ -153,5 +119,45 @@ export class NewsFeedComponent implements OnInit {
 
       })
     }
+  }
+
+  loadMorePublications() {
+    this.pubCount += 30;
+
+    this._publicationService.getFriendsPublications(this.pubCount).subscribe({
+      next: (val) => {
+        console.log(val);
+        this.publications = val;
+
+        this.publications.forEach(p => {
+          this._imageService.getImageData(p.idAuthorImage == null  ? 0 : p.idAuthorImage).subscribe({
+            next: (val) => {
+              p.urlImage = val;
+            }
+          })
+
+          p.elements.forEach(e => {
+            this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe({
+              next: (val) => {
+                e.imageUrl = val;
+              }
+            })
+          })
+
+          p.comments.forEach(c => {
+            this._imageService.getImageData(c.idAuthorImage == null ? 0 : c.idAuthorImage).subscribe({
+              next: (val) => {
+                c.imageUrl = val;
+              }
+            })
+          })
+        })
+
+        this.isWaitingForApi = false;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 }
