@@ -8,6 +8,8 @@ describe('template spec', () => {
 
     cy.contains("Profiles").click()
 
-    cy.contains("Marine").click()
+    cy.contains("Moi").click()
+
+    cy.get('#BtnFriends').click()
   })
 })

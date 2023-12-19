@@ -47,11 +47,11 @@
       <div class="">
         <div class="py-2 px-4 d-flex flex-row gap-2">
           <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="toggleLiked(pub.id)" i18n>
-            <i class="fa-solid fa-heart"
+            <i class="fa-solid fa-heart" id="BtnLike"
                [ngClass]="{'text-danger': this.publications[getPubIndex(pub.id)].hasConnectedLiked}"></i> Like{{this.publications[getPubIndex(pub.id)].hasConnectedLiked?"d":""}} ( {{this.publications[getPubIndex(pub.id)].likeCount}} )
           </div>
           <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="sep.classList.toggle('d-none'); coms.classList.toggle('d-none')" i18n>
-            <i class="fa-solid fa-comments"></i> Comment ( {{this.publications[getPubIndex(pub.id)].commentCount}} )
+            <i class="fa-solid fa-comments" id="BtnComment"></i> Comment ( {{this.publications[getPubIndex(pub.id)].commentCount}} )
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
         <div  style="border-top: 1px solid #deb992;"></div>
 
         <form class="py-3 px-4 d-flex flex-row gap-2" (submit)="sendComment(pub.id, input)">
-          <input type="text" #input class="form-control-sm w-100" i18n i18n-placeholder placeholder="Add a comment">
+          <input type="text" #input class="form-control-sm w-100" i18n i18n-placeholder placeholder="Add a comment" id="AddComment">
           <button type="submit" class="btn btn-sm btn-outline-success" i18n>Send</button>
         </form>
 
