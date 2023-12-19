@@ -60,6 +60,15 @@ export class NavbarComponent implements OnInit{
         this._router.navigate(['connectionRefused'])
       }
     })
+    this._eventBus.onEvent().subscribe(
+      {
+        next: event => {
+          if (event.Type ==="ChangeNavBar"){
+            this.clickedDiv = event.Payload;
+          }
+        }
+      }
+    )
   }
 
   openCreatePub() {

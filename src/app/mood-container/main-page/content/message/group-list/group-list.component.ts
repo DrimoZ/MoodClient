@@ -6,6 +6,7 @@ import {MessageService} from "../../../../../Services/ApiRequest/message.service
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {ModalService} from "../../../../../Services/Modals/modal.service";
 import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
+import {timeout} from "rxjs";
 
 @Component({
   selector: 'app-group-list',
@@ -40,7 +41,7 @@ export class GroupListComponent {
       }
     });
     this.eb.onEvent().subscribe(event =>{
-      if(event.Type ==="MessageGroupCreated"){
+      if(event.Type ==="MessageGroupModified"){
         this._messageService.getUsersGroups().subscribe({
           next: grp => {
             this.groups = grp;
@@ -60,7 +61,7 @@ export class GroupListComponent {
 
     groupClicked(grp: DtoInputGroup) {
     this.eb.emitEvent({
-      Type:'groupClicked',
+      Type:'GroupClicked',
         Payload: grp
     })
   }

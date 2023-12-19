@@ -1,0 +1,33 @@
+<div class="shadow-background user-select-none " [style.display]="isOpen ? 'flex' : 'none'">
+    <div class="overlay d-flex justify-content-center align-items-center">
+        <div  class="popup-content d-flex gap-2 align-items-center flex-column">
+          <input #div style="text-align: center;" class="d-flex" [disabled]="this.group.proprioId != this.userId || this.group.isPrivate" value="{{this.group.name}}"/>
+          <button *ngIf="this.group.proprioId == this.userId || this.group.isPrivate" (click)="modifyGroupsName(div.value)" class="button-2">Modify Name</button>
+          <div class="friendList d-flex flex-column">
+            <div class="d-flex flex-column  ">
+              <li class=" nav-item button-2 btnColor d-flex flex-column" style="width: 90%" *ngFor="let member of userFromGroup;">
+                <div class="d-flex flex-row justify-content-between flex-grow-1 flex-shrink-0">
+                  <div>
+                    <img class="profile-picture d-flex" alt="" src="{{member.imageUrl}}" width="50" height="50" >
+                    <p>{{member.name}}</p>
+                  </div>
+                  <div>
+                    <p><i *ngIf="this.group.proprioId == member.id" class="fa-solid fa-star" style="color: yellowgreen"></i></p>
+                    <div>
+                      <button *ngIf="this.group.proprioId == this.userId && this.group.proprioId != member.id" (click)="kickThisMember(member)" class="button-3">Kick From Group</button>
+                      <button class="button-3" (click)="goToProfile(member)"><i class="fa-solid fa-info"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </div>
+          <div class="w-100 d-flex flex-row justify-content-between flex-fill">
+            <button (click)="close()" class="button-2" style="width: 100px" >ok</button>
+            <button style="width: 100px" *ngIf="!this.group.isPrivate" (click)="addMember()" class="button-2" >Add Members</button>
+            <button style="width: 100px" *ngIf="!this.group.isPrivate" (click)="quitsGroup();" class="button-2" >Quit Group</button>
+          </div>
+        </div>
+    </div>
+</div>
+

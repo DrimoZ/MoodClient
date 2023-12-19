@@ -11,7 +11,7 @@ import {DatePipe} from "@angular/common";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {style} from "@angular/animations";
 import {DtoInputOtherUser} from "../../../../Dtos/Users/Inputs/dto-input-other-user";
-import {DtoOutputGroup} from "../../../../Dtos/Groups/dto-output-group";
+import {DtoOutputCreateGroup} from "../../../../Dtos/Groups/dto-output-create-group";
 import {DtoInputUserFromGroup} from "../../../../Dtos/Groups/dto-input-userfromGroup";
 import {SignalRService} from "../../../../Services/signal-r.service";
 @Component({

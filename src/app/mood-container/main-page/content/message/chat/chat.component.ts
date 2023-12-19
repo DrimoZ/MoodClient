@@ -9,7 +9,7 @@ import {EventBusService} from "../../../../../Services/EventBus/event-bus.servic
 import {map} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {ModalService} from "../../../../../Services/Modals/modal.service";
-import {MemberPopupComponent} from "../../../../../Services/Modals/Custom/member-popup/member-popup.component";
+import {MemberPopupComponent} from "../../../../../Services/Modals/Custom/group-info-popup/member-popup.component";
 
 @Component({
   selector: 'app-chat',
@@ -57,24 +57,16 @@ export class ChatComponent {
       }
     });
     this.eb.onEvent().subscribe(event =>{
-        if(event.Type ==="groupClicked"){
+        if(event.Type ==="GroupClicked"){
           this.groupId = event.Payload.id;
           this.groupName = event.Payload.name;
-            console.log(this.groupId);
-            this._messageService.getMessageFromGroupe(this.groupId, this.showCount).subscribe({
-                next: msgs => {
-                    this.messages = msgs;
-                   this._messageService.getUserGroup(this.groupId).subscribe({
-                      next: usrGrp =>  this.userGroupId = usrGrp.id
-                   })
-                    this.messages.reverse();
-                    this.messages.forEach(msg =>{
-                        this.getImageUrl( msg.imageId == null ? 0:msg.imageId).subscribe(img => {
-                            msg.url = img;
-                        })
-                    })
-                }
-            })
+          this.getMessages();
+        }
+        if(event.Type === "MessageGroupModified"){
+          this.groupId = -1;
+          this.messages = [];
+          this.userFromGroup= [];
+          this.groupName = "";
         }
     })
 
@@ -86,19 +78,41 @@ export class ChatComponent {
       }));
   }
 
-  sendMessage(message: string)
+  sendMessage(message: HTMLInputElement)
   {
     let msg:DtoOutputMessage = {
-      content : message,
+      content : message.value,
       userGroupId : this.userGroupId
     }
-    this._messageService.sendOutputMessage(msg).subscribe();
+    this._messageService.sendOutputMessage(msg).subscribe({
+      next: msg =>{
+        this.getMessages();
+        message.value = ''
+      }
+    });
     // this._signalR.sendMessage(user, message);
     //TODO implements signalR
 
   }
 
-    displayPopupMember() {
+  private getMessages() {
+    this._messageService.getMessageFromGroupe(this.groupId, this.showCount).subscribe({
+      next: msgs => {
+        this.messages = msgs;
+        this._messageService.getUserGroup(this.groupId).subscribe({
+          next: usrGrp => this.userGroupId = usrGrp.id
+        })
+        this.messages.reverse();
+        this.messages.forEach(msg => {
+          this.getImageUrl(msg.imageId == null ? 0 : msg.imageId).subscribe(img => {
+            msg.url = img;
+          })
+        })
+      }
+    })
+  }
+
+  displayPopupMember() {
         this.modalService.open("popupMember")
-    }
+  }
 }

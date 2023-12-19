@@ -18,7 +18,7 @@ import {
 import { GroupListComponent } from './message/group-list/group-list.component';
 import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.component";
 import { ChatComponent } from './message/chat/chat.component';
-import {MemberPopupComponent} from "../../../Services/Modals/Custom/member-popup/member-popup.component";
+import {MemberPopupComponent} from "../../../Services/Modals/Custom/group-info-popup/member-popup.component";
 @NgModule({
   declarations: [
     ProfileComponent,

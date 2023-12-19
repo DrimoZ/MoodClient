@@ -1,4 +1,4 @@
-export interface DtoOutputGroup {
+export interface DtoOutputCreateGroup {
     name:string|null;
     userIds: string[];
 }

@@ -1,8 +1,8 @@
 <div class="shadow-background user-select-none justify-content-center align-items-center" [style.display]="isOpen ? 'flex' : 'none'">
     <div class=" d-flex flex-column gap-2 ">
-      <form [formGroup]="friendsForm" class="d-flex flex-column justify-content-between flex-grow-1 flex-shrink-0 gap-2 popup-content">
+      <form [formGroup]="friendsForm" class="d-flex flex-column justify-content-between gap-2 popup-content">
         <input #groupName formControlName="name" class="df container-fluid" type="text" style="width: 100%;" placeholder="Group Name" value="">
-        <div class="friendList " style="">
+        <div class="friendList" style="">
           <div class="d-flex flex-column align-items-center justify-content-center gap-2" style="overflow-y: auto">
             <div #friend class="nav-item button-2 btnColor" style="width: 90%" (click)="addFriend(friend, frd)" *ngFor="let frd of userFriends;">
               <div class="d-flex flex-row">
@@ -12,7 +12,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-row justify-content-between" style="width: 100%">
+        <div class="d-flex flex-column-reverse justify-content-between ">
           <input type="submit" (click)="addGroup(groupName.value)" class="button-2" [disabled]="(friendToAdd.length<1)" value="Create">
           <input type="submit" (click)="close()" class="button-2" value="Cancel">
         </div>
