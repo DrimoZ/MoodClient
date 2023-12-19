@@ -28,8 +28,8 @@ export class UserService {
     return this._httpClient.get(UserService._URL_API + "/" + userLogin + "/account");
   }
 
-  getUserFriends(userLogin: string): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/" + userLogin + "/friends");
+  getUserFriends(userId: string): Observable<any> {
+    return this._httpClient.get(UserService._URL_API + "/" + userId + "/friends");
   }
 
   getUserPublications(userLogin: string): Observable<any> {
