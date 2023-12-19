@@ -6,24 +6,24 @@
       <span class="w-100 fs-5 fw-bold text-center" i18n>Common Information</span>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Full Name</span>
-        <input class="form-control" type="text" formControlName="Name" [value]="accountData.name">
+        <input class="form-control" type="text" formControlName="Name" [value]="accountData.name" id="InputFullName">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Email Address</span>
-        <input class="form-control" type="email" formControlName="Mail" [value]="accountData.mail">
+        <input class="form-control" type="email" formControlName="Mail" [value]="accountData.mail" id="InputEmail">
       </div>
 
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Birthdate</span>
-        <input class="form-control" type="date" formControlName="BirthDate" [value]="accountData.birthDate">
+        <input class="form-control" type="date" formControlName="BirthDate" [value]="accountData.birthDate" id="InputBirthDate">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Title</span>
-        <input class="form-control" type="text" formControlName="Title" [value]="accountData.title">
+        <input class="form-control" type="text" formControlName="Title" [value]="accountData.title" id="InputTitle">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Description</span>
-        <textarea class="form-control" formControlName="Description" [value]="accountData.description"></textarea>
+        <textarea class="form-control" formControlName="Description" [value]="accountData.description" id="InputDescription"></textarea>
       </div>
 
       <div class="p-1 d-flex justify-content-end gap-2">
