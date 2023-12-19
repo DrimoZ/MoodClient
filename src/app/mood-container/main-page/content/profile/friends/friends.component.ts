@@ -4,6 +4,7 @@ import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
 import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
+import {DtoInputUserFriends} from "../../../../../Dtos/Other/dto-input-user-friends";
 
 @Component({
   selector: 'app-friends',
@@ -11,15 +12,12 @@ import {ImageService} from "../../../../../Services/ApiRequest/image.service";
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit {
+  userProfileFriends: DtoInputUserFriends;
   userId: string = "";
   isWaitingForApi: boolean = true;
 
   isInputFocused: boolean = false;
   searchBarValue: any = "";
-
-  userFriends: DtoInputOtherUser[] = [];
-  isConnectedUser: boolean = false;
-  isFriendPublic: boolean = false;
 
   constructor(private _userService: UserService, private _router: Router, private _friendService: FriendService, private _imageService: ImageService) {
   }
@@ -29,13 +27,10 @@ export class FriendsComponent implements OnInit {
 
     this._userService.getUserFriends(this.userId).subscribe({
       next: apiData => {
+        this.userProfileFriends = apiData;
 
-        this.userFriends = apiData.friends;
-        this.isConnectedUser = apiData.isConnectedUser;
-        this.isFriendPublic = apiData.isFriendPublic;
-
-        if (this.userFriends  != null) {
-          this.userFriends.forEach(friend => {
+        if (this.userProfileFriends.friends  != null) {
+          this.userProfileFriends.friends.forEach(friend => {
             this._imageService.getImageData(friend.idImage == null ? -1 : friend.idImage).subscribe(url => {
               friend.imageUrl = url;
             })
@@ -69,8 +64,8 @@ export class FriendsComponent implements OnInit {
   emitAddFriend(friendId: string) {
     this._friendService.createFriendRequest(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.userFriends.findIndex(f => f.id == friendId);
-        this.userFriends[friendIndex].isFriendWithConnected = 0;
+        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.id == friendId);
+        this.userProfileFriends.friends[friendIndex].isFriendWithConnected = 0;
       },
       error: (err) => {
         console.log(err)
@@ -81,9 +76,9 @@ export class FriendsComponent implements OnInit {
   emitRemoveFriend(friendId: string) {
     this._friendService.deleteFriend(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.userFriends.findIndex(f => f.id == friendId);
-        this.userFriends[friendIndex].isFriendWithConnected = -1;
-        this.userFriends.splice(friendIndex, 1)
+        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.id == friendId);
+        this.userProfileFriends.friends[friendIndex].isFriendWithConnected = -1;
+        this.userProfileFriends.friends.splice(friendIndex, 1)
       },
       error: (err) => {
         console.log(err)
@@ -98,8 +93,8 @@ export class FriendsComponent implements OnInit {
   emitCancelFriend(friendId: string) {
     this._friendService.rejectFriendRequest(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.userFriends.findIndex(f => f.id == friendId);
-        this.userFriends[friendIndex].isFriendWithConnected = -1;
+        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.id == friendId);
+        this.userProfileFriends.friends[friendIndex].isFriendWithConnected = -1;
       },
       error: (err) => {
         console.log(err)
