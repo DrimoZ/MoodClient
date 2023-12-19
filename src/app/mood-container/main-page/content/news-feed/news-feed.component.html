@@ -1,5 +1,5 @@
 <section class="hvh-93 overflow-y-auto user-select-none" style="border-right: black 1px solid; border-left: black 1px solid;"
-         [ngClass]="{'blur-effect': publications.length == 0 }">
+         [ngClass]="{'blur-effect': publications == undefined || publications == null }">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div class="pt-5 pb-3 w-100 d-flex flex-column align-items-center gap-3" *ngIf="!isWaitingForApi">

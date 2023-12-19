@@ -28,17 +28,19 @@ export class FriendsComponent implements OnInit {
     this.userId = this._router.url.split("home")[1].split("/")[1];
 
     this._userService.getUserFriends(this.userId).subscribe({
-      next: (user) => {
+      next: apiData => {
 
-        this.userFriends = user.friends;
-        this.isConnectedUser = user.isConnectedUser;
-        this.isFriendPublic = user.isFriendPublic;
+        this.userFriends = apiData.friends;
+        this.isConnectedUser = apiData.isConnectedUser;
+        this.isFriendPublic = apiData.isFriendPublic;
 
-        this.userFriends.forEach(friend => {
-          this._imageService.getImageData(friend.idImage == null ? -1 : friend.idImage).subscribe(url => {
-            friend.imageUrl = url;
+        if (this.userFriends  != null) {
+          this.userFriends.forEach(friend => {
+            this._imageService.getImageData(friend.idImage == null ? -1 : friend.idImage).subscribe(url => {
+              friend.imageUrl = url;
+            })
           })
-        })
+        }
 
         this.isWaitingForApi = false;
       },

@@ -39,7 +39,7 @@
 .content-div:hover + .stat-div,
 .stat-div:hover {
   display: flex;
-  background: hsla(0, 0%, 100%, 0.1);
+  background: hsla(0, 0%, 0%, 0.4);
   cursor: pointer;
 }
 
