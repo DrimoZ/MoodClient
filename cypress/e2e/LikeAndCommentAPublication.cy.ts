@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Aimer et commenter une publication', () => {
   it('passes', () => {
     cy.visit('http://localhost:4200/')
     cy.get('#Login').type('cestmoi')

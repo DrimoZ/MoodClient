@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe("Gérer sa liste d'amis", () => {
   it('passes', () => {
     cy.visit('http://localhost:4200/')
     cy.get('#Login').type('marine0023')

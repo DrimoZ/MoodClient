@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Modifier mes informations de profil', () => {
   it('passes', () => {
     cy.visit('http://localhost:4200/')
     cy.get('#Login').type('martinp')

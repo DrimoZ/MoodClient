@@ -106,19 +106,19 @@
 
           <div class="p-1 accountInfo">
             <span class="form-label user-select-none" i18n>Old Password</span>
-            <input type="password" formControlName="OldPassword" class="form-control" placeholder="*Required"
+            <input type="password" formControlName="OldPassword" class="form-control" placeholder="*Required" id="OldPassword"
                    [ngClass]="{'input-error': controlNewPassword.invalid && controlNewPassword.dirty && controlNewPassword.touched}" i18n i18n-placeholder/>
           </div>
 
           <div class="p-1 accountInfo">
             <span class="form-label user-select-none" i18n>New Password</span>
-            <input type="password" formControlName="NewPassword" class="form-control" placeholder="*Required"
+            <input type="password" formControlName="NewPassword" class="form-control" placeholder="*Required" id="NewPassword"
                    [ngClass]="{'input-error': controlNewPassword.invalid && controlNewPassword.dirty && controlNewPassword.touched}" i18n i18n-placeholder/>
           </div>
 
           <div class="p-1 accountInfo">
             <span class="form-label user-select-none" i18n>Password Confirmation</span>
-            <input type="password" formControlName="PasswordConfirmation" class="form-control" placeholder="*Required"
+            <input type="password" formControlName="PasswordConfirmation" class="form-control" placeholder="*Required" id="PasswordConfirmation"
                    [ngClass]="{'input-error': controlPasswordConfirmation.dirty && controlPasswordConfirmation.touched
                            && (controlPasswordConfirmation.invalid || controlNewPassword.value != controlPasswordConfirmation.value)}" i18n i18n-placeholder/>
           </div>
@@ -182,7 +182,7 @@
               <label class="switch">
                 <input type="checkbox" id="IsFriendPublic" [(ngModel)]="settings.isFriendPublic" (change)="setFriendsPrivacy()"
                        [disabled]="!settings.isPublic">
-                <span class="slider round"></span>
+                <span class="slider round" id="FriendPrivacySlider"></span>
               </label>
             </div>
             <div>

@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Consulter un profil', () => {
   it('passes', () => {
     cy.visit('http://localhost:4200/')
     cy.get('#Login').type('martinp')
