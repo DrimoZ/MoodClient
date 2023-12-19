@@ -13,10 +13,10 @@ import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 export class ProfilePictureModalComponent extends ModalBaseComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
   previewUrl: string | ArrayBuffer;
+
   constructor(modalService: ModalService, _el: ElementRef, private _imageService: ImageService) {
     super(modalService, _el);
   }
-
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];

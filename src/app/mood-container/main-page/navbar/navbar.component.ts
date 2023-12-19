@@ -2,6 +2,7 @@ import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from 
 import {Router} from "@angular/router";
 import {EventBusService} from "../../../Services/EventBus/event-bus.service";
 import {UserService} from "../../../Services/ApiRequest/user.service";
+import {ModalService} from "../../../Services/Modals/modal.service";
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,9 @@ export class NavbarComponent implements OnInit{
   @ViewChild('buttonRef') buttonRef!: ElementRef;
   @ViewChild('divRef') divRef!: ElementRef;
 
-  constructor(private renderer: Renderer2, private _eventBus: EventBusService, private _router: Router, private _userService: UserService) {
+  constructor(private renderer: Renderer2, private _eventBus: EventBusService,
+              private _router: Router, private _userService: UserService,
+              private _modalService: ModalService) {
   }
 
   ngAfterViewInit() {
@@ -57,5 +60,9 @@ export class NavbarComponent implements OnInit{
         this._router.navigate(['connectionRefused'])
       }
     })
+  }
+
+  openCreatePub() {
+    this._modalService.open("create-pub");
   }
 }

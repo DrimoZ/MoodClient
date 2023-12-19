@@ -18,6 +18,7 @@ import { ConnectionRefusedComponent } from './mood-container/errors/connection-r
 import {MainAuthGuard} from "./Guards/mainAuthGuard";
 import {CommonModule, DatePipe} from "@angular/common";
 import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.component";
+import { CreatePublicationComponent } from './Services/Modals/Custom/create-publication/create-publication.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.compon
         NavbarComponent,
         ConnectionRefusedComponent,
         ModalBaseComponent,
+        CreatePublicationComponent,
     ],
     imports: [
         CommonModule,

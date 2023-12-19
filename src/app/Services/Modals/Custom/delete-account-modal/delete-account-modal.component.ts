@@ -2,7 +2,6 @@ import {Component, ElementRef} from '@angular/core';
 import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 import {ModalService} from "../../modal.service";
 import {UserService} from "../../../ApiRequest/user.service";
-import {Router} from "@angular/router";
 import {EventBusService} from "../../../EventBus/event-bus.service";
 
 @Component({

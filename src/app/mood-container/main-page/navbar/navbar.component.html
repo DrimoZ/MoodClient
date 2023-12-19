@@ -1,4 +1,5 @@
 <header class="hvh-7 py-1 user-select-none">
+  <create-publication-modal id="create-pub"></create-publication-modal>
   <div class="d-flex flex-row justify-content-between h-100">
 <!--Main button + logo-->
     <div class="ps-3 justify-content-start align-items-center d-flex w-10 hover-pointer"
@@ -18,6 +19,11 @@
            routerLink="./discover/publications" routerLinkActive="active"
            [class.hhover-darker]="clickedDiv !== 'discover'" [class.selected-darker]="clickedDiv == 'discover'" (click)="onDivClick('discover')">
         <i class="fa-solid fa-magnifying-glass fa-lg position-absolute top-50 start-50 translate-middle"></i>
+
+      </div>
+      <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
+           [class.hhover-darker]="clickedDiv !== 'new'" [class.selected-darker]="clickedDiv == 'new'" (click)="onDivClick('new'); openCreatePub()">
+        <i class="fa-solid fa-plus-circle fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
@@ -58,6 +64,11 @@
        routerLink="./discover/publications" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('discover')">
     <i class="fa-solid fa-magnifying-glass fa-lg "></i>
     <span class="" i18n>Discover</span>
+  </div>
+  <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
+       (click)="isOptionsVisible = false; onDivClick('new'); openCreatePub()">
+    <i class="fa-solid fa-plus-circle fa-lg "></i>
+    <span class="" i18n>New Post</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center d-sm-none justify-content-between"
        routerLink="./messages" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('messages')">

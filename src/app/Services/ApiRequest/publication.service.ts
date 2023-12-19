@@ -12,6 +12,10 @@ export class PublicationService {
   private static _URL_API: string = environment.BASE_URL_API + "/api/v1/publication"
   constructor(private _httpClient: HttpClient) { }
 
+  createPublication(form: FormData): Observable<any> {
+    return this._httpClient.post(PublicationService._URL_API + "/post", form)
+  }
+
   getFriendsPublications(pubCount: number): Observable<DtoInputPublicationDetail[]> {
     return this._httpClient.get<DtoInputPublicationDetail[]>(PublicationService._URL_API + "/friends",
       {params: {publicationCount: pubCount}

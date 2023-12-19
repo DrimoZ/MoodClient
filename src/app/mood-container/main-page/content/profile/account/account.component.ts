@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 import {DtoInputUserAccount} from "../../../../../Dtos/Users/Inputs/dto-input-user-account";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 
 @Component({
@@ -14,6 +12,7 @@ export class AccountComponent implements OnInit {
   userId: string = "-1";
   isWaitingForApi: boolean = true;
   isPublicDataEditing: boolean = false;
+  hasEncounteredAnError: boolean = false;
 
   accountData: DtoInputUserAccount = {
     birthDate: "", description: "", login: "", mail: "", name: "", phoneNumber: "", title: ""
@@ -125,15 +124,26 @@ export class AccountComponent implements OnInit {
       }
     ).subscribe({
       next: (res) => {
+        this.isWaitingForApi = false;
         location.reload()
       },
       error: (err) => {
         console.log(err)
+
+        if (err.status == 409) {
+          this.hasEncounteredAnError = true;
+
+          setTimeout(() => {
+            this.hasEncounteredAnError = false;
+          }, 20000)
+        }
+
         this.controlMail.setValue(this.accountData.mail);
         this.controlName.setValue(this.accountData.name);
         this.controlDescription.setValue(this.accountData.description);
         this.controlBirthDate.setValue(this.accountData.birthDate);
         this.controlTitle.setValue(this.accountData.title);
+        this.isWaitingForApi = false;
       }
     })
   }

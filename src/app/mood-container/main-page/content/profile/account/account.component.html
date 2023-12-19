@@ -4,6 +4,9 @@
   <div *ngIf="!isWaitingForApi && userId != '-1' else errorPage">
     <div class="ms-2 d-flex flex-column gap-2" [formGroup]="commonInfoForm">
       <span class="w-100 fs-5 fw-bold text-center" i18n>Common Information</span>
+      <div class="form-outline mb-4 border border-danger rounded-2 p-1 user-select-none justify-content-center d-flex" *ngIf="hasEncounteredAnError">
+        <span class="text-danger" i18n >An error occurred during the update. Please try again. (The Email may already be used)</span>
+      </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Full Name</span>
         <input class="form-control" type="text" formControlName="Name" [value]="accountData.name">
