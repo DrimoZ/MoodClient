@@ -7,6 +7,7 @@ import {DtoInputOtherUser} from "../../Dtos/Users/Inputs/dto-input-other-user";
 import {DtoInputPublication} from "../../Dtos/Publication/Input/dto-input-publication";
 import {DtoInputUserPrivacy} from "../../Dtos/Users/Inputs/dto-input-user-privacy";
 import {DtoOutputUserSignup} from "../../Dtos/Users/Outputs/dto-output-user-update-password";
+import {DtoInputUserFriends} from "../../Dtos/Other/dto-input-user-friends";
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,8 @@ export class UserService {
   getUserAccount(userLogin: string): Observable<any> {
     return this._httpClient.get(UserService._URL_API + "/" + userLogin + "/account");
   }
-
-  getUserFriends(userId: string): Observable<any> {
-    return this._httpClient.get(UserService._URL_API + "/" + userId + "/friends");
+  getUserFriends(userId: string): Observable<DtoInputUserFriends> {
+    return this._httpClient.get<DtoInputUserFriends>(UserService._URL_API + "/" + userId + "/friends");
   }
 
   getUserPublications(userLogin: string): Observable<any> {

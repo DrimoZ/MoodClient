@@ -22,6 +22,8 @@ export class RegisterPageComponent implements OnInit {
       Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
   })
 
+  errorValue: string;
+
 
   constructor(private _fb: FormBuilder, private _eventBus: EventBusService) {
   }
@@ -31,6 +33,17 @@ export class RegisterPageComponent implements OnInit {
       if (event.Type === "UserFailedSignUp") {
         this.controlPassword.setValue("");
         this.controlPasswordConfirmation.setValue("");
+
+        if (event.Payload.status === 500) {
+          this.errorValue = event.Payload.error.split("System.ArgumentException: ")[1].split("at Appl")[0];
+        }
+        else {
+          let error: any = Object.values(event.Payload.error.errors)[0];
+          this.errorValue = error[0];
+        }
+
+
+
         this.showError = true;
       }
     });

@@ -54,6 +54,7 @@ import { AddMemberPopupComponent } from './Services/Modals/Custom/add-member-pop
         MainAuthGuard
     ],
     exports: [
+      CreatePublicationComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -12,9 +12,7 @@ import {NgClass, NgForOf, NgIf, NgOptimizedImage, NgTemplateOutlet} from "@angul
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "./profile/profile.module";
-import {
-  DeleteAccountModalComponent
-} from "../../../Services/Modals/Custom/delete-account-modal/delete-account-modal.component";
+import { DeleteAccountModalComponent } from "../../../Services/Modals/Custom/delete-account-modal/delete-account-modal.component";
 import { GroupListComponent } from './message/group-list/group-list.component';
 import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.component";
 import { ChatComponent } from './message/chat/chat.component';
@@ -27,11 +25,11 @@ import {MemberPopupComponent} from "../../../Services/Modals/Custom/group-info-p
     NotificationComponent,
     DiscoverComponent,
     ParametersComponent,
-    DeleteAccountModalComponent,
     GroupListComponent,
     PopupComponent,
     ChatComponent,
-    MemberPopupComponent
+    MemberPopupComponent,
+    DeleteAccountModalComponent
   ],
   imports: [
     NgbModule,
@@ -50,7 +48,8 @@ import {MemberPopupComponent} from "../../../Services/Modals/Custom/group-info-p
   ],
   exports: [
     PopupComponent,
-    MemberPopupComponent
+    MemberPopupComponent,
+    DeleteAccountModalComponent
   ],
   providers: []
 })

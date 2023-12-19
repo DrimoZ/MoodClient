@@ -31,19 +31,20 @@ export class PublicationsComponent implements OnInit{
         this.userId = event.Payload
 
         this._userService.getUserPublications(this.userId).subscribe({
-          next: user => {
-            this.publications = user.publications;
+          next: apiData => {
+            this.isConnectedUser = apiData.isConnectedUser;
+            this.isPublicationsPublic = apiData.isPublicationsPublic;
+            this.publications = apiData.publications;
 
-            this.isConnectedUser = user.isConnectedUser;
-            this.isPublicationsPublic = user.isPublicationsPublic;
-
-            this.publications.forEach(pub => {
-              pub.elements.forEach(e => {
-                this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe(url => {
-                  e.imageUrl = url;
+            if (this.publications != null) {
+              this.publications.forEach(pub => {
+                pub.elements.forEach(e => {
+                  this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe(url => {
+                    e.imageUrl = url;
+                  })
                 })
               })
-            })
+            }
 
             this.isWaitingForApi = false;
           },

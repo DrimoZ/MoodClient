@@ -11,24 +11,24 @@
     <div class="d-flex flex-row justify-content-center align-items-center align-middle d-none d-sm-flex w-80 g-0">
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
            routerLink="./newsfeed" routerLinkActive="active"
-           [class.hhover-darker]="clickedDiv !== 'newsfeed'" [class.selected-darker]="clickedDiv == 'newsfeed'" (click)="onDivClick('newsfeed')">
+           [class.hhover-darker]="clickedDiv !== 'newsfeed'" [class.selected-darker]="clickedDiv == 'newsfeed'" (click)="onDivClick('newsfeed')" id="NavNewsFeed">
         <i class="fa-solid fa-house fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
            routerLink="./discover/publications" routerLinkActive="active"
-           [class.hhover-darker]="clickedDiv !== 'discover'" [class.selected-darker]="clickedDiv == 'discover'" (click)="onDivClick('discover')">
+           [class.hhover-darker]="clickedDiv !== 'discover'" [class.selected-darker]="clickedDiv == 'discover'" (click)="onDivClick('discover')" id="NavDiscover">
         <i class="fa-solid fa-magnifying-glass fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
-           [class.hhover-darker]="clickedDiv !== 'new'" [class.selected-darker]="clickedDiv == 'new'" (click)="onDivClick('new'); openCreatePub()">
+           [class.hhover-darker]="clickedDiv !== 'new'" [class.selected-darker]="clickedDiv == 'new'" (click)="onDivClick('new'); openCreatePub()" id="NavCreatePub">
         <i class="fa-solid fa-plus-circle fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
       <div class="mx-1 txt-turquoise rounded h-100 w-10 position-relative hover-darker d-xl-block"
            routerLink="./messages" routerLinkActive="active"
-           [class.hhover-darker]="clickedDiv !== 'messages'" [class.selected-darker]="clickedDiv == 'messages'" (click)="onDivClick('messages')">
+           [class.hhover-darker]="clickedDiv !== 'messages'" [class.selected-darker]="clickedDiv == 'messages'" (click)="onDivClick('messages')" id="NavMessages">
         <i class="fa-solid fa-message fa-lg position-absolute top-50 start-50 translate-middle"></i>
 
       </div>
@@ -41,11 +41,11 @@
 
   <!--Connexion + parameters buttons-->
     <div class="justify-content-end align-items-center pe-3 d-flex w-10" style="min-width: 150px;">
-      <button #buttonRef type="button" class="btn btn-floating mx-1 txt-turquoise">
+      <button #buttonRef type="button" class="btn btn-floating mx-1 txt-turquoise" id="Parameters">
         <i  class="fa-solid fa-bars fa-lg"></i>
       </button>
       <button type="button" class="btn btn-floating mx-1 txt-turquoise"
-              routerLink="./{{connectedId}}" routerLinkActive="active"  (click)="onDivClick('profile')">
+              routerLink="./{{connectedId}}" routerLinkActive="active"  (click)="onDivClick('profile')" id="Profile">
         <i class="fa-solid fa-user fa-lg"></i>
         <!--  <img src="./assets/mood.png" class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex me-2 bs-icon"/>-->
       </button>
@@ -95,7 +95,7 @@
     <span class="" i18n>Notifications</span>
   </div>
   <div class="p-3 txt-turquoise rounded hover-darker position-relative d-flex align-items-center justify-content-between"
-       routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('parameters')">
+       routerLink="./parameters" routerLinkActive="active" (click)="isOptionsVisible = false; onDivClick('parameters')" id="GoToParameters">
     <i class="fa-solid fa-gear fa-lg"></i>
     <span class="" i18n>Parameters</span>
   </div>

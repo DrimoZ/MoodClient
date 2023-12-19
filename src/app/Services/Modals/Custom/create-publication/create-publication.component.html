@@ -35,14 +35,14 @@
 
         <div class="d-flex flex-column">
           <span class="txt-gold fs-5" i18n>Description</span>
-          <input type="text" #desc class="form-control" placeholder="Optional" i18n-placeholder i18n>
+          <input type="text" #desc class="form-control">
         </div>
       </div>
 
       <div class="p-2 px-3">
         <div class="gap-2 d-flex flex-row justify-content-end">
           <button type="button" class="btn btn-outline-secondary" (click)="close(); desc.value = '';" i18n>Cancel</button>
-          <button type="button" class="btn btn-outline-success" *ngIf="previewUrls.length > 0" (click)="postPublication(desc)" i18n>Publish</button>
+          <button type="button" class="btn btn-outline-success" *ngIf="previewUrls.length > 0 && desc.value != ''" (click)="postPublication(desc)" i18n>Publish</button>
         </div>
       </div>
     </div>

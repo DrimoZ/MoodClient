@@ -1,7 +1,12 @@
-<section class="hvh-93 overflow-y-auto user-select-none" style="border-right: black 1px solid; border-left: black 1px solid;">
+<section class="hvh-93 overflow-y-auto user-select-none" style="border-right: black 1px solid; border-left: black 1px solid;"
+         [ngClass]="{'blur-effect': publications == undefined || publications == null }">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div class="pt-5 pb-3 w-100 d-flex flex-column align-items-center gap-3" *ngIf="!isWaitingForApi">
+    <div *ngIf="publications.length == 0" class="w-100 h-100 justify-content-center d-flex flex-column">
+      <span class="fs-6 txt-gold text-center" i18n>There is nothing to show here. Please try adding some friends first.</span>
+    </div>
+
     <div *ngFor="let pub of publications" class="publication-container">
       <div class="w-100 d-flex flex-row justify-content-start">
         <div class="position-relative d-flex justify-content-center" style="width: 70px; height: 70px; padding: 5px;">
@@ -47,11 +52,11 @@
       <div class="">
         <div class="py-2 px-4 d-flex flex-row gap-2">
           <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="toggleLiked(pub.id)" i18n>
-            <i class="fa-solid fa-heart"
+            <i class="fa-solid fa-heart" id="BtnLike"
                [ngClass]="{'text-danger': this.publications[getPubIndex(pub.id)].hasConnectedLiked}"></i> Like{{this.publications[getPubIndex(pub.id)].hasConnectedLiked?"d":""}} ( {{this.publications[getPubIndex(pub.id)].likeCount}} )
           </div>
           <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="sep.classList.toggle('d-none'); coms.classList.toggle('d-none')" i18n>
-            <i class="fa-solid fa-comments"></i> Comment ( {{this.publications[getPubIndex(pub.id)].commentCount}} )
+            <i class="fa-solid fa-comments" id="BtnComment"></i> Comment ( {{this.publications[getPubIndex(pub.id)].commentCount}} )
           </div>
         </div>
       </div>
@@ -87,7 +92,7 @@
         <div  style="border-top: 1px solid #deb992;"></div>
 
         <form class="py-3 px-4 d-flex flex-row gap-2" (submit)="sendComment(pub.id, input)">
-          <input type="text" #input class="form-control-sm w-100" i18n i18n-placeholder placeholder="Add a comment">
+          <input type="text" #input class="form-control-sm w-100" i18n i18n-placeholder placeholder="Add a comment" id="AddComment">
           <button type="submit" class="btn btn-sm btn-outline-success" i18n>Send</button>
         </form>
 

@@ -11,7 +11,11 @@ import {AuthenticationService} from "../Services/ApiRequest/authentication.servi
   styleUrls: ['./mood-container.component.css']
 })
 export class MoodContainerComponent implements OnInit {
-  constructor(private _router: Router, private _eventBus: EventBusService, private _authService: AuthenticationService) {}
+  constructor(private _router: Router, private _eventBus: EventBusService, private _authService: AuthenticationService) {
+    this._router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  }
 
   ngOnInit() {
     this._eventBus.onEvent().subscribe(event => {
@@ -49,9 +53,11 @@ export class MoodContainerComponent implements OnInit {
         this._router.navigate(['home/newsfeed'])
       },
       error: (err) => {
+        console.log(err);
+
         this._eventBus.emitEvent({
           Type: 'UserFailedSignUp',
-          Payload: ''
+          Payload: err
         })
       }
     });
