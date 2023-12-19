@@ -17,8 +17,8 @@ export class UserService {
   private static _URL_API: string = environment.BASE_URL_API + "/api/v1/user"
   constructor(private _httpClient: HttpClient) { }
 
-  getUserIdAndRole(): Observable<any> {
-    return this._httpClient.get(UserService._URL_API);
+  getUserIdAndRole(): Observable<{userId: string, userRole: number}> {
+    return this._httpClient.get<{userId: string, userRole: number}>(UserService._URL_API);
   }
 
   getUserProfile(userId: string): Observable<any> {

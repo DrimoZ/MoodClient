@@ -5,11 +5,12 @@
     <div class="ms-2 d-flex flex-column gap-2" [formGroup]="commonInfoForm">
       <span class="w-100 fs-5 fw-bold text-center" i18n>Common Information</span>
       <div class="form-outline mb-4 border border-danger rounded-2 p-1 user-select-none justify-content-center d-flex" *ngIf="hasEncounteredAnError">
-        <span class="text-danger" i18n >An error occurred during the update. Please try again. (The Email may already be used)</span>
+        <span class="text-danger" i18n >{{errorValue}}</span>
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Full Name</span>
-        <input class="form-control" type="text" formControlName="Name" [value]="accountData.name" id="InputFullName">
+        <input class="form-control" type="text" formControlName="Name" [value]="accountData.name" id="InputFullName"
+               [ngClass]="{'input-error': checkNameSize()}">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Email Address</span>
@@ -22,11 +23,13 @@
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Title</span>
-        <input class="form-control" type="text" formControlName="Title" [value]="accountData.title" id="InputTitle">
+        <input class="form-control" type="text" formControlName="Title" [value]="accountData.title" id="InputTitle"
+               [ngClass]="{'input-error': checkTitleSize()}">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Description</span>
-        <textarea class="form-control" formControlName="Description" [value]="accountData.description" id="InputDescription"></textarea>
+        <textarea class="form-control" formControlName="Description" [value]="accountData.description" id="InputDescription"
+                  [ngClass]="{'input-error': checkDescSize()}"></textarea>
       </div>
 
       <div class="p-1 d-flex justify-content-end gap-2">
