@@ -15,6 +15,7 @@ export class ModalBaseComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log(this.id)
     this.modalService.add(this);
 
     document.body.appendChild(this.element);

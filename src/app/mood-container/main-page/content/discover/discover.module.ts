@@ -7,7 +7,6 @@ import { PublicationComponent } from './publication/publication.component';
 import {DiscoverRoutingModule} from "./discover-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
-import {ContentModule} from "../content.module";
 import {ProfileModule} from "../profile/profile.module";
 
 
