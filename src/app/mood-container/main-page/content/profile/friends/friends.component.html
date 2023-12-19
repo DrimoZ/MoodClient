@@ -16,6 +16,10 @@
         </div>
       </div>
 
+      <div *ngIf="userFriends.length == 0" class="w-100 h-100 justify-content-center d-flex flex-column">
+        <span class="fs-6 txt-gold text-center" i18n>This user does not seem to have friends.</span>
+      </div>
+
       <div class="profilesGrid">
         <div class="profileDiv" *ngFor="let user of filterFriends(userFriends, searchBarValue)">
           <div class="profilePictureDiv profileLarge" (click)="viewFriendProfile(user.id)">

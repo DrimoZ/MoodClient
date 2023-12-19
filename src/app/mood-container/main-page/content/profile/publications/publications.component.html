@@ -1,8 +1,13 @@
-<section class="p-5 user-select-none" *ngIf="publications.length > 0">
+<section class="p-5 user-select-none">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div *ngIf="!isWaitingForApi && userId != '-1' else errorPage">
     <div *ngIf="isPublicationsPublic || isConnectedUser else privatePage">
+
+      <div *ngIf="publications.length == 0" class="w-100 h-100 justify-content-center d-flex flex-column">
+        <span class="fs-6 txt-gold text-center" i18n>There is nothing to show here.</span>
+      </div>
+
       <div class="publication-grid">
         <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
           <publication-detail-modal id="profile-pub_{{publication.id}}" publicationId="{{publication.id}}"></publication-detail-modal>

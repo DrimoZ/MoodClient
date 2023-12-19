@@ -2,6 +2,8 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 import {ModalService} from "../../modal.service";
 import {PublicationService} from "../../../ApiRequest/publication.service";
+import {Router} from "@angular/router";
+import {UserService} from "../../../ApiRequest/user.service";
 
 @Component({
   selector: 'create-publication-modal',
@@ -13,7 +15,7 @@ export class CreatePublicationComponent extends ModalBaseComponent {
   previewUrls: string[] = [];
   pictures: File[];
 
-  constructor(modalService: ModalService, _el: ElementRef, private _publicationService: PublicationService) {
+  constructor(modalService: ModalService, _el: ElementRef, private _publicationService: PublicationService, private _router: Router, private _userService: UserService) {
     super(modalService, _el);
   }
 
@@ -69,8 +71,11 @@ export class CreatePublicationComponent extends ModalBaseComponent {
 
     this._publicationService.createPublication(formData).subscribe({
       next: (res) => {
-        text.value = "";
-        super.close();
+        this._userService.getUserIdAndRole().subscribe(res => {
+          text.value = "";
+          super.close();
+          this._router.navigate(['home/' + res.userId])
+        })
       }
     });
   }
@@ -79,5 +84,9 @@ export class CreatePublicationComponent extends ModalBaseComponent {
     this.prev()
     this.previewUrls.splice(index, 1);
     this.pictures.splice(index, 1);
+  }
+
+  override ngOnDestroy() {
+    this.element.remove();
   }
 }

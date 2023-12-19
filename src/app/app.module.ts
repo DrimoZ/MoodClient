@@ -52,6 +52,7 @@ import { CreatePublicationComponent } from './Services/Modals/Custom/create-publ
         MainAuthGuard
     ],
     exports: [
+      CreatePublicationComponent
     ],
     bootstrap: [AppComponent]
 })

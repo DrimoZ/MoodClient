@@ -126,7 +126,6 @@ export class NewsFeedComponent implements OnInit {
 
     this._publicationService.getFriendsPublications(this.pubCount).subscribe({
       next: (val) => {
-        console.log(val);
         this.publications = val;
 
         this.publications.forEach(p => {

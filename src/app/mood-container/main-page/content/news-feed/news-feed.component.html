@@ -1,7 +1,12 @@
-<section class="hvh-93 overflow-y-auto user-select-none" style="border-right: black 1px solid; border-left: black 1px solid;">
+<section class="hvh-93 overflow-y-auto user-select-none" style="border-right: black 1px solid; border-left: black 1px solid;"
+         [ngClass]="{'blur-effect': publications.length == 0 }">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div class="pt-5 pb-3 w-100 d-flex flex-column align-items-center gap-3" *ngIf="!isWaitingForApi">
+    <div *ngIf="publications.length == 0" class="w-100 h-100 justify-content-center d-flex flex-column">
+      <span class="fs-6 txt-gold text-center" i18n>There is nothing to show here. Please try adding some friends first.</span>
+    </div>
+
     <div *ngFor="let pub of publications" class="publication-container">
       <div class="w-100 d-flex flex-row justify-content-start">
         <div class="position-relative d-flex justify-content-center" style="width: 70px; height: 70px; padding: 5px;">
