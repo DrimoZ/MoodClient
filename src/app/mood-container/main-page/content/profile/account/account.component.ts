@@ -20,9 +20,9 @@ export class AccountComponent implements OnInit {
 
   commonInfoForm: FormGroup = this._fb.group({
     Mail: [{value: "", disabled: true}, [Validators.required, Validators.email]],
-    Name: [{value: "", disabled: true}, [Validators.required, Validators.minLength(6), Validators.maxLength(128)]],
+    Name: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(128)]],
     Title: [{value: "", disabled: true}, [Validators.maxLength(32)]],
-    Description: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(256)]],
+    Description: [{value: "", disabled: true}, [Validators.maxLength(256)]],
     BirthDate: [{value: "", disabled: true}, [Validators.required]],
   })
 
