@@ -20,11 +20,13 @@ export class AccountComponent implements OnInit {
 
   commonInfoForm: FormGroup = this._fb.group({
     Mail: [{value: "", disabled: true}, [Validators.required, Validators.email]],
-    Name: [{value: "", disabled: true}, [Validators.required, Validators.minLength(6), Validators.maxLength(128)]],
-    Title: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(32)]],
-    Description: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(255)]],
+    Name: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(128)]],
+    Title: [{value: "", disabled: true}, [Validators.maxLength(32)]],
+    Description: [{value: "", disabled: true}, [Validators.maxLength(256)]],
     BirthDate: [{value: "", disabled: true}, [Validators.required]],
   })
+
+  errorValue: string;
 
 
 
@@ -70,6 +72,7 @@ export class AccountComponent implements OnInit {
   }
 
   cancelCommonEdit() {
+
     this.isPublicDataEditing = false;
 
     this.controlMail.disable();
@@ -130,12 +133,19 @@ export class AccountComponent implements OnInit {
       error: (err) => {
         console.log(err)
 
-        if (err.status == 409) {
+        if (err.status === 500) {
           this.hasEncounteredAnError = true;
-
+          this.errorValue = err.error.split("System.ArgumentException: ")[1].split("at Appl")[0];
           setTimeout(() => {
             this.hasEncounteredAnError = false;
-          }, 20000)
+          }, 30000)
+        }
+        else {
+          let error: any = Object.values(err.error.errors)[0];
+          this.errorValue = error[0];
+          setTimeout(() => {
+            this.hasEncounteredAnError = false;
+          }, 30000)
         }
 
         this.controlMail.setValue(this.accountData.mail);
@@ -162,5 +172,23 @@ export class AccountComponent implements OnInit {
   }
   get controlTitle(): AbstractControl {
     return this.commonInfoForm.controls['Title'];
+  }
+
+  checkDescSize(): boolean {
+    let s: string = this.controlDescription.value;
+
+    return s == null ? false : s.length > 256;
+  }
+
+  checkTitleSize(): boolean {
+    let s: string = this.controlTitle.value;
+
+    return s == null ? false : s.length > 32;
+  }
+
+  checkNameSize(): boolean {
+    let s: string = this.controlName.value;
+
+    return s == null ? false : s.length > 128;
   }
 }
