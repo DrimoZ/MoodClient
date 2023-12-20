@@ -10,4 +10,5 @@ export interface DtoInputMessage {
   date : string;
   imageId: number;
   url:SafeUrl;
+  isDeleted : boolean;
 }

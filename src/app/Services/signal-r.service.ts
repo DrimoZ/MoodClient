@@ -47,12 +47,17 @@ export class SignalRService {
     this.hubConnection.invoke('SendMessageToGroup', msg, group)
       .catch(err => console.error(err));
   }
-    public addToGroup = (groupName: string) => {
-        this.hubConnection.invoke('AddToGroup', groupName)
-            .catch(err => console.error(err));
-    }
-    public removeFromGroup = (groupName: string) => {
-        this.hubConnection.invoke('RemoveFromGroup', groupName)
-            .catch(err => console.error(err));
-    }
+  public addToGroup = (groupName: string) => {
+      this.hubConnection.invoke('AddToGroup', groupName)
+          .catch(err => console.error(err));
+  }
+  public removeFromGroup = (groupName: string) => {
+      this.hubConnection.invoke('RemoveFromGroup', groupName)
+          .catch(err => console.error(err));
+  }
+
+  messageRemoveFromGroup(group: DtoInputGroup) {
+    this.hubConnection.invoke('RemoveMessageFromGroup', group)
+      .catch(err => console.error(err));
+  }
 }

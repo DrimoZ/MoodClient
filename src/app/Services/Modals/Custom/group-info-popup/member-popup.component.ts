@@ -47,7 +47,6 @@ export class MemberPopupComponent extends ModalBaseComponent{
         this._messageService.getGroup(this.groupId).subscribe({
           next: grp => {
             this.group = grp;
-            console.log(this.groupId);
           }
         })
         this.getMembers();
