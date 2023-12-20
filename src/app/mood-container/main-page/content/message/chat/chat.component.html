@@ -1,12 +1,12 @@
-<div id="conversation" class="d-flex flex-column  w-100 h-100">
-  <div class="d-flex flex-row justify-content-between groupName">
+<div id="conversation" class="d-flex flex-column flex-fill w-100 h-100">
+  <div class="d-flex flex-row justify-content-between groupName" style="height: 30px">
     <p>{{group.name}}</p>
     <button *ngIf="group.name!= '';" (click)="displayPopupMember()"  class="btn "><i class="fa-solid fa-info"></i></button>
   </div>
   <div #scroll class="chat-container flex-shrink-0 flex-grow-1" [scrollTop]="scroll.scrollHeight">
     <div *ngIf="messages.length >= showCount" class="w-100">
       <button class="btn showMoreBtn w-100" (click)="loadMoreMessage()" i18n>
-        <span class="">Show More ({{messages.length}}) </span>
+        <span (click)="loadMoreMessage()" class="">Show More</span>
         <i class="fa-solid fa-chevron-up"></i>
       </button>
     </div>
@@ -15,18 +15,20 @@
         <p class="date">{{formatDate(msg.date)}}</p>
       </div>
       <div class="d-flex"  [ngClass]="msg.userId == userId? 'd-none':'flex-row'">{{msg.userName}}</div>
-      <div class="d-flex align-items-center" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">
+      <div (click)="messageManagement.style.display = 'flex'" class="d-flex align-items-center" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">
         <img class="profile-picture" alt="" src="{{msg.url}}" width="50" height="50" >
         <div class="message-bubble" [ngClass]="msg.userId == userId? 'right':'left'">
-          <p>{{msg.content}}</p>
+          <p *ngIf="!msg.isDeleted" class="just-line-break">{{msg.content}}</p>
+          <p *ngIf="msg.isDeleted" class="just-line-break"> &lt;&lt; Deleted Message &gt;&gt; </p>
+        </div>
+        <div #messageManagement  style="display: none" >
+          <button (click)="deleteMessage(msg)" *ngIf="msg.userId == userId"><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
       </div>
     </div>
   </div>
-  <div class="border-gold bottom-0 end-0" style="width: 100%">
-    <form id="sender" style="display: flex; flex-wrap: nowrap;padding-top: 1%;" >
-      <input #message [disabled]="group.name == ''" class="position-relative container-fluid" type="text" style="width: 100%;" placeholder="Message" value="">
-      <input type="submit" class="btn position-relative bottom-0 end-0 " (click)="sendMessage(message)" value="message"/>
-    </form>
+  <div class="d-flex border-gold" style="width: 100%;">
+    <textarea #message [disabled]="group.name == ''" class="" style="width: 100%;" placeholder="Message..."></textarea>
+    <input type="submit" class="btn position-relative bottom-0 end-0 " (click)="message.value== ''? '' :sendMessage(message)" value="Send"/>
   </div>
 </div>

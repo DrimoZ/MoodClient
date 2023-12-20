@@ -79,12 +79,14 @@ export class ChatComponent {
 
     this._eb.onEvent().subscribe(event =>{
         if(event.Type === "MessageGroupModified"){
+          this._signalR.removeFromGroup(this.group.id.toString())
           this.group.id = -1;
           this.messages = [];
           this.userFromGroup= [];
           this.group.name = "";
         }
         if(event.Type ==="GroupClicked"){
+          this.showCount = 100;
           this._signalR.removeFromGroup(this.group.id.toString())
           this.group = event.Payload;
           this.getMessages();
@@ -105,7 +107,7 @@ export class ChatComponent {
       }));
   }
 
-  sendMessage(message: HTMLInputElement)
+  sendMessage(message: HTMLTextAreaElement)
   {
     let msg:DtoOutputMessage = {
       content : message.value,
@@ -148,5 +150,12 @@ export class ChatComponent {
     })
   }
 
-
+  deleteMessage(msg: DtoInputMessage) {
+    this._messageService.setMessageIsDeleted(msg).subscribe({
+      next: msg =>{
+        this.getMessages();
+        this._signalR.messageRemoveFromGroup(this.group);
+      }
+    });
+  }
 }
