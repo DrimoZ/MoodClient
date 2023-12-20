@@ -1,6 +1,6 @@
 describe('Consulter un profil', () => {
   it('passes', () => {
-    cy.connect()
+    cy.connect('marine0023')
 
     cy.get("#NavDiscover").click()
 

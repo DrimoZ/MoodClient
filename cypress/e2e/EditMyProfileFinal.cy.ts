@@ -1,6 +1,6 @@
 describe('Modifier mes informations de profil', () => {
   it('passes', () => {
-    cy.connect()
+    cy.connect('marine0023')
 
     cy.get('#Profile').click()
 

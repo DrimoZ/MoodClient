@@ -1,6 +1,6 @@
 describe('Modifier ses paramètres de confidentialités', () => {
   it('passes', () => {
-    cy.connect()
+    cy.connect('marine0023')
 
     cy.get("#NavDiscover").click()
     cy.contains("Profiles").click()
@@ -9,12 +9,9 @@ describe('Modifier ses paramètres de confidentialités', () => {
 
     cy.wait(2000)
 
-    // Disconnect
-    cy.get('#Parameters').click()
-    cy.contains('Disconnect').click()
+    cy.disconnect()
 
-    cy.get('#Login').type('martinp')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.connect('martin_p')
 
     cy.get('#Parameters').click()
     cy.get('#GoToParameters').click()
@@ -24,31 +21,29 @@ describe('Modifier ses paramètres de confidentialités', () => {
 
     cy.wait(500)
 
-    // Disconnect
-    cy.get('#Parameters').click()
-    cy.contains('Disconnect').click()
+    cy.disconnect()
 
-    cy.get('#Login').type('marine0023')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.wait(500)
+
+    cy.connect('marine0023')
 
     cy.get("#NavDiscover").click()
     cy.contains("Profiles").click()
     cy.contains("Martin").click()
     cy.get('#BtnFriends').click()
 
-    cy.wait(2000)
+    cy.wait(500)
 
-    // Disconnect
-    cy.get('#Parameters').click()
-    cy.contains('Disconnect').click()
+    cy.disconnect()
 
-    cy.get('#Login').type('martinp')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.wait(500)
+
+    cy.connect('martin_p')
 
     cy.get('#Parameters').click()
     cy.get('#GoToParameters').click()
-
     cy.contains('Account Privacy').click()
+
     cy.get('#FriendPrivacySlider').click()
   })
 })

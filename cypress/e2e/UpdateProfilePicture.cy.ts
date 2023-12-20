@@ -1,6 +1,6 @@
 describe('Modifier mon image de profil', () => {
   it('passes', () => {
-    cy.connect()
+    cy.connect('martin_p')
 
     cy.get('#Profile').click()
     cy.get("#ChangeProfilePicture").click()

@@ -1,14 +1,11 @@
 describe('Changement de mot de passe', () => {
   it('passes', () => {
-    cy.connect()
+    cy.connect('marine0023')
 
-    cy.get('#Parameters').click()
-    cy.get('#GoToParameters').click()
+    cy.parameters()
 
     //Fail
-    cy.get('#OldPassword').type('Wrong')
-    cy.get('#NewPassword').type('Stronger#2')
-    cy.get('#PasswordConfirmation').type('Stronger#2{enter}')
+    cy.modifyPassword('Wrong', 'Stronger#2')
 
     cy.wait(1000)
 
@@ -17,9 +14,7 @@ describe('Changement de mot de passe', () => {
     cy.get('#PasswordConfirmation').clear()
 
     //Fail
-    cy.get('#OldPassword').type('Strong#1')
-    cy.get('#NewPassword').type('weak#1')
-    cy.get('#PasswordConfirmation').type('weak#1{enter}')
+    cy.modifyPassword('Strong#1', 'weak#1')
 
     cy.wait(1000)
 
@@ -27,7 +22,7 @@ describe('Changement de mot de passe', () => {
     cy.get('#NewPassword').clear()
     cy.get('#PasswordConfirmation').clear()
 
-    //Fail
+    //Fail confirmation
     cy.get('#OldPassword').type('Strong#1')
     cy.get('#NewPassword').type('Stronger#2')
     cy.get('#PasswordConfirmation').type('wrong{enter}')
@@ -39,15 +34,11 @@ describe('Changement de mot de passe', () => {
     cy.get('#PasswordConfirmation').clear()
 
     //Confirmed
-    cy.get('#OldPassword').type('Strong#1')
-    cy.get('#NewPassword').type('Stronger#2')
-    cy.get('#PasswordConfirmation').type('Stronger#2{enter}')
+    cy.modifyPassword('Strong#1', 'Stronger#2')
 
     cy.wait(1000)
 
     //Confirmed
-    cy.get('#OldPassword').type('Stronger#2')
-    cy.get('#NewPassword').type('Strong#1')
-    cy.get('#PasswordConfirmation').type('Strong#1{enter}')
+    cy.modifyPassword('Stronger#2', 'Strong#1')
   })
 })

@@ -39,13 +39,48 @@
 declare namespace Cypress {
   interface Chainable<Subject = any> {
 
-    connect(): Chainable<void>;
+    connect(login:string): Chainable<void>;
+    disconnect(): Chainable<void>;
+    parameters(): Chainable<void>;
+    Password(password:string): Chainable<void>;
+    deleteMyAccount(): Chainable<void>;
+    modifyPassword(oldPassword:string, newPassword:string): Chainable<void>;
   }
 }
-Cypress.Commands.add(`connect`, () => {
+Cypress.Commands.add(`connect`, (login) => {
   cy.fixture('infos').then((infos) => {
     cy.visit("http://localhost:4200/")
-    cy.get('#Login').type(infos.login)
+    cy.get('#Login').type(login)
     cy.get('#Password').type(infos.password+'{enter}')
   });
 });
+
+Cypress.Commands.add(`disconnect`, () => {
+  cy.get('#Parameters').click()
+  cy.contains('Disconnect').click()
+  cy.wait(1000)
+});
+
+Cypress.Commands.add(`parameters`, () => {
+  cy.get('#Parameters').click()
+  cy.get('#GoToParameters').click()
+});
+
+Cypress.Commands.add(`Password`, (password) => {
+  cy.get('#Password').clear()
+  cy.get('#Password').type(password)
+});
+
+Cypress.Commands.add(`deleteMyAccount`, () => {
+  cy.parameters()
+  cy.get('#BtnDeleteAccount').click()
+  cy.contains('Submit').click()
+});
+
+Cypress.Commands.add(`modifyPassword`, (oldPassword, newPassword) => {
+  cy.get('#OldPassword').type(oldPassword)
+  cy.get('#NewPassword').type(newPassword)
+  cy.get('#PasswordConfirmation').type(newPassword+'{enter}')
+});
+
+
