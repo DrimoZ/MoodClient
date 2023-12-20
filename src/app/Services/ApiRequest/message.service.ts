@@ -9,6 +9,8 @@ import {DtoOutputCreateGroup} from "../../Dtos/Groups/dto-output-create-group";
 import {DtoInputUserFromGroup} from "../../Dtos/Groups/dto-input-userfromGroup";
 import {DtoInputGroup} from "../../Dtos/Groups/dto-input-group";
 import {DtoOutputPatchGroup} from "../../Dtos/Groups/dto-output-patch-group";
+import {DtoInputOtherUser} from "../../Dtos/Users/Inputs/dto-input-other-user";
+import {DtoOutputUserGroup} from "../../Dtos/Groups/dto-output-userGroup";
 
 @Injectable({
     providedIn: 'root'
@@ -50,5 +52,9 @@ export class MessageService {
 
   modifyGroup(group: DtoOutputPatchGroup) {
       return this._httpClient.patch(MessageService._URL_API_GROUP, group)
+    }
+
+    addMembers(friendToAdd: DtoOutputUserGroup[]) {
+        return this._httpClient.post(MessageService._URL_API_GROUP + "/userGroup", friendToAdd)
     }
 }

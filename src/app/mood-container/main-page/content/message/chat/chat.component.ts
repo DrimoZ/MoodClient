@@ -57,16 +57,17 @@ export class ChatComponent {
       }
     });
     this.eb.onEvent().subscribe(event =>{
-        if(event.Type ==="GroupClicked"){
-          this.groupId = event.Payload.id;
-          this.groupName = event.Payload.name;
-          this.getMessages();
-        }
         if(event.Type === "MessageGroupModified"){
           this.groupId = -1;
           this.messages = [];
           this.userFromGroup= [];
           this.groupName = "";
+        }
+        if(event.Type ==="GroupClicked"){
+          this.groupId = event.Payload.id;
+          console.log(this.groupId);
+          this.groupName = event.Payload.name;
+          this.getMessages();
         }
     })
 
@@ -113,6 +114,6 @@ export class ChatComponent {
   }
 
   displayPopupMember() {
-        this.modalService.open("popupMember")
+    this.modalService.open("popupMember")
   }
 }

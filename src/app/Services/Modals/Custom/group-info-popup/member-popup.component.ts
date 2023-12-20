@@ -9,7 +9,6 @@ import {DtoInputUserFromGroup} from "../../../../Dtos/Groups/dto-input-userfromG
 import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 import {map} from "rxjs";
 import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
-import {DtoOutputCreateGroup} from "../../../../Dtos/Groups/dto-output-create-group";
 import {DtoOutputPatchGroup} from "../../../../Dtos/Groups/dto-output-patch-group";
 import {Router} from "@angular/router";
 
@@ -48,6 +47,7 @@ export class MemberPopupComponent extends ModalBaseComponent{
         this._messageService.getGroup(this.groupId).subscribe({
           next: grp => {
             this.group = grp;
+            console.log(this.groupId);
           }
         })
         this.getMembers();
@@ -123,6 +123,10 @@ export class MemberPopupComponent extends ModalBaseComponent{
   }
 
   addMember() {
-
+    this.eb.emitEvent({
+      Type:"AddMemberClicked",
+      Payload:this.groupId
+    })
+    this.modalService.open("addMemberPopup")
   }
 }

@@ -17,6 +17,7 @@ import { GroupListComponent } from './message/group-list/group-list.component';
 import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.component";
 import { ChatComponent } from './message/chat/chat.component';
 import {MemberPopupComponent} from "../../../Services/Modals/Custom/group-info-popup/member-popup.component";
+import {AddMemberPopupComponent} from "../../../Services/Modals/Custom/add-member-popup/add-member-popup.component";
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -29,6 +30,7 @@ import {MemberPopupComponent} from "../../../Services/Modals/Custom/group-info-p
     PopupComponent,
     ChatComponent,
     MemberPopupComponent,
+    AddMemberPopupComponent,
     DeleteAccountModalComponent
   ],
   imports: [
@@ -49,7 +51,8 @@ import {MemberPopupComponent} from "../../../Services/Modals/Custom/group-info-p
   exports: [
     PopupComponent,
     MemberPopupComponent,
-    DeleteAccountModalComponent
+    DeleteAccountModalComponent,
+    AddMemberPopupComponent
   ],
   providers: []
 })

@@ -19,7 +19,6 @@ import {MainAuthGuard} from "./Guards/mainAuthGuard";
 import {CommonModule, DatePipe} from "@angular/common";
 import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.component";
 import { CreatePublicationComponent } from './Services/Modals/Custom/create-publication/create-publication.component';
-import { AddMemberPopupComponent } from './Services/Modals/Custom/add-member-popup/add-member-popup.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +32,6 @@ import { AddMemberPopupComponent } from './Services/Modals/Custom/add-member-pop
         ConnectionRefusedComponent,
         ModalBaseComponent,
         CreatePublicationComponent,
-        AddMemberPopupComponent,
     ],
     imports: [
         CommonModule,
@@ -54,7 +52,7 @@ import { AddMemberPopupComponent } from './Services/Modals/Custom/add-member-pop
         MainAuthGuard
     ],
     exports: [
-      CreatePublicationComponent
+        CreatePublicationComponent,
     ],
     bootstrap: [AppComponent]
 })

@@ -9,11 +9,14 @@ import {EventBusService} from "../../../EventBus/event-bus.service";
 import {DtoOutputCreateGroup} from "../../../../Dtos/Groups/dto-output-create-group";
 import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
+import {map} from "rxjs";
+import {DtoOutputUserGroup} from "../../../../Dtos/Groups/dto-output-userGroup";
 
 @Component({
   selector: 'app-add-member-popup',
   templateUrl: './add-member-popup.component.html',
-  styleUrls: ['./add-member-popup.component.css']
+  styleUrls: ['./add-member-popup.component.css','../popup/popup.component.css',
+    '../../../../mood-container/main-page/content/message/message.component.css']
 })
 export class AddMemberPopupComponent extends ModalBaseComponent {
   userFriends: DtoInputOtherUser[] = [];
@@ -39,8 +42,12 @@ export class AddMemberPopupComponent extends ModalBaseComponent {
     super.ngOnInit();
     this.eb.onEvent().subscribe({
       next: event => {
-        if(event.Type === "AddMemberClicked")
-        {
+        if(event.Type === "AddMemberClicked") {
+          this._userService.getUserIdAndRole().subscribe({
+            next : usr => {
+              this.userId = usr.userId
+            }
+          })
           this._messageService.getGroup(event.Payload).subscribe({
             next: grp => {
               this.group = grp;
@@ -49,6 +56,11 @@ export class AddMemberPopupComponent extends ModalBaseComponent {
                   this._userService.getUserFriends(this.userId).subscribe({
                     next: frds =>{
                       this.userFriends = frds.friends.filter( a => !users.map(b => b.id).includes(a.id));
+                      this.userFriends.forEach(user => {
+                        this.getImageUrl(user.idImage== null ? 0 : user.idImage).subscribe(img => {
+                          user.imageUrl = img;
+                        })
+                      })
                     }
                   })
                 }
@@ -78,38 +90,31 @@ export class AddMemberPopupComponent extends ModalBaseComponent {
 
   override open() {
     super.open();
-    this._userService.getUserIdAndRole().subscribe({
-      next: usr=> {
-        this.userId = usr.userId;
-        this._messageService.getGroup(this.groupId).subscribe({
-          next: grp => {
-            this.group = grp;
-          }
-        })
-        this._userService.getUserFriends(this.userId).subscribe({
-          next: user => {
-            this.userFriends = user.friends;
-            this.userFriends.forEach(friend =>{
-              this._imageService.getImageData(friend.idImage == null ? 0:friend.idImage).subscribe(url => friend.imageUrl = url)
-            })
-          },
-          error: (err) => {
-            if (err.status === 404) {
-            }
-          }
-        })
-      },
-      error: (err)=> {
-        if (err.status === 404) {
-          this.userId = "-1"
-        }
-      }
-    });
-
-
   }
 
   addMembers() {
+    let usergroups : DtoOutputUserGroup[] = []
+    this.friendToAdd.forEach(frd => usergroups.push({
+      userId :frd.id,
+      groupId : this.group.id
+    }))
+    console.log(usergroups);
+    this._messageService.addMembers(usergroups).subscribe({
+      next: grp => {
+        this.eb.emitEvent({
+          Type:"GroupClicked",
+          Payload:this.group
+        })
+      }
+    });
+    this.userFriends = [];
+    this.friendToAdd = [];
     this.close()
+  }
+
+  getImageUrl(id: number){
+    return this._imageService.getImageData(id).pipe(map(url => {
+      return url;
+    }));
   }
 }
