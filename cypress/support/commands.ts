@@ -38,8 +38,9 @@
 
 declare namespace Cypress {
   interface Chainable<Subject = any> {
+    clearInputsPassword():Chainable<void>;
 
-    connect(login:string): Chainable<void>;
+    connect(login: string): Cypress.Chainable<void>;
     disconnect(): Chainable<void>;
     parameters(): Chainable<void>;
     Password(password:string): Chainable<void>;
@@ -47,11 +48,12 @@ declare namespace Cypress {
     modifyPassword(oldPassword:string, newPassword:string): Chainable<void>;
   }
 }
-Cypress.Commands.add(`connect`, (login) => {
+
+Cypress.Commands.add(`connect`, (login, password = "Strong#1") => {
   cy.fixture('infos').then((infos) => {
     cy.visit("http://localhost:4200/")
     cy.get('#Login').type(login)
-    cy.get('#Password').type(infos.password+'{enter}')
+    cy.get('#Password').type(password +'{enter}')
   });
 });
 
@@ -81,6 +83,12 @@ Cypress.Commands.add(`modifyPassword`, (oldPassword, newPassword) => {
   cy.get('#OldPassword').type(oldPassword)
   cy.get('#NewPassword').type(newPassword)
   cy.get('#PasswordConfirmation').type(newPassword+'{enter}')
+});
+
+Cypress.Commands.add(`clearInputsPassword`, () => {
+  cy.get('#OldPassword').clear()
+  cy.get('#NewPassword').clear()
+  cy.get('#PasswordConfirmation').clear()
 });
 
 

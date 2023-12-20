@@ -12,7 +12,7 @@ return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -25,7 +25,7 @@ return /******/ (() => { // webpackBootstrap
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -37,12 +37,12 @@ return /******/ (() => { // webpackBootstrap
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -53,7 +53,7 @@ return /******/ (() => { // webpackBootstrap
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // ESM COMPAT FLAG
@@ -3011,7 +3011,7 @@ class HttpConnection {
                 if (this.features.reconnect) {
                     try {
                         this.features.disconnected();
-                        await this.transport.connect(url, transferFormat);
+                        await this.transport.connect(url);
                         await this.features.resend();
                     }
                     catch {
@@ -3030,7 +3030,7 @@ class HttpConnection {
         else {
             this.transport.onclose = (e) => this._stopConnection(e);
         }
-        return this.transport.connect(url, transferFormat);
+        return this.transport.connect(url);
     }
     _resolveTransportOrError(endpoint, requestedTransport, requestedTransferFormat, useStatefulReconnect) {
         const transport = HttpTransportType[endpoint.transport];
