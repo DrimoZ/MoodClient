@@ -1,0 +1,46 @@
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.custom-carousel {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.carousel-delete-button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    border-radius: 50px;
+}
+
+.custom-carousel .carousel-arrow {
+    height: 80px;
+    width: 50px;
+
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 2em;
+}
+
+.custom-carousel .carousel-arrow .left {
+    left: 10px;
+}
+
+.custom-carousel .carousel-arrow .right {
+    right: 10px;
+}

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ModalBaseComponent } from "./Services/Modals/modal-base/modal-base.component";
 import { AccountDeletionModalComponent } from "./Services/Modals/Custom/account-deletion-modal/account-deletion-modal.component";
 import { GroupCreationModalComponent } from "./Services/Modals/Custom/group-creation-modal/group-creation-modal.component";
@@ -22,10 +22,11 @@ import { PublicationDetailModalComponent } from "./Services/Modals/Custom/public
     PublicationCreationModalComponent,
     PublicationDetailModalComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   exports: [
     AccountDeletionModalComponent,
     GroupMemberAdditionModalComponent,
