@@ -12,7 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "noEmit": false,
     "sourceMap": false,
-    "types": ["cypress"],
+    "types": ["cypress", "jasmine"],
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

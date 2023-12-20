@@ -8,12 +8,7 @@ import {ImageService} from "../../../../Services/ApiRequest/image.service";
 import {map} from "rxjs";
 import {DtoOutputMessage} from "../../../../Dtos/Groups/DtoOutputMessage";
 import {DatePipe} from "@angular/common";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {style} from "@angular/animations";
-import {DtoInputOtherUser} from "../../../../Dtos/Users/Inputs/dto-input-other-user";
-import {DtoOutputCreateGroup} from "../../../../Dtos/Groups/dto-output-create-group";
-import {DtoInputUserFromGroup} from "../../../../Dtos/Groups/dto-input-userfromGroup";
-import {SignalRService} from "../../../../Services/signal-r.service";
+import {FormBuilder, } from "@angular/forms";
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -26,8 +21,9 @@ export class MessageComponent {
   isWaitingForApi: boolean = true;
   isConnectedUser: boolean = false;
   groupId:number  = -1;
-    constructor( private fb: FormBuilder,private _datePipe: DatePipe, private _userService: UserService,private _messageService:MessageService,private _imageService:ImageService, private _router: Router) {
-    }
+  constructor( private _userService: UserService, private _messageService: MessageService,
+               private _imageService:ImageService, private _router: Router) {
+  }
 
   ngOnInit(): void {
     this._userService.getUserIdAndRole().subscribe({

@@ -6,13 +6,13 @@ import {ClassicEvent} from "./Events/ClassicEvent";
   providedIn: 'root'
 })
 export class EventBusService {
-  private eventBus = new Subject<ClassicEvent>();
+  private _eventBus = new Subject<ClassicEvent>();
 
   emitEvent(event: ClassicEvent) {
-    this.eventBus.next(event);
+    this._eventBus.next(event);
   }
 
   onEvent() {
-    return this.eventBus.asObservable();
+    return this._eventBus.asObservable();
   }
 }

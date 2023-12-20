@@ -13,7 +13,7 @@ import {UserService} from "../../../ApiRequest/user.service";
   styleUrls: ['./publication-detail-modal.component.css']
 })
 export class PublicationDetailModalComponent extends ModalBaseComponent{
-  @Input() publicationId: string;
+  @Input() publicationId: number;
   @ViewChild('commentInput') commentInput: ElementRef;
   activeImageIndex = 0;
 

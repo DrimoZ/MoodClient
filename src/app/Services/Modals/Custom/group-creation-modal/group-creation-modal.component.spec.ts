@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupComponent } from './popup.component';
+import { GroupCreationModalComponent } from './group-creation-modal.component';
 
 describe('PopupComponent', () => {
-  let component: PopupComponent;
-  let fixture: ComponentFixture<PopupComponent>;
+  let component: GroupCreationModalComponent;
+  let fixture: ComponentFixture<GroupCreationModalComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PopupComponent]
+      declarations: [GroupCreationModalComponent]
     });
-    fixture = TestBed.createComponent(PopupComponent);
+    fixture = TestBed.createComponent(GroupCreationModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

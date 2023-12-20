@@ -7,10 +7,10 @@ import {UserService} from "../../../ApiRequest/user.service";
 
 @Component({
   selector: 'create-publication-modal',
-  templateUrl: './create-publication.component.html',
-  styleUrls: ['./create-publication.component.css']
+  templateUrl: './publication-creation-modal.component.html',
+  styleUrls: ['./publication-creation-modal.component.css']
 })
-export class CreatePublicationComponent extends ModalBaseComponent {
+export class PublicationCreationModalComponent extends ModalBaseComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
   previewUrls: string[] = [];
   pictures: File[];
@@ -86,7 +86,4 @@ export class CreatePublicationComponent extends ModalBaseComponent {
     this.pictures.splice(index, 1);
   }
 
-  override ngOnDestroy() {
-    this.element.remove();
-  }
 }

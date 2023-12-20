@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemberPopupComponent } from './member-popup.component';
+import { GroupMembersInfoModalComponent } from './group-members-info-modal.component';
 
 describe('MemberPopupComponent', () => {
-  let component: MemberPopupComponent;
-  let fixture: ComponentFixture<MemberPopupComponent>;
+  let component: GroupMembersInfoModalComponent;
+  let fixture: ComponentFixture<GroupMembersInfoModalComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MemberPopupComponent]
+      declarations: [GroupMembersInfoModalComponent]
     });
-    fixture = TestBed.createComponent(MemberPopupComponent);
+    fixture = TestBed.createComponent(GroupMembersInfoModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

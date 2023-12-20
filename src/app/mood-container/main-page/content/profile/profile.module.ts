@@ -8,19 +8,12 @@ import { AccountComponent } from './account/account.component';
 import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {
-  ProfilePictureModalComponent
-} from "../../../../Services/Modals/Custom/profile-picture-modal/profile-picture-modal.component";
-import {
-  PublicationDetailModalComponent
-} from "../../../../Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component";
+
 @NgModule({
   declarations: [
     PublicationsComponent,
     FriendsComponent,
     AccountComponent,
-    ProfilePictureModalComponent,
-    PublicationDetailModalComponent
   ],
   imports: [
     ProfileRoutingModule,
@@ -34,11 +27,6 @@ import {
     NgIf,
     NgStyle,
 
-  ],
-  providers: [],
-  exports: [
-    ProfilePictureModalComponent,
-    PublicationDetailModalComponent
   ]
 })
 export class ProfileModule { }

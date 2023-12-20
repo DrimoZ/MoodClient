@@ -81,7 +81,7 @@ export class NewsFeedComponent implements OnInit {
 
     this.publications[index].hasConnectedLiked = !this.publications[index].hasConnectedLiked;
 
-    this._publicationService.likePublication(this.publications[index].id.toString(), this.publications[index].hasConnectedLiked).subscribe(res => {
+    this._publicationService.likePublication(this.publications[index].id, this.publications[index].hasConnectedLiked).subscribe(res => {
       if (this.publications[index].hasConnectedLiked) this.publications[index].likeCount++;
       else this.publications[index].likeCount--;
     });
@@ -101,11 +101,11 @@ export class NewsFeedComponent implements OnInit {
 
   sendComment(pubId: number, input: HTMLInputElement) {
     if (input.value != "") {
-      this._publicationService.commentPublication(pubId.toString(), input.value).subscribe(res => {
+      this._publicationService.commentPublication(pubId, input.value).subscribe(res => {
         this.publications[this.getPubIndex(pubId)].commentCount++;
         input.value = "";
 
-        this._publicationService.getPublicationComments(pubId.toString()).subscribe(comments => {
+        this._publicationService.getPublicationComments(pubId).subscribe(comments => {
           this.publications[this.getPubIndex(pubId)].comments = comments;
 
           this.publications[this.getPubIndex(pubId)].comments.forEach(c => {

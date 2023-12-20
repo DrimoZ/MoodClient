@@ -8,10 +8,9 @@ import {MessageService} from "../../../../../Services/ApiRequest/message.service
 import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 import {map} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
-import {ModalService} from "../../../../../Services/Modals/modal.service";
-import {MemberPopupComponent} from "../../../../../Services/Modals/Custom/group-info-popup/member-popup.component";
 import {SignalRService} from "../../../../../Services/signal-r.service";
 import {DtoInputGroup} from "../../../../../Dtos/Groups/dto-input-group";
+import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/modal-bus.service";
 
 @Component({
   selector: 'app-chat',
@@ -23,15 +22,18 @@ export class ChatComponent {
   userFromGroup: DtoInputUserFromGroup[] = [];
   showCount: number = 100;
   userId: string = "-1";
-  userGroupId:number = -1;
-    group:DtoInputGroup = {
-        name :"",
-        proprioId : "",
-        isPrivate : false,
-        id:-1
-    };
+  userGroupId: number = -1;
+  group: DtoInputGroup = {
+    name: "",
+    proprioId: "",
+    isPrivate: false,
+    id : -1
+  };
 
-  constructor(private _signalR: SignalRService, private modalService:ModalService ,private _datePipe: DatePipe, private _userService: UserService, private _imageService: ImageService, private _messageService: MessageService, private eb:EventBusService ) {
+  constructor(private _signalR: SignalRService, private _datePipe: DatePipe,
+              private _userService: UserService, private _imageService: ImageService,
+              private _messageService: MessageService, private _eb: EventBusService,
+              private _modalBus: ModalBusService) {
   }
 
 
@@ -65,7 +67,6 @@ export class ChatComponent {
     this._userService.getUserIdAndRole().subscribe({
       next: usr => {
         this.userId = usr.userId;
-        console.log(this.userId);
       },
       error: (err) => {
         if (err.status === 404) {
@@ -76,7 +77,7 @@ export class ChatComponent {
 
     this._signalR.startConnection();
 
-    this.eb.onEvent().subscribe(event =>{
+    this._eb.onEvent().subscribe(event =>{
         if(event.Type === "MessageGroupModified"){
           this.group.id = -1;
           this.messages = [];
@@ -138,7 +139,13 @@ export class ChatComponent {
   }
 
   displayPopupMember() {
-    this.modalService.open("popupMember")
+    this._modalBus.emitEvent({
+      Type: ModalEventName.GroupMembersInfoModal,
+      Payload: {
+        ModalId: "groupInfo",
+        AdditionalData: this.group.id
+      }
+    })
   }
 
 

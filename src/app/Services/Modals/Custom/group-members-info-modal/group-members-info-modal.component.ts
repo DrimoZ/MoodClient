@@ -1,4 +1,4 @@
-import {Component, ElementRef} from '@angular/core';
+import {Component, ElementRef, Input} from '@angular/core';
 import {ModalService} from "../../modal.service";
 import {FormBuilder} from "@angular/forms";
 import {UserService} from "../../../ApiRequest/user.service";
@@ -11,16 +11,19 @@ import {map} from "rxjs";
 import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
 import {DtoOutputPatchGroup} from "../../../../Dtos/Groups/dto-output-patch-group";
 import {Router} from "@angular/router";
+import {ModalBusService, ModalEventName} from "../../../EventBus/modal-bus.service";
 
 @Component({
-  selector: 'group-Info-Popup',
-  templateUrl: './member-popup.component.html',
-  styleUrls: ['./member-popup.component.css', '../../../../mood-container/main-page/content/message/message.component.css','../popup/popup.component.css']
+  selector: 'group-members-info-modal',
+  templateUrl: './group-members-info-modal.component.html',
+  styleUrls: ['./group-members-info-modal.component.css',
+    '../../../../mood-container/main-page/content/message/message.component.css',
+    '../group-creation-modal/group-creation-modal.component.css']
 })
-export class MemberPopupComponent extends ModalBaseComponent{
+export class GroupMembersInfoModalComponent extends ModalBaseComponent{
+  @Input() groupId: number;
 
   userFromGroup: DtoInputUserFromGroup[] = [];
-  groupId: number = -1;
   userId: string = "-1";
   group:DtoInputGroup = {
     name :"",
@@ -30,29 +33,24 @@ export class MemberPopupComponent extends ModalBaseComponent{
   };
   constructor(modalService: ModalService, _el: ElementRef,private fb: FormBuilder,
               private _userService:UserService, private _imageService: ImageService, private _messageService: MessageService,
-              private eb:EventBusService, public _router : Router) {
+              private eb:EventBusService, public _router : Router, private _modalBus: ModalBusService) {
     super(modalService, _el);
   }
 
   override ngOnInit() {
     super.ngOnInit();
+
     this._userService.getUserIdAndRole().subscribe({
       next: usr => {
         this.userId = usr.userId;
       }
     });
-    this.eb.onEvent().subscribe(event =>{
-      if(event.Type ==="GroupClicked"){
-        this.groupId = event.Payload.id;
-        this._messageService.getGroup(this.groupId).subscribe({
-          next: grp => {
-            this.group = grp;
-            console.log(this.groupId);
-          }
-        })
-        this.getMembers();
+    this._messageService.getGroup(this.groupId).subscribe({
+      next: grp => {
+        this.group = grp;
       }
     })
+    this.getMembers();
   }
 
   private getMembers() {
@@ -125,8 +123,15 @@ export class MemberPopupComponent extends ModalBaseComponent{
   addMember() {
     this.eb.emitEvent({
       Type:"AddMemberClicked",
-      Payload:this.groupId
+      Payload: this.groupId
     })
-    this.modalService.open("addMemberPopup")
+
+    this._modalBus.emitEvent({
+      Type: ModalEventName.GroupMemberAdditionModal,
+      Payload: {
+        ModalId: "addMemberModal",
+        AdditionalData: this.groupId
+      }
+    })
   }
 }

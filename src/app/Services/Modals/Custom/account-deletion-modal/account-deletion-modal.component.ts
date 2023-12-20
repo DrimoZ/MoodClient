@@ -5,11 +5,11 @@ import {UserService} from "../../../ApiRequest/user.service";
 import {EventBusService} from "../../../EventBus/event-bus.service";
 
 @Component({
-  selector: 'modal-del-account',
-  templateUrl: './delete-account-modal.component.html',
-  styleUrls: ['./delete-account-modal.component.css']
+  selector: 'account-deletion-modal',
+  templateUrl: './account-deletion-modal.component.html',
+  styleUrls: ['./account-deletion-modal.component.css']
 })
-export class DeleteAccountModalComponent extends ModalBaseComponent{
+export class AccountDeletionModalComponent extends ModalBaseComponent{
 
   constructor(modalService: ModalService, _el: ElementRef, private _userService: UserService, private _eventBus: EventBusService) {
     super(modalService, _el);
@@ -17,7 +17,6 @@ export class DeleteAccountModalComponent extends ModalBaseComponent{
 
 
   deleteAccount() {
-
     this._userService.deleteAccount().subscribe({
       next: () => {
         this._eventBus.emitEvent({

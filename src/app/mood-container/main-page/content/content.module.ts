@@ -12,12 +12,9 @@ import {NgClass, NgForOf, NgIf, NgOptimizedImage, NgTemplateOutlet} from "@angul
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "./profile/profile.module";
-import { DeleteAccountModalComponent } from "../../../Services/Modals/Custom/delete-account-modal/delete-account-modal.component";
 import { GroupListComponent } from './message/group-list/group-list.component';
-import {PopupComponent} from "../../../Services/Modals/Custom/popup/popup.component";
 import { ChatComponent } from './message/chat/chat.component';
-import {MemberPopupComponent} from "../../../Services/Modals/Custom/group-info-popup/member-popup.component";
-import {AddMemberPopupComponent} from "../../../Services/Modals/Custom/add-member-popup/add-member-popup.component";
+
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -27,11 +24,7 @@ import {AddMemberPopupComponent} from "../../../Services/Modals/Custom/add-membe
     DiscoverComponent,
     ParametersComponent,
     GroupListComponent,
-    PopupComponent,
     ChatComponent,
-    MemberPopupComponent,
-    AddMemberPopupComponent,
-    DeleteAccountModalComponent
   ],
   imports: [
     NgbModule,
@@ -49,10 +42,7 @@ import {AddMemberPopupComponent} from "../../../Services/Modals/Custom/add-membe
     ProfileModule
   ],
   exports: [
-    PopupComponent,
-    MemberPopupComponent,
-    DeleteAccountModalComponent,
-    AddMemberPopupComponent
+
   ],
   providers: []
 })

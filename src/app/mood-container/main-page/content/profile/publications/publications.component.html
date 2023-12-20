@@ -10,7 +10,6 @@
 
       <div class="publication-grid">
         <div class="publication" *ngFor="let publication of publications" (click)="getDetailedPublication(publication.id)">
-          <publication-detail-modal id="profile-pub_{{publication.id}}" publicationId="{{publication.id}}"></publication-detail-modal>
           <div *ngIf="publication.elements.length > 0 && publication.elements[0].imageUrl != ''">
             <div class="content-div">
               <div class="h-100 w-100">

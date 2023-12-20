@@ -10,12 +10,11 @@ import {MessageService} from "../../../ApiRequest/message.service";
 import {EventBusService} from "../../../EventBus/event-bus.service";
 
 @Component({
-  selector: 'app-popup',
-  templateUrl: './popup.component.html',
-  styleUrls: ['./popup.component.css', '../../../../mood-container/main-page/content/message/message.component.css']
+  selector: 'group-creation-modal',
+  templateUrl: './group-creation-modal.component.html',
+  styleUrls: ['./group-creation-modal.component.css', '../../../../mood-container/main-page/content/message/message.component.css']
 })
-export class PopupComponent extends ModalBaseComponent{
-
+export class GroupCreationModalComponent extends ModalBaseComponent{
   userFriends: DtoInputOtherUser[] = [];
   friendToAdd: DtoInputOtherUser[] = [];
   friendsForm: FormGroup;

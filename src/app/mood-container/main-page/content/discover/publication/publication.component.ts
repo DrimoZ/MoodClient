@@ -1,11 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
-import {Router} from "@angular/router";
 import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
-import {map, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
-import {ModalService} from "../../../../../Services/Modals/modal.service";
+import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/modal-bus.service";
 
 @Component({
   selector: 'app-publication',
@@ -20,7 +19,7 @@ export class PublicationComponent implements OnInit, OnDestroy{
   searchSubscription: Subscription | null = null;
 
   constructor(private _dataService: UserService, private _behaviorEventBus: BehaviorEventBusService,
-              private _imageService: ImageService, private _modalService: ModalService) {
+              private _imageService: ImageService, private _modalBus: ModalBusService) {
   }
 
   ngOnInit(): void {
@@ -43,7 +42,13 @@ export class PublicationComponent implements OnInit, OnDestroy{
   }
 
   getDetailedPublication(id: number) {
-    this._modalService.open("discover-pub_" + id);
+    this._modalBus.emitEvent({
+      Type: ModalEventName.PublicationDetailModal,
+      Payload: {
+        ModalId: "publicationDetails",
+        AdditionalData: id
+      }
+    })
   }
 
 

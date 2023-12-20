@@ -22,21 +22,21 @@ export class PublicationService {
       });
   }
 
-  getDetailedPublication(publicationId: string): Observable<DtoInputPublicationDetail> {
+  getDetailedPublication(publicationId: number): Observable<DtoInputPublicationDetail> {
     return this._httpClient.get<DtoInputPublicationDetail>(PublicationService._URL_API + "/" + publicationId);
   }
 
-  getPublicationComments(publicationId: string): Observable<DtoInputPubComment[]> {
+  getPublicationComments(publicationId: number): Observable<DtoInputPubComment[]> {
     return this._httpClient.get<DtoInputPubComment[]>(PublicationService._URL_API + "/" + publicationId + "/comments");
   }
 
-  likePublication(publicationId: string, liked: boolean): Observable<any> {
+  likePublication(publicationId: number, liked: boolean): Observable<any> {
     let dto = {idPublication: publicationId, isLiked: liked};
 
     return this._httpClient.post(PublicationService._URL_API + "/like",  dto);
   }
 
-  commentPublication(publicationId: string, content: string): Observable<any> {
+  commentPublication(publicationId: number, content: string): Observable<any> {
     let dto = {idPublication: publicationId, content: content};
 
     return this._httpClient.post(PublicationService._URL_API + "/comment",  dto);
