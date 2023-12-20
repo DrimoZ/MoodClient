@@ -10,6 +10,8 @@ import {map} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {ModalService} from "../../../../../Services/Modals/modal.service";
 import {MemberPopupComponent} from "../../../../../Services/Modals/Custom/group-info-popup/member-popup.component";
+import {SignalRService} from "../../../../../Services/signal-r.service";
+import {DtoInputGroup} from "../../../../../Dtos/Groups/dto-input-group";
 
 @Component({
   selector: 'app-chat',
@@ -21,16 +23,31 @@ export class ChatComponent {
   userFromGroup: DtoInputUserFromGroup[] = [];
   showCount: number = 100;
   userId: string = "-1";
-  groupId:number = -1;
   userGroupId:number = -1;
-  groupName:string = '';
+    group:DtoInputGroup = {
+        name :"",
+        proprioId : "",
+        isPrivate : false,
+        id:-1
+    };
 
-  constructor(private modalService:ModalService ,private _datePipe: DatePipe, private _userService: UserService, private _imageService: ImageService, private _messageService: MessageService, private eb:EventBusService ) {
+  constructor(private _signalR: SignalRService, private modalService:ModalService ,private _datePipe: DatePipe, private _userService: UserService, private _imageService: ImageService, private _messageService: MessageService, private eb:EventBusService ) {
   }
 
 
   loadMoreMessage() {
-
+    this.showCount += 20;
+    this._messageService.getMessageFromGroupe(this.group.id, this.showCount +1,).subscribe(
+      data => {
+        data.forEach(msg => {
+          this.getImageUrl( msg.imageId == null ? 0:msg.imageId).subscribe(img => {
+            msg.url = img;
+          })
+        });
+        this.messages = data;
+        this.messages.reverse();
+      }
+    )
   }
   formatDate(dateString: string): string
   {
@@ -56,18 +73,26 @@ export class ChatComponent {
         }
       }
     });
+
+    this._signalR.startConnection();
+
     this.eb.onEvent().subscribe(event =>{
         if(event.Type === "MessageGroupModified"){
-          this.groupId = -1;
+          this.group.id = -1;
           this.messages = [];
           this.userFromGroup= [];
-          this.groupName = "";
+          this.group.name = "";
         }
         if(event.Type ==="GroupClicked"){
-          this.groupId = event.Payload.id;
-          console.log(this.groupId);
-          this.groupName = event.Payload.name;
+          this._signalR.removeFromGroup(this.group.id.toString())
+          this.group = event.Payload;
           this.getMessages();
+          this._signalR.addToGroup(this.group.id.toString())
+        }
+        if(event.Type === "RecevievedMessage"){
+          if(this.group.id == event.Payload.id){
+            this.getMessages();
+          }
         }
     })
 
@@ -89,18 +114,17 @@ export class ChatComponent {
       next: msg =>{
         this.getMessages();
         message.value = ''
+        this._signalR.sendMessageToGroup(msg, this.group);
       }
     });
-    // this._signalR.sendMessage(user, message);
-    //TODO implements signalR
 
   }
 
   private getMessages() {
-    this._messageService.getMessageFromGroupe(this.groupId, this.showCount).subscribe({
+    this._messageService.getMessageFromGroupe(this.group.id, this.showCount).subscribe({
       next: msgs => {
         this.messages = msgs;
-        this._messageService.getUserGroup(this.groupId).subscribe({
+        this._messageService.getUserGroup(this.group.id).subscribe({
           next: usrGrp => this.userGroupId = usrGrp.id
         })
         this.messages.reverse();
@@ -116,4 +140,6 @@ export class ChatComponent {
   displayPopupMember() {
     this.modalService.open("popupMember")
   }
+
+
 }

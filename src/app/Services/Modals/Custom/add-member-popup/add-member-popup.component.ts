@@ -6,7 +6,6 @@ import {UserService} from "../../../ApiRequest/user.service";
 import {ImageService} from "../../../ApiRequest/image.service";
 import {MessageService} from "../../../ApiRequest/message.service";
 import {EventBusService} from "../../../EventBus/event-bus.service";
-import {DtoOutputCreateGroup} from "../../../../Dtos/Groups/dto-output-create-group";
 import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
 import {map} from "rxjs";

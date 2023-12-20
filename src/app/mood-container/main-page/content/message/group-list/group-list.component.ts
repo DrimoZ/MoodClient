@@ -7,6 +7,7 @@ import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {ModalService} from "../../../../../Services/Modals/modal.service";
 import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 import {timeout} from "rxjs";
+import {SignalRService} from "../../../../../Services/signal-r.service";
 
 @Component({
   selector: 'app-group-list',
@@ -17,7 +18,7 @@ export class GroupListComponent {
   groups: DtoInputGroup[] = [];
   userId: string = "-1";
 
-  constructor(private _userService: UserService,private _messageService:MessageService, private modalService: ModalService, private eb:EventBusService) {
+  constructor(private _signalR :SignalRService, private _userService: UserService,private _messageService:MessageService, private modalService: ModalService, private eb:EventBusService) {
   }
   ngOnInit(): void {
     this._userService.getUserIdAndRole().subscribe({
@@ -40,6 +41,7 @@ export class GroupListComponent {
         }
       }
     });
+    this._signalR.startConnection();
     this.eb.onEvent().subscribe(event =>{
       if(event.Type ==="MessageGroupModified"){
         this._messageService.getUsersGroups().subscribe({
