@@ -35,3 +35,17 @@
 //     }
 //   }
 // }
+
+declare namespace Cypress {
+  interface Chainable<Subject = any> {
+
+    connect(): Chainable<void>;
+  }
+}
+Cypress.Commands.add(`connect`, () => {
+  cy.fixture('infos').then((infos) => {
+    cy.visit("http://localhost:4200/")
+    cy.get('#Login').type(infos.login)
+    cy.get('#Password').type(infos.password+'{enter}')
+  });
+});

@@ -1,8 +1,6 @@
 describe('Poster une publication', () => {
   it('passes', () => {
-    cy.visit('http://localhost:4200/')
-    cy.get('#Login').type('martinp')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.connect()
 
     cy.get("#NavCreatePub").click()
     cy.get("input[type=file]").selectFile("cypress\\downloads\\bg.png")

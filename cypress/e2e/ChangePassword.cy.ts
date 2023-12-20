@@ -1,8 +1,6 @@
 describe('Changement de mot de passe', () => {
   it('passes', () => {
-    cy.visit('http://localhost:4200/')
-    cy.get('#Login').type('marine0023')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.connect()
 
     cy.get('#Parameters').click()
     cy.get('#GoToParameters').click()
@@ -51,6 +49,5 @@ describe('Changement de mot de passe', () => {
     cy.get('#OldPassword').type('Stronger#2')
     cy.get('#NewPassword').type('Strong#1')
     cy.get('#PasswordConfirmation').type('Strong#1{enter}')
-
   })
 })

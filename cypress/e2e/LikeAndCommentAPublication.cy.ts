@@ -1,8 +1,6 @@
 describe('Aimer et commenter une publication', () => {
   it('passes', () => {
-    cy.visit('http://localhost:4200/')
-    cy.get('#Login').type('cestmoi')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.connect()
 
     cy.get('#NavNewsFeed').click()
 

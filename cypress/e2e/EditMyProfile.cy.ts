@@ -1,8 +1,6 @@
 describe('Modifier mes informations de profil', () => {
   it('passes', () => {
-    cy.visit('http://localhost:4200/')
-    cy.get('#Login').type('martinp')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.connect()
 
     cy.get('#Profile').click()
 
@@ -12,7 +10,7 @@ describe('Modifier mes informations de profil', () => {
     cy.get('#InputFullName').clear()
     cy.get('#InputFullName').type('Adurian')
     cy.get('#InputEmail').clear()
-    cy.get('#InputEmail').type('Adurian@gmail.com')
+    cy.get('#InputEmail').type('Adurian@Ninja.com')
     cy.get('#InputBirthDate').clear()
     cy.get('#InputBirthDate').type('1999-04-11')
     cy.get('#InputTitle').clear()
@@ -25,15 +23,15 @@ describe('Modifier mes informations de profil', () => {
     cy.contains('Edit Account').click()
 
     cy.get('#InputFullName').clear()
-    cy.get('#InputFullName').type('Martin Pecheur')
+    cy.get('#InputFullName').type('Marine <3')
     cy.get('#InputEmail').clear()
-    cy.get('#InputEmail').type('yoplait@example.com')
+    cy.get('#InputEmail').type('marine@defrance.fr')
     cy.get('#InputBirthDate').clear()
     cy.get('#InputBirthDate').type('1994-07-07')
     cy.get('#InputTitle').clear()
     cy.get('#InputTitle').type('Oui')
     cy.get('#InputDescription').clear()
-    cy.get('#InputDescription').type('CEFUC 22')
+    cy.get('#InputDescription').type('#Selfie')
 
     cy.contains('Validate Changes').click()
   })
