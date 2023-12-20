@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
-import {Router} from "@angular/router";
 import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
-import {map} from "rxjs";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
-import {DtoInputPubElement} from "../../../../../Dtos/Publication/Input/dto-input-pub-element";
-import {ModalService} from "../../../../../Services/Modals/modal.service";
+import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/modal-bus.service";
 
 @Component({
   selector: 'app-publications',
@@ -20,9 +17,9 @@ export class PublicationsComponent implements OnInit{
   isConnectedUser: boolean = false;
   isPublicationsPublic: boolean = false;
 
-  constructor(private _userService: UserService, private _router: Router,
+  constructor(private _userService: UserService,
               private _behaviorEventBus: BehaviorEventBusService, private _imageService: ImageService,
-              private _modalService: ModalService) {
+              private _modalBus: ModalBusService) {
   }
 
   ngOnInit(): void {
@@ -61,6 +58,12 @@ export class PublicationsComponent implements OnInit{
   }
 
   getDetailedPublication(id: number) {
-    this._modalService.open("profile-pub_" + id)
+    this._modalBus.emitEvent({
+      Type: ModalEventName.PublicationDetailModal,
+      Payload: {
+        ModalId: "publicationDetails",
+        AdditionalData: id
+      }
+    })
   }
 }

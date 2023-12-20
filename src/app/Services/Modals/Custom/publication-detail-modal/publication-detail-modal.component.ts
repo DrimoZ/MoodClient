@@ -20,7 +20,7 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
   isWaitingForApi = true;
   publication: DtoInputPublicationDetail;
 
-  connectedUserId: string;
+  connectedUserStatus: {userId: string, userRole: number};
 
   constructor(modalService: ModalService, _el: ElementRef, private _publicationService: PublicationService,
               private _imageService: ImageService, private _router: Router, private _userService: UserService) {
@@ -31,7 +31,7 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
     this.isWaitingForApi = true;
 
     this._userService.getUserIdAndRole().subscribe(val => {
-      this.connectedUserId = val.userId;
+      this.connectedUserStatus = val;
     })
 
     this._publicationService.getDetailedPublication(this.publicationId).subscribe({
@@ -128,4 +128,11 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
       this.publication.commentCount--;
     })
   }
+
+    deletePublication() {
+      this._publicationService.deletePublication(this.publication.id).subscribe(ev => {
+        this.close();
+        this._router.navigate([this._router.url])
+      })
+    }
 }

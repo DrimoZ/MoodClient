@@ -42,7 +42,11 @@ export class PublicationService {
     return this._httpClient.post(PublicationService._URL_API + "/comment",  dto);
   }
 
-  deleteCommentInPublication(commentId: number) {
+  deleteCommentInPublication(commentId: number): Observable<any> {
     return this._httpClient.delete(PublicationService._URL_API + "/comment/" + commentId);
+  }
+
+  deletePublication(pubId: number): Observable<any> {
+    return this._httpClient.patch(PublicationService._URL_API, parseInt(pubId.toString()));
   }
 }
