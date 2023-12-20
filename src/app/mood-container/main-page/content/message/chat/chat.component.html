@@ -25,7 +25,7 @@
   </div>
   <div class="border-gold bottom-0 end-0" style="width: 100%">
     <form id="sender" style="display: flex; flex-wrap: nowrap;padding-top: 1%;" >
-      <input #message class="position-relative container-fluid" type="text" style="width: 100%;" placeholder="Message" value="">
+      <input #message [disabled]="groupName == ''" class="position-relative container-fluid" type="text" style="width: 100%;" placeholder="Message" value="">
       <input type="submit" class="btn position-relative bottom-0 end-0 " (click)="sendMessage(message)" value="message"/>
     </form>
   </div>
