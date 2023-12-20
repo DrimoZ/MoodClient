@@ -25,9 +25,11 @@
     border-radius: 50px;
 }
 
-.custom-carousel .carousel-arrow {
+.carousel-arrow {
     height: 80px;
     width: 50px;
+
+    border-radius: 15px;
 
     position: absolute;
 
@@ -37,10 +39,10 @@
     font-size: 2em;
 }
 
-.custom-carousel .carousel-arrow .left {
+.carousel-arrow-left {
     left: 10px;
 }
 
-.custom-carousel .carousel-arrow .right {
+.carousel-arrow-right {
     right: 10px;
 }

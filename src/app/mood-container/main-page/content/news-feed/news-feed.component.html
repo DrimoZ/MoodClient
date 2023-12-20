@@ -23,19 +23,14 @@
 
       <div style="border-top: 1px solid #deb992;"></div>
 
-      <div id="pub_{{pub.id}}" class="h-100 d-flex flex-column justify-content-between position-relative" data-ride="carousel" style="height: 600px">
-        <div *ngIf="pub.elements.length > 0" class="d-flex " style="height: 600px">
-          <div  *ngFor="let element of pub.elements; let i = index" class="carousel-item {{i == 0 ? 'active' : ''}}">
-            <img src="{{element.imageUrl}}" class="pubImage">
-          </div>
+      <div class="custom-carousel" style="height: 600px;">
+        <img [src]="this.publications[this.getPubIndex(pub.id)].elements[this.currentElementIndex[this.getPubIndex(pub.id)]].imageUrl" *ngIf="this.publications[this.getPubIndex(pub.id)].elements.length > 0" class="carousel-image">
+
+        <div class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker" (click)="prevImage(pub.id)" *ngIf="this.currentElementIndex[this.getPubIndex(pub.id)] > 0">
+          <i class="fa-solid fa-chevron-left txt-turquoise"></i>
         </div>
-        <div *ngIf="pub.elements.length > 1">
-          <a class="carousel-control-prev" (click)="prev(pub.id)" role="button">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-          <a class="carousel-control-next" (click)="next(pub.id)" role="button">
-            <span class="carousel-control-next-icon"></span>
-          </a>
+        <div class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker" (click)="nextImage(pub.id)" *ngIf="this.currentElementIndex[this.getPubIndex(pub.id)] < this.publications[this.getPubIndex(pub.id)].elements.length - 1">
+          <i class="fa-solid fa-chevron-right txt-turquoise"></i>
         </div>
       </div>
 
