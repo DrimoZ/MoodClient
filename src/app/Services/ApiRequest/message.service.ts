@@ -58,11 +58,6 @@ export class MessageService {
         return this._httpClient.post(MessageService._URL_API_GROUP + "/userGroup", friendToAdd)
     }
 
-
-  deleteMessage(msg: DtoInputMessage) {
-
-  }
-
   setMessageIsDeleted(msg: DtoInputMessage) {
     return this._httpClient.patch(MessageService._URL_API_MESSAGE + "/delete", msg.id)
   }

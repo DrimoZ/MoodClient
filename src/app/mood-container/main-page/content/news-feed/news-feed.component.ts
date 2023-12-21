@@ -14,6 +14,7 @@ export class NewsFeedComponent implements OnInit {
   isWaitingForApi: boolean = true;
 
   publications: DtoInputPublicationDetail[];
+  currentElementIndex: number[] = [];
   pubCount: number = 0;
   connectedUserId: string;
 
@@ -76,6 +77,14 @@ export class NewsFeedComponent implements OnInit {
     nextItem.classList.add('active');
   }
 
+  nextImage(pubId: number) {
+    this.currentElementIndex[this.getPubIndex(pubId)] = (this.currentElementIndex[this.getPubIndex(pubId)] + 1) % this.publications[this.getPubIndex(pubId)].elements.length;
+  }
+
+  prevImage(pubId: number) {
+    this.currentElementIndex[this.getPubIndex(pubId)] = (this.currentElementIndex[this.getPubIndex(pubId)] - 1 + this.publications[this.getPubIndex(pubId)].elements.length) % this.publications[this.getPubIndex(pubId)].elements.length;
+  }
+
   toggleLiked(pubId: number) {
     let index = this.getPubIndex(pubId);
 
@@ -127,6 +136,8 @@ export class NewsFeedComponent implements OnInit {
     this._publicationService.getFriendsPublications(this.pubCount).subscribe({
       next: (val) => {
         this.publications = val;
+
+        this.currentElementIndex = this.currentElementIndex.concat(new Array(this.publications.length - this.currentElementIndex.length).fill(0));
 
         this.publications.forEach(p => {
           this._imageService.getImageData(p.idAuthorImage == null  ? 0 : p.idAuthorImage).subscribe({

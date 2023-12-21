@@ -11,15 +11,14 @@
           <div class="custom-carousel">
             <img [src]="this.previewUrls[currentImageIndex]" *ngIf="previewUrls.length > 0" class="carousel-image">
 
-
             <div class="carousel-delete-button d-flex justify-content-center align-items-center hover-pointer text-warning" (click)="removeCurrentImage()" *ngIf="previewUrls.length > 0">
               <i class="fa-solid fa-trash"></i>
             </div>
 
-            <div class="carousel-arrow left d-flex justify-content-center align-items-center hover-pointer" (click)="prevImage()" *ngIf="currentImageIndex > 0">
+            <div class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker" (click)="prevImage()" *ngIf="currentImageIndex > 0">
               <i class="fa-solid fa-chevron-left txt-turquoise"></i>
             </div>
-            <div class="carousel-arrow right d-flex justify-content-center align-items-center hover-pointer" (click)="nextImage()" *ngIf="currentImageIndex < this.previewUrls.length - 1">
+            <div class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker" (click)="nextImage()" *ngIf="currentImageIndex < this.previewUrls.length - 1">
               <i class="fa-solid fa-chevron-right txt-turquoise"></i>
             </div>
           </div>
