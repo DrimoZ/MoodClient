@@ -11,14 +11,14 @@
           <div class="custom-carousel">
             <img [src]="this.previewUrls[currentImageIndex]" *ngIf="previewUrls.length > 0" class="carousel-image">
 
-            <div class="carousel-delete-button d-flex justify-content-center align-items-center hover-pointer text-warning" (click)="removeCurrentImage()" *ngIf="previewUrls.length > 0">
+            <div id="DeleteThisImage" class="carousel-delete-button d-flex justify-content-center align-items-center hover-pointer text-warning" (click)="removeCurrentImage()" *ngIf="previewUrls.length > 0">
               <i class="fa-solid fa-trash"></i>
             </div>
 
-            <div class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker" (click)="prevImage()" *ngIf="currentImageIndex > 0">
+            <div id="LeftCarousel" class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker" (click)="prevImage()" *ngIf="currentImageIndex > 0">
               <i class="fa-solid fa-chevron-left txt-turquoise"></i>
             </div>
-            <div class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker" (click)="nextImage()" *ngIf="currentImageIndex < this.previewUrls.length - 1">
+            <div id="RightCarousel" class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker" (click)="nextImage()" *ngIf="currentImageIndex < this.previewUrls.length - 1">
               <i class="fa-solid fa-chevron-right txt-turquoise"></i>
             </div>
           </div>
@@ -33,7 +33,7 @@
 
         <div class="d-flex flex-column">
           <span class="txt-gold fs-5 text-center" i18n>Write a Description</span>
-          <input type="text" [(ngModel)]="descValue" class="form-control" i18n i18n-placeholder placeholder="*Required">
+          <input id="PublicationText" type="text" [(ngModel)]="descValue" class="form-control" i18n i18n-placeholder placeholder="*Required">
         </div>
       </div>
 
