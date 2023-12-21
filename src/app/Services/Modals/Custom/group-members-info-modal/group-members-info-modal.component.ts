@@ -12,6 +12,7 @@ import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
 import {DtoOutputPatchGroup} from "../../../../Dtos/Groups/dto-output-patch-group";
 import {Router} from "@angular/router";
 import {ModalBusService, ModalEventName} from "../../../EventBus/modal-bus.service";
+import {SignalRService} from "../../../signal-r.service";
 
 @Component({
   selector: 'group-members-info-modal',
@@ -32,14 +33,29 @@ export class GroupMembersInfoModalComponent extends ModalBaseComponent{
     id:-1
   };
   constructor(modalService: ModalService, _el: ElementRef,private fb: FormBuilder,
-              private _userService:UserService, private _imageService: ImageService, private _messageService: MessageService,
-              private eb:EventBusService, public _router : Router, private _modalBus: ModalBusService) {
+              private _userService:UserService, private _imageService: ImageService,
+              private _messageService: MessageService, private _sr: SignalRService,
+              private _eb:EventBusService, public _router : Router, private _modalBus: ModalBusService) {
     super(modalService, _el);
   }
 
   override ngOnInit() {
     super.ngOnInit();
+    this._eb.onEvent().subscribe(event =>{
+      if(event.Type === "UserHasLeft"){
+        if(this.group.id == event.Payload.id){
+          this.getMembers();
+        }
+      }
+      if(event.Type === "UserHasJoin"){
+        if(this.group.id == event.Payload.id){
+          this.getMembers();
+        }
+      }
+    })
+  }
 
+  override open() {
     this._userService.getUserIdAndRole().subscribe({
       next: usr => {
         this.userId = usr.userId;
@@ -48,9 +64,10 @@ export class GroupMembersInfoModalComponent extends ModalBaseComponent{
     this._messageService.getGroup(this.groupId).subscribe({
       next: grp => {
         this.group = grp;
+        this.getMembers();
       }
     })
-    this.getMembers();
+    super.open();
   }
 
   private getMembers() {
@@ -75,13 +92,12 @@ export class GroupMembersInfoModalComponent extends ModalBaseComponent{
   quitsGroup() {
     this._messageService.quitGroup(this.groupId).subscribe({
       next: grp => {
-        this.eb.emitEvent({
-          Type:"MessageGroupModified",
-          Payload:""
-        })
+        this.close()
+        this._sr.removeFromGroup(this.group)
+        this._sr.removeFromNotifGroup(this.group.id.toString())
       }
     });
-    this.close()
+
   }
 
   kickThisMember(member: DtoInputUserFromGroup) {
@@ -103,7 +119,7 @@ export class GroupMembersInfoModalComponent extends ModalBaseComponent{
     }
     this._messageService.modifyGroup(grp).subscribe({
       next: grp => {
-        this.eb.emitEvent({
+        this._eb.emitEvent({
           Type : "MessageGroupModified",
           Payload : ""
         })
@@ -114,14 +130,14 @@ export class GroupMembersInfoModalComponent extends ModalBaseComponent{
   goToProfile(member: DtoInputUserFromGroup) {
     this.close();
     this._router.navigate(['home/' + member.id])
-    this.eb.emitEvent({
+    this._eb.emitEvent({
       Type:"ChangeNavBar",
       Payload:"profile"
     })
   }
 
   addMember() {
-    this.eb.emitEvent({
+    this._eb.emitEvent({
       Type:"AddMemberClicked",
       Payload: this.groupId
     })

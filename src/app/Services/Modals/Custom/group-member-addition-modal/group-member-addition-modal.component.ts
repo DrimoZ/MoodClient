@@ -11,6 +11,8 @@ import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
 import {map} from "rxjs";
 import {DtoOutputUserGroup} from "../../../../Dtos/Groups/dto-output-userGroup";
 import {ModalBusService, ModalEventName} from "../../../EventBus/modal-bus.service";
+import {SignalRService} from "../../../signal-r.service";
+import {group} from "@angular/animations";
 
 @Component({
   selector: 'group-member-addition-modal',
@@ -32,7 +34,7 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
     id:-1
   };
 
-  constructor( modalService: ModalService, _el: ElementRef,private fb: FormBuilder,
+  constructor( modalService: ModalService, _el: ElementRef,private fb: FormBuilder, private _sR : SignalRService,
                private _userService:UserService, private _imageService: ImageService, private _messageService: MessageService, private _eb:EventBusService, private _modalBus: ModalBusService) {
     super(modalService, _el)
     this.friendsForm = this.fb.group({
@@ -67,6 +69,7 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
         })
       }
     })
+
   }
 
   addFriend(friend: HTMLDivElement, frd: DtoInputOtherUser) {
@@ -95,18 +98,20 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
       userId :frd.id,
       groupId : this.group.id
     }))
-    console.log(usergroups);
     this._messageService.addMembers(usergroups).subscribe({
       next: grp => {
+
+        this._sR.addToGroup(this.group);
+
         this._eb.emitEvent({
           Type:"GroupClicked",
           Payload:this.group
         })
+        this.close()
       }
     });
     this.userFriends = [];
     this.friendToAdd = [];
-    this.close()
   }
 
   getImageUrl(id: number){

@@ -37,17 +37,16 @@ export class ChatComponent {
   }
 
 
-  loadMoreMessage() {
-    this.showCount += 20;
-    this._messageService.getMessageFromGroupe(this.group.id, this.showCount +1,).subscribe(
+  loadMoreMessage(nb : number) {
+    this.showCount += nb;
+    this._messageService.getMessageFromGroupe(this.group.id, nb,).subscribe(
       data => {
         data.forEach(msg => {
           this.getImageUrl( msg.imageId == null ? 0:msg.imageId).subscribe(img => {
             msg.url = img;
+            this.messages.push(msg);
           })
         });
-        this.messages = data;
-        this.messages.reverse();
       }
     )
   }
@@ -75,28 +74,28 @@ export class ChatComponent {
       }
     });
 
-    this._signalR.startConnection();
-
     this._eb.onEvent().subscribe(event =>{
-        if(event.Type === "MessageGroupModified"){
-          this._signalR.removeFromGroup(this.group.id.toString())
-          this.group.id = -1;
-          this.messages = [];
-          this.userFromGroup= [];
-          this.group.name = "";
+      if(event.Type === "MessageGroupModified"){
+        this.group.id = -1;
+        this.messages = [];
+        this.userFromGroup= [];
+        this.group.name = "";
+      }
+      if(event.Type ==="GroupClicked"){
+        this.showCount = 100;
+        this.group = event.Payload;
+        this.getMessages(this.showCount);
+      }
+      if(event.Type === "RecevievedMessage"){
+        if(this.group.id == event.Payload.id){
+          this.loadMoreMessage(1);
         }
-        if(event.Type ==="GroupClicked"){
-          this.showCount = 100;
-          this._signalR.removeFromGroup(this.group.id.toString())
-          this.group = event.Payload;
-          this.getMessages();
-          this._signalR.addToGroup(this.group.id.toString())
+      }
+      if(event.Type === "DeletedMessage"){
+        if(this.group.id == event.Payload.id){
+          this.getMessages(this.showCount);
         }
-        if(event.Type === "RecevievedMessage"){
-          if(this.group.id == event.Payload.id){
-            this.getMessages();
-          }
-        }
+      }
     })
 
   }
@@ -115,7 +114,6 @@ export class ChatComponent {
     }
     this._messageService.sendOutputMessage(msg).subscribe({
       next: msg =>{
-        this.getMessages();
         message.value = ''
         this._signalR.sendMessageToGroup(msg, this.group);
       }
@@ -123,8 +121,8 @@ export class ChatComponent {
 
   }
 
-  private getMessages() {
-    this._messageService.getMessageFromGroupe(this.group.id, this.showCount).subscribe({
+  private getMessages(number: number) {
+    this._messageService.getMessageFromGroupe(this.group.id, number).subscribe({
       next: msgs => {
         this.messages = msgs;
         this._messageService.getUserGroup(this.group.id).subscribe({
@@ -141,6 +139,7 @@ export class ChatComponent {
   }
 
   displayPopupMember() {
+    console.log(this.group.id)
     this._modalBus.emitEvent({
       Type: ModalEventName.GroupMembersInfoModal,
       Payload: {
@@ -153,7 +152,6 @@ export class ChatComponent {
   deleteMessage(msg: DtoInputMessage) {
     this._messageService.setMessageIsDeleted(msg).subscribe({
       next: msg =>{
-        this.getMessages();
         this._signalR.messageRemoveFromGroup(this.group);
       }
     });
