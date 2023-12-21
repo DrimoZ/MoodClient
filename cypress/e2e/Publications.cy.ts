@@ -4,7 +4,7 @@ describe('Post a publication', () => {
     cy.get("#NavCreatePub").click()
     cy.wait(500)
 
-    cy.get("input[type=file]").selectFile("cypress\\downloads\\bg.png")
+    cy.get("input[type=file]").selectFile("cypress\\downloads\\codingCat.gif")
     cy.get("#PublicationText").type("Sacré plaque !")
     cy.contains("Publish").click()
   })
@@ -25,12 +25,20 @@ describe('Post a publication', () => {
     cy.get("input[type=file]").selectFile("cypress\\downloads\\bg.png")
   });
 
+  it('Trying to post a file that is not a png, jpg or a gif', () => {
+    cy.connect("martin_p")
+    cy.get("#NavCreatePub").click()
+    cy.wait(500)
+
+    cy.get("input[type=file]").selectFile("cypress\\downloads\\fish.zip")
+  });
+
   it('Post multiple images', () => {
     cy.connect("frontend_champ")
     cy.get("#NavCreatePub").click()
     cy.wait(500)
 
-    cy.get("input[type=file]").selectFile("cypress\\downloads\\fish.png")
+    cy.get("input[type=file]").selectFile("cypress\\downloads\\sweating.gif")
     cy.get("input[type=file]").selectFile("cypress\\downloads\\Goldorak.jpg")
     cy.get("input[type=file]").selectFile("cypress\\downloads\\bg.png")
 
@@ -110,7 +118,6 @@ describe('Likes and Comments', () => {
     cy.connect('martin_p')
     cy.get('#NavNewsFeed').click()
     cy.get('#BtnLike').click()
-
   });
 
   it('Comment a publication', () => {
