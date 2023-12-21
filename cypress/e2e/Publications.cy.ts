@@ -66,7 +66,7 @@ describe('Post a publication', () => {
   });
 })
 describe('Look at publications', () => {
-  it.only('Scroll through publications', () => {
+  it('Scroll through publications', () => {
     cy.connect('marine0023')
     cy.wait(5000)
     cy.get('#NewsFeed').scrollTo(0,1000)
@@ -77,9 +77,10 @@ describe('Look at publications', () => {
     cy.wait(1000)
   });
 
-  it('Research publications from a user', () => {
+  it.only('Research publications from a user', () => {
     cy.connect('marine0023')
-    cy.get('#Discover').click()
+    cy.get('#NavDiscover').click()
+    cy.get('#searchInput').type('martin')
   });
 })
 describe('Delete my publication', () => {
