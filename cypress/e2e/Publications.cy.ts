@@ -65,6 +65,23 @@ describe('Post a publication', () => {
     cy.get('#RightCarousel').click()
   });
 })
+describe('Look at publications', () => {
+  it.only('Scroll through publications', () => {
+    cy.connect('marine0023')
+    cy.wait(5000)
+    cy.get('#NewsFeed').scrollTo(0,1000)
+    cy.get('#NewsFeed').scrollTo(1000,2000)
+    cy.get('#NewsFeed').scrollTo(2000,3000)
+    cy.get('#NewsFeed').scrollTo(4000,5000)
+    cy.get('#NewsFeed').scrollTo('bottom')
+    cy.wait(1000)
+  });
+
+  it('Research publications from a user', () => {
+    cy.connect('marine0023')
+    cy.get('#Discover').click()
+  });
+})
 describe('Delete my publication', () => {
   it('Delete a publication on my profile', () => {
     cy.connect("martin_p")
