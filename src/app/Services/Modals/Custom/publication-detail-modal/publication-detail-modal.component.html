@@ -1,23 +1,7 @@
 <div class="shadow-background user-select-none overflow-y-auto" [style.display]="isOpen ? 'block' : 'none'">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
-  <div class="modal-container" *ngIf="!isWaitingForApi">
-    <div id="pub_{{publication.id}}" class="h-100 d-flex flex-column justify-content-between position-relative" data-ride="carousel">
-      <div *ngIf="publication.elements.length > 0" class="flex-grow-1 flex-shrink-1 d-flex">
-        <div  *ngFor="let element of publication.elements; let i = index" class="carousel-item {{i == 0 ? 'active' : ''}}">
-          <img src="{{element.imageUrl}}" class="pubImage">
-        </div>
-      </div>
-      <div *ngIf="publication.elements.length > 1">
-        <a class="carousel-control-prev" (click)="prev(publication.id)" *ngIf="activeImageIndex != 0" role="button">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" (click)="next(publication.id)" *ngIf="activeImageIndex != publication.elements.length - 1" role="button">
-          <span class="carousel-control-next-icon"></span>
-        </a>
-      </div>
-    </div>
-
+  <div class="modal-container flex-row-reverse" *ngIf="!isWaitingForApi">
     <div class="d-flex flex-column justify-content-start infoDiv">
       <div class="w-100 p-2 pe-4 d-flex flex-row justify-content-between">
         <div class="d-flex flex-row justify-content-between gap-2 hover-pointer" (click)="navigateToUser(this.publication.idAuthor)">
@@ -52,7 +36,7 @@
                       <span class="txt-gold fs-6">{{comment.nameAuthor}}</span>
                     </div>
                     <button class="x-close-btn txt-gold fs-6" (click)="deleteComment(comment.id)"
-                    *ngIf="comment.idAuthor == connectedUserId">X</button>
+                    *ngIf="comment.idAuthor == connectedUserStatus.userId">X</button>
                   </div>
                   <div>
                     <span class="text-secondary fs-6">{{comment.content}}</span>
@@ -85,6 +69,25 @@
           </form>
         </div>
 
+      </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center">
+      <div class="custom-carousel" style="min-width: 300px; max-width: 500px; height: 600px">
+        <img [src]="this.publication.elements[activeImageIndex].imageUrl" *ngIf="publication.elements.length > 0" class="carousel-image">
+        <div class="delete-pub-btn d-flex justify-content-center align-items-center hover-darker"
+             (click)="deletePublication()" *ngIf="connectedUserStatus.userId == publication.idAuthor || connectedUserStatus.userRole > 1">
+          <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker"
+             (click)="prevImage()" *ngIf="activeImageIndex > 0">
+          <i class="fa-solid fa-chevron-left txt-turquoise"></i>
+        </div>
+        <div class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker"
+             (click)="nextImage()" *ngIf="activeImageIndex < this.publication.elements.length - 1">
+          <i class="fa-solid fa-chevron-right txt-turquoise"></i>
+        </div>
       </div>
     </div>
   </div>

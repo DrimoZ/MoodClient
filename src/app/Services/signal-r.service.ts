@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import * as signalR from "@microsoft/signalr";
 import {environment} from "../../environments/environment";
+import {DtoOutputMessage} from "../Dtos/Groups/DtoOutputMessage";
+import {DtoInputMessage} from "../Dtos/Groups/dto-input-message";
+import {EventBusService} from "./EventBus/event-bus.service";
+import {DtoInputGroup} from "../Dtos/Groups/dto-input-group";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +12,7 @@ import {environment} from "../../environments/environment";
 export class SignalRService {
 
   private hubConnection: signalR.HubConnection;
-  constructor() {
+  constructor(private eb : EventBusService) {
     this.buildConnection();
     this.registerOnServerEvents();
   }
@@ -24,8 +28,12 @@ export class SignalRService {
   }
 
   private registerOnServerEvents(): void {
-    this.hubConnection.on('ReceiveMessage', (user: string, message: string) => {
-      console.log(user + ': ' + message);
+    this.hubConnection.on('ReceiveMessage', (group: DtoInputGroup) => {
+      this.eb.emitEvent({
+          Type: "RecevievedMessage",
+          Payload: group
+      })
+      console.log("Message reçu")
     });
   }
 
@@ -35,10 +43,21 @@ export class SignalRService {
       .then(() => console.log('Connection started'))
       .catch(err => console.log('Error while starting connection: ' + err))
   }
-
-  public sendMessage = (user: string, message: string) => {
-    this.hubConnection.invoke('SendMessage', user, message)
+  public sendMessageToGroup = (msg: DtoOutputMessage, group : DtoInputGroup) => {
+    this.hubConnection.invoke('SendMessageToGroup', msg, group)
       .catch(err => console.error(err));
   }
+  public addToGroup = (groupName: string) => {
+      this.hubConnection.invoke('AddToGroup', groupName)
+          .catch(err => console.error(err));
+  }
+  public removeFromGroup = (groupName: string) => {
+      this.hubConnection.invoke('RemoveFromGroup', groupName)
+          .catch(err => console.error(err));
+  }
 
+  messageRemoveFromGroup(group: DtoInputGroup) {
+    this.hubConnection.invoke('RemoveMessageFromGroup', group)
+      .catch(err => console.error(err));
+  }
 }

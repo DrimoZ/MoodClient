@@ -10,15 +10,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainPageComponent } from './mood-container/main-page/main-page.component';
 import { NavbarComponent } from './mood-container/main-page/navbar/navbar.component';
 import { ContentComponent } from './mood-container/main-page/content/content.component';
+import { ConnectionRefusedComponent } from './mood-container/errors/connection-refused/connection-refused.component';
+import { ModalsContainerComponent } from './modals-container/modals-container.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterAuthGuard} from "./Guards/routerAuthGuard";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CredentialsInterceptor} from "./Guards/credentialsInterceptor";
-import { ConnectionRefusedComponent } from './mood-container/errors/connection-refused/connection-refused.component';
 import {MainAuthGuard} from "./Guards/mainAuthGuard";
 import {CommonModule, DatePipe} from "@angular/common";
-import {ModalBaseComponent} from "./Services/Modals/modal-base/modal-base.component";
-import { CreatePublicationComponent } from './Services/Modals/Custom/create-publication/create-publication.component';
+import {UtilsModule} from "./utils.module";
 
 @NgModule({
     declarations: [
@@ -30,8 +30,8 @@ import { CreatePublicationComponent } from './Services/Modals/Custom/create-publ
         ContentComponent,
         NavbarComponent,
         ConnectionRefusedComponent,
-        ModalBaseComponent,
-        CreatePublicationComponent,
+        ModalsContainerComponent,
+
     ],
     imports: [
         CommonModule,
@@ -39,7 +39,8 @@ import { CreatePublicationComponent } from './Services/Modals/Custom/create-publ
         AppRoutingModule,
         NgbModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        UtilsModule
     ],
     providers: [
         {
@@ -50,9 +51,6 @@ import { CreatePublicationComponent } from './Services/Modals/Custom/create-publ
         DatePipe,
         RouterAuthGuard,
         MainAuthGuard
-    ],
-    exports: [
-        CreatePublicationComponent,
     ],
     bootstrap: [AppComponent]
 })

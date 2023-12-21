@@ -1,10 +1,9 @@
-import {Component, LOCALE_ID, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {DtoInputUserPrivacy} from "../../../../Dtos/Users/Inputs/dto-input-user-privacy";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputUserSignup} from "../../../../Dtos/Users/Outputs/dto-output-user-update-password";
-import {Router} from "@angular/router";
-import {ModalService} from "../../../../Services/Modals/modal.service";
+import {ModalBusService, ModalEventName} from "../../../../Services/EventBus/modal-bus.service";
 
 @Component({
   selector: 'app-parameters',
@@ -29,7 +28,7 @@ export class ParametersComponent implements OnInit {
       Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+=\[{\]};:<>|.\/?,-]).+$/)]],
   })
 
-  constructor(private _userService: UserService, private _fb: FormBuilder, private _modalService: ModalService) {
+  constructor(private _userService: UserService, private _fb: FormBuilder, private _modalBus: ModalBusService) {
   }
 
   ngOnInit() {
@@ -149,6 +148,12 @@ export class ParametersComponent implements OnInit {
   }
 
   deleteAccount() {
-    this._modalService.open("modal-delete-account")
+    this._modalBus.emitEvent({
+      Type: ModalEventName.DeleteAccountModal,
+      Payload: {
+        ModalId: "accountDeletion",
+        AdditionalData: null
+      }
+    })
   }
 }

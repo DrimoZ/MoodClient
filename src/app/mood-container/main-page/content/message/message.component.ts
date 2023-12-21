@@ -8,12 +8,7 @@ import {ImageService} from "../../../../Services/ApiRequest/image.service";
 import {map} from "rxjs";
 import {DtoOutputMessage} from "../../../../Dtos/Groups/DtoOutputMessage";
 import {DatePipe} from "@angular/common";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {style} from "@angular/animations";
-import {DtoInputOtherUser} from "../../../../Dtos/Users/Inputs/dto-input-other-user";
-import {DtoOutputCreateGroup} from "../../../../Dtos/Groups/dto-output-create-group";
-import {DtoInputUserFromGroup} from "../../../../Dtos/Groups/dto-input-userfromGroup";
-import {SignalRService} from "../../../../Services/signal-r.service";
+import {FormBuilder, } from "@angular/forms";
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -22,22 +17,13 @@ import {SignalRService} from "../../../../Services/signal-r.service";
 export class MessageComponent {
   groupes: DtoInputGroup[] = [];
   messages: DtoInputMessage[] = [];
-  userFriends: DtoInputOtherUser[] = [];
-  friendToAdd: DtoInputOtherUser[] = [];
-  userFromGroup: DtoInputUserFromGroup[] = [];
-  showCount: number = 100;
   userId: string = "-1";
-  userGroupId:number = 0
-  groupIndex: number = -1;
   isWaitingForApi: boolean = true;
   isConnectedUser: boolean = false;
-  friendsForm: FormGroup;
   groupId:number  = -1;
-    constructor(private _signalR: SignalRService, private fb: FormBuilder,private _datePipe: DatePipe, private _userService: UserService,private _messageService:MessageService,private _imageService:ImageService, private _router: Router) {
-      this.friendsForm = this.fb.group({
-        name: ['',[Validators.required, Validators.minLength(3)]]
-      });
-    }
+  constructor( private _userService: UserService, private _messageService: MessageService,
+               private _imageService:ImageService, private _router: Router) {
+  }
 
   ngOnInit(): void {
     this._userService.getUserIdAndRole().subscribe({
@@ -63,27 +49,5 @@ export class MessageComponent {
         }
       }
     });
-    this._signalR.startConnection();
-  }
-
-  getImageUrl(id: number){
-    return this._imageService.getImageData(id).pipe(map(url => {
-      return url;
-    }));
-  }
-
-  loadMoreMessage() {
-    this.showCount += 20;
-    this._messageService.getMessageFromGroupe(this.groupId, this.showCount +1,).subscribe(
-      data => {
-        data.forEach(msg => {
-          this.getImageUrl( msg.imageId == null ? 0:msg.imageId).subscribe(img => {
-            msg.url = img;
-          })
-        });
-        this.messages = data;
-        this.messages.reverse();
-      }
-    )
   }
 }

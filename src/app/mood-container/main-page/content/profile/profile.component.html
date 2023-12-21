@@ -39,10 +39,9 @@
         </div>
 
         <div class="actionDiv actionDivLarge">
-          <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture(userId)" i18n id="ChangeProfilePicture">
+          <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture()" i18n id="ChangeProfilePicture">
             <i class="fa-solid fa-gear"></i> Change Profile Picture
           </button>
-          <modal-pp-picker id="modal-update-pp"></modal-pp-picker>
           <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>
             <i class="fa-solid fa-xmark"></i> Delete Friend
           </button>
@@ -62,7 +61,7 @@
       </div>
 
       <div class="actionDiv actionDivSmall">
-        <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-100" (click)="updateProfilePicture(userId)" i18n>
+        <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-100" (click)="updateProfilePicture()" i18n>
           <i class="fa-solid fa-gear"></i> Change Profile Picture
         </button>
         <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>

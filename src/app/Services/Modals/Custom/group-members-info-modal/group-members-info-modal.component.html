@@ -2,10 +2,10 @@
     <div class="overlay d-flex justify-content-center align-items-center">
         <div  class="popup-content d-flex gap-2 align-items-center flex-column">
           <input #div style="text-align: center;" class="d-flex" [disabled]="this.group.proprioId != this.userId || this.group.isPrivate" value="{{this.group.name}}"/>
-          <button *ngIf="this.group.proprioId == this.userId || this.group.isPrivate" (click)="modifyGroupsName(div.value)" class="button-2">Modify Name</button>
-          <div class="friendList d-flex flex-column">
-            <div class="d-flex flex-column  ">
-              <li class=" nav-item button-2 btnColor d-flex flex-column" style="width: 90%" *ngFor="let member of userFromGroup;">
+          <button *ngIf="this.group.proprioId == this.userId || this.group.isPrivate" (click)="modifyGroupsName(div.value)" class="button-2 button-0">Modify Name</button>
+          <div class="friendList d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center ">
+              <li class=" border-gold nav-item button-0 d-flex flex-column" style="width: 90%; background-color: transparent; color: #deb992" *ngFor="let member of userFromGroup;">
                 <div class="d-flex flex-row justify-content-between flex-grow-1 flex-shrink-0">
                   <div>
                     <img class="profile-picture d-flex" alt="" src="{{member.imageUrl}}" width="50" height="50" >
@@ -23,13 +23,12 @@
             </div>
           </div>
           <div class="w-100 d-flex flex-row justify-content-between flex-fill">
-            <button (click)="close()" class="button-2" style="width: 100px" >ok</button>
-            <button style="width: 100px" *ngIf="!this.group.isPrivate" (click)="addMember()" class="button-2" >Add Members</button>
-            <button style="width: 100px" *ngIf="!this.group.isPrivate" (click)="quitsGroup();" class="button-2" >Quit Group</button>
+            <button (click)="close()" class="button-1 button-0" style="width: 100px" >ok</button>
+            <button style="width: 100px" *ngIf="!this.group.isPrivate" (click)="addMember()" class="button-0 button-1" >Add Members</button>
+            <button style="width: 100px" *ngIf="!this.group.isPrivate" (click)="quitsGroup();" class="button-1 button-0" >Quit Group</button>
           </div>
         </div>
     </div>
 </div>
-<app-add-member-popup id="addMemberPopup"></app-add-member-popup>
 
 

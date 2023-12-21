@@ -50,11 +50,15 @@ export class MessageService {
       return this._httpClient.delete(MessageService._URL_API_GROUP + "/" + groupId + "/" + id)
     }
 
-  modifyGroup(group: DtoOutputPatchGroup) {
+    modifyGroup(group: DtoOutputPatchGroup) {
       return this._httpClient.patch(MessageService._URL_API_GROUP, group)
     }
 
     addMembers(friendToAdd: DtoOutputUserGroup[]) {
         return this._httpClient.post(MessageService._URL_API_GROUP + "/userGroup", friendToAdd)
     }
+
+  setMessageIsDeleted(msg: DtoInputMessage) {
+    return this._httpClient.patch(MessageService._URL_API_MESSAGE + "/delete", msg.id)
+  }
 }

@@ -1,33 +1,31 @@
 <!--Les groupes-->
-<div class="w-100 h-100 border-black d-flex " >
-  <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 100% ;height: 100%">
+<div class="w-100 h-100 border-black d-flex containers" >
+  <div class="d-flex flex-column flex-shrink-0 p-3  txt-gold containers" style="width: 100% ;height: 100%">
     <div class="d-flex align-items-center flex-column-reverse">
       <h5 style="">Conversation</h5>
     </div>
     <hr>
     <div class="d-flex justify-content-between align-items-center gap-1 flex-column">
-      <button class=" btn button-2 position-relative center" (click)="displayPopup();">Create a conversation</button>
+      <button class="button-2 button-0 " (click)="displayPopup();">Create a conversation</button>
     </div>
     <hr>
     <p>Private conversation</p>
-    <div class="d-flex flex-column justify-content-evenly groupList">
-      <div *ngFor="let grp of groups;let index = index;" (click)="getMessageFromGroup(grp.id, index); " class="hover-pointer w-100">
-        <div *ngIf="grp.isPrivate">
-          <a class="raised-button" (click)="groupClicked(grp)" aria-current="page" style="font-size: 13px">
+    <div class="d-flex flex-column justify-content-evenly align-items-center groupList">
+      <div *ngFor="let grp of groups;let index = index;" class="d-flex justify-content-center w-100">
+        <div *ngIf="grp.isPrivate" class="w-100 d-flex align-items-center">
+          <div class="button-1 button-0 w-100" (click)="groupClicked(grp); getMessageFromGroup(grp.id, index);" aria-current="page" style="font-size: 13px">
             {{grp.name}}
-          </a>
+          </div>
         </div>
       </div>
     </div>
     <hr>
     <p>Group conversation</p>
-    <div class="d-flex flex-column groupList">
-      <div>
-        <div *ngFor="let grp of groups;let index = index;" (click)="getMessageFromGroup(grp.id, index); " class="hover-pointer w-100">
-          <div *ngIf="!grp.isPrivate">
-            <a class="raised-button" (click)="groupClicked(grp)" aria-current="page" style="font-size: 13px">
-              {{grp.name}}
-            </a>
+    <div class="d-flex flex-column justify-content-evenly align-items-center groupList">
+      <div *ngFor="let grp of groups;let index = index;" (click)="getMessageFromGroup(grp.id, index); " class="d-flex justify-content-center w-100">
+        <div class="w-100 d-flex align-items-center" *ngIf="!grp.isPrivate">
+          <div class="button-1 button-0 w-100" (click)="groupClicked(grp)" aria-current="page" style="font-size: 13px">
+            {{grp.name}}
           </div>
         </div>
       </div>
@@ -35,5 +33,3 @@
     <hr>
   </div>
 </div>
-
-<app-popup id="popup"></app-popup>

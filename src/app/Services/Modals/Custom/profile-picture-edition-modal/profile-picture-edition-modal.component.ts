@@ -4,13 +4,13 @@ import {ModalService} from "../../modal.service";
 import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 
 @Component({
-  selector: 'modal-pp-picker',
-  templateUrl: 'profile-picture-modal.component.html',
-  styleUrls: ['profile-picture-modal.component.css'],
+  selector: 'profile-picture-edition-modal',
+  templateUrl: 'profile-picture-edition-modal.component.html',
+  styleUrls: ['profile-picture-edition-modal.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 
-export class ProfilePictureModalComponent extends ModalBaseComponent {
+export class ProfilePictureEditionModalComponent extends ModalBaseComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
   previewUrl: string | ArrayBuffer;
 

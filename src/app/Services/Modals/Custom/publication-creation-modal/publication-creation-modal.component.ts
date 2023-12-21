@@ -7,22 +7,24 @@ import {UserService} from "../../../ApiRequest/user.service";
 
 @Component({
   selector: 'create-publication-modal',
-  templateUrl: './create-publication.component.html',
-  styleUrls: ['./create-publication.component.css']
+  templateUrl: './publication-creation-modal.component.html',
+  styleUrls: ['./publication-creation-modal.component.css', '../../../../../assets/css/custom/customcarousel.css']
 })
-export class CreatePublicationComponent extends ModalBaseComponent {
+export class PublicationCreationModalComponent extends ModalBaseComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
   previewUrls: string[] = [];
   pictures: File[];
+  currentImageIndex = 0;
+  descValue = "";
 
-  constructor(modalService: ModalService, _el: ElementRef, private _publicationService: PublicationService, private _router: Router, private _userService: UserService) {
+  constructor(modalService: ModalService, _el: ElementRef, private _publicationService: PublicationService,
+              private _router: Router, private _userService: UserService) {
     super(modalService, _el);
   }
 
   override open() {
     this.pictures = [];
     this.previewUrls = [];
-
 
     super.open();
   }
@@ -44,26 +46,18 @@ export class CreatePublicationComponent extends ModalBaseComponent {
     event.target.click();
   }
 
-  prev(): void {
-    const carousel = document.querySelector(`#postCreationCarousel`)!;
-    const activeItem = carousel.querySelector('.carousel-item.active')!;
-    const prevItem = activeItem.previousElementSibling || carousel.querySelector('.carousel-item:last-child')!;
-    activeItem.classList.remove('active');
-    prevItem.classList.add('active');
+  nextImage() {
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.previewUrls.length;
   }
 
-  next(): void {
-    const carousel = document.querySelector(`#postCreationCarousel`)!;
-    const activeItem = carousel.querySelector('.carousel-item.active')!;
-    const nextItem = activeItem.nextElementSibling || carousel.querySelector('.carousel-item:first-child')!;
-    activeItem.classList.remove('active');
-    nextItem.classList.add('active');
+  prevImage() {
+    this.currentImageIndex = (this.currentImageIndex - 1 + this.previewUrls.length) % this.previewUrls.length;
   }
 
-  postPublication(text: HTMLInputElement) {
+  postPublication() {
     let formData = new FormData();
 
-    formData.append("description", text.value)
+    formData.append("description", this.descValue)
 
     this.pictures.forEach((pic,i) => {
       formData.append(`images`, pic);
@@ -72,7 +66,7 @@ export class CreatePublicationComponent extends ModalBaseComponent {
     this._publicationService.createPublication(formData).subscribe({
       next: (res) => {
         this._userService.getUserIdAndRole().subscribe(res => {
-          text.value = "";
+          this.descValue = "";
           super.close();
           this._router.navigate(['home/' + res.userId])
         })
@@ -80,13 +74,10 @@ export class CreatePublicationComponent extends ModalBaseComponent {
     });
   }
 
-  removeImage(index: number) {
-    this.prev()
-    this.previewUrls.splice(index, 1);
-    this.pictures.splice(index, 1);
-  }
+  removeCurrentImage() {
+    this.previewUrls.splice(this.currentImageIndex, 1);
+    this.pictures.splice(this.currentImageIndex, 1);
 
-  override ngOnDestroy() {
-    this.element.remove();
+    this.previewUrls.length == 0 ? this.currentImageIndex = 0 : this.prevImage();
   }
 }

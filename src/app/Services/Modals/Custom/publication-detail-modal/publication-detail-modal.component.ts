@@ -13,14 +13,14 @@ import {UserService} from "../../../ApiRequest/user.service";
   styleUrls: ['./publication-detail-modal.component.css']
 })
 export class PublicationDetailModalComponent extends ModalBaseComponent{
-  @Input() publicationId: string;
+  @Input() publicationId: number;
   @ViewChild('commentInput') commentInput: ElementRef;
   activeImageIndex = 0;
 
   isWaitingForApi = true;
   publication: DtoInputPublicationDetail;
 
-  connectedUserId: string;
+  connectedUserStatus: {userId: string, userRole: number};
 
   constructor(modalService: ModalService, _el: ElementRef, private _publicationService: PublicationService,
               private _imageService: ImageService, private _router: Router, private _userService: UserService) {
@@ -31,7 +31,7 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
     this.isWaitingForApi = true;
 
     this._userService.getUserIdAndRole().subscribe(val => {
-      this.connectedUserId = val.userId;
+      this.connectedUserStatus = val;
     })
 
     this._publicationService.getDetailedPublication(this.publicationId).subscribe({
@@ -113,25 +113,12 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
     this.commentInput.nativeElement.focus();
   }
 
-  prev(id: number): void {
-    const carousel = document.querySelector(`#pub_${id}`)!;
-    const activeItem = carousel.querySelector('.carousel-item.active')!;
-    const prevItem = activeItem.previousElementSibling || carousel.querySelector('.carousel-item:last-child')!;
-    activeItem.classList.remove('active');
-    prevItem.classList.add('active');
-
-    this.activeImageIndex--;
+  nextImage() {
+    this.activeImageIndex = (this.activeImageIndex + 1) % this.publication.elements.length;
   }
 
-  next(id: number): void {
-    const carousel = document.querySelector(`#pub_${id}`)!;
-    const activeItem = carousel.querySelector('.carousel-item.active')!;
-    const nextItem = activeItem.nextElementSibling || carousel.querySelector('.carousel-item:first-child')!;
-    activeItem.classList.remove('active');
-    nextItem.classList.add('active');
-
-    this.activeImageIndex++;
-
+  prevImage() {
+    this.activeImageIndex = (this.activeImageIndex - 1 + this.publication.elements.length) % this.publication.elements.length;
   }
 
   deleteComment(id: number) {
@@ -141,4 +128,11 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
       this.publication.commentCount--;
     })
   }
+
+    deletePublication() {
+      this._publicationService.deletePublication(this.publication.id).subscribe(ev => {
+        this.close();
+        this._router.navigate([this._router.url])
+      })
+    }
 }

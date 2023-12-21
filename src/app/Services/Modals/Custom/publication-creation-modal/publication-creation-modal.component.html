@@ -1,0 +1,48 @@
+<div class="shadow-background user-select-none" [style.display]="isOpen ? 'block' : 'none'">
+  <div class="modal-container">
+    <div class="px-2 modal-header">
+      <h5 class="modal-title txt-gold fs-4" i18n>Create a new Publication</h5>
+      <button class="x-close-btn txt-gold" (click)="close()">X</button>
+    </div>
+    <div class="px-2 mt-5 d-flex flex-column flex-grow-1 flex-shrink-1 gap-3">
+      <div class="d-flex flex-column gap-4">
+        <div class="d-flex flex-column gap-1 justify-content-center">
+          <span class="txt-gold fs-5 text-center" i18n>Images Preview</span>
+          <div class="custom-carousel">
+            <img [src]="this.previewUrls[currentImageIndex]" *ngIf="previewUrls.length > 0" class="carousel-image">
+
+            <div class="carousel-delete-button d-flex justify-content-center align-items-center hover-pointer text-warning" (click)="removeCurrentImage()" *ngIf="previewUrls.length > 0">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+
+            <div class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker" (click)="prevImage()" *ngIf="currentImageIndex > 0">
+              <i class="fa-solid fa-chevron-left txt-turquoise"></i>
+            </div>
+            <div class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker" (click)="nextImage()" *ngIf="currentImageIndex < this.previewUrls.length - 1">
+              <i class="fa-solid fa-chevron-right txt-turquoise"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column">
+          <span class="txt-gold fs-5 text-center" i18n>Select Image(s)</span>
+          <input class="form-control txt-gold" type="file" #fileInput (change)="onFileSelected($event)" accept="image/*"
+                 *ngIf="previewUrls.length < 4">
+          <span class="text-secondary fs-6 text-center" *ngIf="previewUrls.length >= 4" i18n>Maximum 4 Images per post are allowed</span>
+        </div>
+
+        <div class="d-flex flex-column">
+          <span class="txt-gold fs-5 text-center" i18n>Write a Description</span>
+          <input type="text" [(ngModel)]="descValue" class="form-control" i18n i18n-placeholder placeholder="*Required">
+        </div>
+      </div>
+
+      <div class="py-3">
+        <div class="gap-2 d-flex flex-row justify-content-end">
+          <button type="button" class="btn btn-outline-secondary" (click)="close(); descValue = '';" i18n>Cancel</button>
+          <button type="button" class="btn btn-outline-success" *ngIf="previewUrls.length > 0 && descValue != ''" (click)="postPublication()" i18n>Publish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

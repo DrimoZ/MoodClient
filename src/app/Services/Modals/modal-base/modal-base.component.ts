@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {ModalService} from "../modal.service";
 
 @Component({
@@ -15,10 +15,7 @@ export class ModalBaseComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.id)
     this.modalService.add(this);
-
-    document.body.appendChild(this.element);
 
     this.element.addEventListener('click', (el: any) => {
       if (el.target.className === 'modal') {
@@ -34,13 +31,11 @@ export class ModalBaseComponent implements OnInit, OnDestroy {
 
   open() {
     this.element.style.display = 'block';
-    document.body.classList.add('modal-open');
     this.isOpen = true;
   }
 
   close() {
     this.element.style.display = 'none';
-    document.body.classList.remove('modal-open');
     this.isOpen = false;
   }
 }

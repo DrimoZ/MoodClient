@@ -1,0 +1,20 @@
+<account-deletion-modal [id]="modalId"
+                   *ngIf="modalType == ModalEventName.DeleteAccountModal"></account-deletion-modal>
+
+<publication-detail-modal [id]="modalId" [publicationId]="parseInt(modalAdditionalData)"
+                          *ngIf="modalType == ModalEventName.PublicationDetailModal"></publication-detail-modal>
+
+<group-members-info-modal [id]="modalId" [groupId]="parseInt(modalAdditionalData)"
+                          *ngIf="modalType == ModalEventName.GroupMembersInfoModal"></group-members-info-modal>
+
+<group-creation-modal [id]="modalId"
+                      *ngIf="modalType == ModalEventName.GroupCreationModal"></group-creation-modal>
+
+<profile-picture-edition-modal [id]="modalId"
+                               *ngIf="modalType == ModalEventName.ProfilePictureEditionModal"></profile-picture-edition-modal>
+
+<create-publication-modal [id]="modalId"
+                          *ngIf="modalType == ModalEventName.PublicationCreationModal"></create-publication-modal>
+
+<group-member-addition-modal [id]="modalId" [groupId]="parseInt(modalAdditionalData)"
+                             *ngIf="modalType == ModalEventName.GroupMemberAdditionModal"></group-member-addition-modal>

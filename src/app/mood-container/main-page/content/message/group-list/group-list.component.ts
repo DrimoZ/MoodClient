@@ -7,6 +7,8 @@ import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {ModalService} from "../../../../../Services/Modals/modal.service";
 import {EventBusService} from "../../../../../Services/EventBus/event-bus.service";
 import {timeout} from "rxjs";
+import {SignalRService} from "../../../../../Services/signal-r.service";
+import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/modal-bus.service";
 
 @Component({
   selector: 'app-group-list',
@@ -17,7 +19,9 @@ export class GroupListComponent {
   groups: DtoInputGroup[] = [];
   userId: string = "-1";
 
-  constructor(private _userService: UserService,private _messageService:MessageService, private modalService: ModalService, private eb:EventBusService) {
+  constructor(private _userService: UserService,private _messageService:MessageService,
+              private modalService: ModalService, private eb:EventBusService,
+              private _modalBus: ModalBusService, private _signalR :SignalRService) {
   }
   ngOnInit(): void {
     this._userService.getUserIdAndRole().subscribe({
@@ -40,6 +44,7 @@ export class GroupListComponent {
         }
       }
     });
+    this._signalR.startConnection();
     this.eb.onEvent().subscribe(event =>{
       if(event.Type ==="MessageGroupModified"){
         this._messageService.getUsersGroups().subscribe({
@@ -56,10 +61,16 @@ export class GroupListComponent {
   }
 
   displayPopup() {
-    this.modalService.open("popup")
+    this._modalBus.emitEvent({
+      Type: ModalEventName.GroupCreationModal,
+      Payload: {
+        ModalId: "groupCreation",
+        AdditionalData: null
+      }
+    })
   }
 
-    groupClicked(grp: DtoInputGroup) {
+  groupClicked(grp: DtoInputGroup) {
     this.eb.emitEvent({
       Type:'GroupClicked',
         Payload: grp
