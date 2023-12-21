@@ -18,7 +18,7 @@ describe('Account management', () => {
     cy.Password("strong#1")
   })
 
-  it('Successful account creation', () => {
+  it.only('Successful account creation', () => {
     cy.fixture('infos').then((infos) => {
       cy.visit(infos.website)
     })
@@ -53,7 +53,7 @@ describe('Account management', () => {
   })
 
   it('Edit my personnal informations', () => {
-    cy.connect('marine0023')
+    cy.connect('Martin le AP')
 
     cy.get('#Profile').click()
 
@@ -73,6 +73,8 @@ describe('Account management', () => {
     cy.get('#InputDescription').type('BAC+5 Ninja')
 
     cy.contains('Validate Changes').click()
+
+    cy.contains('Account').click()
 
     cy.contains('Edit Account').click()
 

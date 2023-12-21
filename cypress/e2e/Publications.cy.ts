@@ -77,10 +77,10 @@ describe('Look at publications', () => {
     cy.wait(1000)
   });
 
-  it.only('Research publications from a user', () => {
+  it('Look at publication in Discover research', () => {
     cy.connect('marine0023')
     cy.get('#NavDiscover').click()
-    cy.get('#searchInput').type('martin')
+    cy.get('#searchInput').type('m')
   });
 })
 describe('Delete my publication', () => {
@@ -125,7 +125,7 @@ describe('Likes and Comments', () => {
     cy.connect('martin_p')
     cy.get('#NavNewsFeed').click()
 
-    cy.get('#BtnComment').click()
+    cy.contains("Comment ( 1 )").click()
     cy.contains('X').first().click()
   });
 })
