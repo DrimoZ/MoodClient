@@ -33,7 +33,24 @@ export class SignalRService {
           Type: "RecevievedMessage",
           Payload: group
       })
-      console.log("Message reçu")
+    });
+    this.hubConnection.on('DeletedMessage', (group: DtoInputGroup) => {
+      this.eb.emitEvent({
+        Type: "DeletedMessage",
+        Payload: group
+      })
+    });
+    this.hubConnection.on('UserHasJoin', (group: DtoInputGroup) => {
+        this.eb.emitEvent({
+            Type: "UserHasJoin",
+            Payload: group
+        });
+    });
+    this.hubConnection.on('UserHasLeft', (group: DtoInputGroup) => {
+        this.eb.emitEvent({
+            Type: "UserHasLeft",
+            Payload: group
+        })
     });
   }
 
@@ -47,15 +64,23 @@ export class SignalRService {
     this.hubConnection.invoke('SendMessageToGroup', msg, group)
       .catch(err => console.error(err));
   }
-  public addToGroup = (groupName: string) => {
-      this.hubConnection.invoke('AddToGroup', groupName)
+  public addToNotifGroup = (groupName: string) => {
+      this.hubConnection.invoke('AddToNotifGroup', groupName)
           .catch(err => console.error(err));
   }
-  public removeFromGroup = (groupName: string) => {
-      this.hubConnection.invoke('RemoveFromGroup', groupName)
+  public removeFromNotifGroup = (groupName: string) => {
+      this.hubConnection.invoke('RemoveFromNotifGroup', groupName)
           .catch(err => console.error(err));
   }
 
+  public addToGroup = (group: DtoInputGroup) => {
+      this.hubConnection.invoke('AddToGroup', group)
+      .catch(err => console.error(err));
+  }
+  public removeFromGroup = (group: DtoInputGroup) => {
+    this.hubConnection.invoke('RemoveFromGroup',  group)
+      .catch(err => console.error(err));
+  }
   messageRemoveFromGroup(group: DtoInputGroup) {
     this.hubConnection.invoke('RemoveMessageFromGroup', group)
       .catch(err => console.error(err));

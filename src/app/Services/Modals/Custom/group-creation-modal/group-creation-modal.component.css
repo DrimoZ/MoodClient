@@ -12,3 +12,14 @@
   background-size: cover;
   background-position: center center;
 }
+.btnColorToggled{
+  background-color: rgb(37, 150, 190);
+}
+
+.btnColor{
+  background-color: rgba(51, 51, 51, 0.05);;
+}
+.btnColor:hover{
+  color: #deb992;
+  background-color: rgb(37, 150, 190);
+}

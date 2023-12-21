@@ -9,6 +9,7 @@ import {EventBusService} from "../../../../../Services/EventBus/event-bus.servic
 import {timeout} from "rxjs";
 import {SignalRService} from "../../../../../Services/signal-r.service";
 import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/modal-bus.service";
+import {group} from "@angular/animations";
 
 @Component({
   selector: 'app-group-list',
@@ -24,12 +25,14 @@ export class GroupListComponent {
               private _modalBus: ModalBusService, private _signalR :SignalRService) {
   }
   ngOnInit(): void {
+    this._signalR.startConnection();
     this._userService.getUserIdAndRole().subscribe({
       next: usr=> {
         this.userId = usr.userId;
         this._messageService.getUsersGroups().subscribe({
           next: grp => {
             this.groups = grp;
+            this.groups.forEach(grp => this._signalR.addToNotifGroup(grp.id.toString()))
           },
           error: (err) => {
             console.log(err);
@@ -44,7 +47,7 @@ export class GroupListComponent {
         }
       }
     });
-    this._signalR.startConnection();
+
     this.eb.onEvent().subscribe(event =>{
       if(event.Type ==="MessageGroupModified"){
         this._messageService.getUsersGroups().subscribe({
@@ -54,10 +57,6 @@ export class GroupListComponent {
         })
       }
     })
-  }
-
-  getMessageFromGroup(id: number, index: number) {
-
   }
 
   displayPopup() {

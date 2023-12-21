@@ -5,8 +5,8 @@
   </div>
   <div #scroll class="chat-container flex-shrink-0 flex-grow-1 border-gold " [scrollTop]="scroll.scrollHeight">
     <div *ngIf="messages.length >= showCount" class="w-100">
-      <button class="btn showMoreBtn w-100" (click)="loadMoreMessage()" i18n>
-        <span (click)="loadMoreMessage()" class="">Show More</span>
+      <button class="btn showMoreBtn w-100" (click)="loadMoreMessage(30)" i18n>
+        <span class="">Show More</span>
         <i class="fa-solid fa-chevron-up"></i>
       </button>
     </div>
