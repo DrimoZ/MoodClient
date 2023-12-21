@@ -126,6 +126,7 @@ describe('Likes and Comments', () => {
 
     cy.get('#BtnComment').click()
     cy.get('#AddComment').type('Waw, Les poissons, ils ont tellement de charisme{enter}')
+    cy.wait(1000)
   });
 
   it('Delete my comment', () => {

@@ -50,4 +50,15 @@ describe('Friends management', () => {
       cy.get('Button').click();
     });
   });
+});
+
+describe('Chat with friends', () => {
+  it('Create a group', () => {
+    cy.get('#NavMessages').click()
+
+  });
+
+  it('Send a Real Time message', () => {
+
+  });
 })
