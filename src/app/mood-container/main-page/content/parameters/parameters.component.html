@@ -167,7 +167,7 @@
             <span class="form-label" i18n>Make the account public globally</span>
             <label class="switch">
               <input type="checkbox" id="IsPublic" [(ngModel)]="settings.isPublic" (change)="setAccountPrivacy()">
-              <span class="slider round"></span>
+              <span class="slider round" id="AccountPrivacySlider"></span>
             </label>
           </div>
           <div>
@@ -196,7 +196,7 @@
               <label class="switch">
                 <input type="checkbox" id="IsPublicationPublic" [(ngModel)]="settings.isPublicationPublic" (change)="setPublicationsPrivacy()"
                        [disabled]="!settings.isPublic">
-                <span class="slider round"></span>
+                <span class="slider round" id="PublicationPrivacySlider"></span>
               </label>
             </div>
             <div>

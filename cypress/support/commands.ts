@@ -51,10 +51,10 @@ declare namespace Cypress {
 
 Cypress.Commands.add(`connect`, (login, password = "Strong#1") => {
   cy.fixture('infos').then((infos) => {
-    cy.visit("http://localhost:4200/")
-    cy.get('#Login').type(login)
-    cy.get('#Password').type(password +'{enter}')
+    cy.visit(infos.website)
   });
+  cy.get('#Login').type(login)
+  cy.get('#Password').type(password +'{enter}')
 });
 
 Cypress.Commands.add(`disconnect`, () => {
