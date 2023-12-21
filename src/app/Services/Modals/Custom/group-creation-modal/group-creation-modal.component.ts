@@ -12,7 +12,7 @@ import {EventBusService} from "../../../EventBus/event-bus.service";
 @Component({
   selector: 'group-creation-modal',
   templateUrl: './group-creation-modal.component.html',
-  styleUrls: ['./group-creation-modal.component.css', '../../../../mood-container/main-page/content/message/message.component.css']
+  styleUrls: ['./group-creation-modal.component.css']
 })
 export class GroupCreationModalComponent extends ModalBaseComponent{
   userFriends: DtoInputOtherUser[] = [];

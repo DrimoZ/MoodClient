@@ -10,6 +10,7 @@ import {ModalBaseComponent} from "../../modal-base/modal-base.component";
 import {DtoInputGroup} from "../../../../Dtos/Groups/dto-input-group";
 import {map} from "rxjs";
 import {DtoOutputUserGroup} from "../../../../Dtos/Groups/dto-output-userGroup";
+import {ModalBusService, ModalEventName} from "../../../EventBus/modal-bus.service";
 
 @Component({
   selector: 'group-member-addition-modal',
@@ -32,7 +33,7 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
   };
 
   constructor( modalService: ModalService, _el: ElementRef,private fb: FormBuilder,
-               private _userService:UserService, private _imageService: ImageService, private _messageService: MessageService, private eb:EventBusService) {
+               private _userService:UserService, private _imageService: ImageService, private _messageService: MessageService, private _eb:EventBusService, private _modalBus: ModalBusService) {
     super(modalService, _el)
     this.friendsForm = this.fb.group({
       name: [{value:'', disabled:this.friendToAdd.length < 2},[ Validators.minLength(3)]]
@@ -97,7 +98,7 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
     console.log(usergroups);
     this._messageService.addMembers(usergroups).subscribe({
       next: grp => {
-        this.eb.emitEvent({
+        this._eb.emitEvent({
           Type:"GroupClicked",
           Payload:this.group
         })
@@ -112,5 +113,13 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
     return this._imageService.getImageData(id).pipe(map(url => {
       return url;
     }));
+  }
+
+  override close() {
+    super.close();
+    this._modalBus.emitEvent({
+      Type:ModalEventName.GroupMembersInfoModal,
+      Payload: {ModalId:"GroupInfo", AdditionalData:this.groupId}
+    })
   }
 }

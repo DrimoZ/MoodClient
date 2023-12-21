@@ -15,7 +15,7 @@ import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css', '../message.component.css', ]
+  styleUrls: ['./chat.component.css', '../message.component.css', '../group-list/group-list.component.css' ]
 })
 export class ChatComponent {
   messages: DtoInputMessage[] = [];
