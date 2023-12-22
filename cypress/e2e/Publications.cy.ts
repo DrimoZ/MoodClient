@@ -7,6 +7,7 @@ describe('Post a publication', () => {
     cy.get("input[type=file]").selectFile("cypress\\downloads\\codingCat.gif")
     cy.get("#PublicationText").type("Sacré plaque !")
     cy.contains("Publish").click()
+    cy.wait(500)
   })
 
   it('Trying to post without image', () => {

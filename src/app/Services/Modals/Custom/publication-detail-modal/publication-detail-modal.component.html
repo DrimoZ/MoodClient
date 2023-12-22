@@ -44,7 +44,7 @@
                     </div>
                   </div>
                   <div>
-                    <span class="text-secondary fs-6">{{comment.content}}</span>
+                    <span class="text-secondary fs-6">{{comment.commentContent}}</span>
                   </div>
                 </div>
                 <div style="border-top: 1px solid floralwhite; margin-right: 10px;"></div>
@@ -80,7 +80,7 @@
     <div class="d-flex flex-column justify-content-center">
       <div class="custom-carousel" style="min-width: 300px; max-width: 500px; height: 600px">
         <img [src]="this.publication.elements[activeImageIndex].imageUrl" *ngIf="publication.elements.length > 0" class="carousel-image">
-        <div class="delete-pub-btn d-flex justify-content-center align-items-center hover-darker"
+        <div id="DeleteThisPub" class="delete-pub-btn d-flex justify-content-center align-items-center hover-darker"
              (click)="deletePublication()" *ngIf="connectedUserStatus.userId == publication.authorId || (connectedUserStatus.userRole > 1 && connectedUserStatus.userRole > publication.authorRole)">
           <i class="fa-solid fa-trash-can"></i>
         </div>

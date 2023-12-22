@@ -36,8 +36,7 @@ describe('Friends management', () => {
   });
 
   it('Delete friends', () => {
-    cy.get('#Login').type('marine0023')
-    cy.get('#Password').type('Strong#1{enter}')
+    cy.connect('marine0023')
 
     cy.get('#NavDiscover').click()
     cy.contains('Profiles').click()
@@ -54,8 +53,8 @@ describe('Friends management', () => {
 
 describe('Chat with friends', () => {
   it('Create a group', () => {
+    cy.connect('marine0023')
     cy.get('#NavMessages').click()
-
   });
 
   it('Send a Real Time message', () => {

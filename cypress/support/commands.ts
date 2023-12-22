@@ -58,14 +58,14 @@ Cypress.Commands.add(`connect`, (login, password = "Strong#1") => {
 });
 
 Cypress.Commands.add(`disconnect`, () => {
-  cy.get('#Parameters').click()
+  cy.get('#Settings').click()
   cy.contains('Disconnect').click()
   cy.wait(1000)
 });
 
 Cypress.Commands.add(`parameters`, () => {
-  cy.get('#Parameters').click()
-  cy.get('#GoToParameters').click()
+  cy.get('#Settings').click()
+  cy.get('#GoToSettings').click()
 });
 
 Cypress.Commands.add(`Password`, (password) => {

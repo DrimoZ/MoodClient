@@ -58,8 +58,7 @@ describe('Privacy settings', () => {
   it("Change Martin's account privacy", () => {
     cy.connect('martin_p')
 
-    cy.get('#Parameters').click()
-    cy.get('#GoToParameters').click()
+    cy.parameters()
 
     cy.contains('Account Privacy').click()
     cy.get('#AccountPrivacySlider').click()
@@ -75,8 +74,7 @@ describe('Privacy settings', () => {
   it('Setting back Account privacy', () => {
     cy.connect('martin_p')
 
-    cy.get('#Parameters').click()
-    cy.get('#GoToParameters').click()
+    cy.parameters()
 
     cy.contains('Account Privacy').click()
     cy.get('#AccountPrivacySlider').click()
@@ -97,8 +95,7 @@ describe('Privacy settings', () => {
   it("Change Martin's friends privacy", () => {
     cy.connect('martin_p')
 
-    cy.get('#Parameters').click()
-    cy.get('#GoToParameters').click()
+    cy.parameters()
 
     cy.contains('Account Privacy').click()
     cy.get('#FriendPrivacySlider').click()
@@ -114,8 +111,7 @@ describe('Privacy settings', () => {
   it('Setting back friends privacy', () => {
     cy.connect('martin_p')
 
-    cy.get('#Parameters').click()
-    cy.get('#GoToParameters').click()
+    cy.parameters()
 
     cy.contains('Account Privacy').click()
     cy.get('#FriendPrivacySlider').click()
@@ -136,8 +132,7 @@ describe('Privacy settings', () => {
   it("Change Martin's account publication", () => {
     cy.connect('martin_p')
 
-    cy.get('#Parameters').click()
-    cy.get('#GoToParameters').click()
+    cy.parameters()
 
     cy.contains('Account Privacy').click()
     cy.get('#PublicationPrivacySlider').click()
@@ -153,8 +148,7 @@ describe('Privacy settings', () => {
   it('Setting back publication privacy', () => {
     cy.connect('martin_p')
 
-    cy.get('#Parameters').click()
-    cy.get('#GoToParameters').click()
+    cy.parameters()
 
     cy.contains('Account Privacy').click()
     cy.get('#PublicationPrivacySlider').click()

@@ -18,7 +18,7 @@ describe('Account management', () => {
     cy.Password("strong#1")
   })
 
-  it.only('Successful account creation', () => {
+  it('Successful account creation', () => {
     cy.fixture('infos').then((infos) => {
       cy.visit(infos.website)
     })
