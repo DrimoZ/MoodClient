@@ -74,10 +74,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  emitPendingFriend(friendId: string) {
-    this._router.navigate(['home/notifications'])
-  }
-
   emitCancelFriend(friendId: string) {
     this._friendService.rejectFriendRequest(friendId).subscribe({
       next: (res) => {

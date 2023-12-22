@@ -73,7 +73,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log("destroyyy")
     this.activeRouteSub && this.activeRouteSub.unsubscribe();
     this.eventSub && this.eventSub.unsubscribe();
   }
