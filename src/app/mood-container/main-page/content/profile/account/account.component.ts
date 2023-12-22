@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DtoInputUserAccount} from "../../../../../Dtos/Users/Inputs/dto-input-user-account";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-account',
@@ -14,42 +15,35 @@ export class AccountComponent implements OnInit {
   isPublicDataEditing: boolean = false;
   hasEncounteredAnError: boolean = false;
 
-  accountData: DtoInputUserAccount = {
-    birthDate: "", description: "", login: "", mail: "", name: "", phoneNumber: "", title: ""
-  };
+  accountData: DtoInputUserAccount;
 
   commonInfoForm: FormGroup = this._fb.group({
     Mail: [{value: "", disabled: true}, [Validators.required, Validators.email]],
     Name: [{value: "", disabled: true}, [Validators.required, Validators.maxLength(128)]],
     Title: [{value: "", disabled: true}, [Validators.maxLength(32)]],
     Description: [{value: "", disabled: true}, [Validators.maxLength(256)]],
-    BirthDate: [{value: "", disabled: true}, [Validators.required]],
+    BirthDate: [{disabled: true, value: Date.now()}, [Validators.required]],
   })
 
   errorValue: string;
 
-
-
-  constructor(private _dataService: UserService, private _fb: FormBuilder) {
-
-  }
+  constructor(private _dataService: UserService, private _fb: FormBuilder,private _datePipe: DatePipe) {}
 
   ngOnInit(): void {
-    this._dataService.getUserIdAndRole().subscribe({
+    this._dataService.getConnectedUserStatus().subscribe({
       next: (usr) => {
         this.userId = usr.userId;
 
         this._dataService.getUserAccount(this.userId).subscribe({
           next: (user) => {
             this.accountData = user;
-            this.accountData.birthDate = this.accountData.birthDate.split("T")[0]
             this.isWaitingForApi = false;
 
-            this.controlDescription.setValue(this.accountData.description)
-            this.controlMail.setValue(this.accountData.mail)
-            this.controlTitle.setValue(this.accountData.title)
-            this.controlName.setValue(this.accountData.name)
-            this.controlBirthDate.setValue(this.accountData.birthDate)
+            this.controlDescription.setValue(this.accountData.accountDescription)
+            this.controlMail.setValue(this.accountData.userMail)
+            this.controlTitle.setValue(this.accountData.userTitle)
+            this.controlName.setValue(this.accountData.userName)
+            this.controlBirthDate.setValue(this._datePipe.transform(this.accountData.accountBirthDate, "yyyy-MM-dd"))
           },
           error: (err) => {
             console.log(err);
@@ -76,33 +70,33 @@ export class AccountComponent implements OnInit {
     this.isPublicDataEditing = false;
 
     this.controlMail.disable();
-    this.controlMail.setValue(this.accountData.mail);
+    this.controlMail.setValue(this.accountData.userMail);
 
     this.controlName.disable();
-    this.controlName.setValue(this.accountData.name);
+    this.controlName.setValue(this.accountData.userName);
 
     this.controlDescription.disable();
-    this.controlDescription.setValue(this.accountData.description);
+    this.controlDescription.setValue(this.accountData.accountDescription);
 
     this.controlBirthDate.disable();
-    this.controlBirthDate.setValue(this.accountData.birthDate);
+    this.controlBirthDate.setValue(this._datePipe.transform(this.accountData.accountBirthDate, "yyyy-MM-dd"));
 
     this.controlTitle.disable();
-    this.controlTitle.setValue(this.accountData.title);
+    this.controlTitle.setValue(this.accountData.userTitle);
   }
 
   editCommonEdit() {
     this.isPublicDataEditing = true;
 
-    this.controlMail.setValue(this.accountData.mail);
+    this.controlMail.setValue(this.accountData.userMail);
     this.controlMail.enable();
-    this.controlName.setValue(this.accountData.name);
+    this.controlName.setValue(this.accountData.userName);
     this.controlName.enable();
-    this.controlDescription.setValue(this.accountData.description);
+    this.controlDescription.setValue(this.accountData.accountDescription);
     this.controlDescription.enable();
-    this.controlBirthDate.setValue(this.accountData.birthDate);
+    this.controlBirthDate.setValue(this._datePipe.transform(this.accountData.accountBirthDate, "yyyy-MM-dd"));
     this.controlBirthDate.enable();
-    this.controlTitle.setValue(this.accountData.title);
+    this.controlTitle.setValue(this.accountData.userTitle);
     this.controlTitle.enable();
   }
 
@@ -118,12 +112,12 @@ export class AccountComponent implements OnInit {
 
     this._dataService.updateUserAccount(
       {
-        Birthdate: this.controlBirthDate.value,
-        Description: this.controlDescription.value,
-        Id: this.userId,
-        Mail: this.controlMail.value,
-        Name: this.controlName.value,
-        Title: this.controlTitle.value
+        accountBirthdate: new Date(this.controlBirthDate.value),
+        accountDescription: this.controlDescription.value,
+        userId: this.userId,
+        userMail: this.controlMail.value,
+        userName: this.controlName.value,
+        userTitle: this.controlTitle.value
       }
     ).subscribe({
       next: (res) => {
@@ -148,11 +142,11 @@ export class AccountComponent implements OnInit {
           }, 30000)
         }
 
-        this.controlMail.setValue(this.accountData.mail);
-        this.controlName.setValue(this.accountData.name);
-        this.controlDescription.setValue(this.accountData.description);
-        this.controlBirthDate.setValue(this.accountData.birthDate);
-        this.controlTitle.setValue(this.accountData.title);
+        this.controlMail.setValue(this.accountData.userMail);
+        this.controlName.setValue(this.accountData.userName);
+        this.controlDescription.setValue(this.accountData.accountDescription);
+        this.controlBirthDate.setValue(this._datePipe.transform(this.accountData.accountBirthDate, "yyyy-MM-dd"));
+        this.controlTitle.setValue(this.accountData.userTitle);
         this.isWaitingForApi = false;
       }
     })

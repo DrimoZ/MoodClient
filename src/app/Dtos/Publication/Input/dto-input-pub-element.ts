@@ -1,7 +1,7 @@
 import {SafeUrl} from "@angular/platform-browser";
 
 export interface DtoInputPubElement {
-  idImage: number;
+  imageId: number;
   imageUrl: SafeUrl;
-  id: number;
+  elementId: number;
 }

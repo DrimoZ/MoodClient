@@ -1,4 +1,4 @@
-import {DtoInputOtherUser} from "../Users/Inputs/dto-input-other-user";
+import {DtoInputOtherUser} from "./dto-input-other-user";
 
 export interface DtoInputUserFriends {
   isConnectedUser: boolean;

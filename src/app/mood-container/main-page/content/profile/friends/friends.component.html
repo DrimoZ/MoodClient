@@ -22,18 +22,18 @@
 
       <div class="profilesGrid">
         <div class="profileDiv" *ngFor="let user of filterFriends(this.userProfileFriends.friends, searchBarValue)">
-          <div class="profilePictureDiv profileLarge" (click)="viewFriendProfile(user.id)">
+          <div class="profilePictureDiv profileLarge" (click)="viewFriendProfile(user.userId)">
             <img src="{{user.imageUrl}}" class=" hover-pointer">
           </div>
 
           <div class="profileDataDiv">
-            <div class="profilePictureDiv profileSmall" (click)="viewFriendProfile(user.id)">
+            <div class="profilePictureDiv profileSmall" (click)="viewFriendProfile(user.userId)">
               <img src="{{user.imageUrl}}" class=" hover-pointer">
             </div>
 
             <div class="profileDataDiv2">
-              <div class="profileNameDiv hover-pointer"  (click)="viewFriendProfile(user.id)">
-                <span>{{user.name}}</span>
+              <div class="profileNameDiv hover-pointer"  (click)="viewFriendProfile(user.userId)">
+                <span>{{user.userName}}</span>
               </div>
 
               <div class="profileOtherDiv">
@@ -42,16 +42,16 @@
                 </div>
 
                 <div class="profileAddDiv profileLarge" *ngIf="user.commonFriendCount != -1">
-                  <button *ngIf="user.isFriendWithConnected == 2" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(user.id)" i18n>
+                  <button *ngIf="user.isFriendWithConnected == 2" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(user.userId)" i18n>
                     <i class="fa-solid fa-xmark"></i>
                   </button>
-                  <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.id)" i18n>
+                  <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.userId)" i18n>
                     <i class="fa-solid fa-plus"></i>
                   </button>
-                  <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.id)" i18n>
+                  <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.userId)" i18n>
                     <i class="fa-solid fa-clock"></i>
                   </button>
-                  <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.id)" i18n>
+                  <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.userId)" i18n>
                     <i class="fa-solid fa-slash"></i>
                   </button>
                 </div>
@@ -60,16 +60,16 @@
           </div>
 
           <div class="profileAddDiv profileSmall" *ngIf="user.commonFriendCount != -1">
-            <button *ngIf="user.isFriendWithConnected == 2" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(user.id)" i18n>
+            <button *ngIf="user.isFriendWithConnected == 2" class="btn btn-outline-danger w-100" (click)="emitRemoveFriend(user.userId)" i18n>
               <i class="fa-solid fa-xmark"></i> Delete Friend
             </button>
-            <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.id)" i18n>
+            <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.userId)" i18n>
               <i class="fa-solid fa-plus"></i> Add Friend
             </button>
-            <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.id)" i18n>
+            <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.userId)" i18n>
               <i class="fa-solid fa-clock"></i> Pending Request
             </button>
-            <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.id)" i18n>
+            <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.userId)" i18n>
               <i class="fa-solid fa-slash"></i> Cancel Request
             </button>
           </div>

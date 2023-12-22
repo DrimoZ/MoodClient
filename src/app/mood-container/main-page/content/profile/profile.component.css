@@ -64,7 +64,8 @@
 .nameDiv {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 10px;
 }
 
 .dataDiv {
@@ -140,6 +141,15 @@
 
 }
 
-@media (min-width:1700px) {
+.delete-user-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 
+  width: 30px;
+  height: 30px;
+
+  border-radius: 30px;
+
+  color: crimson;
 }

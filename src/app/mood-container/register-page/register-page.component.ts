@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EventBusService} from "../../Services/EventBus/event-bus.service";
+import {AuthenticationService} from "../../Services/ApiRequest/authentication.service";
+import {Router} from "@angular/router";
+import {DtoOutputUserUpdatePassword} from "../../Dtos/Users/Outputs/dto-output-user-update-password";
+import {DtoOutputUserSignUp} from "../../Dtos/Users/Outputs/dto-output-user-sign-up";
 
 @Component({
   selector: 'app-register-page',
@@ -8,7 +12,7 @@ import {EventBusService} from "../../Services/EventBus/event-bus.service";
   styleUrls: ['./register-page.component.css']
 })
 
-export class RegisterPageComponent implements OnInit {
+export class RegisterPageComponent {
   showError: boolean = false;
 
   registerForm: FormGroup = this._fb.group({
@@ -25,28 +29,7 @@ export class RegisterPageComponent implements OnInit {
   errorValue: string;
 
 
-  constructor(private _fb: FormBuilder, private _eventBus: EventBusService) {
-  }
-
-  ngOnInit(): void {
-    this._eventBus.onEvent().subscribe(event => {
-      if (event.Type === "UserFailedSignUp") {
-        this.controlPassword.setValue("");
-        this.controlPasswordConfirmation.setValue("");
-
-        if (event.Payload.status === 500) {
-          this.errorValue = event.Payload.error.split("System.ArgumentException: ")[1].split("at Appl")[0];
-        }
-        else {
-          let error: any = Object.values(event.Payload.error.errors)[0];
-          this.errorValue = error[0];
-        }
-
-
-
-        this.showError = true;
-      }
-    });
+  constructor(private _fb: FormBuilder, private _authService: AuthenticationService, private _router: Router) {
   }
 
   get controlName(): AbstractControl {
@@ -71,16 +54,33 @@ export class RegisterPageComponent implements OnInit {
   submitForm() {
     this.showError = false;
 
-    this._eventBus.emitEvent({
-      Type: 'UserSignUp',
-      Payload: {
-        Name: this.controlName.value,
-        Login: this.controlLogin.value,
-        Mail: this.controlMail.value,
-        Birthdate: this.controlBirthdate.value,
-        Password: this.controlPassword.value
+    let dto: DtoOutputUserSignUp = {
+      UserName: this.controlName.value,
+      UserLogin: this.controlLogin.value,
+      UserMail: this.controlMail.value,
+      AccountBirthdate: this.controlBirthdate.value,
+      UserPassword: this.controlPassword.value
+    };
+
+    this._authService.signUpUser(dto).subscribe({
+      next: () => {
+        this._router.navigate(['home/newsfeed'])
+      },
+      error: (err) => {
+        this.controlPassword.setValue("");
+        this.controlPasswordConfirmation.setValue("");
+
+        if (err.status === 500) {
+          this.errorValue = err.error.split("System.ArgumentException: ")[1].split("at Appl")[0];
+        }
+        else {
+          let error: any = Object.values(err.error.errors)[0];
+          this.errorValue = error[0];
+        }
+
+        this.showError = true;
       }
-    })
+    });
   }
 
   checkPassword(password: string, type: number): boolean

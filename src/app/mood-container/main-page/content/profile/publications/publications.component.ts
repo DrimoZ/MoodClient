@@ -1,16 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DtoInputPublication} from "../../../../../Dtos/Publication/Input/dto-input-publication";
 import {BehaviorEventBusService} from "../../../../../Services/EventBus/behavior-event-bus.service";
 import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
 import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/modal-bus.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-publications',
   templateUrl: './publications.component.html',
   styleUrls: ['./publications.component.css']
 })
-export class PublicationsComponent implements OnInit{
+export class PublicationsComponent implements OnInit, OnDestroy {
+  sub: Subscription;
+
   publications: DtoInputPublication[] = [];
   userId: string = "-1"
   isWaitingForApi: boolean = true;
@@ -22,8 +25,12 @@ export class PublicationsComponent implements OnInit{
               private _modalBus: ModalBusService) {
   }
 
+  ngOnDestroy() {
+    this.sub && this.sub.unsubscribe();
+  }
+
   ngOnInit(): void {
-    this._behaviorEventBus.onEvent().subscribe(event => {
+    this.sub = this._behaviorEventBus.onEvent().subscribe(event => {
       if (event.Type === "UserId") {
         this.userId = event.Payload
 
@@ -36,7 +43,7 @@ export class PublicationsComponent implements OnInit{
             if (this.publications != null) {
               this.publications.forEach(pub => {
                 pub.elements.forEach(e => {
-                  this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe(url => {
+                  this._imageService.getImageData(e.imageId == null ? -1 : e.imageId).subscribe(url => {
                     e.imageUrl = url;
                   })
                 })

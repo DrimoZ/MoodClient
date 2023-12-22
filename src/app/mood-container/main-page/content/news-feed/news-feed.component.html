@@ -10,26 +10,26 @@
     <div *ngFor="let pub of publications" class="publication-container">
       <div class="w-100 d-flex flex-row justify-content-start">
         <div class="position-relative d-flex justify-content-center" style="width: 70px; height: 70px; padding: 5px;">
-          <div class="img-circle hover-pointer" (click)="navigateToUser(pub.idAuthor)">
-            <img src="{{pub.urlImage}}" class="img-profileImage">
+          <div class="img-circle hover-pointer" (click)="navigateToUser(pub.authorId)">
+            <img src="{{pub.imageUrl}}" class="img-profileImage">
           </div>
         </div>
 
         <div class="d-flex flex-row justify-content-between gap-2 p-3 flex-shrink-1 flex-grow-1">
-          <span class="txt-gold ps-3 pt-1 fs-5 hover-pointer" (click)="navigateToUser(pub.idAuthor)">{{pub.nameAuthor}}</span>
-          <span class="text-secondary fst-italic ps-3 pt-1 fs-6" i18n>{{calculatedDate(pub.date)}} ago</span>
+          <span class="txt-gold ps-3 pt-1 fs-5 hover-pointer" (click)="navigateToUser(pub.authorId)">{{pub.authorName}}</span>
+          <span class="text-secondary fst-italic ps-3 pt-1 fs-6" i18n>{{calculatedDate(pub.publicationDate)}} ago</span>
         </div>
       </div>
 
       <div style="border-top: 1px solid #deb992;"></div>
 
       <div class="custom-carousel" style="height: 600px;">
-        <img [src]="this.publications[this.getPubIndex(pub.id)].elements[this.currentElementIndex[this.getPubIndex(pub.id)]].imageUrl" *ngIf="this.publications[this.getPubIndex(pub.id)].elements.length > 0" class="carousel-image">
+        <img [src]="this.publications[this.getPubIndex(pub.publicationId)].elements[this.currentElementIndex[this.getPubIndex(pub.publicationId)]].imageUrl" *ngIf="this.publications[this.getPubIndex(pub.publicationId)].elements.length > 0" class="carousel-image">
 
-        <div class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker" (click)="prevImage(pub.id)" *ngIf="this.currentElementIndex[this.getPubIndex(pub.id)] > 0">
+        <div class="carousel-arrow carousel-arrow-left d-flex justify-content-center align-items-center hover-darker" (click)="prevImage(pub.publicationId)" *ngIf="this.currentElementIndex[this.getPubIndex(pub.publicationId)] > 0">
           <i class="fa-solid fa-chevron-left txt-turquoise"></i>
         </div>
-        <div class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker" (click)="nextImage(pub.id)" *ngIf="this.currentElementIndex[this.getPubIndex(pub.id)] < this.publications[this.getPubIndex(pub.id)].elements.length - 1">
+        <div class="carousel-arrow carousel-arrow-right d-flex justify-content-center align-items-center hover-darker" (click)="nextImage(pub.publicationId)" *ngIf="this.currentElementIndex[this.getPubIndex(pub.publicationId)] < this.publications[this.getPubIndex(pub.publicationId)].elements.length - 1">
           <i class="fa-solid fa-chevron-right txt-turquoise"></i>
         </div>
       </div>
@@ -38,7 +38,7 @@
 
       <div class="">
         <div class="py-2 px-4 d-flex flex-shrink-1 flex-grow-1 align-items-center justify-content-center">
-          <span class="txt-turquoise fs-6 align-content-center">{{pub.content}}</span>
+          <span class="txt-turquoise fs-6 align-content-center">{{pub.publicationContent}}</span>
         </div>
       </div>
 
@@ -46,12 +46,12 @@
 
       <div class="">
         <div class="py-2 px-4 d-flex flex-row gap-2">
-          <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="toggleLiked(pub.id)" i18n>
+          <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="toggleLiked(pub.publicationId)" i18n>
             <i class="fa-solid fa-heart" id="BtnLike"
-               [ngClass]="{'text-danger': this.publications[getPubIndex(pub.id)].hasConnectedLiked}"></i> Like{{this.publications[getPubIndex(pub.id)].hasConnectedLiked?"d":""}} ( {{this.publications[getPubIndex(pub.id)].likeCount}} )
+               [ngClass]="{'text-danger': this.publications[getPubIndex(pub.publicationId)].hasConnectedLiked}"></i> Like{{this.publications[getPubIndex(pub.publicationId)].hasConnectedLiked?"d":""}} ( {{this.publications[getPubIndex(pub.publicationId)].likeCount}} )
           </div>
           <div class="py-1 col text-center txt-gold rounded hover-darker" (click)="sep.classList.toggle('d-none'); coms.classList.toggle('d-none')" i18n>
-            <i class="fa-solid fa-comments" id="BtnComment"></i> Comment ( {{this.publications[getPubIndex(pub.id)].commentCount}} )
+            <i class="fa-solid fa-comments" id="BtnComment"></i> Comment ( {{this.publications[getPubIndex(pub.publicationId)].commentCount}} )
           </div>
         </div>
       </div>
@@ -62,20 +62,21 @@
         <div class="py-3 ps-2 pe-5 d-flex flex-column w-100 gap-3 overflow-y-auto" style="max-height: 30vh;">
           <div *ngFor="let comment of pub.comments" class="w-100 gap-2 d-flex flex-column">
             <div class="d-flex flex-row justify-content-between">
-              <div class="img-circle hover-pointer" (click)="navigateToUser(comment.idAuthor)">
+              <div class="img-circle hover-pointer" (click)="navigateToUser(comment.authorId)">
                 <img src="{{comment.imageUrl}}" class="img-profileImage">
               </div>
               <div class="w-100 d-flex flex-column gap-3">
                 <div class="ps-3 gap-1 d-flex flex-column justify-content-start w-100">
                   <div class="d-flex flex-row justify-content-between w-100">
-                    <div class="hover-pointer" (click)="navigateToUser(comment.idAuthor)">
-                      <span class="txt-gold fs-6">{{comment.nameAuthor}}</span>
+                    <div class="hover-pointer d-flex flex-row gap-2" (click)="navigateToUser(comment.authorId)">
+                      <span class="txt-gold fs-6">{{comment.authorName}}</span>
+                      <span class="text-secondary fs-7" i18n>{{calculatedDate(comment.commentDate)}} ago</span>
                     </div>
-                    <button class="x-close-btn txt-gold fs-6" (click)="deleteComment(pub.id, comment.id)"
-                            *ngIf="comment.idAuthor == connectedUserId">X</button>
+                    <button class="x-close-btn txt-gold fs-6" (click)="deleteComment(pub.publicationId, comment.commentId)"
+                            *ngIf="comment.authorId == connectedUserId">X</button>
                   </div>
                   <div>
-                    <span class="text-secondary fs-6">{{comment.content}}</span>
+                    <span class="text-secondary fs-6">{{comment.commentContent}}</span>
                   </div>
                 </div>
                 <div style="border-top: 1px solid floralwhite; margin-right: 10px;"></div>
@@ -86,7 +87,7 @@
 
         <div  style="border-top: 1px solid #deb992;"></div>
 
-        <form class="py-3 px-4 d-flex flex-row gap-2" (submit)="sendComment(pub.id, input)">
+        <form class="py-3 px-4 d-flex flex-row gap-2" (submit)="sendComment(pub.publicationId, input)">
           <input type="text" #input class="form-control-sm w-100" i18n i18n-placeholder placeholder="Add a comment" id="AddComment">
           <button type="submit" class="btn btn-sm btn-outline-success" i18n>Send</button>
         </form>

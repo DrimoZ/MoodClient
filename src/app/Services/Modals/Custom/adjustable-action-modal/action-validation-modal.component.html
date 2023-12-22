@@ -1,0 +1,22 @@
+<div class="shadow-background user-select-none" [style.display]="isOpen ? 'block' : 'none'">
+  <div class="modal-container">
+    <div class="d-flex flex-column gap-3 py-5 px-4">
+      <div class="p-2 px-3 d-flex flex-column">
+        <div>
+          <span class="txt-gold fs-5" i18n>Are you sure you want to proceed the following action ?</span>
+        </div>
+        <div class="">
+          <span class="text-warning fs-6 text-center" i18n>{{textValue}}</span>
+        </div>
+      </div>
+      <div class="p-2 px-3">
+        <div class="gap-2 d-flex flex-row justify-content-end">
+          <button type="button" class="btn btn-outline-danger" (click)="validate(true)" i18n>Proceed</button>
+          <button type="button" class="btn btn-outline-success" (click)="validate(false)" i18n>Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,5 +1,5 @@
 <account-deletion-modal [id]="modalId"
-                   *ngIf="modalType == ModalEventName.DeleteAccountModal"></account-deletion-modal>
+                   *ngIf="modalType == ModalEventName.AccountDeletionModal"></account-deletion-modal>
 
 <publication-detail-modal [id]="modalId" [publicationId]="parseInt(modalAdditionalData)"
                           *ngIf="modalType == ModalEventName.PublicationDetailModal"></publication-detail-modal>
@@ -18,3 +18,6 @@
 
 <group-member-addition-modal [id]="modalId" [groupId]="parseInt(modalAdditionalData)"
                              *ngIf="modalType == ModalEventName.GroupMemberAdditionModal"></group-member-addition-modal>
+
+<action-validation-modal [id]="modalId" [textValue]="modalAdditionalData"
+                         *ngIf="modalType == ModalEventName.ActionValidationModal"></action-validation-modal>

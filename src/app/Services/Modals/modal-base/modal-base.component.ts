@@ -37,5 +37,7 @@ export class ModalBaseComponent implements OnInit, OnDestroy {
   close() {
     this.element.style.display = 'none';
     this.isOpen = false;
+
+    this.modalService.remove(this);
   }
 }

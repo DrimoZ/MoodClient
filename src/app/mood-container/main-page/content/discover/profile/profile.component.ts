@@ -12,10 +12,10 @@ import {Subscription} from "rxjs";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css', '../discover.component.css']
 })
-export class ProfileComponent implements OnInit, OnDestroy{
+export class ProfileComponent implements OnInit, OnDestroy {
   searchBarValue: string = "";
   otherUsers: DtoInputOtherUser[] = [];
-  showCount: number = 10;
+  showCount: number = 0;
   isWaitingForApi: boolean = true;
 
   searchSubscription: Subscription | null = null;
@@ -24,11 +24,11 @@ export class ProfileComponent implements OnInit, OnDestroy{
               private _router: Router, private _friendService: FriendService, private _imageService: ImageService) {
   }
 
-  filterUsers(discoverUsers: DtoInputOtherUser[], searchTerm: string): any[] {
+  filterUsers(discoverUsers: DtoInputOtherUser[], searchTerm: string): DtoInputOtherUser[] {
     if (discoverUsers == undefined) return [];
 
     return discoverUsers.filter(user =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase()) || user.login.toLowerCase().includes(searchTerm.toLowerCase())
+      user.userName.toLowerCase().includes(searchTerm.toLowerCase()) || user.userLogin.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
@@ -37,19 +37,7 @@ export class ProfileComponent implements OnInit, OnDestroy{
       if (event.Type === 'DiscoverSearch') {
         this.searchBarValue = event.Payload;
 
-        this.isWaitingForApi = true;
-
-        this._dataService.getDiscoverUsers(this.showCount, this.searchBarValue).subscribe(
-          data => {
-            this.otherUsers = data;
-
-            this.otherUsers.forEach(user => {
-              this._imageService.getImageData(user.idImage == null ? 0 : user.idImage).subscribe(url => {user.imageUrl = url;})
-            })
-
-            this.isWaitingForApi = false;
-          }
-        )
+        this.loadModeUsers();
       }
     })
   }
@@ -65,7 +53,7 @@ export class ProfileComponent implements OnInit, OnDestroy{
   emitAddFriend(friendId: string) {
     this._friendService.createFriendRequest(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.otherUsers.findIndex(f => f.id == friendId);
+        let friendIndex = this.otherUsers.findIndex(f => f.userId == friendId);
         this.otherUsers[friendIndex].isFriendWithConnected = 0;
       },
       error: (err) => {
@@ -77,7 +65,7 @@ export class ProfileComponent implements OnInit, OnDestroy{
   emitRemoveFriend(friendId: string) {
     this._friendService.deleteFriend(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.otherUsers.findIndex(f => f.id == friendId);
+        let friendIndex = this.otherUsers.findIndex(f => f.userId == friendId);
         this.otherUsers[friendIndex].isFriendWithConnected = -1;
       },
       error: (err) => {
@@ -93,7 +81,7 @@ export class ProfileComponent implements OnInit, OnDestroy{
   emitCancelFriend(friendId: string) {
     this._friendService.rejectFriendRequest(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.otherUsers.findIndex(f => f.id == friendId);
+        let friendIndex = this.otherUsers.findIndex(f => f.userId == friendId);
         this.otherUsers[friendIndex].isFriendWithConnected = -1;
       },
       error: (err) => {
@@ -110,6 +98,11 @@ export class ProfileComponent implements OnInit, OnDestroy{
       data => {
         this.otherUsers = data;
 
+        this.otherUsers.forEach(user => {
+          this._imageService.getImageData(user.imageId == null ? 0 : user.imageId).subscribe(url => {user.imageUrl = url;})
+        })
+
+        console.log(this.otherUsers)
         this.isWaitingForApi = false;
       }
     )

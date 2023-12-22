@@ -32,6 +32,11 @@ export class PublicationCreationModalComponent extends ModalBaseComponent {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
+      if (file.type !== 'image/jpeg' && file.type !== 'image/jpg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+        event.target.value = '';
+        return;
+      }
+
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
@@ -43,7 +48,6 @@ export class PublicationCreationModalComponent extends ModalBaseComponent {
     }
 
     event.target.value = '';
-    event.target.click();
   }
 
   nextImage() {
@@ -59,13 +63,13 @@ export class PublicationCreationModalComponent extends ModalBaseComponent {
 
     formData.append("description", this.descValue)
 
-    this.pictures.forEach((pic,i) => {
+    this.pictures.forEach(pic => {
       formData.append(`images`, pic);
     })
 
     this._publicationService.createPublication(formData).subscribe({
       next: (res) => {
-        this._userService.getUserIdAndRole().subscribe(res => {
+        this._userService.getConnectedUserStatus().subscribe(res => {
           this.descValue = "";
           super.close();
           this._router.navigate(['home/' + res.userId])

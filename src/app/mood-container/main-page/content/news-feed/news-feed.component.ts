@@ -24,7 +24,7 @@ export class NewsFeedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._userService.getUserIdAndRole().subscribe(val => {
+    this._userService.getConnectedUserStatus().subscribe(val => {
       this.connectedUserId = val.userId;
     })
 
@@ -90,19 +90,19 @@ export class NewsFeedComponent implements OnInit {
 
     this.publications[index].hasConnectedLiked = !this.publications[index].hasConnectedLiked;
 
-    this._publicationService.likePublication(this.publications[index].id, this.publications[index].hasConnectedLiked).subscribe(res => {
+    this._publicationService.likePublication(this.publications[index].publicationId, this.publications[index].hasConnectedLiked).subscribe(res => {
       if (this.publications[index].hasConnectedLiked) this.publications[index].likeCount++;
       else this.publications[index].likeCount--;
     });
   }
 
   getPubIndex(id: number) {
-    return this.publications.findIndex(p => p.id == id);
+    return this.publications.findIndex(p => p.publicationId == id);
   }
 
   deleteComment(pubId: number, comId: number) {
     this._publicationService.deleteCommentInPublication(comId).subscribe(res => {
-      let index = this.publications[this.getPubIndex(pubId)].comments.findIndex(c => c.id == comId);
+      let index = this.publications[this.getPubIndex(pubId)].comments.findIndex(c => c.commentId == comId);
       this.publications[this.getPubIndex(pubId)].comments.splice(index, 1);
       this.publications[this.getPubIndex(pubId)].commentCount--;
     })
@@ -118,7 +118,7 @@ export class NewsFeedComponent implements OnInit {
           this.publications[this.getPubIndex(pubId)].comments = comments;
 
           this.publications[this.getPubIndex(pubId)].comments.forEach(c => {
-            this._imageService.getImageData(c.idAuthorImage == null  ? 0 : c.idAuthorImage).subscribe({
+            this._imageService.getImageData(c.authorImageId == null  ? 0 : c.authorImageId).subscribe({
               next: (val) => {
                 c.imageUrl = val;
               }
@@ -140,14 +140,14 @@ export class NewsFeedComponent implements OnInit {
         this.currentElementIndex = this.currentElementIndex.concat(new Array(this.publications.length - this.currentElementIndex.length).fill(0));
 
         this.publications.forEach(p => {
-          this._imageService.getImageData(p.idAuthorImage == null  ? 0 : p.idAuthorImage).subscribe({
+          this._imageService.getImageData(p.authorImageId == null  ? 0 : p.authorImageId).subscribe({
             next: (val) => {
-              p.urlImage = val;
+              p.imageUrl = val;
             }
           })
 
           p.elements.forEach(e => {
-            this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe({
+            this._imageService.getImageData(e.imageId == null ? -1 : e.imageId).subscribe({
               next: (val) => {
                 e.imageUrl = val;
               }
@@ -155,7 +155,7 @@ export class NewsFeedComponent implements OnInit {
           })
 
           p.comments.forEach(c => {
-            this._imageService.getImageData(c.idAuthorImage == null ? 0 : c.idAuthorImage).subscribe({
+            this._imageService.getImageData(c.authorImageId == null ? 0 : c.authorImageId).subscribe({
               next: (val) => {
                 c.imageUrl = val;
               }

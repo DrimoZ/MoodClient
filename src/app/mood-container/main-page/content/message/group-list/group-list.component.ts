@@ -26,7 +26,7 @@ export class GroupListComponent {
   }
   ngOnInit(): void {
     this._signalR.startConnection();
-    this._userService.getUserIdAndRole().subscribe({
+    this._userService.getConnectedUserStatus().subscribe({
       next: usr=> {
         this.userId = usr.userId;
         this._messageService.getUsersGroups().subscribe({

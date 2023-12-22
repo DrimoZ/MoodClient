@@ -12,14 +12,14 @@ export class ImageService {
   constructor(private _httpClient: HttpClient) { }
   getImageData(id :number):Observable<string>
   {
-    if(id == -1) return of("./assets/no_publication_picture.png");
+    if(id == -1) return of("./assets/no_publication_picture.jpg");
     if(id == 0) return of("./assets/no_profile_picture.png");
 
      return this._httpClient.get<DtoInputImage>(ImageService._URL_API + "/" + id)
        .pipe(
          map(img =>
            {
-             return this.getImageURL(img.data);
+             return this.getImageURL(img.imageData);
            }
          ));
   }

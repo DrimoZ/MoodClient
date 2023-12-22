@@ -15,7 +15,7 @@ import {UserService} from "../../../ApiRequest/user.service";
 export class PublicationDetailModalComponent extends ModalBaseComponent{
   @Input() publicationId: number;
   @ViewChild('commentInput') commentInput: ElementRef;
-  activeImageIndex = 0;
+  activeImageIndex: number;
 
   isWaitingForApi = true;
   publication: DtoInputPublicationDetail;
@@ -28,9 +28,10 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
   }
 
   override open() {
+    this.activeImageIndex = 0
     this.isWaitingForApi = true;
 
-    this._userService.getUserIdAndRole().subscribe(val => {
+    this._userService.getConnectedUserStatus().subscribe(val => {
       this.connectedUserStatus = val;
     })
 
@@ -39,7 +40,7 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
         this.publication = val;
 
         this.publication.elements.forEach(e => {
-          this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe({
+          this._imageService.getImageData(e.imageId == null ? -1 : e.imageId).subscribe({
             next: (val) => {
               e.imageUrl = val;
             }
@@ -47,16 +48,16 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
         })
 
         this.publication.comments.forEach(c => {
-          this._imageService.getImageData(c.idAuthorImage == null  ? 0 : c.idAuthorImage).subscribe({
+          this._imageService.getImageData(c.authorImageId == null  ? 0 : c.authorImageId).subscribe({
             next: (val) => {
               c.imageUrl = val;
             }
           })
         })
 
-        this._imageService.getImageData(this.publication.idAuthorImage == null ? 0: this.publication.idAuthorImage).subscribe({
+        this._imageService.getImageData(this.publication.authorImageId == null ? 0: this.publication.authorImageId).subscribe({
           next: (val) => {
-            this.publication.urlImage = val;
+            this.publication.imageUrl = val;
             this.isWaitingForApi = false;
           }
         })
@@ -88,7 +89,7 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
           this.publication.comments = comments;
 
           this.publication.comments.forEach(c => {
-            this._imageService.getImageData(c.idAuthorImage == null  ? 0 : c.idAuthorImage).subscribe({
+            this._imageService.getImageData(c.authorImageId == null  ? 0 : c.authorImageId).subscribe({
               next: (val) => {
                 c.imageUrl = val;
               }
@@ -123,16 +124,40 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
 
   deleteComment(id: number) {
     this._publicationService.deleteCommentInPublication(id).subscribe(res => {
-      let index = this.publication.comments.findIndex(c => c.id == id);
+      let index = this.publication.comments.findIndex(c => c.commentId == id);
       this.publication.comments.splice(index, 1);
       this.publication.commentCount--;
     })
   }
 
-    deletePublication() {
-      this._publicationService.deletePublication(this.publication.id).subscribe(ev => {
-        this.close();
-        this._router.navigate([this._router.url])
-      })
+  deletePublication() {
+    this._publicationService.deletePublication(this.publication.publicationId).subscribe(ev => {
+      this.close();
+      this._router.navigate([this._router.url])
+    })
+  }
+
+  calculatedDate(givenDate: Date): string {
+    const currentDate = new Date();
+    givenDate = new Date(givenDate);
+    let differenceInMs = currentDate.getTime() - givenDate.getTime();
+
+    let seconds = Math.floor(differenceInMs / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+    let years = Math.floor(days / 365);
+
+    if (years > 0) {
+      return `${years} year${years>1?"s":""}`;
+    } else if (days > 0) {
+      return `${days} day${days>1?"s":""}`;
+    } else if (hours > 0) {
+      return `${hours} hour${hours>1?"s":""}`;
+    } else if (minutes > 0) {
+      return `${minutes} minute${minutes>1?"s":""}`;
+    } else {
+      return `${seconds} second${seconds>1?"s":""}`;
     }
+  }
 }

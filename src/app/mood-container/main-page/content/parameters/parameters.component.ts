@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../../Services/ApiRequest/user.service";
 import {DtoInputUserPrivacy} from "../../../../Dtos/Users/Inputs/dto-input-user-privacy";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DtoOutputUserSignup} from "../../../../Dtos/Users/Outputs/dto-output-user-update-password";
+import {DtoOutputUserUpdatePassword} from "../../../../Dtos/Users/Outputs/dto-output-user-update-password";
 import {ModalBusService, ModalEventName} from "../../../../Services/EventBus/modal-bus.service";
 
 @Component({
@@ -122,7 +122,7 @@ export class ParametersComponent implements OnInit {
   commitPasswordReset() {
     if(this.controlNewPassword.value != this.controlPasswordConfirmation.value) return;
 
-    let dto: DtoOutputUserSignup = {
+    let dto: DtoOutputUserUpdatePassword = {
       newPassword: this.controlNewPassword.value,
       oldPassword: this.controlOldPassword.value
     };
@@ -149,7 +149,7 @@ export class ParametersComponent implements OnInit {
 
   deleteAccount() {
     this._modalBus.emitEvent({
-      Type: ModalEventName.DeleteAccountModal,
+      Type: ModalEventName.AccountDeletionModal,
       Payload: {
         ModalId: "accountDeletion",
         AdditionalData: null

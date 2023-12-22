@@ -4,7 +4,7 @@ import {UserService} from "../../../../../Services/ApiRequest/user.service";
 import {FriendService} from "../../../../../Services/ApiRequest/friend.service";
 import {DtoInputOtherUser} from "../../../../../Dtos/Users/Inputs/dto-input-other-user";
 import {ImageService} from "../../../../../Services/ApiRequest/image.service";
-import {DtoInputUserFriends} from "../../../../../Dtos/Other/dto-input-user-friends";
+import {DtoInputUserFriends} from "../../../../../Dtos/Users/Inputs/dto-input-user-friends";
 
 @Component({
   selector: 'app-friends',
@@ -31,7 +31,7 @@ export class FriendsComponent implements OnInit {
 
         if (this.userProfileFriends.friends  != null) {
           this.userProfileFriends.friends.forEach(friend => {
-            this._imageService.getImageData(friend.idImage == null ? -1 : friend.idImage).subscribe(url => {
+            this._imageService.getImageData(friend.imageId == null ? 0 : friend.imageId).subscribe(url => {
               friend.imageUrl = url;
             })
           })
@@ -49,11 +49,11 @@ export class FriendsComponent implements OnInit {
     })
   }
 
-  filterFriends(friends: DtoInputOtherUser[], searchTerm: string): any[] {
+  filterFriends(friends: DtoInputOtherUser[], searchTerm: string): DtoInputOtherUser[] {
     if (friends == undefined) return [];
 
     return friends.filter(friend =>
-      friend.name.toLowerCase().includes(searchTerm.toLowerCase()) || friend.login.toLowerCase().includes(searchTerm.toLowerCase())
+      friend.userName.toLowerCase().includes(searchTerm.toLowerCase()) || friend.userLogin.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
@@ -64,7 +64,7 @@ export class FriendsComponent implements OnInit {
   emitAddFriend(friendId: string) {
     this._friendService.createFriendRequest(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.id == friendId);
+        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.userId == friendId);
         this.userProfileFriends.friends[friendIndex].isFriendWithConnected = 0;
       },
       error: (err) => {
@@ -76,7 +76,7 @@ export class FriendsComponent implements OnInit {
   emitRemoveFriend(friendId: string) {
     this._friendService.deleteFriend(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.id == friendId);
+        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.userId == friendId);
         this.userProfileFriends.friends[friendIndex].isFriendWithConnected = -1;
         this.userProfileFriends.friends.splice(friendIndex, 1)
       },
@@ -93,7 +93,7 @@ export class FriendsComponent implements OnInit {
   emitCancelFriend(friendId: string) {
     this._friendService.rejectFriendRequest(friendId).subscribe({
       next: (res) => {
-        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.id == friendId);
+        let friendIndex = this.userProfileFriends.friends.findIndex(f => f.userId == friendId);
         this.userProfileFriends.friends[friendIndex].isFriendWithConnected = -1;
       },
       error: (err) => {

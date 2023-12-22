@@ -3,17 +3,18 @@ import {DtoInputPubComment} from "./dto-input-pub-comment";
 import {SafeUrl} from "@angular/platform-browser";
 
 export interface DtoInputPublicationDetail {
-  content: string;
+  publicationContent: string;
   commentCount: number;
   comments: DtoInputPubComment[];
-  date: Date;
+  publicationDate: Date;
   elements: DtoInputPubElement[];
   hasConnectedLiked: boolean;
-  id: number;
-  idAuthor: string;
-  idAuthorImage: number;
+  publicationId: number;
+  authorId: string;
+  authorImageId: number;
   isFromConnected: boolean;
   likeCount: number;
-  nameAuthor: string;
-  urlImage: SafeUrl;
+  authorName: string;
+  imageUrl: SafeUrl;
+  authorRole: number;
 }

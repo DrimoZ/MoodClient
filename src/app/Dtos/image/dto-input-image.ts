@@ -1,3 +1,3 @@
 export interface DtoInputImage {
-  data: string;
+  imageData: string;
 }

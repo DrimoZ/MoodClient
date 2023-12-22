@@ -45,7 +45,7 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
   override ngOnInit() {
     super.ngOnInit();
 
-    this._userService.getUserIdAndRole().subscribe({
+    this._userService.getConnectedUserStatus().subscribe({
       next : usr => {
         this.userId = usr.userId
       }
@@ -57,9 +57,9 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
           next : users => {
             this._userService.getUserFriends(this.userId).subscribe({
               next: frds =>{
-                this.userFriends = frds.friends.filter( a => !users.map(b => b.id).includes(a.id));
+                this.userFriends = frds.friends.filter( a => !users.map(b => b.id).includes(a.userId));
                 this.userFriends.forEach(user => {
-                  this.getImageUrl(user.idImage== null ? 0 : user.idImage).subscribe(img => {
+                  this.getImageUrl(user.imageId== null ? 0 : user.imageId).subscribe(img => {
                     user.imageUrl = img;
                   })
                 })
@@ -95,7 +95,7 @@ export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
   addMembers() {
     let usergroups : DtoOutputUserGroup[] = []
     this.friendToAdd.forEach(frd => usergroups.push({
-      userId :frd.id,
+      userId :frd.userId,
       groupId : this.group.id
     }))
     this._messageService.addMembers(usergroups).subscribe({

@@ -1,5 +1,5 @@
 export interface DtoInputUserPrivacy {
-  isPublic: boolean;
   isFriendPublic: boolean;
+  isPublic: boolean;
   isPublicationPublic: boolean;
 }
