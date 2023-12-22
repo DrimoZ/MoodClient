@@ -1,7 +1,7 @@
 <div id="conversation" class="d-flex flex-column flex-fill w-100 h-100">
   <div class="border-gold d-flex flex-row groupNames align-items-center justify-content-between " style="height: 40px; padding: 10px">
     <div class="">{{group.name}}</div>
-    <button *ngIf="group.name!= '';" (click)="displayPopupMember()"  class="button-0 button-2 end-100"><i class="fa-solid fa-info end-0"></i></button>
+    <button *ngIf="group.name!= '';" (click)="displayPopupMember()"  class="button-0 button-2 end-100" id="GroupSettings"><i class="fa-solid fa-info end-0"></i></button>
   </div>
   <div #scroll class="chat-container flex-shrink-0 flex-grow-1 border-gold " [scrollTop]="scroll.scrollHeight">
     <div *ngIf="messages.length >= showCount" class="w-100">
