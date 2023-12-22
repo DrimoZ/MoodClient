@@ -49,14 +49,15 @@ describe('Moderator Rights', () => {
     cy.get('#DeleteThisPub').click()
   });
 
-  it('Delete a comment', () => {
+  it.only('Delete a comment', () => {
     cy.connect('martin_p')
 
     cy.get('#NavDiscover').click()
     cy.contains('Profiles').click()
     cy.contains('Theo').click()
     cy.get(".pub_img").first().click()
-    cy.get('#AddAComment').type('t pa bo')
+    cy.get('#AddAComment').type('t pa bo{enter}')
+    cy.get('#CloseDetails').click()
 
     cy.disconnect()
 
@@ -66,6 +67,6 @@ describe('Moderator Rights', () => {
     cy.contains('Theo').click()
     cy.get(".pub_img").first().click()
 
-    cy.get('#DeleteThisComment').first().click()
+    cy.get('#DeleteComment').first().click()
   });
 })

@@ -11,7 +11,7 @@
           <span class="txt-gold ps-3 pt-1 fs-4">{{this.publication.authorName}}</span>
         </div>
 
-        <button class="x-close-btn txt-gold fs-4" (click)="close()">X</button>
+        <button id="CloseDetails" class="x-close-btn txt-gold fs-4" (click)="close()">X</button>
       </div>
 
       <div style="border-top: 1px solid #deb992; margin-left: 15px; margin-right: 15px"></div>
@@ -38,7 +38,7 @@
                     </div>
                     <button id="DeleteThisComment" class="x-close-btn txt-gold fs-6" (click)="deleteComment(comment.commentId)"
                     *ngIf="comment.authorId == connectedUserStatus.userId">X</button>
-                    <div class="d-flex justify-content-center align-items-center hover-pointer" style="color: crimson"
+                    <div id="DeleteComment" class="d-flex justify-content-center align-items-center hover-pointer" style="color: crimson"
                          (click)="deleteComment(comment.commentId)" *ngIf="comment.authorId != connectedUserStatus.userId && connectedUserStatus.userRole > 1 && connectedUserStatus.userRole > comment.authorRole">
                       <i class="fa-solid fa-trash-can"></i>
                     </div>
