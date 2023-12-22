@@ -1,1 +1,50 @@
-<p>notification works!</p>
+<section class="p-5 user-select-none overflow-y-auto blur-effect hvh-93 d-flex flex-column">
+  <div class="w-100 d-flex justify-content-center">
+    <span class="fs-4 txt-gold" i18n>Notifications</span>
+  </div>
+
+  <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
+
+  <div class="notification-container" *ngIf="!isWaitingForApi">
+    <div class="" *ngFor="let notification of notifications">
+      <div class="d-flex flex-row notification" *ngIf="!notification.isConnectedEmitter || notification.isDone">
+        <div class="p-2">
+          <div class="profilePictureDiv" (click)="viewUserProfile(notification.userId)">
+            <img src="{{notification.imageUrl}}" class=" hover-pointer">
+          </div>
+        </div>
+        <div class="p-2 d-flex flex-shrink-1 flex-grow-1 justify-content-between flex-row">
+          <div class="h-100 d-flex flex-column">
+          <span class="txt-gold py-2 fs-6" i18n>
+            <span class="fw-bold hover-pointer" (click)="viewUserProfile(notification.userId)">{{notification.userName}}</span>
+
+            <span *ngIf="notification.isConnectedEmitter">
+              <span *ngIf="notification.isDone">
+                <span *ngIf="!notification.isAccepted"> has rejected your friend request.</span>
+                <span *ngIf="notification.isAccepted"> has accepted your friend request.</span>
+              </span>
+            </span>
+
+            <span *ngIf="!notification.isConnectedEmitter">
+              <span> has sent you a friend request.</span>
+
+              <span *ngIf="notification.isDone">
+                <span *ngIf="!notification.isAccepted"> You rejected the invitation.</span>
+                <span *ngIf="notification.isAccepted"> You accepted the invitation.</span>
+              </span>
+            </span>
+          </span>
+          </div>
+          <div class="p-2 h-100 d-flex flex-column justify-content-between">
+            <div class="d-flex flex-row justify-content-end text-secondary">
+              <span class="fs-6">{{calculatedDate(notification.friendRequestDate)}}</span>
+            </div>
+            <button class="btn btn-outline-info" (click)="viewUserProfile(notification.userId)">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

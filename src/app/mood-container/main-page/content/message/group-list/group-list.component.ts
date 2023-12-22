@@ -9,7 +9,7 @@ import {EventBusService} from "../../../../../Services/EventBus/event-bus.servic
 import {timeout} from "rxjs";
 import {SignalRService} from "../../../../../Services/signal-r.service";
 import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/modal-bus.service";
-import {group} from "@angular/animations";
+import {group, style} from "@angular/animations";
 
 @Component({
   selector: 'app-group-list',
@@ -21,11 +21,10 @@ export class GroupListComponent {
   userId: string = "-1";
 
   constructor(private _userService: UserService,private _messageService:MessageService,
-              private modalService: ModalService, private eb:EventBusService,
+               private eb:EventBusService,
               private _modalBus: ModalBusService, private _signalR :SignalRService) {
   }
   ngOnInit(): void {
-    this._signalR.startConnection();
     this._userService.getConnectedUserStatus().subscribe({
       next: usr=> {
         this.userId = usr.userId;
@@ -56,6 +55,9 @@ export class GroupListComponent {
           }
         })
       }
+      if(event.Type ==="ErrPrivateConvAlreadyCreated"){
+        alert("Group as already been created")
+      }
     })
   }
 
@@ -75,4 +77,6 @@ export class GroupListComponent {
         Payload: grp
     })
   }
+
+    protected readonly style = style;
 }

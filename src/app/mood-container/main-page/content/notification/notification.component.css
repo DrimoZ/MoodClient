@@ -1,0 +1,13 @@
+.notification-container {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  row-gap: 10px;
+}
+
+.notification {
+  width: 100%;
+
+  border: #1BA098 1px solid;
+  border-radius: 12px;
+}

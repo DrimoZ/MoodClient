@@ -73,7 +73,7 @@ export class PublicationDetailModalComponent extends ModalBaseComponent{
   }
 
   navigateToUser(idAuthor: string) {
-    close()
+    this.close()
     this._router.navigate(["home/" + idAuthor])
   }
 

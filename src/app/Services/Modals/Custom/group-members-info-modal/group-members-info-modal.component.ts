@@ -90,24 +90,25 @@ export class GroupMembersInfoModalComponent extends ModalBaseComponent{
   }
 
   quitsGroup() {
-    this._messageService.quitGroup(this.groupId).subscribe({
-      next: grp => {
-        this.close()
-        this._sr.removeFromGroup(this.group)
-        this._sr.removeFromNotifGroup(this.group.id.toString())
-      }
-    });
-
+    if(confirm("Are you sure ?"))
+      this._messageService.quitGroup(this.groupId).subscribe({
+        next: grp => {
+          this.close()
+          this._sr.removeFromGroup(this.group)
+          this._sr.removeFromNotifGroup(this.group.id.toString())
+        }
+      });
   }
 
   kickThisMember(member: DtoInputUserFromGroup) {
-    this._messageService.kickUserFromGroup(this.groupId, member.id).subscribe(
-      {
-        next: member =>{
-          this.getMembers();
+    if(confirm("Are you sure ?"))
+      this._messageService.kickUserFromGroup(this.groupId, member.id).subscribe(
+        {
+          next: member =>{
+            this.getMembers();
+          }
         }
-      }
-    );
+      );
   }
 
   modifyGroupsName(div: string) {

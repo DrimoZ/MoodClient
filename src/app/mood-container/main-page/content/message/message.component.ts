@@ -21,8 +21,7 @@ export class MessageComponent {
   isWaitingForApi: boolean = true;
   isConnectedUser: boolean = false;
   groupId:number  = -1;
-  constructor( private _userService: UserService, private _messageService: MessageService,
-               private _imageService:ImageService, private _router: Router) {
+  constructor( private _userService: UserService, private _messageService: MessageService) {
   }
 
   ngOnInit(): void {

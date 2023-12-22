@@ -3,10 +3,10 @@
     <div class="d-flex flex-column justify-content-between gap-2 popup-content">
       <div class="friendList" style="">
         <div class="d-flex flex-column align-items-center justify-content-center gap-2" style="overflow-y: auto; overflow-x: hidden">
-          <div #friend class="nav-item button-1 button-0 btnColor" style="width: 90%" (click)="addFriend(friend, frd)" *ngFor="let frd of userFriends;">
-            <div class="d-flex flex-row">
+          <div #friend class="nav-item button-0 btnColor w-100" style="max-width: 400px" (click)="addFriend(friend, frd)" *ngFor="let frd of userFriends;">
+            <div class="d-flex flex-row w-100">
               <img class="profile-picture d-flex" alt="" src="{{frd.imageUrl}}" width="50" height="50" >
-              <p>{{frd.userName}}</p>
+              <p style="overflow: hidden; text-overflow: ellipsis;">{{frd.userName}}</p>
             </div>
           </div>
         </div>

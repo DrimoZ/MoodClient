@@ -18,7 +18,7 @@ import {group} from "@angular/animations";
   selector: 'group-member-addition-modal',
   templateUrl: './group-member-addition-modal.component.html',
   styleUrls: ['./group-member-addition-modal.component.css','../group-creation-modal/group-creation-modal.component.css',
-    '../../../../mood-container/main-page/content/message/message.component.css']
+  ]
 })
 export class GroupMemberAdditionModalComponent extends ModalBaseComponent {
   @Input() groupId: number;

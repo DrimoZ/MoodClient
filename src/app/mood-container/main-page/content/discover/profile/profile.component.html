@@ -31,7 +31,7 @@
                   <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.userId)" i18n>
                     <i class="fa-solid fa-plus"></i>
                   </button>
-                  <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.userId)" i18n>
+                  <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="viewUserProfile(user.userId)" i18n>
                     <i class="fa-solid fa-clock"></i>
                   </button>
                   <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.userId)" i18n>
@@ -49,7 +49,7 @@
             <button *ngIf="user.isFriendWithConnected == -1" class="btn btn-outline-success w-100" (click)="emitAddFriend(user.userId)" i18n>
               <i class="fa-solid fa-plus"></i> Add Friend
             </button>
-            <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="emitPendingFriend(user.userId)" i18n>
+            <button *ngIf="user.isFriendWithConnected == 1" class="btn btn-outline-info w-100" (click)="viewUserProfile(user.userId)" i18n>
               <i class="fa-solid fa-clock"></i> Pending Request
             </button>
             <button *ngIf="user.isFriendWithConnected == 0" class="btn btn-outline-light w-100" (click)="emitCancelFriend(user.userId)" i18n>

@@ -33,4 +33,27 @@ export class NotificationComponent implements OnInit{
     this._router.navigate(["home/" + userId]);
   }
 
+  calculatedDate(givenDate: Date): string {
+    const currentDate = new Date();
+    givenDate = new Date(givenDate);
+    let differenceInMs = currentDate.getTime() - givenDate.getTime();
+
+    let seconds = Math.floor(differenceInMs / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+    let years = Math.floor(days / 365);
+
+    if (years > 0) {
+      return `${years} y`;
+    } else if (days > 0) {
+      return `${days} d`;
+    } else if (hours > 0) {
+      return `${hours} h`;
+    } else if (minutes > 0) {
+      return `${minutes} m`;
+    } else {
+      return `${seconds} s`;
+    }
+  }
 }
