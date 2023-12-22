@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: "discover", component: DiscoverComponent, loadChildren: () => import('./discover/discover.module').then(module => module.DiscoverModule) },
   {path: "messages", component: MessageComponent},
   {path: "notifications", component: NotificationComponent},
-  {path: "parameters", component: ParametersComponent},
+  {path: "settings", component: ParametersComponent},
   {path: ":id", component: ProfileComponent, loadChildren: () => import('./profile/profile.module').then(module => module.ProfileModule)},
   {path: "**", redirectTo: "newsfeed"},
 ];

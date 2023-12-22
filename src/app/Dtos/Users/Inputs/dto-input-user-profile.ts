@@ -1,18 +1,14 @@
 import {SafeUrl} from "@angular/platform-browser";
 
 export interface DtoInputUserProfile {
-  login: string;
-
-  isPublic: boolean;
-  isFriendWithConnected: number;
-
-  name: string;
-  title: string;
-  description: string;
-
+  accountDescription: string;
   friendCount: number;
-  publicationCount: number;
-
-  idImage: number;
+  imageId: number;
   imageUrl: SafeUrl;
+  isConnectedUser: boolean;
+  isFriendWithConnected: number;
+  publicationCount: number;
+  userId: string;
+  userName: string;
+  userRole: number;
 }

@@ -1,8 +1,8 @@
 export interface DtoOutputUserUpdateAccount {
-  Id: string;
-  Name: string;
-  Mail: string;
-  Birthdate: string;
-  Description: string;
-  Title: string;
+  accountBirthdate: Date;
+  accountDescription: string;
+  userId: string;
+  userMail: string;
+  userName: string;
+  userTitle: string;
 }

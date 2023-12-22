@@ -1,4 +1,4 @@
-export interface DtoOutputUserSignup {
-  oldPassword: string;
+export interface DtoOutputUserUpdatePassword {
   newPassword: string;
+  oldPassword: string;
 }

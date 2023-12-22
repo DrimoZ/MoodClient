@@ -1,7 +1,7 @@
 <section class="pt-3 d-flex flex-row hvh-93 justify-content-between blur-effect user-select-none overflow-y-auto">
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
-  <div  *ngIf="(!isWaitingForApi && userId != '-1') else errorPage"
+  <div  *ngIf="(!isWaitingForApi && profileData.userId != '-1') else errorPage"
         class="mb-3 p-2 w-100 d-flex flex-column justify-content-between txt-gold start-50 translate-middle-x position-absolute">
     <div class="main-profile">
       <div class="p-3 profileLarge">
@@ -18,9 +18,16 @@
         </div>
 
         <div class="userDiv">
+
           <div class="nameDiv">
-            <span class="fs-3">{{profileData.name}}</span>
-            <span class="fs-7 profileLarge">({{profileData.login}})</span>
+            <div style="margin-top: 5px; width: 30px; height: 30px; border: #deb992 1px solid; border-radius: 30px;" class="d-flex justify-content-center align-items-center" *ngIf="profileData.userRole > 1">
+              <i class="fa-solid fa-hammer"></i>
+            </div>
+            <span class="fs-3">{{profileData.userName}}</span>
+            <div class="delete-user-btn d-flex justify-content-center align-items-center hover-darker"
+                 (click)="deleteUser()" *ngIf="!profileData.isConnectedUser && connectedUserStatus.userRole > 1 && connectedUserStatus.userRole > profileData.userRole">
+              <i class="fa-solid fa-ban"></i>
+            </div>
           </div>
           <div class="dataDiv">
             <div class="justify-content-start d-flex w-100 gap-2">
@@ -34,49 +41,49 @@
           </div>
           <div class="profileLarge" style="height: 25px"></div>
           <div class="descDiv">
-            <span class="fst-italic">{{profileData.description}}</span>
+            <span class="fst-italic">{{profileData.accountDescription}}</span>
           </div>
         </div>
 
         <div class="actionDiv actionDivLarge">
-          <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture()" i18n id="ChangeProfilePicture">
+          <button *ngIf="profileData.isConnectedUser" class="btn btn-sm btn-outline-info w-50" (click)="updateProfilePicture()" i18n id="ChangeProfilePicture">
             <i class="fa-solid fa-gear"></i> Change Profile Picture
           </button>
-          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>
+          <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(profileData.userId)" i18n>
             <i class="fa-solid fa-xmark"></i> Delete Friend
           </button>
-          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(userId)" i18n>
+          <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(profileData.userId)" i18n>
             <i class="fa-solid fa-plus"></i> Add Friend
           </button>
-          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(userId)" i18n>
+          <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(profileData.userId)" i18n>
             <i class="fa-solid fa-clock"></i> Ignore Friend Request
           </button>
-          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(userId)" i18n>
+          <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(profileData.userId)" i18n>
             <i class="fa-solid fa-clock"></i> Accept Friend Request
           </button>
-          <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(userId)" i18n>
+          <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(profileData.userId)" i18n>
             <i class="fa-solid fa-slash"></i> Cancel Friend Request
           </button>
         </div>
       </div>
 
       <div class="actionDiv actionDivSmall">
-        <button *ngIf="isConnectedUser" class="btn btn-sm btn-outline-info w-100" (click)="updateProfilePicture()" i18n>
+        <button *ngIf="profileData.isConnectedUser" class="btn btn-sm btn-outline-info w-100" (click)="updateProfilePicture()" i18n>
           <i class="fa-solid fa-gear"></i> Change Profile Picture
         </button>
-        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(userId)" i18n>
+        <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 2" class="btn btn-sm btn-outline-danger w-50" (click)="emitRemoveFriend(profileData.userId)" i18n>
           <i class="fa-solid fa-xmark"></i> Delete Friend
         </button>
-        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(userId)" i18n>
+        <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == -1" class="btn btn-sm btn-outline-success w-50" (click)="emitAddFriend(profileData.userId)" i18n>
           <i class="fa-solid fa-plus"></i> Add Friend
         </button>
-        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(userId)" i18n>
+        <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitIgnoreFriend(profileData.userId)" i18n>
           <i class="fa-solid fa-clock"></i> Ignore Friend Request
         </button>
-        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(userId)" i18n>
+        <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 1" class="btn btn-sm btn-outline-info w-50" (click)="emitAcceptFriend(profileData.userId)" i18n>
           <i class="fa-solid fa-clock"></i> Accept Friend Request
         </button>
-        <button *ngIf="!isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(userId)" i18n>
+        <button *ngIf="!profileData.isConnectedUser && profileData.isFriendWithConnected == 0" class="btn btn-sm btn-outline-light w-50" (click)="emitCancelFriend(profileData.userId)" i18n>
           <i class="fa-solid fa-slash"></i> Cancel Friend Request
         </button>
       </div>
@@ -91,7 +98,7 @@
           <div class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker" routerLink="./friends" routerLinkActive="active" id="BtnFriends">
             <span i18n>Friends</span>
           </div>
-          <div *ngIf="isConnectedUser" class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker" routerLink="./account" routerLinkActive="active">
+          <div *ngIf="profileData.isConnectedUser" class="d-flex py-2 hover-pointer justify-content-center w-50 hover-darker" routerLink="./account" routerLinkActive="active">
             <span i18n>Account</span>
           </div>
         </div>

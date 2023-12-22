@@ -1,12 +1,13 @@
 import {SafeUrl} from "@angular/platform-browser";
 
 export interface DtoInputPubComment {
-  content: string;
-  date: Date;
-  id: number;
-  idAuthor: string;
-  idAuthorImage: number;
+  authorId: string;
+  authorImageId: number;
+  authorName: string;
+  authorRole: number;
+  commentContent: string;
+  commentDate: Date;
+  commentId: number;
   imageUrl: SafeUrl;
-  nameAuthor: string;
 }
 

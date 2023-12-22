@@ -7,7 +7,7 @@
             <div #friend class="nav-item button-2 button-0 btnColor" style="width: 90%" (click)="addFriend(friend, frd)" *ngFor="let frd of userFriends;">
               <div class="d-flex flex-row">
                 <img class="profile-picture d-flex" alt="" src="{{frd.imageUrl}}" width="50" height="50" >
-                <p>{{frd.name}}</p>
+                <p>{{frd.userName}}</p>
               </div>
             </div>
           </div>

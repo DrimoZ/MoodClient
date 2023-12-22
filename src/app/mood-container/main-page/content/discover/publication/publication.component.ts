@@ -9,7 +9,7 @@ import {ModalBusService, ModalEventName} from "../../../../../Services/EventBus/
 @Component({
   selector: 'app-publication',
   templateUrl: './publication.component.html',
-  styleUrls: ['./publication.component.css']
+  styleUrls: ['./publication.component.css', '../discover.component.css']
 })
 export class PublicationComponent implements OnInit, OnDestroy{
   searchBarValue: string = "";
@@ -61,7 +61,7 @@ export class PublicationComponent implements OnInit, OnDestroy{
 
         this.publications.forEach(pub => {
           pub.elements.forEach(e => {
-            this._imageService.getImageData(e.idImage == null ? -1 : e.idImage).subscribe(url => {e.imageUrl = url;})
+            this._imageService.getImageData(e.imageId == null ? -1 : e.imageId).subscribe(url => {e.imageUrl = url;})
           })
         })
 

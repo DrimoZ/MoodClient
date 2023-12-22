@@ -15,7 +15,7 @@ export class ProfileAccountGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let id = state.url.split('home/')[1].split('/')[0]
 
-    return this._userService.getUserIdAndRole().pipe(
+    return this._userService.getConnectedUserStatus().pipe(
       map( res => {
         if (res.userId == id) {
           return true

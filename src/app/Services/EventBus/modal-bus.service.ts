@@ -9,6 +9,10 @@ import {
 import {
   GroupMemberAdditionModalComponent
 } from "../Modals/Custom/group-member-addition-modal/group-member-addition-modal.component";
+import {AccountDeletionModalComponent} from "../Modals/Custom/account-deletion-modal/account-deletion-modal.component";
+import {
+  ActionValidationModalComponent
+} from "../Modals/Custom/adjustable-action-modal/action-validation-modal.component";
 
 
 @Injectable({
@@ -35,12 +39,13 @@ interface ModalEvent {
 }
 
 export enum ModalEventName {
-  DeleteAccountModal = "DeleteAccountModal",
+  AccountDeletionModal = "AccountDeletionModal",
   PublicationDetailModal = "PublicationDetailModal",
   GroupMembersInfoModal = "GroupMembersInfoModal",
   GroupCreationModal = "GroupCreationModal",
   ProfilePictureEditionModal = "ProfilePictureEditionModal",
   PublicationCreationModal = "PublicationCreationModal",
   GroupMemberAdditionModal = "GroupMemberAdditionModal",
+  ActionValidationModal = "ActionValidationModal",
 }
 

@@ -9,26 +9,26 @@
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Full Name</span>
-        <input class="form-control" type="text" formControlName="Name" [value]="accountData.name" id="InputFullName"
+        <input class="form-control" type="text" formControlName="Name" [value]="accountData.userName" id="InputFullName"
                [ngClass]="{'input-error': checkNameSize()}">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Email Address</span>
-        <input class="form-control" type="email" formControlName="Mail" [value]="accountData.mail" id="InputEmail">
+        <input class="form-control" type="email" formControlName="Mail" [value]="accountData.userMail" id="InputEmail">
       </div>
 
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Birthdate</span>
-        <input class="form-control" type="date" formControlName="BirthDate" [value]="accountData.birthDate" id="InputBirthDate">
+        <input class="form-control" type="date" formControlName="BirthDate" [value]="accountData.accountBirthDate" id="InputBirthDate">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Title</span>
-        <input class="form-control" type="text" formControlName="Title" [value]="accountData.title" id="InputTitle"
+        <input class="form-control" type="text" formControlName="Title" [value]="accountData.userTitle" id="InputTitle"
                [ngClass]="{'input-error': checkTitleSize()}">
       </div>
       <div class="p-1 accountInfo">
         <span class="form-label" i18n>Description</span>
-        <textarea class="form-control" formControlName="Description" [value]="accountData.description" id="InputDescription"
+        <textarea class="form-control" formControlName="Description" [value]="accountData.accountDescription" id="InputDescription"
                   [ngClass]="{'input-error': checkDescSize()}"></textarea>
       </div>
 

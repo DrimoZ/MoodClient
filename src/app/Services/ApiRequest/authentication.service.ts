@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {catchError, NEVER, Observable, throwError} from "rxjs";
-import {DtoOutputUserSignin} from "../../Dtos/Users/Outputs/dto-output-user-signin";
-import {DtoOutputUserSignup} from "../../Dtos/Users/Outputs/dto-output-user-signup";
+import {DtoOutputUserSignIn} from "../../Dtos/Users/Outputs/dto-output-user-sign-in";
+import {DtoOutputUserSignUp} from "../../Dtos/Users/Outputs/dto-output-user-sign-up";
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,12 @@ export class AuthenticationService {
     return this._httpClient.get(AuthenticationService._URL_API + "/isConnected");
   }
 
-  signInUser(dto: DtoOutputUserSignin): Observable<any> {
-    return this._httpClient.post<DtoOutputUserSignin>(AuthenticationService._URL_API + "/signIn", dto);
+  signInUser(dto: DtoOutputUserSignIn): Observable<any> {
+    return this._httpClient.post<DtoOutputUserSignIn>(AuthenticationService._URL_API + "/signIn", dto);
   }
 
-  signUpUser(dto: DtoOutputUserSignup): Observable<any> {
-    return this._httpClient.post<DtoOutputUserSignup>(AuthenticationService._URL_API + "/signUp", dto);
+  signUpUser(dto: DtoOutputUserSignUp): Observable<any> {
+    return this._httpClient.post<DtoOutputUserSignUp>(AuthenticationService._URL_API + "/signUp", dto);
   }
 
   logOutUser(): Observable<any> {
