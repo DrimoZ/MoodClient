@@ -15,14 +15,14 @@
         <p class="date">{{formatDate(msg.date)}}</p>
       </div>
       <div class="d-flex"  [ngClass]="msg.userId == userId? 'd-none':'flex-row'">{{msg.userName}}</div>
-      <div (click)="messageManagement.style.display = 'flex'" class="d-flex align-items-center" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">
+      <div (click)="#messageManagement.style.display == 'flex'?#messageManagement.style.display = 'none': #messageManagement.style.display = 'flex'" class="d-flex align-items-center" [ngClass]="msg.userId == userId? 'flex-row-reverse':'flex-row'">
         <img class="profile-picture" alt="" src="{{msg.url}}" width="50" height="50" >
         <div class="message-bubble" [ngClass]="msg.userId == userId? 'right':'left'">
           <p *ngIf="!msg.isDeleted" class="just-line-break">{{msg.content}}</p>
           <p *ngIf="msg.isDeleted" class="just-line-break"> &lt;&lt; Deleted Message &gt;&gt; </p>
         </div>
         <div #messageManagement  style="display: none" >
-          <button (click)="deleteMessage(msg)" *ngIf="msg.userId == userId"><i class="fa-solid fa-circle-xmark"></i></button>
+          <button (click)="deleteMessage(msg)" *ngIf="msg.userId == userId && !msg.isDeleted"><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
       </div>
     </div>
