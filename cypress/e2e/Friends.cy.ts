@@ -23,18 +23,17 @@ describe('Friends management', () => {
     cy.contains('Marine').click()
     cy.wait(500)
     cy.contains('Accept Friend Request').click()
+  });
 
-    cy.disconnect()
-
+  it.only('Access a friend request by notification menu', () => {
     cy.connect('frontend_champ')
 
-    cy.get('#NavDiscover').click()
-    cy.contains('Profiles').click()
+    cy.get('#Settings').click()
+    cy.get('#GoToNotifications').click()
 
-    cy.contains('Marine').click()
+    cy.contains('Marine').first().click()
     cy.wait(500)
     cy.contains('Accept Friend Request').click()
-
   });
 
   it('Delete friends', () => {
