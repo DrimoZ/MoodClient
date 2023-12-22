@@ -47,6 +47,13 @@ export class GroupCreationModalComponent extends ModalBaseComponent{
           Type:"MessageGroupModified",
           Payload:""
         })
+      }, error:err => {
+        if(err.status === 406){
+          this.eb.emitEvent({
+            Type:"ErrPrivateConvAlreadyCreated",
+            Payload:""
+          })
+        }
       }
     });
     this.friendToAdd = [];

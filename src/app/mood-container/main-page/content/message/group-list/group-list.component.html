@@ -13,8 +13,8 @@
     <div class="d-flex flex-column justify-content-evenly align-items-center groupList">
       <div *ngFor="let grp of groups;let index = index;" class="d-flex justify-content-center w-100">
         <div *ngIf="grp.isPrivate" class="w-100 d-flex align-items-center">
-          <div class="button-1 button-0 w-100" (click)="groupClicked(grp); " aria-current="page" style="font-size: 13px">
-            {{grp.name}}
+          <div class="button-1 button-0 w-100" (click)="groupClicked(grp);" style="max-width: 200px">
+            <p style="font-size: 13px;  word-wrap: break-word;overflow: hidden;text-overflow: ellipsis;">{{grp.name}}</p>
           </div>
         </div>
       </div>
