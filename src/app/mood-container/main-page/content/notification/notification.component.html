@@ -6,8 +6,8 @@
   <div class="loading" *ngIf="isWaitingForApi">Loading&#8230;</div>
 
   <div class="notification-container" *ngIf="!isWaitingForApi">
-    <div class="notification" *ngFor="let notification of notifications">
-      <div class="d-flex flex-row" *ngIf="!notification.isConnectedEmitter || notification.isDone">
+    <div class="" *ngFor="let notification of notifications">
+      <div class="d-flex flex-row notification" *ngIf="!notification.isConnectedEmitter || notification.isDone">
         <div class="p-2">
           <div class="profilePictureDiv" (click)="viewUserProfile(notification.userId)">
             <img src="{{notification.imageUrl}}" class=" hover-pointer">
