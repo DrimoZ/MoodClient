@@ -24,7 +24,7 @@
               <i class="fa-solid fa-hammer"></i>
             </div>
             <span class="fs-3">{{profileData.userName}}</span>
-            <div class="delete-user-btn d-flex justify-content-center align-items-center hover-darker"
+            <div id="DeleteThisUser" class="delete-user-btn d-flex justify-content-center align-items-center hover-darker"
                  (click)="deleteUser()" *ngIf="!profileData.isConnectedUser && connectedUserStatus.userRole > 1 && connectedUserStatus.userRole > profileData.userRole">
               <i class="fa-solid fa-ban"></i>
             </div>

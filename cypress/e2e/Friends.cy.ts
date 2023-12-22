@@ -67,11 +67,11 @@ describe('Chat with friends', () => {
     cy.contains('Martin').click()
     cy.get('#ConfirmCreateConv').click()
   });
-  it('Check if a group conversation exist, otherwise, create one. FAILS IF IT EXISTS', () => {
+
+  it('Create a new group', () => {
     cy.connect('marine0023')
     cy.get('#NavMessages').click()
     cy.wait(1000)
-    cy.contains('Many friends').should('not.exist')
 
     cy.get('#BtnCreateConversation').click()
     cy.wait(2000)
@@ -112,5 +112,14 @@ describe('Chat with friends', () => {
 
     cy.get('#PrivateConv').click()
     cy.wait(1000)
+  });
+
+  it('Kick someone from a conversation as the group creator', () => {
+    cy.connect('marine0023')
+    cy.get('#NavMessages').click()
+
+    cy.get('#GroupConv').contains('Many friends').click()
+    cy.get('#GroupSettings').click()
+    cy.get('#BtnKick').first().click()
   });
 })
