@@ -64,6 +64,7 @@ describe('Chat with friends', () => {
     cy.contains('Martin').should('not.exist')
 
     cy.get('#BtnCreateConversation').click()
+    cy.wait(500)
     cy.contains('Martin').click()
     cy.get('#ConfirmCreateConv').click()
   });
@@ -80,6 +81,7 @@ describe('Chat with friends', () => {
     cy.get('form').contains('Theo').click()
     cy.get('#GroupName').type('Many friends')
     cy.get('#ConfirmCreateConv').click()
+    cy.wait(500)
   });
 
   it('Send a message in a private conversation', () => {
