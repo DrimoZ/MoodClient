@@ -26,4 +26,46 @@ describe('Moderator Rights', () => {
     cy.get('#DeleteThisUser').click()
     cy.contains('Proceed').click()
   })
+
+  it('Delete a publication', () => {
+    cy.connect("martin_p")
+    cy.get("#NavCreatePub").click()
+    cy.wait(500)
+
+    cy.get("input[type=file]").selectFile("cypress\\downloads\\Rick.gif")
+    cy.get("#PublicationText").type("Sacré plaque !")
+    cy.contains("Publish").click()
+    cy.wait(500)
+
+    cy.disconnect()
+
+    cy.connect('akisekai')
+
+    cy.get('#NavDiscover').click()
+    cy.contains('Profiles').click()
+    cy.contains('Martin').click()
+
+    cy.get(".pub_img").first().click()
+    cy.get('#DeleteThisPub').click()
+  });
+
+  it('Delete a comment', () => {
+    cy.connect('martin_p')
+
+    cy.get('#NavDiscover').click()
+    cy.contains('Profiles').click()
+    cy.contains('Theo').click()
+    cy.get(".pub_img").first().click()
+    cy.get('#AddAComment').type('t pa bo')
+
+    cy.disconnect()
+
+    cy.connect('akisekai')
+    cy.get('#NavDiscover').click()
+    cy.contains('Profiles').click()
+    cy.contains('Theo').click()
+    cy.get(".pub_img").first().click()
+
+    cy.get('#DeleteThisComment').first().click()
+  });
 })
