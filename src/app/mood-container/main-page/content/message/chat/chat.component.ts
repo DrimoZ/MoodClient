@@ -139,7 +139,6 @@ export class ChatComponent {
   }
 
   displayPopupMember() {
-    console.log(this.group.id)
     this._modalBus.emitEvent({
       Type: ModalEventName.GroupMembersInfoModal,
       Payload: {

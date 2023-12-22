@@ -84,7 +84,6 @@ export class GroupCreationModalComponent extends ModalBaseComponent{
         this.userId = usr.userId;
         this._userService.getUserFriends(this.userId).subscribe({
           next: user => {
-            console.log(user)
             this.userFriends = user.friends;
             this.userFriends.forEach(friend =>{
               this._imageService.getImageData(friend.imageId == null ? 0:friend.imageId).subscribe(url => friend.imageUrl = url)

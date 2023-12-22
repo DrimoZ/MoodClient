@@ -31,13 +31,13 @@ export class PublicationService {
   }
 
   likePublication(publicationId: number, liked: boolean): Observable<any> {
-    let dto = {idPublication: publicationId, isLiked: liked};
+    let dto = {PublicationId: publicationId, isLiked: liked};
 
     return this._httpClient.post(PublicationService._URL_API + "/like",  dto);
   }
 
   commentPublication(publicationId: number, content: string): Observable<any> {
-    let dto = {idPublication: publicationId, content: content};
+    let dto = {PublicationId: publicationId, CommentContent: content};
 
     return this._httpClient.post(PublicationService._URL_API + "/comment",  dto);
   }
