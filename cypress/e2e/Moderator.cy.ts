@@ -21,6 +21,7 @@ describe('Moderator Rights', () => {
 
     cy.get('#NavDiscover').click()
     cy.contains('Profiles').click()
+    cy.contains('Show More').click()
     cy.contains('Extremely toxic user').click()
 
     cy.get('#DeleteThisUser').click()
@@ -49,7 +50,7 @@ describe('Moderator Rights', () => {
     cy.get('#DeleteThisPub').click()
   });
 
-  it.only('Delete a comment', () => {
+  it('Delete a comment', () => {
     cy.connect('martin_p')
 
     cy.get('#NavDiscover').click()
