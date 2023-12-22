@@ -12,6 +12,8 @@ describe('Friends management', () => {
     cy.contains('div', 'Front End').parent().within(() => {
       cy.get('Button').click();
     });
+
+    cy.wait(1000)
   })
 
   it('Accept friend requests', () => {
@@ -23,9 +25,10 @@ describe('Friends management', () => {
     cy.contains('Marine').click()
     cy.wait(500)
     cy.contains('Accept Friend Request').click()
+    cy.wait(1000)
   });
 
-  it.only('Access a friend request by notification menu', () => {
+  it('Access a friend request by notification menu', () => {
     cy.connect('frontend_champ')
 
     cy.get('#Settings').click()
@@ -34,6 +37,7 @@ describe('Friends management', () => {
     cy.contains('Marine').first().click()
     cy.wait(500)
     cy.contains('Accept Friend Request').click()
+    cy.wait(1000)
   });
 
   it('Delete friends', () => {
