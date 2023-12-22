@@ -10,11 +10,11 @@
         "locales": {
           "fr": {
             "translation": "src/locale/messages.fr.xlf",
-            "baseHref": ""
+            "baseHref": "/fr/"
           },
           "en": {
             "translation": "src/locale/messages.en.xlf",
-            "baseHref": ""
+            "baseHref": "/en/"
           }
         }
       },
@@ -60,6 +60,7 @@
               "i18nMissingTranslation": "error"
             },
             "production": {
+              "localize": ["en", "fr"],
               "budgets": [
                 {
                   "type": "initial",
@@ -76,7 +77,7 @@
             },
             "development": {
               "localize": [
-                "en-US"
+                "en"
               ],
               "outputHashing": "all",
               "buildOptimizer": false,

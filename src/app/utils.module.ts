@@ -12,6 +12,7 @@ import { PublicationDetailModalComponent } from "./Services/Modals/Custom/public
 import {
   ActionValidationModalComponent
 } from "./Services/Modals/Custom/adjustable-action-modal/action-validation-modal.component";
+import {LanguageModalComponent} from "./Services/Modals/Custom/language-modal/language-modal.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {
     GroupMembersInfoModalComponent,
     ProfilePictureEditionModalComponent,
     PublicationCreationModalComponent,
-    PublicationDetailModalComponent
+    PublicationDetailModalComponent,
+    LanguageModalComponent
   ],
     imports: [
         CommonModule,
@@ -39,7 +41,8 @@ import {
     GroupMembersInfoModalComponent,
     GroupCreationModalComponent,
     ProfilePictureEditionModalComponent,
-    PublicationDetailModalComponent
+    PublicationDetailModalComponent,
+    LanguageModalComponent
   ]
 })
 

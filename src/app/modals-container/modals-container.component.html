@@ -21,3 +21,6 @@
 
 <action-validation-modal [id]="modalId" [textValue]="modalAdditionalData"
                          *ngIf="modalType == ModalEventName.ActionValidationModal"></action-validation-modal>
+
+<language-modal [id]="modalId"
+                *ngIf="modalType == ModalEventName.LanguageModal"></language-modal>

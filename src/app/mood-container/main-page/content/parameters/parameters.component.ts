@@ -156,4 +156,14 @@ export class ParametersComponent implements OnInit {
       }
     })
   }
+
+  changeLanguage() {
+    this._modalBus.emitEvent({
+      Type: ModalEventName.LanguageModal,
+      Payload: {
+        ModalId: "languageChange",
+        AdditionalData: null
+      }
+    })
+  }
 }

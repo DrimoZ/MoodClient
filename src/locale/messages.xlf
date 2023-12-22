@@ -294,6 +294,10 @@
           <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/language-modal/language-modal.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/Services/Modals/Custom/profile-picture-edition-modal/profile-picture-edition-modal.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
@@ -303,7 +307,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">153</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
@@ -381,6 +385,34 @@
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="6191290490709166655" datatype="html">
+        <source>Change the application language</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/language-modal/language-modal.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1462546756899280978" datatype="html">
+        <source> Select a Language</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/language-modal/language-modal.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5866254605255506989" datatype="html">
+        <source>English</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/language-modal/language-modal.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7633754075223722162" datatype="html">
+        <source>French</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/language-modal/language-modal.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5869376522249626224" datatype="html">
         <source>Choose a new profile picture</source>
         <context-group purpose="location">
@@ -439,15 +471,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">109</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">115</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">121</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
@@ -890,7 +922,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
@@ -905,7 +937,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="219835576439564432" datatype="html">
@@ -916,63 +948,63 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">162</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3453929685926629133" datatype="html">
         <source>Change Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7705508697330810763" datatype="html">
         <source>Delete Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7292941584774282541" datatype="html">
         <source>Password Settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6383296110036844653" datatype="html">
         <source>An error occurred during the update. Please try again.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="801694995381402371" datatype="html">
         <source>Password successfully updated.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2397816345463091163" datatype="html">
         <source>Old Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1221596867309460035" datatype="html">
         <source>New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8547747030242972664" datatype="html">
         <source>Password Confirmation</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">120</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
@@ -983,7 +1015,7 @@
         <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 0), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 0)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least 8 characters </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">129,131</context>
+          <context context-type="linenumber">130,132</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
@@ -994,7 +1026,7 @@
         <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 1), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 1)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one number </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">133,135</context>
+          <context context-type="linenumber">134,136</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
@@ -1005,7 +1037,7 @@
         <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 2), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 2)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one capital letter </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">137,139</context>
+          <context context-type="linenumber">138,140</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
@@ -1016,7 +1048,7 @@
         <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 3), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 3)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one lowercase letter </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">141,143</context>
+          <context context-type="linenumber">142,144</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
@@ -1027,7 +1059,7 @@
         <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 4), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 4)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one special character </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">145,147</context>
+          <context context-type="linenumber">146,148</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
@@ -1038,7 +1070,7 @@
         <source>Validate Changes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">154</context>
+          <context context-type="linenumber">155</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
@@ -1049,42 +1081,42 @@
         <source>Make the account public globally</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">166</context>
+          <context context-type="linenumber">167</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4361371323619617192" datatype="html">
         <source>When your account is public, your profile and posts can be seen by anyone. When your account is private, only your friends can see what you share as well as your friend list.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">173</context>
+          <context context-type="linenumber">174</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8686793581875341290" datatype="html">
         <source>Make your friends list public</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">180</context>
+          <context context-type="linenumber">181</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7810776186871466367" datatype="html">
         <source>When your this parameter is set to public, your friend list is visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your friend list.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">188</context>
+          <context context-type="linenumber">189</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7504955583663860888" datatype="html">
         <source>Make your publications public</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">194</context>
+          <context context-type="linenumber">195</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5812246042074505434" datatype="html">
         <source>When your this parameter is set to public, your publications are visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your publications.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
-          <context context-type="linenumber">202</context>
+          <context context-type="linenumber">203</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4970048888470229849" datatype="html">

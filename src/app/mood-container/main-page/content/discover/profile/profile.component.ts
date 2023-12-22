@@ -98,7 +98,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this._imageService.getImageData(user.imageId == null ? 0 : user.imageId).subscribe(url => {user.imageUrl = url;})
         })
 
-        console.log(this.otherUsers)
         this.isWaitingForApi = false;
       }
     )
