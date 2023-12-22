@@ -28,7 +28,7 @@
     </div>
   </div>
   <div *ngIf="group.name != ''" class="d-flex" style="width: 100%;">
-    <textarea #message class="" style="width: 100%;" placeholder="Message..."></textarea>
-    <input type="submit" class="button-0 button-2 position-relative bottom-0 end-0 " (click)="message.value== ''? '' :sendMessage(message)" value="Send"/>
+    <textarea id="Message" #message class="" style="width: 100%;" placeholder="Message..."></textarea>
+    <input id="SendMessage" type="submit" class="button-0 button-2 position-relative bottom-0 end-0 " (click)="message.value== ''? '' :sendMessage(message)" value="Send"/>
   </div>
 </div>
