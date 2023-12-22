@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="d-flex flex-column-reverse justify-content-between ">
-          <input id="ConfirmCreateConv" type="submit" (click)="addGroup(groupName.value)" class="button-2 button-0" [disabled]="(friendToAdd.length<1)" value="Create">
-          <input type="submit" (click)="close()" class="button-2 button-0" value="Cancel">
+          <input id="ConfirmCreateConv" type="submit" (click)="addGroup(groupName.value)" class="button-2 button-0" [disabled]="(friendToAdd.length<1)" value="Create" i18n i18n-value>
+          <input type="submit" (click)="close()" class="button-2 button-0" value="Cancel" i18n i18n-value>
         </div>
       </form>
     </div>

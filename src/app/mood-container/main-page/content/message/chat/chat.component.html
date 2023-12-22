@@ -5,8 +5,8 @@
   </div>
   <div #scroll class="chat-container flex-shrink-0 flex-grow-1 border-gold " [scrollTop]="scroll.scrollHeight">
     <div *ngIf="messages.length >= showCount" class="w-100">
-      <button class="btn showMoreBtn w-100" (click)="loadMoreMessage(30)" i18n>
-        <span class="">Show More</span>
+      <button class="btn showMoreBtn w-100" (click)="loadMoreMessage(30)">
+        <span class="" i18n>Show More</span>
         <i class="fa-solid fa-chevron-up"></i>
       </button>
     </div>
@@ -19,7 +19,7 @@
         <img class="profile-picture" alt="" src="{{msg.url}}" width="50" height="50" >
         <div class="message-bubble" [ngClass]="msg.userId == userId? 'right':'left'">
           <p *ngIf="!msg.isDeleted" class="just-line-break">{{msg.content}}</p>
-          <p *ngIf="msg.isDeleted" class="just-line-break"> &lt;&lt; Deleted Message &gt;&gt; </p>
+          <p *ngIf="msg.isDeleted" class="just-line-break" i18n> &lt;&lt; Deleted Message &gt;&gt; </p>
         </div>
         <div #messageManagement  style="display: none" >
           <button class="btn btn-sm btn-outline-secondary" (click)="deleteMessage(msg)" *ngIf="msg.userId == userId && !msg.isDeleted"><i class="fa-solid fa-circle-xmark"></i></button>
@@ -28,7 +28,7 @@
     </div>
   </div>
   <div *ngIf="group.name != ''" class="d-flex" style="width: 100%;">
-    <textarea id="Message" #message class="" style="width: 100%;" placeholder="Message..."></textarea>
-    <input id="SendMessage" type="submit" class="button-0 button-2 position-relative bottom-0 end-0 " (click)="message.value== ''? '' :sendMessage(message)" value="Send"/>
+    <textarea id="Message" #message class="" style="width: 100%;" placeholder="Message..." i18n i18n-placeholder></textarea>
+    <input id="SendMessage" type="submit" class="button-0 button-2 position-relative bottom-0 end-0 " (click)="message.value!=''?sendMessage(message):''" value="Send" i18n i18n-value/>
   </div>
 </div>

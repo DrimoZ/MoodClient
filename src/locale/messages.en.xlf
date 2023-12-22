@@ -243,6 +243,308 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7613110239075533094" datatype="html">
+        <source>Account Deletion</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/account-deletion-modal/account-deletion-modal.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="577064441120663273" datatype="html">
+        <source>Are you sure you want to delete your account?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/account-deletion-modal/account-deletion-modal.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="303990684414660112" datatype="html">
+        <source>This action is irreversible and will result in the permanent deletion of your account.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/account-deletion-modal/account-deletion-modal.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935187492052582731" datatype="html">
+        <source>Submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/account-deletion-modal/account-deletion-modal.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/profile-picture-edition-modal/profile-picture-edition-modal.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2159130950882492111" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/account-deletion-modal/account-deletion-modal.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/adjustable-action-modal/action-validation-modal.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-creation-modal/group-creation-modal.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-member-addition-modal/group-member-addition-modal.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/profile-picture-edition-modal/profile-picture-edition-modal.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">152</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1544835698794471862" datatype="html">
+        <source>Are you sure you want to proceed the following action ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/adjustable-action-modal/action-validation-modal.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{textValue}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/adjustable-action-modal/action-validation-modal.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1181910457994920507" datatype="html">
+        <source>Proceed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/adjustable-action-modal/action-validation-modal.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5674286808255988565" datatype="html">
+        <source>Create</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-creation-modal/group-creation-modal.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1513382435676181618" datatype="html">
+        <source>Add Selected</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-member-addition-modal/group-member-addition-modal.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5013412184970838364" datatype="html">
+        <source>Modify Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-members-info-modal/group-members-info-modal.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1759940189470048685" datatype="html">
+        <source>Kick From Group</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-members-info-modal/group-members-info-modal.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7462149067179544469" datatype="html">
+        <source>Add Members</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-members-info-modal/group-members-info-modal.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6939555111927655409" datatype="html">
+        <source>Quit Group</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/group-members-info-modal/group-members-info-modal.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5869376522249626224" datatype="html">
+        <source>Choose a new profile picture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/profile-picture-edition-modal/profile-picture-edition-modal.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7679327900939664302" datatype="html">
+        <source>Create a new Publication</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9045816690960241874" datatype="html">
+        <source>Images Preview</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8625069705128403511" datatype="html">
+        <source>Select Image(s)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5473078022715511371" datatype="html">
+        <source>Maximum 4 images per post are allowed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2664066876856083420" datatype="html">
+        <source>Write a Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5180943763790811960" datatype="html">
+        <source>*Required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7430416142942514215" datatype="html">
+        <source>Publish</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-creation-modal/publication-creation-modal.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8489406274316595092" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{calculatedDate(comment.commentDate)}}"/> ago</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2071626412755098242" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-heart&quot;
+                 [ngClass]=&quot;{&apos;text-danger&apos;: this.publication.hasConnectedLiked}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Like<x id="INTERPOLATION" equiv-text="{{this.publication.hasConnectedLiked?&quot;d&quot;:&quot;&quot;}}"/> ( <x id="INTERPOLATION_1" equiv-text="{{this.publication.likeCount}}"/> ) </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component.html</context>
+          <context context-type="linenumber">61,63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">50,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7424325793796900427" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-comments&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Comment ( <x id="INTERPOLATION" equiv-text="{{this.publication.commentCount}}"/> ) </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7802738260373305301" datatype="html">
+        <source>Add a comment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6490688569532630280" datatype="html">
+        <source>Send</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Services/Modals/Custom/publication-detail-modal/publication-detail-modal.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/chat/chat.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="8766840274158243690" datatype="html">
         <source>Oops!</source>
         <context-group purpose="location">
@@ -278,41 +580,6 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5180943763790811960" datatype="html">
-        <source>*Required</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">40</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">48</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">67</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="3980517593820207265" datatype="html">
         <source>Email or Login</source>
         <context-group purpose="location">
@@ -338,15 +605,15 @@
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4476224839121490369" datatype="html">
-        <source> Sign In </source>
+      <trans-unit id="840692109692540367" datatype="html">
+        <source>Sign In</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7320566799521728089" datatype="html">
-        <source>New to Mood? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;../register&quot; routerLinkActive=&quot;active&quot;&gt;"/>Sign up now<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <source>New to Mood? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;../register&quot; routerLinkActive=&quot;active&quot; id=&quot;GoToSignUp&quot;&gt;"/>Sign up now<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
           <context context-type="linenumber">56</context>
@@ -360,116 +627,721 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1616102757855967475" datatype="html">
-        <source>All</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/discover.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3150963375210757761" datatype="html">
         <source>Publications</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/discover.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1748972213745441743" datatype="html">
         <source>Profiles</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/discover.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7886570921510760899" datatype="html">
-        <source>Tags</source>
+      <trans-unit id="5156738637492217696" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{user.commonFriendCount}}"/> friend<x id="INTERPOLATION_1" equiv-text="{{user.commonFriendCount != 1 ? &apos;s&apos;: &apos;&apos;}}"/> in common</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/discover.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="8059494778014707058" datatype="html">
-        <source>Remove Friend</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5886050965042785601" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-xmark&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5670069284403209459" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-xmark&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Delete Friend </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">75,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2572737564229985576" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-plus&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Add Friend </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">67,68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">78,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6900189264310467249" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-clock&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Pending Request </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">70,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3327653050165466051" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-slash&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Cancel Request </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">73,74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="707541192888757953" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;&quot;&gt;"/>Show More (<x id="INTERPOLATION" equiv-text="{{otherUsers.length}}"/>) <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-chevron-down&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/publication/publication.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">100,101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2652595909751037673" datatype="html">
+        <source>There is no user corresponding to your request. Please try something else.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/profile/profile.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/discover/publication/publication.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8279858216477066574" datatype="html">
+        <source>Show More</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/chat/chat.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8428557156070032726" datatype="html">
+        <source> &lt;&lt; Deleted Message &gt;&gt; </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/chat/chat.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8034464967730460098" datatype="html">
+        <source>Message...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/chat/chat.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4717491147966397069" datatype="html">
+        <source>Conversation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/group-list/group-list.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3602473532580464476" datatype="html">
+        <source>Create a conversation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/group-list/group-list.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7776025084422518241" datatype="html">
+        <source>Private conversation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/group-list/group-list.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7982517025595900612" datatype="html">
+        <source>Group conversation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/message/group-list/group-list.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1110042437995608433" datatype="html">
+        <source>There is nothing to show here. Please try adding some friends first.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/news-feed/news-feed.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5851560788527570644" datatype="html">
+        <source>Notifications</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/notification/notification.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8488772230031481322" datatype="html">
+        <source> has rejected your friend request.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/notification/notification.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1647146243115187871" datatype="html">
+        <source> has accepted your friend request.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/notification/notification.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8145022097874770931" datatype="html">
+        <source> has sent you a friend request.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/notification/notification.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="711444533988213729" datatype="html">
+        <source> You rejected the invitation.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/notification/notification.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6510885680455000166" datatype="html">
+        <source> You accepted the invitation.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/notification/notification.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4930506384627295710" datatype="html">
+        <source>Settings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3465962430409924123" datatype="html">
+        <source>Personal Information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="219835576439564432" datatype="html">
+        <source>Account Privacy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">162</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3453929685926629133" datatype="html">
+        <source>Change Language</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7705508697330810763" datatype="html">
+        <source>Delete Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7292941584774282541" datatype="html">
+        <source>Password Settings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6383296110036844653" datatype="html">
+        <source>An error occurred during the update. Please try again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="801694995381402371" datatype="html">
+        <source>Password successfully updated.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2397816345463091163" datatype="html">
+        <source>Old Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1221596867309460035" datatype="html">
+        <source>New Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8547747030242972664" datatype="html">
+        <source>Password Confirmation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2584961467078066921" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 0), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 0)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least 8 characters </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">129,131</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">79,81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5439542117908961027" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 1), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 1)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">133,135</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">83,85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4274352564621079313" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 2), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 2)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one capital letter </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">137,139</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">87,89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9209132678150938772" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 3), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 3)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one lowercase letter </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">141,143</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">91,93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4605564945859195388" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkNewPassword(controlNewPassword.value, 4), &apos;fa-xmark&apos;: !checkNewPassword(controlNewPassword.value, 4)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one special character </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">145,147</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">95,97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3082831219159499667" datatype="html">
+        <source>Validate Changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1856328796996846690" datatype="html">
+        <source>Make the account public globally</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">166</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4361371323619617192" datatype="html">
+        <source>When your account is public, your profile and posts can be seen by anyone. When your account is private, only your friends can see what you share as well as your friend list.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">173</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8686793581875341290" datatype="html">
+        <source>Make your friends list public</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7810776186871466367" datatype="html">
+        <source>When your this parameter is set to public, your friend list is visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your friend list.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">188</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7504955583663860888" datatype="html">
+        <source>Make your publications public</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">194</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5812246042074505434" datatype="html">
+        <source>When your this parameter is set to public, your publications are visible to everyone, whether they are friends with you or not. When your account is private, only your friends can see your publications.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/parameters/parameters.component.html</context>
+          <context context-type="linenumber">202</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4970048888470229849" datatype="html">
+        <source>Common Information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6959497441009812685" datatype="html">
+        <source>Full Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4879517228803151475" datatype="html">
+        <source>Email Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4868165456937548663" datatype="html">
+        <source>Birthdate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5701618810648052610" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4902817035128594900" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5950087130828350198" datatype="html">
+        <source>Edit Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="258578341393898277" datatype="html">
+        <source>This page is unfortunately not available.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/publications/publications.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7785189081181452986" datatype="html">
+        <source>The link you followed may be broken, or the page has been deleted.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/publications/publications.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6713548861996503075" datatype="html">
+        <source>Return to mood</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/account/account.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/publications/publications.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1991022315664592783" datatype="html">
+        <source>This user does not seem to have friends.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7006215407112441201" datatype="html">
+        <source>This account is private.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/publications/publications.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2946166781542512442" datatype="html">
+        <source>Become friends to see this account&apos;s friends.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/friends/friends.component.html</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7955347862477714413" datatype="html">
         <source>Publications : </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4325768187447051699" datatype="html">
         <source>Friends : </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4086606389696938932" datatype="html">
-        <source>Account</source>
+      <trans-unit id="3645551714529984410" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-gear&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Change Profile Picture </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">72,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6597914568718514360" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-clock&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Ignore Friend Request </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">59,60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">81,82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2056061371079193128" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-clock&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Accept Friend Request </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">62,63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">84,85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8166133146091178378" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid fa-slash&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Cancel Friend Request </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">87,88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8707887448880467422" datatype="html">
         <source>Friends</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4086606389696938932" datatype="html">
+        <source>Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/profile.component.html</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3668170402871518121" datatype="html">
+        <source>There is nothing to show here.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/publications/publications.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="855913083390422162" datatype="html">
+        <source>Become friends to see this account&apos;s publications.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/content/profile/publications/publications.component.html</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8587651800748323195" datatype="html">
         <source>News Feed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7627544798203088407" datatype="html">
         <source>Discover</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1688759866382968453" datatype="html">
+        <source>New Post</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6452372740127749380" datatype="html">
         <source>Messages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
-          <context context-type="linenumber">65</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5851560788527570644" datatype="html">
-        <source>Notifications</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
-          <context context-type="linenumber">70</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="725608403075035932" datatype="html">
-        <source>Change Appearance</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
-          <context context-type="linenumber">79</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2250922476634643797" datatype="html">
-        <source>Parameters</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/main-page/navbar/navbar.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2907016025519254862" datatype="html">
@@ -486,81 +1358,11 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9107704567844782579" datatype="html">
-        <source>Email or Username already used</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6959497441009812685" datatype="html">
-        <source>Full Name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4879517228803151475" datatype="html">
-        <source>Email Address</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="5248717555542428023" datatype="html">
         <source>Username</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
           <context context-type="linenumber">42</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4868165456937548663" datatype="html">
-        <source>Birthdate</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8547747030242972664" datatype="html">
-        <source>Password Confirmation</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">70</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2584961467078066921" datatype="html">
-        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkPassword(controlPassword.value, 0), &apos;fa-xmark&apos;: !checkPassword(controlPassword.value, 0)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least 8 characters </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">79,81</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5439542117908961027" datatype="html">
-        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkPassword(controlPassword.value, 1), &apos;fa-xmark&apos;: !checkPassword(controlPassword.value, 1)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one number </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">83,85</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4274352564621079313" datatype="html">
-        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkPassword(controlPassword.value, 2), &apos;fa-xmark&apos;: !checkPassword(controlPassword.value, 2)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one capital letter </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">87,89</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9209132678150938772" datatype="html">
-        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkPassword(controlPassword.value, 3), &apos;fa-xmark&apos;: !checkPassword(controlPassword.value, 3)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one lowercase letter </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">91,93</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4605564945859195388" datatype="html">
-        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fa-solid&quot; [ngClass]=&quot;{&apos;fa-check&apos;: checkPassword(controlPassword.value, 4), &apos;fa-xmark&apos;: !checkPassword(controlPassword.value, 4)}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Password must contain at least one special character </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
-          <context context-type="linenumber">95,97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1466012768716286509" datatype="html">
@@ -575,13 +1377,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mood-container/register-page/register-page.component.html</context>
           <context context-type="linenumber">122</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="840692109692540367" datatype="html">
-        <source>Sign In</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/mood-container/login-page/login-page.component.html</context>
-          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
     </body>
