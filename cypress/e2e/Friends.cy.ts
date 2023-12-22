@@ -21,6 +21,7 @@ describe('Friends management', () => {
     cy.contains('Profiles').click()
 
     cy.contains('Marine').click()
+    cy.wait(500)
     cy.contains('Accept Friend Request').click()
 
     cy.disconnect()
@@ -31,6 +32,7 @@ describe('Friends management', () => {
     cy.contains('Profiles').click()
 
     cy.contains('Marine').click()
+    cy.wait(500)
     cy.contains('Accept Friend Request').click()
 
   });
@@ -56,7 +58,7 @@ describe('Chat with friends', () => {
     cy.connect('marine0023')
     cy.get('#NavMessages').click()
 
-    cy.get('#PrivateConv').contains('Martin').should('not.exist')
+    cy.contains('Martin').should('not.exist')
 
     cy.get('#BtnCreateConversation').click()
     cy.contains('Martin').click()
@@ -65,12 +67,15 @@ describe('Chat with friends', () => {
   it('Check if a group conversation exist, otherwise, create one. FAILS IF IT EXISTS', () => {
     cy.connect('marine0023')
     cy.get('#NavMessages').click()
-
-    cy.get('#GroupConv').should('not.exist')
+    cy.wait(1000)
+    cy.contains('Many friends').should('not.exist')
 
     cy.get('#BtnCreateConversation').click()
-    cy.get('#Friend').click({multiple:true})
-    cy.get('#GroupName').type('All my friends')
+    cy.wait(2000)
+    cy.get('form').contains('Martin').click()
+    cy.get('form').contains('Louis').click()
+    cy.get('form').contains('Theo').click()
+    cy.get('#GroupName').type('Many friends')
     cy.get('#ConfirmCreateConv').click()
   });
 
@@ -84,17 +89,25 @@ describe('Chat with friends', () => {
     cy.get('#SendMessage').click()
   });
 
-  it('Check if martin received the message and send a message back', () => {
+  it('Send a message in a group conversation', () => {
+    cy.connect('marine0023')
+    cy.get('#NavMessages').click()
+
+    cy.get('#GroupConv').contains('Many friends').click()
+
+    cy.get('#Message').type('Ceci est un test')
+
+    cy.get('#SendMessage').click()
+  });
+
+  it("Check if all messages have been sent by connecting with Martin's account", () => {
     cy.connect('martin_p')
     cy.get('#NavMessages').click()
 
-    cy.get('#PrivateConv').contains('Marine').click()
+    cy.get('#GroupConv').contains('Many friends').click()
+    cy.wait(1000)
 
-    cy.get('')
-  });
-
-
-  it('Send a Real Time message', () => {
-
+    cy.get('#PrivateConv').click()
+    cy.wait(1000)
   });
 })
